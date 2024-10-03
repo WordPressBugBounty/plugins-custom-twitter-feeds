@@ -287,6 +287,9 @@ class CTF_Settings {
 			}
 		}
 
+		$customHeaderTextDefault = ctf_should_rebrand_to_x() ?  __('We are on X', 'custom-twitter-feeds') : __('We are on Twitter', 'custom-twitter-feeds');
+		$repostedText = ctf_should_rebrand_to_x() ? __('Reposted', 'custom-twitter-feeds') : __('Retweeted', 'custom-twitter-feeds');
+
 		$settings = shortcode_atts(
 			array(
 				'ajax_theme' 						=> isset( $db['ajax_theme'] ) ? $db['ajax_theme'] : false,
@@ -391,7 +394,7 @@ class CTF_Settings {
 				'headerstyle' 						=> isset( $db['headerstyle'] ) ? $db['headerstyle'] : 'standard',
 				'headerbgcolor' 					=> isset( $db['headerbgcolor'] ) ? $db['headerbgcolor'] : '#',
 				'customheadertextcolor' 			=> isset( $db['customheadertextcolor'] ) ? $db['customheadertextcolor'] : '#',
-				'customheadertext' 					=> isset( $db['customheadertext'] ) ? $db['customheadertext'] : __( 'We are on Twitter', 'custom-twitter-feeds' ),
+				'customheadertext' 					=> isset($db['customheadertext']) ? $db['customheadertext'] : $customHeaderTextDefault,
 				'customheadersize' 					=> isset( $db['customheadersize'] ) ? $db['customheadersize'] : 'small',
 				'timezone' 							=> isset( $db['timezone'] ) ? $db['timezone'] : 'default',
 				'dateformat' 						=> isset( $db['dateformat'] ) ? $db['dateformat'] : '1',
@@ -411,7 +414,7 @@ class CTF_Settings {
 				'tweettextweight' 					=> isset( $db['tweettextweight'] ) ? $db['tweettextweight'] : 'inherit',
 				'textcolor' 						=> isset( $db['textcolor'] ) ? $db['textcolor'] : '#',
 				'textlength' 						=> isset( $db['textlength'] ) ? $db['textlength'] : '280',
-				'retweetedtext' 					=> isset( $db['retweetedtext'] ) ? $db['retweetedtext'] : __( 'Retweeted', 'custom-twitter-feeds' ),
+				'retweetedtext' 					=> isset( $db['retweetedtext'] ) ? $db['retweetedtext'] : $repostedText,
 				'linktextcolor' 					=> isset( $db['linktextcolor'] ) ? $db['linktextcolor'] : '#',
 				'quotedauthorsize' 					=> isset( $db['quotedauthorsize'] ) ? $db['quotedauthorsize'] : 'inherit',
 				'quotedauthorweight' 				=> isset( $db['quotedauthorweight'] ) ? $db['quotedauthorweight'] : 'inherit',
@@ -462,6 +465,8 @@ class CTF_Settings {
 	}
 
 	public static function get_public_db_settings_keys() {
+		$customHeaderTextDefault = ctf_should_rebrand_to_x() ?  __('We are on X', 'custom-twitter-feeds') : __('We are on Twitter', 'custom-twitter-feeds');
+
 		$public = array(
 			'ajax_theme' 						=> isset( $db['ajax_theme'] ) ? $db['ajax_theme'] : false,
 			'have_own_tokens' 					=> isset( $db['have_own_tokens'] ) ? $db['have_own_tokens'] : '',
@@ -558,7 +563,7 @@ class CTF_Settings {
 			'headerstyle' 						=> isset( $db['headerstyle'] ) ? $db['headerstyle'] : 'standard',
 			'headerbgcolor' 					=> isset( $db['headerbgcolor'] ) ? $db['headerbgcolor'] : '#',
 			'customheadertextcolor' 			=> isset( $db['customheadertextcolor'] ) ? $db['customheadertextcolor'] : '#',
-			'customheadertext' 					=> isset( $db['customheadertext'] ) ? $db['customheadertext'] : __( 'We are on Twitter', 'custom-twitter-feeds' ),
+			'customheadertext' 					=> isset( $db['customheadertext'] ) ? $db['customheadertext'] : $customHeaderTextDefault,
 			'customheadersize' 					=> isset( $db['customheadersize'] ) ? $db['customheadersize'] : 'small',
 			'timezone' 							=> isset( $db['timezone'] ) ? $db['timezone'] : 'default',
 			'dateformat' 						=> isset( $db['dateformat'] ) ? $db['dateformat'] : '1',

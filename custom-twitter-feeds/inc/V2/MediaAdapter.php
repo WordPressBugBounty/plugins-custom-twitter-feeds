@@ -1,20 +1,14 @@
 <?php
 
+namespace TwitterFeed\V2;
+
 /**
  * Class for converting media attribute from Twitter API v1.1 to v2.
  *
  * @package twitter-api-v2
  */
-
-namespace TwitterFeed\V2;
-
-// Don't load directly.
-if (! defined('ABSPATH')) {
-	die('-1');
-}
-
-class MediaAdapter {
-
+class MediaAdapter
+{
 	/**
 	 * Tweet data.
 	 *
@@ -46,7 +40,7 @@ class MediaAdapter {
 	 *
 	 * @return array
 	 */
-	public function get_media_keys()
+	public function getMediaKeys()
 	{
 		return ! empty($this->tweet['attachments']['media_keys']) ? $this->tweet['attachments']['media_keys'] : [];
 	}
@@ -60,7 +54,7 @@ class MediaAdapter {
 	{
 		$media_array = [];
 
-		foreach ($this->get_media_keys() as $media_key_index => $media_key_value) {
+		foreach ($this->getMediaKeys() as $media_key_index => $media_key_value) {
 			$media_index = array_search(
 				$this->tweet['attachments']['media_keys'][ $media_key_index ],
 				array_column($this->included_media, 'media_key')
@@ -68,7 +62,9 @@ class MediaAdapter {
 
 			if ($media_index !== false) {
 				$media = [
-					'media_url_https' => $this->included_media[ $media_index ]['url'] ?? $this->included_media[ $media_index ]['preview_image_url'],
+					'media_url_https' => !empty($this->included_media[ $media_index ]['url'])
+						? $this->included_media[ $media_index ]['url']
+						: $this->included_media[ $media_index ]['preview_image_url'],
 					'type'            => $this->included_media[ $media_index ]['type'],
 				];
 

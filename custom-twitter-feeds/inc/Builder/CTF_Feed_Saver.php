@@ -496,7 +496,7 @@ class CTF_Feed_Saver {
 				'headerstyle' => 'standard', //NEW
 				'headerbgcolor' => '#',
 				'customheadertextcolor' => '#',
-				'customheadertext' => __( 'We are on Twitter', 'custom-twitter-feeds' ),
+				'customheadertext' => ctf_should_rebrand_to_x() ? __('We are on X', 'custom-twitter-feeds') : __('We are on Twitter', 'custom-twitter-feeds'),
 				'customheadersize' => 'small',
 
 
@@ -525,7 +525,7 @@ class CTF_Feed_Saver {
 				'iconsize' => 'inherit',
 				'iconcolor' => '#',
 				'viewtwitterlink' => true, //NEW
-				'twitterlinktext' => 'Twitter',
+				'twitterlinktext' => ctf_should_rebrand_to_x() ? 'X' : 'Twitter',
 				'buttoncolor' => '#',
 				'buttonhovercolor' => '#',
 				'buttontextcolor' => '#',

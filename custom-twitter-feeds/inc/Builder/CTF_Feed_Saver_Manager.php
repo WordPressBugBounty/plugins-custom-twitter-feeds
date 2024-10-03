@@ -57,7 +57,7 @@ class CTF_Feed_Saver_Manager {
 		foreach ($selected_feeds as $feed_type) {
 			switch ($feed_type) {
 				case 'usertimeline':
-					$feeds_types['screenname'] = isset( $selected_feed_models['usertimeline'] ) ? $selected_feed_models['usertimeline'] : '';
+					$feeds_types['screenname'] = isset( $selected_feed_models['usertimeline'] ) ? self::get_clean_twitter_handle_from_string($selected_feed_models['usertimeline']) : '';
 					break;
 				case 'hashtag':
 					$feeds_types['hashtag'] = isset( $selected_feed_models['hashtag'] ) ? $selected_feed_models['hashtag'] : '';
@@ -89,7 +89,7 @@ class CTF_Feed_Saver_Manager {
 		$feed_data = [];
 		switch ($selected_feed) {
 			case 'usertimeline':
-				$feed_data['usertimeline_text'] = isset( $selected_feed_model['usertimeline'] ) ? $selected_feed_model['usertimeline'] : '';
+				$feed_data['usertimeline_text'] = isset( $selected_feed_model['usertimeline'] ) ? self::get_clean_twitter_handle_from_string($selected_feed_model['usertimeline']) : '';
 				$feed_data['screenname'] = isset( $selected_feed_model['usertimeline'] ) ? $selected_feed_model['usertimeline'] : '';
 			break;
 			case 'hashtag':
@@ -103,7 +103,29 @@ class CTF_Feed_Saver_Manager {
 		$feed_data['type'] = $selected_feed;
 		return $feed_data;
 	}
-
+	
+	/**
+	 * Get clean twitter handle URL from user provided string
+	 * 
+	 * @since 2.5
+	 * @params string $string
+	 * @return string	 
+	 */
+	public static function get_clean_twitter_handle_from_string($string)
+	{
+		if (strpos($string, "twitter.com") !== false) {
+			$regex = '/twitter\.com\/([^\/?]+)/';
+			if (preg_match($regex, $string, $matches)) {
+				$desiredString = $matches[1];
+				if ($desiredString) {
+					return "@" . $desiredString;
+				}
+			}
+		} else if (strpos($string, "@") === false) {
+			$string = "@" . $string;
+		}
+		return $string;
+	}
 
 	/**
 	 * Get Max Feed Name

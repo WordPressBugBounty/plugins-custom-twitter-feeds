@@ -4,9 +4,10 @@ use TwitterFeed\CTF_Feed;
 use TwitterFeed\CtfFeed;
 use TwitterFeed\CTF_Settings;
 use TwitterFeed\CTF_GDPR_Integrations;
+use TwitterFeed\Admin\CTF_Global_Settings;
 
 function ctf_should_rebrand_to_x() {
-	$ctf_settings = get_option( 'ctf_options' );
+	$ctf_settings = wp_parse_args(get_option('ctf_options'), (new CTF_Global_Settings)->default_settings_options());
 	return isset( $ctf_settings['rebranding'] ) && $ctf_settings['rebranding'] === true;
 }
 

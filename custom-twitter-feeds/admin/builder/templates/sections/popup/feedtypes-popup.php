@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="ctf-fb-adv-types ctf-fb-fs">
+        <!-- <div class="ctf-fb-adv-types ctf-fb-fs">
             <h4>{{selectFeedTypeScreen.advancedHeading}}<span class="sb-breadcrumb-pro-label">PRO</span></h4>
             <div class="ctf-fb-types-list ctf-fb-types-list-pro ctf-fb-fs">
                 <div class="ctf-fb-type-el-pro" v-for="(advFeedTypeEl, advFeedTypeIn) in advancedFeedTypes" @click.prevent.default="chooseFeedType(advFeedTypeEl)">
@@ -38,7 +38,7 @@
                     <span>{{advFeedTypeEl.title}}</span>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="ctf-fb-addsourtype-ctn ctf-fb-fs">
         <button class="ctf-fb-source-btn ctf-fb-fs sb-btn-orange"  @click.prevent.default="addFeedTypePopup()">

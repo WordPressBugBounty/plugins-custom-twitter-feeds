@@ -140,7 +140,6 @@ class CTF_Global_Settings {
 			$ctf_settings['custom_css'] = $feeds['customCSS'];
 			$ctf_settings['custom_js']  = $feeds['customJS'];
 		}
-
 		$ctf_settings['gdpr'] 			        = sanitize_text_field( $feeds['gdpr'] );
 		$ctf_settings['ctf_caching_type']    	= sanitize_text_field( $feeds['cachingType'] );
 		$ctf_settings['cache_time']    			= sanitize_text_field( $feeds['cacheTime'] );
@@ -807,7 +806,10 @@ class CTF_Global_Settings {
 	    $footer_upgrade_url		= 'https://smashballoon.com/custom-twitter-feeds/demo?utm_campaign=twitter-free&utm_source=settings&utm_medium=footer-banner&utm_content=Try Demo';
 		$usage_tracking_url 	= 'https://smashballoon.com/custom-twitter-feeds/usage-tracking/?utm_campaign=twitter-free&utm_source=settings&utm_medium=footer-banner&utm_content=Usage';
 		$feed_issue_email_url 	= 'https://smashballoon.com/email-report-is-not-in-my-inbox/?twitter&utm_campaign=twitter-free&utm_source=settings&utm_medium=footer-banner&utm_content=Email Issue';
-	    if ( ! empty( $_GET['ctf_site_token'] ) ) {
+	    if ( ! empty( $_GET['ctf_site_token'] )
+	         && ! empty( $_GET['con_nonce'] )
+	         && wp_verify_nonce( $_GET['con_nonce'], 'ctf_con' )
+	    ) {
 		    $ctf_site_access_token = sanitize_key( $_GET['ctf_site_token'] );
 	    } else {
 		    $ctf_site_access_token = isset( $ctf_options[ CTF_SITE_ACCESS_TOKEN_KEY ] ) ? $ctf_options[ CTF_SITE_ACCESS_TOKEN_KEY ] : '';
@@ -854,7 +856,7 @@ class CTF_Global_Settings {
 					'inactiveText' => __( 'Your <b>Twitter Feed Pro</b> license is Inactive!', 'custom-twitter-feeds' ),
 					'freeText'	=> __( 'Already purchased? Simply enter your license key below to activate Twitter Feed Pro.', 'custom-twitter-feeds'),
 					'inactiveFieldPlaceholder' => __( 'Paste license key here', 'custom-twitter-feeds' ),
-					'upgradeText1' => __( 'You are using the Lite version of the plugin–no license needed. Enjoy! 🙂 To unlock more features, consider <a href="'. $upgrade_url .'">Upgrading to Pro</a>.', 'custom-twitter-feeds' ),
+					'upgradeText1' => sprintf( __( 'You are using the Lite version of the plugin–no license needed. Enjoy! 🙂 To unlock more features, consider %sUpgrading to Pro%s.', 'custom-twitter-feeds' ), '<a href="' . $upgrade_url . '" target="_blank" rel="nofollow noopener">', '</a>' ),
 					'upgradeText2' => __( 'As a valued user of our Lite plugin, you receive 50% OFF - automatically applied at checkout!', 'custom-twitter-feeds' ),
 					'manageLicense' => __( 'Manage License', 'custom-twitter-feeds' ),
 					'test' => __( 'Test Connection', 'custom-twitter-feeds' ),
@@ -999,7 +1001,6 @@ class CTF_Global_Settings {
 					'htime' => __( 'Hours', 'custom-twitter-feeds' ),
 					'nowtime' => __( 'Now', 'custom-twitter-feeds' ),
 					'usedinTimeline' => __( 'Used for tweet timeline', 'custom-twitter-feeds' ),
-
 				)
 			),
 			'advancedTab'	=> array(
@@ -1061,7 +1062,6 @@ class CTF_Global_Settings {
 					'title' => __( 'Force Cache to clear on interval', 'custom-twitter-feeds' ),
 					'helpText' => '',
 				),
-
 				'sslonlyBox' => array(
 					'title' => __( 'HTTPs Images only', 'custom-twitter-feeds' ),
 					'helpText' => __( 'This will fix mixed-content warnings when Twitter card links are non-https. After enabling, clear your Twitter cards cache.', 'custom-twitter-feeds' ),
@@ -1247,17 +1247,23 @@ class CTF_Global_Settings {
 		$ctf_ajax = $ctf_settings['ajax_theme'];
 		$active_gdpr_plugin = CTF_GDPR_Integrations::gdpr_plugins_active();
 		$ctf_preserve_settings = $ctf_settings['preserve_settings'];
-		if ( ! empty( $_GET['ctf_site_token'] ) ) {
+
+		if ( ! empty( $_GET['ctf_site_token'] )
+		     && ! empty( $_GET['con_nonce'] )
+		     && wp_verify_nonce( $_GET['con_nonce'], 'ctf_con' )
+		) {
 			$ctf_site_access_token = sanitize_key( $_GET['ctf_site_token'] );
 		} else {
-			$ctf_site_access_token = $ctf_settings[ CTF_SITE_ACCESS_TOKEN_KEY ];
+			$ctf_site_access_token = isset( $ctf_settings[ CTF_SITE_ACCESS_TOKEN_KEY ] ) ? $ctf_settings[ CTF_SITE_ACCESS_TOKEN_KEY ] : '';
 		}
+
+		$custom_css = '';
+		$custom_js = '';
 
 		if ( current_user_can( 'unfiltered_html' ) ) {
 			$custom_css = isset( $ctf_settings['custom_css'] ) ? wp_strip_all_tags( stripslashes( $ctf_settings['custom_css'] ) ) : '';
 			$custom_js = isset( $ctf_settings['custom_js'] ) ? stripslashes( $ctf_settings['custom_js'] ) : '';
 		}
-
 		return array(
 			'general' => array(
 				'preserveSettings' => $ctf_preserve_settings,
@@ -1327,7 +1333,7 @@ class CTF_Global_Settings {
 			//Translation Goes Here
 
 			//----------
-			'rebranding' => false,
+			'rebranding' => true,
 			'resizing' => true,
 			'persistentcache' => true,
 			'ajax_theme' => false,
@@ -1366,7 +1372,7 @@ class CTF_Global_Settings {
 		if ( $active_gdpr_plugin ) {
 			$output = $active_gdpr_plugin;
 		} else {
-			$output = __( 'No GDPR consent plugin detected. Install a compatible <a href="'. $gdpr_doc_url .'" target="_blank" rel="nofollow noopener">GDPR consent plugin</a>, or manually enable the setting to display a GDPR compliant version of the feed to all visitors.', 'custom-twitter-feeds' );
+			$output = sprintf(__('No GDPR consent plugin detected. Install a compatible %sGDPR consent plugin%s, or manually enable the setting to display a GDPR compliant version of the feed to all visitors.', 'custom-twitter-feeds'), '<a href="' . $gdpr_doc_url . '" target="_blank" rel="nofollow noopener">', '</a>');
 		}
 		return $output;
 	}

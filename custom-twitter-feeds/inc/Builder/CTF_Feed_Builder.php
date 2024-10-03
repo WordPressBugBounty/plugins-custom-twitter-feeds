@@ -318,8 +318,29 @@ class CTF_Feed_Builder {
 					'appCredentials' => self::get_app_credentials( $ctf_options ),
 					'legacyFeeds' => $this->get_legacy_feed_list(),
 			        'extensionsPopup' => [
+			        	'hashtag' => [
+							'heading' 		=> __('Upgrade to Plus to get Hashtag Feeds', 'custom-twitter-feeds'),
+							'description' 	=> __( 'Create incredibly powerful hashtag based feeds using your selected hashtags using powerful hashtag queries.', 'custom-twitter-feeds' ),
+							'img' 			=> '<svg width="396" height="264" viewBox="0 0 396 264" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_235_1820)"><g opacity="0.8"><g filter="url(#filter0_d_235_1820)"><rect x="54" y="105" width="288" height="113" rx="4" fill="white"/></g><rect x="122" y="124" width="188" height="14" rx="1" fill="#DCDDE1"/><rect x="122" y="150" width="160" height="14" rx="1" fill="#DCDDE1"/><circle cx="86.5" cy="137.5" r="17.5" fill="#DCDDE1"/><path d="M132.574 184.785H130.343L130.745 182.844C130.755 182.787 130.753 182.728 130.738 182.672C130.723 182.616 130.696 182.564 130.659 182.519C130.622 182.475 130.575 182.439 130.523 182.413C130.471 182.388 130.414 182.375 130.355 182.374H129.552C129.459 182.372 129.368 182.402 129.295 182.459C129.222 182.516 129.17 182.597 129.15 182.687L128.74 184.785H126.57L126.972 182.844C126.982 182.788 126.979 182.731 126.965 182.676C126.951 182.621 126.926 182.57 126.89 182.525C126.855 182.481 126.811 182.444 126.76 182.418C126.71 182.392 126.655 182.377 126.598 182.374H125.794C125.701 182.372 125.611 182.402 125.537 182.459C125.464 182.516 125.413 182.597 125.392 182.687L124.991 184.785H122.579C122.485 184.783 122.394 184.814 122.32 184.873C122.247 184.932 122.196 185.015 122.178 185.107L122.013 185.91C122.001 185.969 122.002 186.031 122.017 186.089C122.032 186.147 122.059 186.202 122.098 186.248C122.136 186.294 122.185 186.331 122.24 186.357C122.295 186.382 122.354 186.394 122.415 186.393H124.645L123.986 189.608H121.575C121.481 189.606 121.389 189.637 121.316 189.696C121.242 189.754 121.192 189.837 121.173 189.929L121.008 190.733C120.996 190.792 120.997 190.853 121.012 190.911C121.027 190.97 121.055 191.024 121.093 191.071C121.132 191.117 121.18 191.154 121.235 191.179C121.29 191.204 121.35 191.216 121.41 191.215H123.656L123.255 193.156C123.245 193.214 123.247 193.274 123.263 193.331C123.279 193.388 123.307 193.441 123.345 193.485C123.383 193.53 123.431 193.566 123.485 193.591C123.539 193.615 123.597 193.627 123.656 193.626H124.46C124.55 193.624 124.636 193.592 124.705 193.535C124.774 193.478 124.822 193.4 124.842 193.313L125.26 191.215H127.43L127.028 193.156C127.018 193.212 127.021 193.269 127.035 193.324C127.049 193.379 127.074 193.431 127.109 193.475C127.145 193.519 127.189 193.556 127.239 193.582C127.29 193.608 127.345 193.623 127.402 193.626H128.206C128.298 193.628 128.389 193.598 128.462 193.541C128.536 193.484 128.587 193.403 128.607 193.313L129.029 191.215H131.441C131.535 191.217 131.626 191.186 131.7 191.127C131.773 191.068 131.824 190.986 131.842 190.894L132.003 190.09C132.015 190.031 132.014 189.97 131.999 189.911C131.984 189.853 131.957 189.798 131.918 189.752C131.88 189.706 131.831 189.669 131.776 189.644C131.721 189.619 131.662 189.606 131.601 189.608H129.359L130.014 186.393H132.425C132.519 186.395 132.611 186.363 132.684 186.305C132.758 186.246 132.808 186.163 132.827 186.071L132.992 185.267C133.004 185.207 133.003 185.145 132.987 185.085C132.971 185.025 132.942 184.97 132.902 184.923C132.861 184.877 132.811 184.84 132.754 184.816C132.697 184.792 132.635 184.781 132.574 184.785ZM127.751 189.608H125.581L126.24 186.393H128.41L127.751 189.608Z" fill="#59AB46"/><rect x="138" y="182" width="50" height="12" rx="1" fill="#D6ECD1"/><path d="M212.574 184.785H210.343L210.745 182.844C210.755 182.787 210.753 182.728 210.738 182.672C210.723 182.616 210.696 182.564 210.659 182.519C210.622 182.475 210.575 182.439 210.523 182.413C210.471 182.388 210.414 182.375 210.355 182.374H209.552C209.459 182.372 209.368 182.402 209.295 182.459C209.222 182.516 209.17 182.597 209.15 182.687L208.74 184.785H206.57L206.972 182.844C206.982 182.788 206.979 182.731 206.965 182.676C206.951 182.621 206.926 182.57 206.89 182.525C206.855 182.481 206.811 182.444 206.76 182.418C206.71 182.392 206.655 182.377 206.598 182.374H205.794C205.701 182.372 205.611 182.402 205.537 182.459C205.464 182.516 205.413 182.597 205.392 182.687L204.991 184.785H202.579C202.485 184.783 202.394 184.814 202.32 184.873C202.247 184.932 202.196 185.015 202.178 185.107L202.013 185.91C202.001 185.969 202.002 186.031 202.017 186.089C202.032 186.147 202.059 186.202 202.098 186.248C202.136 186.294 202.185 186.331 202.24 186.357C202.295 186.382 202.354 186.394 202.415 186.393H204.645L203.986 189.608H201.575C201.481 189.606 201.389 189.637 201.316 189.696C201.242 189.754 201.192 189.837 201.173 189.929L201.008 190.733C200.996 190.792 200.997 190.853 201.012 190.911C201.027 190.97 201.055 191.024 201.093 191.071C201.132 191.117 201.18 191.154 201.235 191.179C201.29 191.204 201.35 191.216 201.41 191.215H203.656L203.255 193.156C203.245 193.214 203.247 193.274 203.263 193.331C203.279 193.388 203.307 193.441 203.345 193.485C203.383 193.53 203.431 193.566 203.485 193.591C203.539 193.615 203.597 193.627 203.656 193.626H204.46C204.55 193.624 204.636 193.592 204.705 193.535C204.774 193.478 204.822 193.4 204.842 193.313L205.26 191.215H207.43L207.028 193.156C207.018 193.212 207.021 193.269 207.035 193.324C207.049 193.379 207.074 193.431 207.109 193.475C207.145 193.519 207.189 193.556 207.239 193.582C207.29 193.608 207.345 193.623 207.402 193.626H208.206C208.298 193.628 208.389 193.598 208.462 193.541C208.536 193.484 208.587 193.403 208.607 193.313L209.029 191.215H211.441C211.535 191.217 211.626 191.186 211.7 191.127C211.773 191.068 211.824 190.986 211.842 190.894L212.003 190.09C212.015 190.031 212.014 189.97 211.999 189.911C211.984 189.853 211.957 189.798 211.918 189.752C211.88 189.706 211.831 189.669 211.776 189.644C211.721 189.619 211.662 189.606 211.601 189.608H209.359L210.014 186.393H212.425C212.519 186.395 212.611 186.363 212.684 186.305C212.758 186.246 212.808 186.163 212.827 186.071L212.992 185.267C213.004 185.207 213.003 185.145 212.987 185.085C212.971 185.025 212.942 184.97 212.902 184.923C212.861 184.877 212.811 184.84 212.754 184.816C212.697 184.792 212.635 184.781 212.574 184.785ZM207.751 189.608H205.581L206.24 186.393H208.41L207.751 189.608Z" fill="#59AB46"/><rect x="218" y="182" width="50" height="12" rx="1" fill="#D6ECD1"/></g><g opacity="0.8"><g filter="url(#filter1_d_235_1820)"><rect x="54" y="225" width="288" height="113" rx="4" fill="white"/></g><rect x="122" y="244" width="188" height="14" rx="1" fill="#DCDDE1"/><circle cx="86.5" cy="257.5" r="17.5" fill="#DCDDE1"/></g><g filter="url(#filter2_d_235_1820)"><rect x="53" y="45" width="289" height="53" fill="white"/></g><circle cx="75.1713" cy="68.1716" r="8" transform="rotate(-45 75.1713 68.1716)" stroke="#0096CC" stroke-width="2"/><line x1="80.8282" y1="73.8284" x2="87.1922" y2="80.1924" stroke="#0096CC" stroke-width="2"/><rect x="106" y="63" width="119" height="16" rx="2" fill="#B5E5FF"/><rect opacity="0.6" x="14" y="150" width="372" height="114" fill="url(#paint0_linear_235_1820)"/></g><defs><filter id="filter0_d_235_1820" x="45.1412" y="100.571" width="305.718" height="130.718" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feMorphology radius="3.32203" operator="erode" in="SourceAlpha" result="effect1_dropShadow_235_1820"/><feOffset dy="4.42938"/><feGaussianBlur stdDeviation="6.0904"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_235_1820"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_235_1820" result="shape"/></filter><filter id="filter1_d_235_1820" x="45.1412" y="220.571" width="305.718" height="130.718" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feMorphology radius="3.32203" operator="erode" in="SourceAlpha" result="effect1_dropShadow_235_1820"/><feOffset dy="4.42938"/><feGaussianBlur stdDeviation="6.0904"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_235_1820"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_235_1820" result="shape"/></filter><filter id="filter2_d_235_1820" x="44.8915" y="40.9457" width="305.217" height="69.217" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feMorphology radius="3.04069" operator="erode" in="SourceAlpha" result="effect1_dropShadow_235_1820"/><feOffset dy="4.05426"/><feGaussianBlur stdDeviation="5.5746"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_235_1820"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_235_1820" result="shape"/></filter><linearGradient id="paint0_linear_235_1820" x1="200" y1="150" x2="200" y2="264" gradientUnits="userSpaceOnUse"><stop stop-color="#F3F4F5" stop-opacity="0"/><stop offset="0.925689" stop-color="#F3F4F5"/></linearGradient><clipPath id="clip0_235_1820"><rect width="396" height="264" fill="white"/></clipPath></defs></svg>',
+							'popupContentBtn' 	=> '<div class="ctf-fb-extpp-lite-btn">' . self::builder_svg_icons()['tag'] . __( 'Lite users get 50% OFF', 'custom-twitter-feeds' ) .'</div>',
+							'bullets'       => [
+								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
+								'content' => [
+									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
+									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
+									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
+									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
+									__( 'View tweets in a lightbox', 'custom-twitter-feeds' ),
+									__( 'Multiple tweet layout options', 'custom-twitter-feeds' ),
+									__( 'Fast & Friendly Support', 'custom-twitter-feeds' ),
+									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
+								]
+							],
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+						],
 			        	'search' => [
-							'heading' 		=> __( 'Upgrade to Pro to get Search Feeds', 'custom-twitter-feeds' ),
+							'heading' 		=> __('Upgrade to Elite to get Search Feeds', 'custom-twitter-feeds'),
 							'description' 	=> __( 'Create incredibly advanced search based feeds using a wide selection of search terms and operators to form feeds using powerful search queries.', 'custom-twitter-feeds' ),
 							'img' 			=> '<svg width="396" height="264" viewBox="0 0 396 264" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_235_1820)"><g opacity="0.8"><g filter="url(#filter0_d_235_1820)"><rect x="54" y="105" width="288" height="113" rx="4" fill="white"/></g><rect x="122" y="124" width="188" height="14" rx="1" fill="#DCDDE1"/><rect x="122" y="150" width="160" height="14" rx="1" fill="#DCDDE1"/><circle cx="86.5" cy="137.5" r="17.5" fill="#DCDDE1"/><path d="M132.574 184.785H130.343L130.745 182.844C130.755 182.787 130.753 182.728 130.738 182.672C130.723 182.616 130.696 182.564 130.659 182.519C130.622 182.475 130.575 182.439 130.523 182.413C130.471 182.388 130.414 182.375 130.355 182.374H129.552C129.459 182.372 129.368 182.402 129.295 182.459C129.222 182.516 129.17 182.597 129.15 182.687L128.74 184.785H126.57L126.972 182.844C126.982 182.788 126.979 182.731 126.965 182.676C126.951 182.621 126.926 182.57 126.89 182.525C126.855 182.481 126.811 182.444 126.76 182.418C126.71 182.392 126.655 182.377 126.598 182.374H125.794C125.701 182.372 125.611 182.402 125.537 182.459C125.464 182.516 125.413 182.597 125.392 182.687L124.991 184.785H122.579C122.485 184.783 122.394 184.814 122.32 184.873C122.247 184.932 122.196 185.015 122.178 185.107L122.013 185.91C122.001 185.969 122.002 186.031 122.017 186.089C122.032 186.147 122.059 186.202 122.098 186.248C122.136 186.294 122.185 186.331 122.24 186.357C122.295 186.382 122.354 186.394 122.415 186.393H124.645L123.986 189.608H121.575C121.481 189.606 121.389 189.637 121.316 189.696C121.242 189.754 121.192 189.837 121.173 189.929L121.008 190.733C120.996 190.792 120.997 190.853 121.012 190.911C121.027 190.97 121.055 191.024 121.093 191.071C121.132 191.117 121.18 191.154 121.235 191.179C121.29 191.204 121.35 191.216 121.41 191.215H123.656L123.255 193.156C123.245 193.214 123.247 193.274 123.263 193.331C123.279 193.388 123.307 193.441 123.345 193.485C123.383 193.53 123.431 193.566 123.485 193.591C123.539 193.615 123.597 193.627 123.656 193.626H124.46C124.55 193.624 124.636 193.592 124.705 193.535C124.774 193.478 124.822 193.4 124.842 193.313L125.26 191.215H127.43L127.028 193.156C127.018 193.212 127.021 193.269 127.035 193.324C127.049 193.379 127.074 193.431 127.109 193.475C127.145 193.519 127.189 193.556 127.239 193.582C127.29 193.608 127.345 193.623 127.402 193.626H128.206C128.298 193.628 128.389 193.598 128.462 193.541C128.536 193.484 128.587 193.403 128.607 193.313L129.029 191.215H131.441C131.535 191.217 131.626 191.186 131.7 191.127C131.773 191.068 131.824 190.986 131.842 190.894L132.003 190.09C132.015 190.031 132.014 189.97 131.999 189.911C131.984 189.853 131.957 189.798 131.918 189.752C131.88 189.706 131.831 189.669 131.776 189.644C131.721 189.619 131.662 189.606 131.601 189.608H129.359L130.014 186.393H132.425C132.519 186.395 132.611 186.363 132.684 186.305C132.758 186.246 132.808 186.163 132.827 186.071L132.992 185.267C133.004 185.207 133.003 185.145 132.987 185.085C132.971 185.025 132.942 184.97 132.902 184.923C132.861 184.877 132.811 184.84 132.754 184.816C132.697 184.792 132.635 184.781 132.574 184.785ZM127.751 189.608H125.581L126.24 186.393H128.41L127.751 189.608Z" fill="#59AB46"/><rect x="138" y="182" width="50" height="12" rx="1" fill="#D6ECD1"/><path d="M212.574 184.785H210.343L210.745 182.844C210.755 182.787 210.753 182.728 210.738 182.672C210.723 182.616 210.696 182.564 210.659 182.519C210.622 182.475 210.575 182.439 210.523 182.413C210.471 182.388 210.414 182.375 210.355 182.374H209.552C209.459 182.372 209.368 182.402 209.295 182.459C209.222 182.516 209.17 182.597 209.15 182.687L208.74 184.785H206.57L206.972 182.844C206.982 182.788 206.979 182.731 206.965 182.676C206.951 182.621 206.926 182.57 206.89 182.525C206.855 182.481 206.811 182.444 206.76 182.418C206.71 182.392 206.655 182.377 206.598 182.374H205.794C205.701 182.372 205.611 182.402 205.537 182.459C205.464 182.516 205.413 182.597 205.392 182.687L204.991 184.785H202.579C202.485 184.783 202.394 184.814 202.32 184.873C202.247 184.932 202.196 185.015 202.178 185.107L202.013 185.91C202.001 185.969 202.002 186.031 202.017 186.089C202.032 186.147 202.059 186.202 202.098 186.248C202.136 186.294 202.185 186.331 202.24 186.357C202.295 186.382 202.354 186.394 202.415 186.393H204.645L203.986 189.608H201.575C201.481 189.606 201.389 189.637 201.316 189.696C201.242 189.754 201.192 189.837 201.173 189.929L201.008 190.733C200.996 190.792 200.997 190.853 201.012 190.911C201.027 190.97 201.055 191.024 201.093 191.071C201.132 191.117 201.18 191.154 201.235 191.179C201.29 191.204 201.35 191.216 201.41 191.215H203.656L203.255 193.156C203.245 193.214 203.247 193.274 203.263 193.331C203.279 193.388 203.307 193.441 203.345 193.485C203.383 193.53 203.431 193.566 203.485 193.591C203.539 193.615 203.597 193.627 203.656 193.626H204.46C204.55 193.624 204.636 193.592 204.705 193.535C204.774 193.478 204.822 193.4 204.842 193.313L205.26 191.215H207.43L207.028 193.156C207.018 193.212 207.021 193.269 207.035 193.324C207.049 193.379 207.074 193.431 207.109 193.475C207.145 193.519 207.189 193.556 207.239 193.582C207.29 193.608 207.345 193.623 207.402 193.626H208.206C208.298 193.628 208.389 193.598 208.462 193.541C208.536 193.484 208.587 193.403 208.607 193.313L209.029 191.215H211.441C211.535 191.217 211.626 191.186 211.7 191.127C211.773 191.068 211.824 190.986 211.842 190.894L212.003 190.09C212.015 190.031 212.014 189.97 211.999 189.911C211.984 189.853 211.957 189.798 211.918 189.752C211.88 189.706 211.831 189.669 211.776 189.644C211.721 189.619 211.662 189.606 211.601 189.608H209.359L210.014 186.393H212.425C212.519 186.395 212.611 186.363 212.684 186.305C212.758 186.246 212.808 186.163 212.827 186.071L212.992 185.267C213.004 185.207 213.003 185.145 212.987 185.085C212.971 185.025 212.942 184.97 212.902 184.923C212.861 184.877 212.811 184.84 212.754 184.816C212.697 184.792 212.635 184.781 212.574 184.785ZM207.751 189.608H205.581L206.24 186.393H208.41L207.751 189.608Z" fill="#59AB46"/><rect x="218" y="182" width="50" height="12" rx="1" fill="#D6ECD1"/></g><g opacity="0.8"><g filter="url(#filter1_d_235_1820)"><rect x="54" y="225" width="288" height="113" rx="4" fill="white"/></g><rect x="122" y="244" width="188" height="14" rx="1" fill="#DCDDE1"/><circle cx="86.5" cy="257.5" r="17.5" fill="#DCDDE1"/></g><g filter="url(#filter2_d_235_1820)"><rect x="53" y="45" width="289" height="53" fill="white"/></g><circle cx="75.1713" cy="68.1716" r="8" transform="rotate(-45 75.1713 68.1716)" stroke="#0096CC" stroke-width="2"/><line x1="80.8282" y1="73.8284" x2="87.1922" y2="80.1924" stroke="#0096CC" stroke-width="2"/><rect x="106" y="63" width="119" height="16" rx="2" fill="#B5E5FF"/><rect opacity="0.6" x="14" y="150" width="372" height="114" fill="url(#paint0_linear_235_1820)"/></g><defs><filter id="filter0_d_235_1820" x="45.1412" y="100.571" width="305.718" height="130.718" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feMorphology radius="3.32203" operator="erode" in="SourceAlpha" result="effect1_dropShadow_235_1820"/><feOffset dy="4.42938"/><feGaussianBlur stdDeviation="6.0904"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_235_1820"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_235_1820" result="shape"/></filter><filter id="filter1_d_235_1820" x="45.1412" y="220.571" width="305.718" height="130.718" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feMorphology radius="3.32203" operator="erode" in="SourceAlpha" result="effect1_dropShadow_235_1820"/><feOffset dy="4.42938"/><feGaussianBlur stdDeviation="6.0904"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_235_1820"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_235_1820" result="shape"/></filter><filter id="filter2_d_235_1820" x="44.8915" y="40.9457" width="305.217" height="69.217" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feMorphology radius="3.04069" operator="erode" in="SourceAlpha" result="effect1_dropShadow_235_1820"/><feOffset dy="4.05426"/><feGaussianBlur stdDeviation="5.5746"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_235_1820"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_235_1820" result="shape"/></filter><linearGradient id="paint0_linear_235_1820" x1="200" y1="150" x2="200" y2="264" gradientUnits="userSpaceOnUse"><stop stop-color="#F3F4F5" stop-opacity="0"/><stop offset="0.925689" stop-color="#F3F4F5"/></linearGradient><clipPath id="clip0_235_1820"><rect width="396" height="264" fill="white"/></clipPath></defs></svg>',
 							'popupContentBtn' 	=> '<div class="ctf-fb-extpp-lite-btn">' . self::builder_svg_icons()['tag'] . __( 'Lite users get 50% OFF', 'custom-twitter-feeds' ) .'</div>',
@@ -337,9 +358,8 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=search')
 						],
-
 						'mentionstimeline' => [
 							'heading' 		=> __( 'Mentions Currently Unavailable', 'custom-twitter-feeds' ),
 							'description' 	=> __( 'Display tweets in a single feed from other public accounts that mention your Twitter handle. Great for displaying user generated content such as testimonials or reviews.', 'custom-twitter-feeds' ),
@@ -359,10 +379,10 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
 						],
 						'lists' => [
-							'heading' 		=> __( 'Lists Currently Unavailable', 'custom-twitter-feeds' ),
+							'heading' 		=> __( 'Upgrade to Elite to get List Feeds', 'custom-twitter-feeds' ),
 							'description' 	=> __( 'Twitter Lists are great for curating content. Display these curated lists easily on your WordPress site with our built-in Twitter List feature.', 'custom-twitter-feeds' ),
 							'img' 			=> '<svg width="396" height="264" viewBox="0 0 396 264" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_235_10306)"><g filter="url(#filter0_d_235_10306)"><rect x="73" y="33" width="250" height="244" fill="white"/></g><path d="M73 37C73 34.7909 74.7909 33 77 33H319C321.209 33 323 34.7909 323 37V133H73V37Z" fill="#FEF4EF"/><path d="M191.75 76.125C191.75 76.6223 191.552 77.0992 191.201 77.4508C190.849 77.8025 190.372 78 189.875 78C189.378 78 188.901 77.8025 188.549 77.4508C188.198 77.0992 188 76.6223 188 76.125C188 75.6277 188.198 75.1508 188.549 74.7992C188.901 74.4475 189.378 74.25 189.875 74.25C190.372 74.25 190.849 74.4475 191.201 74.7992C191.552 75.1508 191.75 75.6277 191.75 76.125Z" fill="#E34F0E"/><path d="M189.875 85.5C190.372 85.5 190.849 85.3025 191.201 84.9508C191.552 84.5992 191.75 84.1223 191.75 83.625C191.75 83.1277 191.552 82.6508 191.201 82.2992C190.849 81.9475 190.372 81.75 189.875 81.75C189.378 81.75 188.901 81.9475 188.549 82.2992C188.198 82.6508 188 83.1277 188 83.625C188 84.1223 188.198 84.5992 188.549 84.9508C188.901 85.3025 189.378 85.5 189.875 85.5Z" fill="#E34F0E"/><path d="M191.75 91.125C191.75 91.6223 191.552 92.0992 191.201 92.4508C190.849 92.8025 190.372 93 189.875 93C189.378 93 188.901 92.8025 188.549 92.4508C188.198 92.0992 188 91.6223 188 91.125C188 90.6277 188.198 90.1508 188.549 89.7992C188.901 89.4475 189.378 89.25 189.875 89.25C190.372 89.25 190.849 89.4475 191.201 89.7992C191.552 90.1508 191.75 90.6277 191.75 91.125Z" fill="#E34F0E"/><path d="M196.75 75.5C196.418 75.5 196.101 75.6317 195.866 75.8661C195.632 76.1005 195.5 76.4185 195.5 76.75C195.5 77.0815 195.632 77.3995 195.866 77.6339C196.101 77.8683 196.418 78 196.75 78H206.75C207.082 78 207.399 77.8683 207.634 77.6339C207.868 77.3995 208 77.0815 208 76.75C208 76.4185 207.868 76.1005 207.634 75.8661C207.399 75.6317 207.082 75.5 206.75 75.5H196.75Z" fill="#E34F0E"/><path d="M195.5 84.25C195.5 83.9185 195.632 83.6005 195.866 83.3661C196.101 83.1317 196.418 83 196.75 83H206.75C207.082 83 207.399 83.1317 207.634 83.3661C207.868 83.6005 208 83.9185 208 84.25C208 84.5815 207.868 84.8995 207.634 85.1339C207.399 85.3683 207.082 85.5 206.75 85.5H196.75C196.418 85.5 196.101 85.3683 195.866 85.1339C195.632 84.8995 195.5 84.5815 195.5 84.25Z" fill="#E34F0E"/><path d="M196.75 90.5C196.418 90.5 196.101 90.6317 195.866 90.8661C195.632 91.1005 195.5 91.4185 195.5 91.75C195.5 92.0815 195.632 92.3995 195.866 92.6339C196.101 92.8683 196.418 93 196.75 93H206.75C207.082 93 207.399 92.8683 207.634 92.6339C207.868 92.3995 208 92.0815 208 91.75C208 91.4185 207.868 91.1005 207.634 90.8661C207.399 90.6317 207.082 90.5 206.75 90.5H196.75Z" fill="#E34F0E"/><path d="M180.5 70.5C180.5 69.1739 181.027 67.9021 181.964 66.9645C182.902 66.0268 184.174 65.5 185.5 65.5H210.5C211.826 65.5 213.098 66.0268 214.036 66.9645C214.973 67.9021 215.5 69.1739 215.5 70.5V95.5C215.5 96.8261 214.973 98.0979 214.036 99.0355C213.098 99.9732 211.826 100.5 210.5 100.5H185.5C184.174 100.5 182.902 99.9732 181.964 99.0355C181.027 98.0979 180.5 96.8261 180.5 95.5V70.5ZM185.5 68C184.837 68 184.201 68.2634 183.732 68.7322C183.263 69.2011 183 69.837 183 70.5V95.5C183 96.163 183.263 96.7989 183.732 97.2678C184.201 97.7366 184.837 98 185.5 98H210.5C211.163 98 211.799 97.7366 212.268 97.2678C212.737 96.7989 213 96.163 213 95.5V70.5C213 69.837 212.737 69.2011 212.268 68.7322C211.799 68.2634 211.163 68 210.5 68H185.5Z" fill="#E34F0E"/><circle cx="108" cy="161" r="13" fill="#DCDDE1"/><circle cx="108" cy="199" r="13" fill="#DCDDE1"/><circle cx="108" cy="237" r="13" fill="#DCDDE1"/><rect x="137" y="155" width="59" height="14" rx="1" fill="#DCDDE1"/><rect x="137" y="193" width="113" height="14" rx="1" fill="#DCDDE1"/><rect x="137" y="231" width="68" height="14" rx="1" fill="#DCDDE1"/><rect opacity="0.6" y="150" width="400" height="114" fill="url(#paint0_linear_235_10306)"/></g><defs><filter id="filter0_d_235_10306" x="64.8915" y="28.9457" width="266.217" height="260.217" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feMorphology radius="3.04069" operator="erode" in="SourceAlpha" result="effect1_dropShadow_235_10306"/><feOffset dy="4.05426"/><feGaussianBlur stdDeviation="5.5746"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_235_10306"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_235_10306" result="shape"/></filter><linearGradient id="paint0_linear_235_10306" x1="200" y1="150" x2="200" y2="264" gradientUnits="userSpaceOnUse"><stop stop-color="#F3F4F5" stop-opacity="0"/><stop offset="0.925689" stop-color="#F3F4F5"/></linearGradient><clipPath id="clip0_235_10306"><rect width="396" height="264" fill="white"/></clipPath></defs></svg>',
 							'popupContentBtn' 	=> '<div class="ctf-fb-extpp-lite-btn">' . self::builder_svg_icons()['tag'] . __( 'Lite users get 50% OFF', 'custom-twitter-feeds' ) .'</div>',
@@ -380,7 +400,7 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=list')
 						],
 			        	'socialwall' => [
 							//Combine all your social media channels into one Social Wall
@@ -423,7 +443,7 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
 						],
 						'advancedFilters' => [
 							'heading' 		=> __( 'Upgrade to Pro to get Advanced Filters', 'custom-twitter-feeds' ),
@@ -444,7 +464,7 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
 						],
 
 						'mediaExtension' => [
@@ -466,7 +486,7 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
 						],
 
 						'autoscrollExtension' => [
@@ -488,7 +508,7 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
 						],
 
 						'lightboxExtension' => [
@@ -510,7 +530,7 @@ class CTF_Feed_Builder {
 									__( '30 Day Money Back Guarantee', 'custom-twitter-feeds' )
 								]
 							],
-							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/hashtag?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
+							'buyUrl' 		=> sprintf('https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=feed-type&utm_medium=hashtag')
 						],
 
 						'feedTemplates' =>[
@@ -707,16 +727,19 @@ class CTF_Feed_Builder {
 		return false;
 	}
 
-	public static function connect_site_token( $data ){
-		if ( isset( $data ) ) {
-			if ( ! empty( $data['ctf_site_token'] ) ){
-				$site_key = sanitize_key( $data['ctf_site_token'] );
-				$ctf_options[ CTF_SITE_ACCESS_TOKEN_KEY ] = $site_key;
-				update_option( 'ctf_options', $ctf_options );
-
-				return $site_key;
+	public static function connect_site_token( $data ) {
+		// Check nonce
+		if ( isset( $data ) && ! empty( $data['ctf_site_token'] ) ) {
+			if ( ! isset( $data['con_nonce'] ) || ! wp_verify_nonce( $data['con_nonce'], 'ctf_con' ) ) {
+				return false;
 			}
+			$site_key                                 = sanitize_key( $data['ctf_site_token'] );
+			$ctf_options[ CTF_SITE_ACCESS_TOKEN_KEY ] = $site_key;
+			update_option( 'ctf_options', $ctf_options );
+
+			return $site_key;
 		}
+
 		return false;
 	}
 
@@ -2111,7 +2134,6 @@ class CTF_Feed_Builder {
 			    'description'=> __( 'A timeline of Tweets from any Twitter user', 'custom-twitter-feeds' ),
 			    'icon'	=>  'usertimelineIcon'
 		    ],
-		    /*
 		    [
 			    'type' => 'hashtag',
 			    'title' => __( 'Hashtag', 'custom-twitter-feeds' ),
@@ -2119,16 +2141,29 @@ class CTF_Feed_Builder {
 			    'icon'	=>  'hashtagIcon'
 		    ],
 		    [
+			    'type' => 'search',
+			    'title' => __( 'Search', 'custom-twitter-feeds' ),
+			    'description'=> __( 'List of Tweets from a specific search query', 'custom-twitter-feeds' ),
+			    'icon'	=>  'searchIcon'
+		    ],
+		    [
+			    'type' => 'lists',
+			    'title' => __( 'Lists', 'custom-twitter-feeds' ),
+			    'description'=> __( 'Curated Tweets from a speicific Twitter list', 'custom-twitter-feeds' ),
+			    'icon'	=>  'listsIcon'
+		    ],
+			[
+			    'type' => 'socialwall',
+			    'title' => __( 'Social Wall', 'custom-twitter-feeds' ),
+			    'description'=> __( 'A brief description about the feed type', 'custom-twitter-feeds' ),
+			    'icon'	=>  'socialwall1Icon'
+		    ]
+		    /*
+		    [
 			    'type' => 'hometimeline',
 			    'title' => __( 'Home Timeline', 'custom-twitter-feeds' ),
 			    'description'=> __( 'The home timeline from your Twitter account', 'custom-twitter-feeds' ),
 			    'icon'	=>  'homeTimelineIcon'
-		    ],
-		    [
-			    'type' => 'search',
-			    'title' => __( 'Search', 'custom-twitter-feeds' ),
-			    'description'=> __( 'A brief description about the feed type', 'custom-twitter-feeds' ),
-			    'icon'	=>  'searchIcon'
 		    ],
 		    [
 			    'type' => 'mentionstimeline',
@@ -2136,18 +2171,6 @@ class CTF_Feed_Builder {
 			    'description'=> __( 'A brief description about the feed type', 'custom-twitter-feeds' ),
 			    'icon'	=>  'mentionsIcon'
 		    ],
-		    [
-			    'type' => 'lists',
-			    'title' => __( 'Lists', 'custom-twitter-feeds' ),
-			    'description'=> __( 'A brief description about the feed type', 'custom-twitter-feeds' ),
-			    'icon'	=>  'listsIcon'
-		    ],
-		    [
-			    'type' => 'socialwall',
-			    'title' => __( 'Social Wall', 'custom-twitter-feeds' ),
-			    'description'=> __( 'A brief description about the feed type', 'custom-twitter-feeds' ),
-			    'icon'	=>  'socialwall1Icon'
-		    ]
 		    */
 	    ];
 

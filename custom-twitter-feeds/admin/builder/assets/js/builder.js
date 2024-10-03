@@ -136,7 +136,7 @@ ctfBuilder = new Vue({
 			pageScreen : 'welcome',
 
 			// feedsType, selectSource, feedsTypeGetProcess
-			selectedFeedSection : 'selectSource',
+			selectedFeedSection : 'feedsType',
 
 			sourcePopup : false,
 			feedtypesPopup : false,
@@ -711,15 +711,13 @@ ctfBuilder = new Vue({
 		chooseFeedType : function(feedTypeEl, iscustomizerPopup = false){
 			var self = this,
 				feedAllowedTypes = self.feedTypes.map( element => element['type'] );
-			if(feedAllowedTypes.includes(feedTypeEl.type)){
-				self.selectedFeed = [];
-				self.selectedFeed.push(feedTypeEl.type);
-			}else{
-				self.viewsActive.extensionsPopupElement = feedTypeEl.type;
-				if( self.customizerFeedData !== undefined){
-					self.viewsActive['feedtypesPopup'] = false;
-				}
+			
+			if (feedTypeEl.type !== 'usertimeline') {
+				self.viewsActive.extensionsPopupElement = feedTypeEl.type
+				return;
 			}
+
+		
 			ctfBuilder.$forceUpdate();
 		},
 
@@ -729,13 +727,11 @@ ctfBuilder = new Vue({
 		 * @since 2.0
 		 */
 		selectFeedTypePopup : function( feedTypeEl ){
-			var self = this,
-				feedAllowedTypes = self.feedTypes.map( element => element['type'] );
-			if(feedAllowedTypes.includes(feedTypeEl.type)){
-				self.selectedFeedPopup = [];
-				self.selectedFeedPopup.push(feedTypeEl.type);
-			}else{
-				self.viewsActive.extensionsPopupElement = feedTypeEl.type;
+			var self = this
+			if (feedTypeEl.type !== 'usertimeline') {
+				self.viewsActive.extensionsPopupElement = feedTypeEl.type
+				self.viewsActive.feedtypesPopup = false;
+				return;
 			}
 		},
 
