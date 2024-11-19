@@ -29,6 +29,6 @@ if (!function_exists('humbug_phpscoper_expose_class')) {
         }
     }
 }
-humbug_phpscoper_expose_class('ComposerAutoloaderInitc2c797528e8101772a14db21f8f0336d', 'Smashballoon\TwitterFeed\Vendor\ComposerAutoloaderInitc2c797528e8101772a14db21f8f0336d');
+humbug_phpscoper_expose_class('ComposerAutoloaderInit04b8bef1af90a9270cfd1db4dad615b2', 'Smashballoon\TwitterFeed\Vendor\ComposerAutoloaderInit04b8bef1af90a9270cfd1db4dad615b2');
 
 return $loader;

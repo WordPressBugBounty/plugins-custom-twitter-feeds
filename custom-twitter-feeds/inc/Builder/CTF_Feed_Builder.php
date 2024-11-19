@@ -12,6 +12,7 @@ use TwitterFeed\CTF_Settings;
 use TwitterFeed\Builder\Tabs\CTF_Styling_Tab;
 use TwitterFeed\Builder\CTF_Feed_Saver;
 use TwitterFeed\V2\CtfOauthConnect;
+use TwitterFeed\Integrations\Analytics\SB_Analytics;
 
 class CTF_Feed_Builder {
 	private static $instance;
@@ -19,6 +20,7 @@ class CTF_Feed_Builder {
 		if ( null === self::$instance) {
 			require CTF_PLUGIN_DIR . 'vendor/autoload.php';
 			self::$instance = new self();
+			self::$instance->ctf_sb_analytics = new SB_Analytics();
 			return self::$instance;
 
 		}

@@ -3,7 +3,7 @@
 Plugin Name: Custom Twitter Feeds
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.2.4
+Version: 2.2.5
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -29,7 +29,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.2.4' );
+	define( 'CTF_VERSION', '2.2.5' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -1108,7 +1108,7 @@ function ctf_text_domain() {
 	load_plugin_textdomain( 'custom-twitter-feeds', false, basename( dirname(__FILE__) ) . '/languages' );
 }
 
-add_action( 'plugins_loaded', 'ctf_text_domain' );
+add_action( 'init', 'ctf_text_domain' );
 
 //BUILDER CODE
 function ctf_builder() {

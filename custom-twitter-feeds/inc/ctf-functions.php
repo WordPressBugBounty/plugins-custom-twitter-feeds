@@ -347,3 +347,19 @@ function ctf_oauth_url( $page ) {
 
     return add_query_arg( $params, OAUTH_PROCESSOR_URL );
 }
+
+/**
+ * Summary of parse_json_data
+ *
+ * @param mixed $data
+ *
+ * @return array
+ */
+function parse_json_data($data)
+{
+	$json = json_decode($data, true);
+	if (is_string($json)) {
+		$json = json_decode($json, true);
+	}
+	return is_array($json) ? $json : [];
+}

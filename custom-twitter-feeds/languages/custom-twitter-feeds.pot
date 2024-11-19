@@ -2,20 +2,19 @@
 # This file is distributed under the same license as the Custom Twitter Feeds plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Twitter Feeds 2.3.0\n"
+"Project-Id-Version: Custom Twitter Feeds 2.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-twitter-feeds\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-07T17:37:05+00:00\n"
+"POT-Creation-Date: 2024-11-08T15:48:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.7.0\n"
 "X-Domain: custom-twitter-feeds\n"
 
 #. Plugin Name of the plugin
-#: custom-twitter-feed.php
 #: inc/Admin/CTF_About_Us.php:216
 #: inc/widget.php:13
 #: views/admin/more-social-feeds.php:44
@@ -23,22 +22,18 @@ msgid "Custom Twitter Feeds"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: custom-twitter-feed.php
 msgid "https://smashballoon.com/custom-twitter-feeds"
 msgstr ""
 
 #. Description of the plugin
-#: custom-twitter-feed.php
 msgid "Customizable X Feeds, formerly known as Twitter feeds, for your website"
 msgstr ""
 
 #. Author of the plugin
-#: custom-twitter-feed.php
 msgid "Smash Balloon"
 msgstr ""
 
 #. Author URI of the plugin
-#: custom-twitter-feed.php
 msgid "https://smashballoon.com/"
 msgstr ""
 
@@ -50,8 +45,8 @@ msgstr ""
 #: admin/builder/templates/sections/footer.php:9
 #: admin/views/sections/sticky_widget.php:9
 #: inc/Builder/CTF_Feed_Builder.php:255
-#: inc/Builder/CTF_Feed_Builder.php:1067
-#: inc/Builder/CTF_Feed_Builder.php:1384
+#: inc/Builder/CTF_Feed_Builder.php:1070
+#: inc/Builder/CTF_Feed_Builder.php:1387
 #: inc/CtfAdmin.php:55
 #: views/admin/more-social-feeds.php:168
 msgid "Upgrade to Pro"
@@ -96,16 +91,16 @@ msgid "No feed found with the ID %1$s. Go to the %2$sAll Feeds page%3$s and sele
 msgstr ""
 
 #: custom-twitter-feed.php:516
-#: inc/Builder/CTF_Feed_Builder.php:901
+#: inc/Builder/CTF_Feed_Builder.php:904
 msgid "Try the Pro Demo"
 msgstr ""
 
 #: custom-twitter-feed.php:949
 #: custom-twitter-feed.php:967
 #: inc/Admin/CTF_About_Us.php:320
-#: inc/Admin/CTF_Global_Settings.php:866
-#: inc/Builder/CTF_Feed_Builder.php:1036
-#: inc/Builder/CTF_Feed_Builder.php:2428
+#: inc/Admin/CTF_Global_Settings.php:871
+#: inc/Builder/CTF_Feed_Builder.php:1039
+#: inc/Builder/CTF_Feed_Builder.php:2431
 #: views/admin/more-social-feeds.php:229
 msgid "Activate"
 msgstr ""
@@ -122,7 +117,7 @@ msgstr ""
 
 #: custom-twitter-feed.php:952
 #: inc/Admin/CTF_About_Us.php:321
-#: inc/Admin/CTF_Global_Settings.php:865
+#: inc/Admin/CTF_Global_Settings.php:870
 msgid "Deactivate"
 msgstr ""
 
@@ -149,7 +144,7 @@ msgid "Searching Addons"
 msgstr ""
 
 #: custom-twitter-feed.php:959
-#: inc/Builder/CTF_Feed_Builder.php:946
+#: inc/Builder/CTF_Feed_Builder.php:949
 msgid "Cancel"
 msgstr ""
 
@@ -227,14 +222,14 @@ msgstr ""
 #: inc/Admin/CTF_About_Us.php:57
 #: inc/Admin/CTF_About_Us.php:58
 #: inc/Admin/CTF_About_Us.php:183
-#: inc/Builder/CTF_Feed_Builder.php:1750
+#: inc/Builder/CTF_Feed_Builder.php:1753
 msgid "About Us"
 msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:182
 #: inc/Admin/CTF_Support.php:161
-#: inc/Builder/CTF_Feed_Builder.php:937
-#: inc/Builder/CTF_Feed_Builder.php:1539
+#: inc/Builder/CTF_Feed_Builder.php:940
+#: inc/Builder/CTF_Feed_Builder.php:1542
 msgid "Help"
 msgstr ""
 
@@ -267,8 +262,8 @@ msgid "Smash Balloon Team"
 msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:199
-#: inc/Builder/CTF_Feed_Builder.php:1395
-#: inc/Builder/CTF_Feed_Builder.php:2499
+#: inc/Builder/CTF_Feed_Builder.php:1398
+#: inc/Builder/CTF_Feed_Builder.php:2502
 #: inc/CtfAdmin.php:66
 #: inc/CtfAdmin.php:67
 #: views/admin/more-social-feeds.php:15
@@ -293,7 +288,7 @@ msgid "A customizable way to display tweets from your Twitter account. "
 msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:225
-#: inc/Builder/CTF_Feed_Builder.php:2511
+#: inc/Builder/CTF_Feed_Builder.php:2514
 #: views/admin/more-social-feeds.php:59
 msgid "Feeds for YouTube"
 msgstr ""
@@ -304,8 +299,8 @@ msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:234
 #: inc/Builder/CTF_Feed_Builder.php:407
-#: inc/Builder/CTF_Feed_Builder.php:2154
-#: inc/Builder/CTF_Feed_Builder.php:2207
+#: inc/Builder/CTF_Feed_Builder.php:2157
+#: inc/Builder/CTF_Feed_Builder.php:2210
 msgid "Social Wall"
 msgstr ""
 
@@ -378,23 +373,23 @@ msgid "Connect with your visitors after they leave your website with the leading
 msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:316
-#: inc/Builder/CTF_Feed_Builder.php:907
+#: inc/Builder/CTF_Feed_Builder.php:910
 msgid "Add"
 msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:317
-#: inc/Builder/CTF_Feed_Builder.php:910
+#: inc/Builder/CTF_Feed_Builder.php:913
 msgid "View Demo"
 msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:318
-#: inc/Builder/CTF_Feed_Builder.php:1034
-#: inc/Builder/CTF_Feed_Builder.php:2419
+#: inc/Builder/CTF_Feed_Builder.php:1037
+#: inc/Builder/CTF_Feed_Builder.php:2422
 msgid "Install"
 msgstr ""
 
 #: inc/Admin/CTF_About_Us.php:319
-#: inc/Builder/CTF_Feed_Builder.php:1035
+#: inc/Builder/CTF_Feed_Builder.php:1038
 msgid "Installed"
 msgstr ""
 
@@ -402,665 +397,665 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:217
+#: inc/Admin/CTF_Global_Settings.php:219
 msgid "License key required!"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:656
+#: inc/Admin/CTF_Global_Settings.php:658
 msgid "You have reached the maximum number of sites available in your plan"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:659
+#: inc/Admin/CTF_Global_Settings.php:661
 msgid "Learn more about it"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:662
+#: inc/Admin/CTF_Global_Settings.php:664
 msgid "or upgrade your plan."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:664
-#: inc/Admin/CTF_Global_Settings.php:864
+#: inc/Admin/CTF_Global_Settings.php:666
+#: inc/Admin/CTF_Global_Settings.php:869
 msgid "Upgrade"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:677
+#: inc/Admin/CTF_Global_Settings.php:679
 msgid "The license expired on "
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:679
+#: inc/Admin/CTF_Global_Settings.php:681
 msgid "Please renew it and try again."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:681
+#: inc/Admin/CTF_Global_Settings.php:683
 msgid "Renew"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:716
-#: inc/Builder/CTF_Feed_Builder.php:886
-#: inc/Builder/CTF_Feed_Builder.php:903
-#: inc/Builder/CTF_Feed_Builder.php:1518
-#: inc/Builder/CTF_Feed_Builder.php:1559
-#: inc/Builder/CTF_Feed_Builder.php:1749
+#: inc/Admin/CTF_Global_Settings.php:718
+#: inc/Builder/CTF_Feed_Builder.php:889
+#: inc/Builder/CTF_Feed_Builder.php:906
+#: inc/Builder/CTF_Feed_Builder.php:1521
+#: inc/Builder/CTF_Feed_Builder.php:1562
+#: inc/Builder/CTF_Feed_Builder.php:1752
 #: inc/Builder/Tabs/CTF_Builder_Customizer_Tab.php:33
 msgid "Settings"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:717
+#: inc/Admin/CTF_Global_Settings.php:719
 msgid "Settings "
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:848
+#: inc/Admin/CTF_Global_Settings.php:853
 msgid "License Key"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:849
+#: inc/Admin/CTF_Global_Settings.php:854
 msgid "Your license key provides access to updates and support"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:850
+#: inc/Admin/CTF_Global_Settings.php:855
 msgid "Your <b>Twitter Feed Pro</b> license is Active!"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:851
+#: inc/Admin/CTF_Global_Settings.php:856
 msgid "Your <b>Twitter Feed Pro</b> license is Inactive!"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:852
+#: inc/Admin/CTF_Global_Settings.php:857
 msgid "Already purchased? Simply enter your license key below to activate Twitter Feed Pro."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:853
+#: inc/Admin/CTF_Global_Settings.php:858
 msgid "Paste license key here"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:854
+#: inc/Admin/CTF_Global_Settings.php:859
 msgid "You are using the Lite version of the plugin–no license needed. Enjoy! 🙂 To unlock more features, consider %sUpgrading to Pro%s."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:855
+#: inc/Admin/CTF_Global_Settings.php:860
 msgid "As a valued user of our Lite plugin, you receive 50% OFF - automatically applied at checkout!"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:856
+#: inc/Admin/CTF_Global_Settings.php:861
 msgid "Manage License"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:857
+#: inc/Admin/CTF_Global_Settings.php:862
 msgid "Test Connection"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:858
+#: inc/Admin/CTF_Global_Settings.php:863
 msgid "Recheck license"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:859
+#: inc/Admin/CTF_Global_Settings.php:864
 msgid "License valid"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:860
+#: inc/Admin/CTF_Global_Settings.php:865
 msgid "License expired"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:861
+#: inc/Admin/CTF_Global_Settings.php:866
 msgid "Connection successful"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:862
+#: inc/Admin/CTF_Global_Settings.php:867
 msgid "Connection failed"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:863
+#: inc/Admin/CTF_Global_Settings.php:868
 msgid "View error"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:867
+#: inc/Admin/CTF_Global_Settings.php:872
 msgid "Install Pro"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:870
+#: inc/Admin/CTF_Global_Settings.php:875
 msgid "Twitter Integration"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:871
+#: inc/Admin/CTF_Global_Settings.php:876
 msgid "Your feeds are automatically updated once per week. <br />Read more %shere%s about Twitter latest changes and how they affect our product."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:872
-#: inc/Builder/CTF_Feed_Builder.php:908
+#: inc/Admin/CTF_Global_Settings.php:877
+#: inc/Builder/CTF_Feed_Builder.php:911
 msgid "Change"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:873
+#: inc/Admin/CTF_Global_Settings.php:878
 msgid "Connect new Account"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:874
+#: inc/Admin/CTF_Global_Settings.php:879
 msgid "Connect your Own App (V2)"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:875
+#: inc/Admin/CTF_Global_Settings.php:880
 msgid "Connected Twitter App"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:876
-#: inc/Builder/CTF_Feed_Builder.php:2234
+#: inc/Admin/CTF_Global_Settings.php:881
+#: inc/Builder/CTF_Feed_Builder.php:2237
 msgid "Consumer Key"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:877
-#: inc/Builder/CTF_Feed_Builder.php:2236
+#: inc/Admin/CTF_Global_Settings.php:882
+#: inc/Builder/CTF_Feed_Builder.php:2239
 msgid "Consumer Secret"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:878
-#: inc/Builder/CTF_Feed_Builder.php:2238
+#: inc/Admin/CTF_Global_Settings.php:883
+#: inc/Builder/CTF_Feed_Builder.php:2241
 msgid "Access Token"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:879
-#: inc/Builder/CTF_Feed_Builder.php:2240
+#: inc/Admin/CTF_Global_Settings.php:884
+#: inc/Builder/CTF_Feed_Builder.php:2243
 msgid "Access Token Secret"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:882
+#: inc/Admin/CTF_Global_Settings.php:887
 msgid "Connected Email"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:883
+#: inc/Admin/CTF_Global_Settings.php:888
 msgid "Site Key"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:884
+#: inc/Admin/CTF_Global_Settings.php:889
 msgid "This is used to fetch data from the Twitter API"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:885
+#: inc/Admin/CTF_Global_Settings.php:890
 msgid "Refresh"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:886
-#: inc/Builder/CTF_Feed_Builder.php:890
+#: inc/Admin/CTF_Global_Settings.php:891
+#: inc/Builder/CTF_Feed_Builder.php:893
 msgid "Connect"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:887
+#: inc/Admin/CTF_Global_Settings.php:892
 msgid "Your site key is %s"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:890
+#: inc/Admin/CTF_Global_Settings.php:895
 msgid "Preserve settings if plugin is removed"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:891
+#: inc/Admin/CTF_Global_Settings.php:896
 msgid "This will make sure that all of your feeds and settings are still saved even if the plugin is uninstalled"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:894
+#: inc/Admin/CTF_Global_Settings.php:899
 msgid "Import Feed Settings"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:895
+#: inc/Admin/CTF_Global_Settings.php:900
 msgid "You will need a JSON file previously exported from the Twitter Feed Plugin"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:896
+#: inc/Admin/CTF_Global_Settings.php:901
 msgid "Import"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:899
+#: inc/Admin/CTF_Global_Settings.php:904
 msgid "Export Feed Settings"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:900
+#: inc/Admin/CTF_Global_Settings.php:905
 msgid "Export settings for one or more of your feeds"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:901
+#: inc/Admin/CTF_Global_Settings.php:906
 #: inc/Admin/CTF_Support.php:185
 msgid "Export"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:906
+#: inc/Admin/CTF_Global_Settings.php:911
 msgid "Localization"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:910
-#: inc/Builder/CTF_Feed_Builder.php:1661
+#: inc/Admin/CTF_Global_Settings.php:915
+#: inc/Builder/CTF_Feed_Builder.php:1664
 msgid "Timezone"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:924
+#: inc/Admin/CTF_Global_Settings.php:929
 msgid "Caching"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:925
+#: inc/Admin/CTF_Global_Settings.php:930
 msgid "When the Page loads"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:926
+#: inc/Admin/CTF_Global_Settings.php:931
 msgid "In the Background"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:927
+#: inc/Admin/CTF_Global_Settings.php:932
 msgid "Update Feeds more often with Twitter Feed Pro"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:928
+#: inc/Admin/CTF_Global_Settings.php:933
 msgid "Due to Twitter API changes, we have to limit feed updates to once a week"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:930
-#: inc/Builder/CTF_Feed_Builder.php:1544
+#: inc/Admin/CTF_Global_Settings.php:935
+#: inc/Builder/CTF_Feed_Builder.php:1547
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:505
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:726
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:1069
 msgid "Background"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:931
-#: inc/Builder/CTF_Feed_Builder.php:932
+#: inc/Admin/CTF_Global_Settings.php:936
+#: inc/Builder/CTF_Feed_Builder.php:935
 msgid "Page"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:934
+#: inc/Admin/CTF_Global_Settings.php:939
 msgid "Every 30 minutes"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:935
+#: inc/Admin/CTF_Global_Settings.php:940
 msgid "Every hour"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:936
+#: inc/Admin/CTF_Global_Settings.php:941
 msgid "Every 12 hours"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:937
+#: inc/Admin/CTF_Global_Settings.php:942
 msgid "Every 24 hours"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:940
-#: inc/Admin/CTF_Global_Settings.php:995
+#: inc/Admin/CTF_Global_Settings.php:945
+#: inc/Admin/CTF_Global_Settings.php:1000
 #: inc/Builder/CTF_Feed_Saver.php:377
 msgid "Minutes"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:941
-#: inc/Admin/CTF_Global_Settings.php:996
+#: inc/Admin/CTF_Global_Settings.php:946
+#: inc/Admin/CTF_Global_Settings.php:1001
 #: inc/Builder/CTF_Feed_Saver.php:378
 msgid "Hours"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:942
+#: inc/Admin/CTF_Global_Settings.php:947
 msgid "Days"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:944
+#: inc/Admin/CTF_Global_Settings.php:949
 msgid "AM"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:945
+#: inc/Admin/CTF_Global_Settings.php:950
 msgid "PM"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:946
+#: inc/Admin/CTF_Global_Settings.php:951
 msgid "Clear All Caches"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:949
+#: inc/Admin/CTF_Global_Settings.php:954
 msgid "GDPR"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:950
+#: inc/Admin/CTF_Global_Settings.php:955
 msgid "Automatic"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:951
+#: inc/Admin/CTF_Global_Settings.php:956
 #: inc/Admin/CTF_New_User.php:351
 #: inc/Admin/CTF_Notifications.php:605
 msgid "Yes"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:952
+#: inc/Admin/CTF_Global_Settings.php:957
 #: inc/Admin/CTF_New_User.php:357
 #: inc/Admin/CTF_Notifications.php:610
 msgid "No"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:954
+#: inc/Admin/CTF_Global_Settings.php:959
 msgid "No requests will be made to third-party websites. To accommodate this, some features of the plugin will be limited."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:955
+#: inc/Admin/CTF_Global_Settings.php:960
 msgid "The plugin will function as normal and load images and videos directly from Twitter"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:956
+#: inc/Admin/CTF_Global_Settings.php:961
 msgid "Some Twitter Feed features will be limited for visitors to ensure GDPR compliance, until they give consent."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:957
+#: inc/Admin/CTF_Global_Settings.php:962
 msgid "What will be limited?"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:963
+#: inc/Admin/CTF_Global_Settings.php:968
 msgid "Features that would be disabled or limited include: "
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:965
+#: inc/Admin/CTF_Global_Settings.php:970
 msgid "Only local images (not from Twitter's CDN) will be displayed in the feed."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:966
+#: inc/Admin/CTF_Global_Settings.php:971
 msgid "Users will leave your site in order to reply, shre, or like a tweet in your feed."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:971
+#: inc/Admin/CTF_Global_Settings.php:976
 msgid "Custom CSS"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:972
+#: inc/Admin/CTF_Global_Settings.php:977
 msgid "Enter any custom CSS here"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:975
+#: inc/Admin/CTF_Global_Settings.php:980
 msgid "Custom JS"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:976
+#: inc/Admin/CTF_Global_Settings.php:981
 msgid "Enter any custom JS here"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:980
+#: inc/Admin/CTF_Global_Settings.php:985
 msgid "Custom Text/Translate"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:981
+#: inc/Admin/CTF_Global_Settings.php:986
 msgid "Enter custom text for the words below, or translate it into the language you would like to use."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:983
+#: inc/Admin/CTF_Global_Settings.php:988
 msgid "Original Text"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:984
+#: inc/Admin/CTF_Global_Settings.php:989
 msgid "Custom text/translation"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:985
+#: inc/Admin/CTF_Global_Settings.php:990
 msgid "Context"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:986
+#: inc/Admin/CTF_Global_Settings.php:991
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:840
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:849
 msgid "Tweet Text"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:987
+#: inc/Admin/CTF_Global_Settings.php:992
 #: inc/Builder/CTF_Feed_Saver.php:374
 #: inc/CTF_Settings.php:291
 #: inc/CTF_Settings.php:586
 msgid "Retweeted"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:988
+#: inc/Admin/CTF_Global_Settings.php:993
 msgid "Used for showing retweets"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:989
+#: inc/Admin/CTF_Global_Settings.php:994
 #: inc/Builder/CTF_Feed_Saver.php:375
 #: inc/CTF_Settings.php:429
 #: inc/CTF_Settings.php:598
 msgid "In Reply To"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:990
+#: inc/Admin/CTF_Global_Settings.php:995
 msgid "Used for showing replies"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:991
+#: inc/Admin/CTF_Global_Settings.php:996
 #: inc/Builder/CTF_Feed_Saver.php:376
 #: inc/CTF_Settings.php:428
 #: inc/CTF_Settings.php:597
 msgid "Load More"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:992
+#: inc/Admin/CTF_Global_Settings.php:997
 msgid "Used in the button that loads more posts"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:994
-#: inc/Builder/CTF_Feed_Builder.php:1641
+#: inc/Admin/CTF_Global_Settings.php:999
+#: inc/Builder/CTF_Feed_Builder.php:1644
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:859
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:868
 msgid "Date"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:997
+#: inc/Admin/CTF_Global_Settings.php:1002
 #: inc/Builder/CTF_Feed_Saver.php:379
 msgid "Now"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:998
+#: inc/Admin/CTF_Global_Settings.php:1003
 msgid "Used for tweet timeline"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1003
+#: inc/Admin/CTF_Global_Settings.php:1008
 msgid "Change Twitter to X"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1004
+#: inc/Admin/CTF_Global_Settings.php:1009
 msgid "Changes the branding from Twitter to X across the plugin, including your feeds."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1007
+#: inc/Admin/CTF_Global_Settings.php:1012
 msgid "Optimize Images"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1008
+#: inc/Admin/CTF_Global_Settings.php:1013
 msgid "This will create multiple local copies of images in different sizes. The plugin then displays the smallest version based on the size of the feed."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1009
-#: inc/Admin/CTF_Global_Settings.php:1015
+#: inc/Admin/CTF_Global_Settings.php:1014
 #: inc/Admin/CTF_Global_Settings.php:1020
-#: inc/Builder/CTF_Feed_Builder.php:940
+#: inc/Admin/CTF_Global_Settings.php:1025
+#: inc/Builder/CTF_Feed_Builder.php:943
 msgid "Reset"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1010
+#: inc/Admin/CTF_Global_Settings.php:1015
 msgid "Optimize images with Twitter Feed Pro"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1013
+#: inc/Admin/CTF_Global_Settings.php:1018
 msgid "Persistent Cache"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1014
+#: inc/Admin/CTF_Global_Settings.php:1019
 msgid "This makes all Search and Hashtag feeds have a permanent cache saved in the database up to 150 tweets. Tweets will be available for the feed even after the 7 day limit however numbers of retweets and likes will not update."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1018
+#: inc/Admin/CTF_Global_Settings.php:1023
 msgid "Twitter Card Cache"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1019
+#: inc/Admin/CTF_Global_Settings.php:1024
 msgid "Twitter Cards are rich text links that replace links to other websites when information for the card is available."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1023
+#: inc/Admin/CTF_Global_Settings.php:1028
 msgid "AJAX theme loading fix"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1027
+#: inc/Admin/CTF_Global_Settings.php:1032
 msgid "Enqueue JS in header fix"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1028
+#: inc/Admin/CTF_Global_Settings.php:1033
 msgid "Add the Javascript file for the plugin in the header instead of the footer."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1031
+#: inc/Admin/CTF_Global_Settings.php:1036
 msgid "Custom Templates"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1032
+#: inc/Admin/CTF_Global_Settings.php:1037
 msgid "The default HTML for the feed can be replaced with custom templates added to your theme's folder. Enable this setting to use these templates. See %sthis guide%s."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1035
+#: inc/Admin/CTF_Global_Settings.php:1040
 msgid "Show Credit Link"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1036
+#: inc/Admin/CTF_Global_Settings.php:1041
 msgid "Display a link at the bottom of the feed to the Smash Balloon website."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1039
+#: inc/Admin/CTF_Global_Settings.php:1044
 msgid "Auto-detect Image Resolution"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1040
+#: inc/Admin/CTF_Global_Settings.php:1045
 msgid "The resolution of the images in your feed will be set based on their width when the page loads. Disabling this will load all images in full resolution."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1043
+#: inc/Admin/CTF_Global_Settings.php:1048
 msgid "Twitter Intent JS"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1044
+#: inc/Admin/CTF_Global_Settings.php:1049
 msgid "This allows visitors of your site to reply to, retweet, and like tweets without leaving your site. "
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1047
+#: inc/Admin/CTF_Global_Settings.php:1052
 msgid "Request Method"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1048
+#: inc/Admin/CTF_Global_Settings.php:1053
 msgid "Explicitly set the request method. You would only want to change this if you are unable to connect to the Twitter API."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1050
-#: inc/Builder/CTF_Feed_Builder.php:1674
+#: inc/Admin/CTF_Global_Settings.php:1055
+#: inc/Builder/CTF_Feed_Builder.php:1677
 #: inc/Builder/Tabs/CTF_Styling_Tab.php:377
 msgid "Auto"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1051
+#: inc/Admin/CTF_Global_Settings.php:1056
 msgid "cURL"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1052
+#: inc/Admin/CTF_Global_Settings.php:1057
 msgid "file_get_contents()"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1053
+#: inc/Admin/CTF_Global_Settings.php:1058
 msgid "WP_Http"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1057
+#: inc/Admin/CTF_Global_Settings.php:1062
 msgid "Force Cache to clear on interval"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1061
+#: inc/Admin/CTF_Global_Settings.php:1066
 msgid "HTTPs Images only"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1062
+#: inc/Admin/CTF_Global_Settings.php:1067
 msgid "This will fix mixed-content warnings when Twitter card links are non-https. After enabling, clear your Twitter cards cache."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1065
+#: inc/Admin/CTF_Global_Settings.php:1070
 msgid "Use cURL for Retrieval"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1066
+#: inc/Admin/CTF_Global_Settings.php:1071
 msgid "This will fix mixed-content warnings when Twitter card links are non-https. After enabling, clear your Twitter cards using the button above."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1069
+#: inc/Admin/CTF_Global_Settings.php:1074
 msgid "Twitter Cards"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1070
+#: inc/Admin/CTF_Global_Settings.php:1075
 msgid "Twitter Cards are rich visual previews of the link in your Tweet."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1071
+#: inc/Admin/CTF_Global_Settings.php:1076
 msgid "Upgrade to Pro and get rich link<br/>previews with Twitter Cards"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1075
-#: inc/Builder/CTF_Feed_Builder.php:929
+#: inc/Admin/CTF_Global_Settings.php:1080
+#: inc/Builder/CTF_Feed_Builder.php:932
 #: inc/Builder/CTF_Tooltip_Wizard.php:129
 msgid "Learn More"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1081
+#: inc/Admin/CTF_Global_Settings.php:1086
 msgid "Manage Data"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1082
+#: inc/Admin/CTF_Global_Settings.php:1087
 msgid "Warning: Clicking this button will permanently delete all Twitter data, including all connected accounts, cached posts, and stored images."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1083
+#: inc/Admin/CTF_Global_Settings.php:1088
 msgid "Delete all Platform Data"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1088
+#: inc/Admin/CTF_Global_Settings.php:1093
 #: inc/Builder/CTF_Feed_Builder.php:220
 #: inc/Builder/CTF_Feed_Builder.php:224
 msgid "Delete \"#\"?"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1089
+#: inc/Admin/CTF_Global_Settings.php:1094
 msgid "This source is being used in a feed on your site. If you delete this source then new posts can no longer be retrieved for these feeds."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1092
+#: inc/Admin/CTF_Global_Settings.php:1097
 msgid "Delete Account?"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1093
+#: inc/Admin/CTF_Global_Settings.php:1098
 msgid "If you delete this account then new posts can no longer be retrieved in your feeds."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1096
+#: inc/Admin/CTF_Global_Settings.php:1101
 msgid "Delete App?"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1097
+#: inc/Admin/CTF_Global_Settings.php:1102
 msgid "Are you sure you want to delete this app."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1359
+#: inc/Admin/CTF_Global_Settings.php:1375
 msgid "No GDPR consent plugin detected. Install a compatible %sGDPR consent plugin%s, or manually enable the setting to display a GDPR compliant version of the feed to all visitors."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1374
+#: inc/Admin/CTF_Global_Settings.php:1390
 msgid "Your feed will update once a week automatically."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1384
+#: inc/Admin/CTF_Global_Settings.php:1400
 #: inc/Admin/CTF_Support.php:351
 msgid "every 30 minutes"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1387
+#: inc/Admin/CTF_Global_Settings.php:1403
 #: inc/Admin/CTF_Support.php:352
 msgid "every 12 hours"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1390
+#: inc/Admin/CTF_Global_Settings.php:1406
 msgid "Next check"
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1390
+#: inc/Admin/CTF_Global_Settings.php:1406
 msgid "Note: Clicking \"Clear All Caches\" will reset this schedule."
 msgstr ""
 
-#: inc/Admin/CTF_Global_Settings.php:1392
+#: inc/Admin/CTF_Global_Settings.php:1408
 msgid "Nothing currently scheduled"
 msgstr ""
 
@@ -1113,7 +1108,7 @@ msgstr ""
 #: inc/Admin/CTF_Support.php:63
 #: inc/Admin/CTF_Support.php:64
 #: inc/Admin/CTF_Support.php:162
-#: inc/Builder/CTF_Feed_Builder.php:1751
+#: inc/Builder/CTF_Feed_Builder.php:1754
 msgid "Support"
 msgstr ""
 
@@ -1187,7 +1182,7 @@ msgstr ""
 
 #: inc/Admin/CTF_Support.php:182
 #: inc/Admin/CTF_Support.php:184
-#: inc/Builder/CTF_Feed_Builder.php:915
+#: inc/Builder/CTF_Feed_Builder.php:918
 msgid "Copy"
 msgstr ""
 
@@ -1293,7 +1288,7 @@ msgstr ""
 #: inc/Builder/CTF_Feed_Builder.php:100
 #: inc/Builder/CTF_Feed_Builder.php:175
 #: inc/Builder/CTF_Feed_Builder.php:193
-#: inc/Builder/CTF_Feed_Builder.php:1748
+#: inc/Builder/CTF_Feed_Builder.php:1751
 msgid "All Feeds"
 msgstr ""
 
@@ -1322,15 +1317,15 @@ msgid "Easily add the feed anywhere on your website"
 msgstr ""
 
 #: inc/Builder/CTF_Feed_Builder.php:195
-#: inc/Builder/CTF_Feed_Builder.php:942
-#: inc/Builder/CTF_Feed_Builder.php:1637
-#: inc/Builder/CTF_Feed_Builder.php:2232
+#: inc/Builder/CTF_Feed_Builder.php:945
+#: inc/Builder/CTF_Feed_Builder.php:1640
+#: inc/Builder/CTF_Feed_Builder.php:2235
 msgid "Name"
 msgstr ""
 
 #: inc/Builder/CTF_Feed_Builder.php:196
-#: inc/Builder/CTF_Feed_Builder.php:922
-#: inc/Builder/CTF_Feed_Builder.php:951
+#: inc/Builder/CTF_Feed_Builder.php:925
+#: inc/Builder/CTF_Feed_Builder.php:954
 msgid "Shortcode"
 msgstr ""
 
@@ -1413,7 +1408,7 @@ msgid "If you exit without saving, all the changes you made will be reverted."
 msgstr ""
 
 #: inc/Builder/CTF_Feed_Builder.php:240
-#: inc/Builder/CTF_Feed_Builder.php:974
+#: inc/Builder/CTF_Feed_Builder.php:977
 msgid "Save and Exit"
 msgstr ""
 
@@ -1611,7 +1606,7 @@ msgstr ""
 #: inc/Builder/CTF_Feed_Builder.php:483
 #: inc/Builder/CTF_Feed_Builder.php:505
 #: inc/Builder/CTF_Feed_Builder.php:527
-#: inc/Builder/CTF_Feed_Builder.php:1059
+#: inc/Builder/CTF_Feed_Builder.php:1062
 msgid "View tweets in a lightbox"
 msgstr ""
 
@@ -1799,534 +1794,534 @@ msgid "Video player (HD, 360, Live)"
 msgstr ""
 
 #: inc/Builder/CTF_Feed_Builder.php:551
-#: inc/Builder/CTF_Feed_Builder.php:1062
+#: inc/Builder/CTF_Feed_Builder.php:1065
 msgid "30 day money back guarantee"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:885
+#: inc/Builder/CTF_Feed_Builder.php:888
 #: inc/Builder/CTF_Tooltip_Wizard.php:131
 msgid "Done"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:887
+#: inc/Builder/CTF_Feed_Builder.php:890
 msgid "Dashboard"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:888
+#: inc/Builder/CTF_Feed_Builder.php:891
 msgid "Add New"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:889
+#: inc/Builder/CTF_Feed_Builder.php:892
 msgid "Add list by ID"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:892
+#: inc/Builder/CTF_Feed_Builder.php:895
 msgid "Add Source"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:893
+#: inc/Builder/CTF_Feed_Builder.php:896
 msgid "Add another Source"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:894
+#: inc/Builder/CTF_Feed_Builder.php:897
 msgid "Add Another Source Type"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:895
+#: inc/Builder/CTF_Feed_Builder.php:898
 msgid "Previous"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:896
+#: inc/Builder/CTF_Feed_Builder.php:899
 msgid "Next"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:897
+#: inc/Builder/CTF_Feed_Builder.php:900
 msgid "Finish"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:898
+#: inc/Builder/CTF_Feed_Builder.php:901
 msgid "New"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:899
+#: inc/Builder/CTF_Feed_Builder.php:902
 msgid "Update"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:904
+#: inc/Builder/CTF_Feed_Builder.php:907
 msgid "Back"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:905
+#: inc/Builder/CTF_Feed_Builder.php:908
 msgid "Back to all feeds"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:906
+#: inc/Builder/CTF_Feed_Builder.php:909
 msgid "Create Feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:909
+#: inc/Builder/CTF_Feed_Builder.php:912
 msgid "Get Extension"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:911
+#: inc/Builder/CTF_Feed_Builder.php:914
 msgid "Includes"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:912
+#: inc/Builder/CTF_Feed_Builder.php:915
 msgid "Photos"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:913
+#: inc/Builder/CTF_Feed_Builder.php:916
 msgid "Photo"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:914
+#: inc/Builder/CTF_Feed_Builder.php:917
 msgid "Apply"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:916
-#: inc/Builder/CTF_Feed_Builder.php:1638
+#: inc/Builder/CTF_Feed_Builder.php:919
+#: inc/Builder/CTF_Feed_Builder.php:1641
 msgid "Edit"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:917
+#: inc/Builder/CTF_Feed_Builder.php:920
 msgid "Duplicate"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:918
+#: inc/Builder/CTF_Feed_Builder.php:921
 msgid "Delete"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:919
+#: inc/Builder/CTF_Feed_Builder.php:922
 msgid "Remove"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:920
+#: inc/Builder/CTF_Feed_Builder.php:923
 msgid "Remove Source"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:921
+#: inc/Builder/CTF_Feed_Builder.php:924
 msgid "You need to have<br/>atleast one source"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:923
+#: inc/Builder/CTF_Feed_Builder.php:926
 msgid "Click to view Instances"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:924
+#: inc/Builder/CTF_Feed_Builder.php:927
 msgid "Used in"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:925
+#: inc/Builder/CTF_Feed_Builder.php:928
 msgid "place"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:926
+#: inc/Builder/CTF_Feed_Builder.php:929
 msgid "places"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:927
+#: inc/Builder/CTF_Feed_Builder.php:930
 msgid "Item"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:928
+#: inc/Builder/CTF_Feed_Builder.php:931
 msgid "Items"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:930
+#: inc/Builder/CTF_Feed_Builder.php:933
 msgid "Location"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:931
+#: inc/Builder/CTF_Feed_Builder.php:934
 msgid " is already added"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:933
+#: inc/Builder/CTF_Feed_Builder.php:936
 msgid "Copied to Clipboard"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:934
+#: inc/Builder/CTF_Feed_Builder.php:937
 msgid "Feed imported successfully"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:935
+#: inc/Builder/CTF_Feed_Builder.php:938
 msgid "Failed to import feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:936
+#: inc/Builder/CTF_Feed_Builder.php:939
 msgid "Timeline"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:938
+#: inc/Builder/CTF_Feed_Builder.php:941
 msgid "Admin"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:939
+#: inc/Builder/CTF_Feed_Builder.php:942
 msgid "Member"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:941
-#: inc/Builder/CTF_Feed_Builder.php:1538
+#: inc/Builder/CTF_Feed_Builder.php:944
+#: inc/Builder/CTF_Feed_Builder.php:1541
 msgid "Preview"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:943
+#: inc/Builder/CTF_Feed_Builder.php:946
 msgid "ID"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:944
+#: inc/Builder/CTF_Feed_Builder.php:947
 msgid "Token"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:945
+#: inc/Builder/CTF_Feed_Builder.php:948
 msgid "Confirm"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:947
+#: inc/Builder/CTF_Feed_Builder.php:950
 msgid "Clear"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:948
+#: inc/Builder/CTF_Feed_Builder.php:951
 msgid "Clear Feed Cache"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:949
+#: inc/Builder/CTF_Feed_Builder.php:952
 msgid "Save Changes"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:950
+#: inc/Builder/CTF_Feed_Builder.php:953
 msgid "Feed Name"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:952
+#: inc/Builder/CTF_Feed_Builder.php:955
 msgid "General"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:953
+#: inc/Builder/CTF_Feed_Builder.php:956
 msgid "Feeds"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:954
+#: inc/Builder/CTF_Feed_Builder.php:957
 msgid "Translation"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:955
+#: inc/Builder/CTF_Feed_Builder.php:958
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:932
 #: inc/Builder/Tabs/CTF_Settings_Tab.php:46
 msgid "Advanced"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:956
+#: inc/Builder/CTF_Feed_Builder.php:959
 msgid "Error:"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:957
+#: inc/Builder/CTF_Feed_Builder.php:960
 msgid "There was an error when trying to connect to Instagram."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:958
+#: inc/Builder/CTF_Feed_Builder.php:961
 msgid "Directions on How to Resolve This Issue"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:959
+#: inc/Builder/CTF_Feed_Builder.php:962
 msgid "Source Invalid"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:960
+#: inc/Builder/CTF_Feed_Builder.php:963
 msgid "Invalid"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:961
+#: inc/Builder/CTF_Feed_Builder.php:964
 msgid "Reconnect"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:962
+#: inc/Builder/CTF_Feed_Builder.php:965
 msgid "feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:963
+#: inc/Builder/CTF_Feed_Builder.php:966
 msgid "Source is not used yet"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:964
+#: inc/Builder/CTF_Feed_Builder.php:967
 msgid "Add Image"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:965
+#: inc/Builder/CTF_Feed_Builder.php:968
 msgid "Business Account required"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:966
+#: inc/Builder/CTF_Feed_Builder.php:969
 msgid "Selected Post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:967
+#: inc/Builder/CTF_Feed_Builder.php:970
 msgid "Selected"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:968
+#: inc/Builder/CTF_Feed_Builder.php:971
 msgid "Deselect All"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:970
+#: inc/Builder/CTF_Feed_Builder.php:973
 msgid "Product Link"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:971
+#: inc/Builder/CTF_Feed_Builder.php:974
 msgid "Add your product URL here"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:972
+#: inc/Builder/CTF_Feed_Builder.php:975
 msgid "Edit Sources"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:973
+#: inc/Builder/CTF_Feed_Builder.php:976
 msgid "Moderate your feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:975
+#: inc/Builder/CTF_Feed_Builder.php:978
 msgid "Moderation Mode"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:976
+#: inc/Builder/CTF_Feed_Builder.php:979
 msgid "Or Enter Post IDs to hide manually"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:977
+#: inc/Builder/CTF_Feed_Builder.php:980
 msgid "Add words here to hide any posts containing these words"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:978
+#: inc/Builder/CTF_Feed_Builder.php:981
 msgid "Filters & Moderation"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:979
+#: inc/Builder/CTF_Feed_Builder.php:982
 msgid "Top Rated"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:980
+#: inc/Builder/CTF_Feed_Builder.php:983
 msgid "Most recent"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:981
+#: inc/Builder/CTF_Feed_Builder.php:984
 msgid "Moderation Mode Preview"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:982
+#: inc/Builder/CTF_Feed_Builder.php:985
 msgid "Connect a different account"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:983
+#: inc/Builder/CTF_Feed_Builder.php:986
 msgid "Showing"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:984
-#: inc/Builder/CTF_Feed_Builder.php:2148
+#: inc/Builder/CTF_Feed_Builder.php:987
+#: inc/Builder/CTF_Feed_Builder.php:2151
 msgid "Lists"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:985
+#: inc/Builder/CTF_Feed_Builder.php:988
 msgid "created by"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:986
+#: inc/Builder/CTF_Feed_Builder.php:989
 msgid "You can display public lists for any Twitter handle"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:987
+#: inc/Builder/CTF_Feed_Builder.php:990
 msgid "Enter one or more list IDs (separated by comma)"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:988
+#: inc/Builder/CTF_Feed_Builder.php:991
 msgid "Or search and add lists by any Twitter user"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:989
+#: inc/Builder/CTF_Feed_Builder.php:992
 msgid "Enter Twitter username"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:990
+#: inc/Builder/CTF_Feed_Builder.php:993
 msgid "Show Lists"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:991
+#: inc/Builder/CTF_Feed_Builder.php:994
 msgid "Showing public lists created by "
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:992
+#: inc/Builder/CTF_Feed_Builder.php:995
 msgid "We could not find any lists created by "
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:993
+#: inc/Builder/CTF_Feed_Builder.php:996
 msgid "Try again with a different username."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:994
+#: inc/Builder/CTF_Feed_Builder.php:997
 msgid "Something went wrong! Try with different credentials."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:995
+#: inc/Builder/CTF_Feed_Builder.php:998
 msgid "Account added successfully."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:996
+#: inc/Builder/CTF_Feed_Builder.php:999
 msgid "Display photos, videos and GIFs"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:997
+#: inc/Builder/CTF_Feed_Builder.php:1000
 msgid "Add tweets by multiple usernames"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:998
+#: inc/Builder/CTF_Feed_Builder.php:1001
 msgid "Carousel & Masonry Column Layouts"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:999
+#: inc/Builder/CTF_Feed_Builder.php:1002
 msgid "Multiple Feeds: Up to 12 daily updates"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1003
+#: inc/Builder/CTF_Feed_Builder.php:1006
 msgid "Feed saved successfully"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1007
+#: inc/Builder/CTF_Feed_Builder.php:1010
 msgid "Error saving Feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1011
+#: inc/Builder/CTF_Feed_Builder.php:1014
 msgid "Preview updated successfully"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1015
+#: inc/Builder/CTF_Feed_Builder.php:1018
 msgid "Carousel updated successfully"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1019
+#: inc/Builder/CTF_Feed_Builder.php:1022
 msgid "Unknown error occurred"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1023
+#: inc/Builder/CTF_Feed_Builder.php:1026
 msgid "Feed cache cleared"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1027
+#: inc/Builder/CTF_Feed_Builder.php:1030
 msgid "Please select a source for your feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1031
+#: inc/Builder/CTF_Feed_Builder.php:1034
 msgid "Comment cache cleared"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1037
+#: inc/Builder/CTF_Feed_Builder.php:1040
 msgid "Installed & Activated"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1038
+#: inc/Builder/CTF_Feed_Builder.php:1041
 #: views/admin/more-social-feeds.php:118
 msgid "Free"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1039
+#: inc/Builder/CTF_Feed_Builder.php:1042
 msgid "Invalid license key"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1040
+#: inc/Builder/CTF_Feed_Builder.php:1043
 msgid "License activated"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1041
+#: inc/Builder/CTF_Feed_Builder.php:1044
 msgid "License Deactivated"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1044
+#: inc/Builder/CTF_Feed_Builder.php:1047
 msgid "Carousel Layout updated"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1046
+#: inc/Builder/CTF_Feed_Builder.php:1049
 msgid "Get more features with Twitter Feed Pro"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1047
+#: inc/Builder/CTF_Feed_Builder.php:1050
 msgid "Lite Users get 50% OFF"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1048
+#: inc/Builder/CTF_Feed_Builder.php:1051
 msgid "Try Demo"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1049
+#: inc/Builder/CTF_Feed_Builder.php:1052
 msgid "Display images and videos in posts"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1050
+#: inc/Builder/CTF_Feed_Builder.php:1053
 msgid "View likes, shares and comments"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1051
+#: inc/Builder/CTF_Feed_Builder.php:1054
 msgid "All Feed Types: Photos, Albums, Events and more"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1052
+#: inc/Builder/CTF_Feed_Builder.php:1055
 msgid "Ability to “Load More” posts"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1053
+#: inc/Builder/CTF_Feed_Builder.php:1056
 msgid "And Much More!"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1055
+#: inc/Builder/CTF_Feed_Builder.php:1058
 msgid "Auto load Tweets on scroll"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1056
+#: inc/Builder/CTF_Feed_Builder.php:1059
 msgid "Up to 12 daily feed updates"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1057
+#: inc/Builder/CTF_Feed_Builder.php:1060
 msgid "Powerful tweet filters"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1058
+#: inc/Builder/CTF_Feed_Builder.php:1061
 msgid "Visual Twitter card links"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1060
+#: inc/Builder/CTF_Feed_Builder.php:1063
 msgid "Show no. of tweets & followers"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1061
+#: inc/Builder/CTF_Feed_Builder.php:1064
 msgid "Display tweet replies"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1063
+#: inc/Builder/CTF_Feed_Builder.php:1066
 msgid "Fast, friendly and effective support"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1065
+#: inc/Builder/CTF_Feed_Builder.php:1068
 msgid "Show Features"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1066
+#: inc/Builder/CTF_Feed_Builder.php:1069
 msgid "Hide Features"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1069
+#: inc/Builder/CTF_Feed_Builder.php:1072
 msgid "Redirecting to connect.smashballoon.com"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1070
+#: inc/Builder/CTF_Feed_Builder.php:1073
 msgid "You will be redirected to our app so you can connect your account in 5 seconds"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1073
+#: inc/Builder/CTF_Feed_Builder.php:1076
 msgid "Some feed types are not available"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1074
+#: inc/Builder/CTF_Feed_Builder.php:1077
 msgid "Due to Twitter API changes, we can no longer support Search, Home Timeline, Hashtag, Mentions and Lists feeds. To continue using them, you will have to connect your own Twitter app which Twitter charges $100/month for. You can learn more about it %shere%s."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1077
+#: inc/Builder/CTF_Feed_Builder.php:1080
 msgid ""
 "%sThis feed is disabled%s\n"
 "                    %sDue to Twitter API changes, we can only support single feed for our free users.%s\n"
@@ -2336,53 +2331,53 @@ msgid ""
 "                        %s%sConnect your own Twitter app%s%s%s"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1105
+#: inc/Builder/CTF_Feed_Builder.php:1108
 msgid ""
 "%sThis feed is disabled%s\n"
 "                   %s Due to Twitter API changes, we can no longer support Search, Home Timeline, Hashtag, Mentions and Lists feeds.%s"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1125
+#: inc/Builder/CTF_Feed_Builder.php:1128
 msgid "Select one or more sources"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1126
+#: inc/Builder/CTF_Feed_Builder.php:1129
 msgid "Sources are Instagram accounts your feed will display content from"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1127
+#: inc/Builder/CTF_Feed_Builder.php:1130
 msgid "Looks like you have not added any source.<br/>Use “Add Source” to add a new one."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1128
+#: inc/Builder/CTF_Feed_Builder.php:1131
 msgid "Enter Public Hashtags"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1129
+#: inc/Builder/CTF_Feed_Builder.php:1132
 msgid "Add one or more hashtag separated by comma"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1130
+#: inc/Builder/CTF_Feed_Builder.php:1133
 msgid "Fetch posts that are"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1134
+#: inc/Builder/CTF_Feed_Builder.php:1137
 msgid "Add a source for Timeline"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1135
+#: inc/Builder/CTF_Feed_Builder.php:1138
 msgid "Select or add an account you want to display the timeline for"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1138
+#: inc/Builder/CTF_Feed_Builder.php:1141
 msgid "Add a source for Mentions"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1139
+#: inc/Builder/CTF_Feed_Builder.php:1142
 msgid "Select or add an account you want to display the mentions for"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1144
+#: inc/Builder/CTF_Feed_Builder.php:1147
 msgid ""
 "Due to changes in Instagram’s new API, we can no<br/>\n"
 "\t\t\t\t\tlonger get mentions for personal accounts. To<br/>\n"
@@ -2390,227 +2385,227 @@ msgid ""
 "\t\t\t\t\ta Business account. Learn More"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1150
+#: inc/Builder/CTF_Feed_Builder.php:1153
 msgid "Due to Facebook limitations, it's not possible to display photo feeds from a Group, only a Page."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1152
+#: inc/Builder/CTF_Feed_Builder.php:1155
 msgid "Update Source"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1153
+#: inc/Builder/CTF_Feed_Builder.php:1156
 msgid "Select a source from your connected Facebook Pages and Groups. Or, use \"Add New\" to connect a new one."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1154
+#: inc/Builder/CTF_Feed_Builder.php:1157
 msgid "Add multiple Facebook Pages or Groups to a feed with our Multifeed extension"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1155
+#: inc/Builder/CTF_Feed_Builder.php:1158
 msgid "Please add a source in order to display a feed. Go to the \"Settings\" tab -> \"Sources\" section -> Click \"Add New\" to connect a source."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1159
-#: inc/Builder/CTF_Feed_Builder.php:2130
+#: inc/Builder/CTF_Feed_Builder.php:1162
+#: inc/Builder/CTF_Feed_Builder.php:2133
 msgid "User Timeline"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1161
+#: inc/Builder/CTF_Feed_Builder.php:1164
 msgid "Add a Twitter handle for any account"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1162
+#: inc/Builder/CTF_Feed_Builder.php:1165
 msgid "@wpbeginner"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1166
-#: inc/Builder/CTF_Feed_Builder.php:2136
+#: inc/Builder/CTF_Feed_Builder.php:1169
+#: inc/Builder/CTF_Feed_Builder.php:2139
 msgid "Hashtag"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1168
+#: inc/Builder/CTF_Feed_Builder.php:1171
 msgid "Add any hashtag found on Twitter."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1169
+#: inc/Builder/CTF_Feed_Builder.php:1172
 msgid "#hashtag"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1173
+#: inc/Builder/CTF_Feed_Builder.php:1176
 msgid "Home Timeline"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1175
+#: inc/Builder/CTF_Feed_Builder.php:1178
 msgid "Connect an account to show home timeline. This does not give us any permission to manage your twitter account."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1179
-#: inc/Builder/CTF_Feed_Builder.php:2142
-#: inc/Builder/CTF_Feed_Builder.php:2189
+#: inc/Builder/CTF_Feed_Builder.php:1182
+#: inc/Builder/CTF_Feed_Builder.php:2145
+#: inc/Builder/CTF_Feed_Builder.php:2192
 msgid "Search"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1181
+#: inc/Builder/CTF_Feed_Builder.php:1184
 msgid "Add a search term. You can also fine tune your search using powerful search filters. Learn More."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1182
+#: inc/Builder/CTF_Feed_Builder.php:1185
 msgid "Enter Search Term"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1186
-#: inc/Builder/CTF_Feed_Builder.php:2195
+#: inc/Builder/CTF_Feed_Builder.php:1189
+#: inc/Builder/CTF_Feed_Builder.php:2198
 msgid "Mentions*"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1188
+#: inc/Builder/CTF_Feed_Builder.php:1191
 msgid "Not available currently. Connect an account to show mentions. This does not give us any permission to manage your twitter account."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1192
-#: inc/Builder/CTF_Feed_Builder.php:2201
+#: inc/Builder/CTF_Feed_Builder.php:1195
+#: inc/Builder/CTF_Feed_Builder.php:2204
 msgid "Lists*"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1194
+#: inc/Builder/CTF_Feed_Builder.php:1197
 msgid "Not available currently. Select any public list."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1200
+#: inc/Builder/CTF_Feed_Builder.php:1203
 msgid "Add feeds for popular social platforms with <span>our other plugins</span>"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1202
+#: inc/Builder/CTF_Feed_Builder.php:1205
 msgid "Personal"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1203
+#: inc/Builder/CTF_Feed_Builder.php:1206
 msgid "Business"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1204
+#: inc/Builder/CTF_Feed_Builder.php:1207
 msgid "I'm not sure"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1390
-#: inc/Builder/CTF_Feed_Builder.php:2487
+#: inc/Builder/CTF_Feed_Builder.php:1393
+#: inc/Builder/CTF_Feed_Builder.php:2490
 #: inc/CtfAdmin.php:78
 #: inc/CtfAdmin.php:79
 msgid "Facebook Feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1400
+#: inc/Builder/CTF_Feed_Builder.php:1403
 #: inc/CtfAdmin.php:90
 #: inc/CtfAdmin.php:91
 msgid "YouTube Feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1405
+#: inc/Builder/CTF_Feed_Builder.php:1408
 msgid "Social Wall Plugin"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1449
+#: inc/Builder/CTF_Feed_Builder.php:1452
 msgid "Legacy Feed Settings"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1450
+#: inc/Builder/CTF_Feed_Builder.php:1453
 msgid "These settings will impact %s legacy feeds on your site. You can learn more about what legacy feeds are and how they differ from new feeds %shere%s."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1452
+#: inc/Builder/CTF_Feed_Builder.php:1455
 msgid "You can now create and customize feeds individually. Click \"Add New\" to get started."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1459
-#: inc/Builder/CTF_Feed_Builder.php:1474
+#: inc/Builder/CTF_Feed_Builder.php:1462
+#: inc/Builder/CTF_Feed_Builder.php:1477
 msgid "How you create a feed has changed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1460
-#: inc/Builder/CTF_Feed_Builder.php:1475
+#: inc/Builder/CTF_Feed_Builder.php:1463
+#: inc/Builder/CTF_Feed_Builder.php:1478
 msgid "You can now create and customize feeds individually without using shortcode options."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1460
-#: inc/Builder/CTF_Feed_Builder.php:1475
+#: inc/Builder/CTF_Feed_Builder.php:1463
+#: inc/Builder/CTF_Feed_Builder.php:1478
 msgid "Click \"Add New\" to get started."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1465
+#: inc/Builder/CTF_Feed_Builder.php:1468
 msgid "Your existing feed is here"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1466
+#: inc/Builder/CTF_Feed_Builder.php:1469
 msgid "You can edit your existing feed from here, and all changes will only apply to this feed."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1480
+#: inc/Builder/CTF_Feed_Builder.php:1483
 msgid "Your existing feeds are under \"Legacy\" feeds"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1481
+#: inc/Builder/CTF_Feed_Builder.php:1484
 msgid "You can edit the settings for any existing \"legacy\" feed (i.e. any feed created prior to this update) here."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1481
+#: inc/Builder/CTF_Feed_Builder.php:1484
 msgid "This works just like the old settings page and affects all legacy feeds on your site."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1485
+#: inc/Builder/CTF_Feed_Builder.php:1488
 msgid "Existing feeds work as normal"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1486
+#: inc/Builder/CTF_Feed_Builder.php:1489
 msgid "You don't need to update or change any of your existing feeds. They will continue to work as usual."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1486
+#: inc/Builder/CTF_Feed_Builder.php:1489
 msgid "This update only affects how new feeds are created and customized."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1506
+#: inc/Builder/CTF_Feed_Builder.php:1509
 msgid "Embedding a Feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1507
+#: inc/Builder/CTF_Feed_Builder.php:1510
 msgid "After you are done customizing the feed, click here to add it to a page or a widget."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1512
-#: inc/Builder/CTF_Feed_Builder.php:1558
+#: inc/Builder/CTF_Feed_Builder.php:1515
+#: inc/Builder/CTF_Feed_Builder.php:1561
 #: inc/Builder/Tabs/CTF_Builder_Customizer_Tab.php:28
 msgid "Customize"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1513
+#: inc/Builder/CTF_Feed_Builder.php:1516
 msgid "Change your feed layout, color scheme, or customize individual feed sections here."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1519
+#: inc/Builder/CTF_Feed_Builder.php:1522
 msgid "Update your feed source, filter your posts, or change advanced settings here."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1540
+#: inc/Builder/CTF_Feed_Builder.php:1543
 msgid "Embed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1541
+#: inc/Builder/CTF_Feed_Builder.php:1544
 msgid "Save"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1542
+#: inc/Builder/CTF_Feed_Builder.php:1545
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:44
 msgid "Sections"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1543
+#: inc/Builder/CTF_Feed_Builder.php:1546
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:571
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:1029
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:1140
 msgid "Enable"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1545
+#: inc/Builder/CTF_Feed_Builder.php:1548
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:527
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:597
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:624
@@ -2622,12 +2617,12 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1546
+#: inc/Builder/CTF_Feed_Builder.php:1549
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:471
 msgid "Inherit from Theme"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1547
+#: inc/Builder/CTF_Feed_Builder.php:1550
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:644
 #: inc/Builder/Tabs/CTF_Styling_Tab.php:62
 #: inc/Builder/Tabs/CTF_Styling_Tab.php:103
@@ -2638,7 +2633,7 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1548
+#: inc/Builder/CTF_Feed_Builder.php:1551
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:659
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:786
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:1059
@@ -2651,743 +2646,743 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1549
+#: inc/Builder/CTF_Feed_Builder.php:1552
 msgid "Height"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1550
+#: inc/Builder/CTF_Feed_Builder.php:1553
 msgid "Placeholder"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1551
+#: inc/Builder/CTF_Feed_Builder.php:1554
 msgid "Select"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1552
+#: inc/Builder/CTF_Feed_Builder.php:1555
 msgid "Enter Text"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1553
+#: inc/Builder/CTF_Feed_Builder.php:1556
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:1080
 msgid "Hover State"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1554
+#: inc/Builder/CTF_Feed_Builder.php:1557
 msgid "Combine sources from multiple platforms using our Social Wall plugin"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1562
+#: inc/Builder/CTF_Feed_Builder.php:1565
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:34
 msgid "Feed Layout"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1563
+#: inc/Builder/CTF_Feed_Builder.php:1566
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:39
 msgid "Color Scheme"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1564
-#: inc/Builder/CTF_Feed_Builder.php:1795
-#: inc/Builder/CTF_Feed_Builder.php:1937
+#: inc/Builder/CTF_Feed_Builder.php:1567
+#: inc/Builder/CTF_Feed_Builder.php:1798
+#: inc/Builder/CTF_Feed_Builder.php:1940
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:48
 #: inc/CTF_Feed_Locator.php:390
 msgid "Header"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1565
+#: inc/Builder/CTF_Feed_Builder.php:1568
 msgid "Posts"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1566
+#: inc/Builder/CTF_Feed_Builder.php:1569
 msgid "Like Box"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1567
+#: inc/Builder/CTF_Feed_Builder.php:1570
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:77
 msgid "Load More Button"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1570
+#: inc/Builder/CTF_Feed_Builder.php:1573
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:123
 msgid "Layout"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1571
+#: inc/Builder/CTF_Feed_Builder.php:1574
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:129
 msgid "List"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1572
+#: inc/Builder/CTF_Feed_Builder.php:1575
 msgid "Grid"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1573
+#: inc/Builder/CTF_Feed_Builder.php:1576
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:135
 msgid "Masonry"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1574
+#: inc/Builder/CTF_Feed_Builder.php:1577
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:141
 msgid "Carousel"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1575
+#: inc/Builder/CTF_Feed_Builder.php:1578
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:440
 msgid "Feed Height"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1576
+#: inc/Builder/CTF_Feed_Builder.php:1579
 msgid "Number of Posts"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1577
+#: inc/Builder/CTF_Feed_Builder.php:1580
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:290
 msgid "Columns"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1578
+#: inc/Builder/CTF_Feed_Builder.php:1581
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:304
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:363
 msgid "Desktop"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1579
+#: inc/Builder/CTF_Feed_Builder.php:1582
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:323
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:382
 msgid "Tablet"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1580
+#: inc/Builder/CTF_Feed_Builder.php:1583
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:342
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:401
 msgid "Mobile"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1582
+#: inc/Builder/CTF_Feed_Builder.php:1585
 msgid "Tweak Post Styles"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1583
+#: inc/Builder/CTF_Feed_Builder.php:1586
 msgid "Change post background, border radius, shadow etc."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1587
+#: inc/Builder/CTF_Feed_Builder.php:1590
 msgid "Scheme"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1588
-#: inc/Builder/CTF_Feed_Builder.php:1675
+#: inc/Builder/CTF_Feed_Builder.php:1591
+#: inc/Builder/CTF_Feed_Builder.php:1678
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:476
 msgid "Light"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1589
-#: inc/Builder/CTF_Feed_Builder.php:1676
+#: inc/Builder/CTF_Feed_Builder.php:1592
+#: inc/Builder/CTF_Feed_Builder.php:1679
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:481
 msgid "Dark"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1590
-#: inc/Builder/CTF_Feed_Builder.php:1655
+#: inc/Builder/CTF_Feed_Builder.php:1593
+#: inc/Builder/CTF_Feed_Builder.php:1658
 #: inc/Builder/Tabs/CTF_Builder_Customizer_Tab.php:139
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:486
 msgid "Custom"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1591
+#: inc/Builder/CTF_Feed_Builder.php:1594
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:496
 msgid "Custom Palette"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1592
+#: inc/Builder/CTF_Feed_Builder.php:1595
 msgid "Background 2"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1593
+#: inc/Builder/CTF_Feed_Builder.php:1596
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:538
 msgid "Text 2"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1594
+#: inc/Builder/CTF_Feed_Builder.php:1597
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:549
 msgid "Link"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1596
+#: inc/Builder/CTF_Feed_Builder.php:1599
 msgid "Overrides"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1597
+#: inc/Builder/CTF_Feed_Builder.php:1600
 msgid "Colors that have been overridden from individual post element settings will not change. To change them, you will have to reset overrides."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1598
+#: inc/Builder/CTF_Feed_Builder.php:1601
 msgid "Reset Overrides."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1602
+#: inc/Builder/CTF_Feed_Builder.php:1605
 msgid "Header Type"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1603
+#: inc/Builder/CTF_Feed_Builder.php:1606
 msgid "Visual"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1604
-#: inc/Builder/CTF_Feed_Builder.php:1617
+#: inc/Builder/CTF_Feed_Builder.php:1607
+#: inc/Builder/CTF_Feed_Builder.php:1620
 msgid "Cover Photo"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1605
+#: inc/Builder/CTF_Feed_Builder.php:1608
 msgid "Name and avatar"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1606
+#: inc/Builder/CTF_Feed_Builder.php:1609
 msgid "About (bio and Likes)"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1607
-#: inc/Builder/CTF_Feed_Builder.php:1625
+#: inc/Builder/CTF_Feed_Builder.php:1610
+#: inc/Builder/CTF_Feed_Builder.php:1628
 msgid "Display outside scrollable area"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1608
+#: inc/Builder/CTF_Feed_Builder.php:1611
 msgid "Icon"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1609
+#: inc/Builder/CTF_Feed_Builder.php:1612
 msgid "Icon Image"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1610
+#: inc/Builder/CTF_Feed_Builder.php:1613
 msgid "Icon Color"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1615
+#: inc/Builder/CTF_Feed_Builder.php:1618
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:646
 msgid "Small"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1616
+#: inc/Builder/CTF_Feed_Builder.php:1619
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:648
 msgid "Large"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1618
+#: inc/Builder/CTF_Feed_Builder.php:1621
 msgid "Custom Width"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1619
+#: inc/Builder/CTF_Feed_Builder.php:1622
 msgid "By default, it is set to auto"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1620
+#: inc/Builder/CTF_Feed_Builder.php:1623
 msgid "Width"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1621
+#: inc/Builder/CTF_Feed_Builder.php:1624
 msgid "Custom CTA"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1622
+#: inc/Builder/CTF_Feed_Builder.php:1625
 msgid "This toggles the custom CTA like \"Show now\" and \"Contact\""
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1623
+#: inc/Builder/CTF_Feed_Builder.php:1626
 msgid "Show Fans"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1624
+#: inc/Builder/CTF_Feed_Builder.php:1627
 msgid "Show visitors which of their friends follow your page"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1626
+#: inc/Builder/CTF_Feed_Builder.php:1629
 msgid "Make the like box fixed by moving it outside the scrollable area"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1629
+#: inc/Builder/CTF_Feed_Builder.php:1632
 msgid "Thumbnail"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1630
+#: inc/Builder/CTF_Feed_Builder.php:1633
 msgid "Half width"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1631
+#: inc/Builder/CTF_Feed_Builder.php:1634
 msgid "Full width"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1632
+#: inc/Builder/CTF_Feed_Builder.php:1635
 msgid "Use full width layout when post width is less than 500px"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1633
+#: inc/Builder/CTF_Feed_Builder.php:1636
 msgid "Post Style"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1634
+#: inc/Builder/CTF_Feed_Builder.php:1637
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:68
 msgid "Edit Individual Elements"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1636
+#: inc/Builder/CTF_Feed_Builder.php:1639
 msgid "Hide or show individual elements of a post or edit their options"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1639
+#: inc/Builder/CTF_Feed_Builder.php:1642
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:821
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:830
 msgid "Author"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1640
+#: inc/Builder/CTF_Feed_Builder.php:1643
 msgid "Post Text"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1642
+#: inc/Builder/CTF_Feed_Builder.php:1645
 msgid "Photos/Videos"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1643
+#: inc/Builder/CTF_Feed_Builder.php:1646
 msgid "Likes, Shares and Comments"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1644
+#: inc/Builder/CTF_Feed_Builder.php:1647
 msgid "Event Title"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1645
+#: inc/Builder/CTF_Feed_Builder.php:1648
 msgid "Event Details"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1646
+#: inc/Builder/CTF_Feed_Builder.php:1649
 msgid "Post Action Links"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1647
+#: inc/Builder/CTF_Feed_Builder.php:1650
 msgid "Shared Post Text"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1648
+#: inc/Builder/CTF_Feed_Builder.php:1651
 msgid "Shared Link Box"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1649
+#: inc/Builder/CTF_Feed_Builder.php:1652
 msgid "The main text of the Instagram post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1650
+#: inc/Builder/CTF_Feed_Builder.php:1653
 msgid "Maximum Text Length"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1651
+#: inc/Builder/CTF_Feed_Builder.php:1654
 msgid "Characters"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1652
+#: inc/Builder/CTF_Feed_Builder.php:1655
 msgid "Link text to Instagram post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1653
+#: inc/Builder/CTF_Feed_Builder.php:1656
 msgid "The date of the post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1654
+#: inc/Builder/CTF_Feed_Builder.php:1657
 #: inc/Builder/Tabs/CTF_Styling_Tab.php:198
 msgid "Format"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1656
+#: inc/Builder/CTF_Feed_Builder.php:1659
 msgid "Learn more about custom formats"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1657
+#: inc/Builder/CTF_Feed_Builder.php:1660
 msgid "Add text before date"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1658
+#: inc/Builder/CTF_Feed_Builder.php:1661
 msgid "E.g. Posted"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1659
+#: inc/Builder/CTF_Feed_Builder.php:1662
 msgid "Add text after date"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1660
+#: inc/Builder/CTF_Feed_Builder.php:1663
 msgid "E.g. - posted date"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1662
+#: inc/Builder/CTF_Feed_Builder.php:1665
 msgid "Timezone settings are global across all feeds. To update it use the global settings."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1663
+#: inc/Builder/CTF_Feed_Builder.php:1666
 msgid "Go to Global Settings"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1664
+#: inc/Builder/CTF_Feed_Builder.php:1667
 msgid "Any photos or videos in your posts"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1665
+#: inc/Builder/CTF_Feed_Builder.php:1668
 msgid "Use only one image per post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1666
+#: inc/Builder/CTF_Feed_Builder.php:1669
 msgid "The \"View on Instagram\" and \"Share\" links at the bottom of each post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1667
+#: inc/Builder/CTF_Feed_Builder.php:1670
 msgid "View on Instagram link"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1668
+#: inc/Builder/CTF_Feed_Builder.php:1671
 msgid "Toggle \"View on Instagram\" link below each post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1669
+#: inc/Builder/CTF_Feed_Builder.php:1672
 #: inc/Builder/Tabs/CTF_Styling_Tab.php:313
 msgid "Customize Text"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1670
+#: inc/Builder/CTF_Feed_Builder.php:1673
 msgid "Share Link"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1671
+#: inc/Builder/CTF_Feed_Builder.php:1674
 msgid "Toggle \"Share\" link below each post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1672
+#: inc/Builder/CTF_Feed_Builder.php:1675
 msgid "The comments box displayed at the bottom of each timeline post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1673
+#: inc/Builder/CTF_Feed_Builder.php:1676
 msgid "Icon Theme"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1677
+#: inc/Builder/CTF_Feed_Builder.php:1680
 msgid "Expand comments box by default"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1678
+#: inc/Builder/CTF_Feed_Builder.php:1681
 msgid "Hide comment avatars"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1679
+#: inc/Builder/CTF_Feed_Builder.php:1682
 msgid "Show comments in lightbox"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1680
+#: inc/Builder/CTF_Feed_Builder.php:1683
 msgid "The title of an event"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1681
+#: inc/Builder/CTF_Feed_Builder.php:1684
 msgid "The information associated with an event"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1682
+#: inc/Builder/CTF_Feed_Builder.php:1685
 msgid "Text Size"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1683
+#: inc/Builder/CTF_Feed_Builder.php:1686
 msgid "Text Color"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1684
+#: inc/Builder/CTF_Feed_Builder.php:1687
 msgid "The link info box that's created when a link is shared in a Instagram post"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1685
+#: inc/Builder/CTF_Feed_Builder.php:1688
 msgid "Box Style"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1686
+#: inc/Builder/CTF_Feed_Builder.php:1689
 msgid "Remove background/border"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1687
+#: inc/Builder/CTF_Feed_Builder.php:1690
 msgid "Link Title"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1688
+#: inc/Builder/CTF_Feed_Builder.php:1691
 msgid "Link URL"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1689
+#: inc/Builder/CTF_Feed_Builder.php:1692
 msgid "Link Description"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1690
+#: inc/Builder/CTF_Feed_Builder.php:1693
 msgid "chars"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1691
+#: inc/Builder/CTF_Feed_Builder.php:1694
 msgid "The description text associated with shared photos, videos, or links"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1693
+#: inc/Builder/CTF_Feed_Builder.php:1696
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:693
 msgid "Post Type"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1694
+#: inc/Builder/CTF_Feed_Builder.php:1697
 msgid "boxed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1695
+#: inc/Builder/CTF_Feed_Builder.php:1698
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:703
 msgid "Regular"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1696
+#: inc/Builder/CTF_Feed_Builder.php:1699
 msgid "Indvidual Properties"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1697
+#: inc/Builder/CTF_Feed_Builder.php:1700
 msgid "Background Color"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1698
+#: inc/Builder/CTF_Feed_Builder.php:1701
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:739
 msgid "Border Radius"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1699
+#: inc/Builder/CTF_Feed_Builder.php:1702
 #: inc/Builder/Tabs/CTF_Customize_Tab.php:755
 msgid "Box Shadow"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1702
+#: inc/Builder/CTF_Feed_Builder.php:1705
 msgid "Make your Instagram Feed Shoppable"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1703
+#: inc/Builder/CTF_Feed_Builder.php:1706
 msgid "This feature links the post to the one specificed in your caption.<br/><br/>Don’t want to add links to the caption? You can add links manually to each post.<br/><br/>Enable it to get started."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1704
+#: inc/Builder/CTF_Feed_Builder.php:1707
 msgid "Tap “Add” or “Update” on an<br/>image to add/update it’s URL"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1797
-#: inc/Builder/CTF_Feed_Builder.php:1939
+#: inc/Builder/CTF_Feed_Builder.php:1800
+#: inc/Builder/CTF_Feed_Builder.php:1942
 #: inc/CTF_Feed_Locator.php:400
 msgid "Footer"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1799
-#: inc/Builder/CTF_Feed_Builder.php:1941
+#: inc/Builder/CTF_Feed_Builder.php:1802
+#: inc/Builder/CTF_Feed_Builder.php:1944
 #: inc/CTF_Feed_Locator.php:395
 msgid "Sidebar"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:1801
-#: inc/Builder/CTF_Feed_Builder.php:1943
+#: inc/Builder/CTF_Feed_Builder.php:1804
+#: inc/Builder/CTF_Feed_Builder.php:1946
 #: inc/CTF_Feed_Locator.php:386
 msgid "Content"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2029
-#: inc/Builder/CTF_Feed_Builder.php:2030
+#: inc/Builder/CTF_Feed_Builder.php:2032
+#: inc/Builder/CTF_Feed_Builder.php:2033
 msgid "Legacy Feed"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2029
-#: inc/Builder/CTF_Feed_Builder.php:2030
+#: inc/Builder/CTF_Feed_Builder.php:2032
+#: inc/Builder/CTF_Feed_Builder.php:2033
 msgid "(unknown location)"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2131
+#: inc/Builder/CTF_Feed_Builder.php:2134
 msgid "A timeline of Tweets from any Twitter user"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2137
+#: inc/Builder/CTF_Feed_Builder.php:2140
 msgid "Public Tweets which contain a specific hashtag"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2143
+#: inc/Builder/CTF_Feed_Builder.php:2146
 msgid "List of Tweets from a specific search query"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2149
+#: inc/Builder/CTF_Feed_Builder.php:2152
 msgid "Curated Tweets from a speicific Twitter list"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2155
-#: inc/Builder/CTF_Feed_Builder.php:2190
-#: inc/Builder/CTF_Feed_Builder.php:2208
+#: inc/Builder/CTF_Feed_Builder.php:2158
+#: inc/Builder/CTF_Feed_Builder.php:2193
+#: inc/Builder/CTF_Feed_Builder.php:2211
 msgid "A brief description about the feed type"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2196
-#: inc/Builder/CTF_Feed_Builder.php:2202
+#: inc/Builder/CTF_Feed_Builder.php:2199
+#: inc/Builder/CTF_Feed_Builder.php:2205
 msgid "Not available currently"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2225
+#: inc/Builder/CTF_Feed_Builder.php:2228
 msgid "Connect To Smash Balloon"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2226
+#: inc/Builder/CTF_Feed_Builder.php:2229
 msgid "In order to create a feed and retrieve tweets, you need to verify an email address with Smash Balloon."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2227
+#: inc/Builder/CTF_Feed_Builder.php:2230
 msgid "Prefer to use your own Twitter Developer App?"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2228
+#: inc/Builder/CTF_Feed_Builder.php:2231
 msgid "Add App Credentials"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2229
+#: inc/Builder/CTF_Feed_Builder.php:2232
 msgid "Add New Account"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2230
+#: inc/Builder/CTF_Feed_Builder.php:2233
 msgid "Add Your Own Twitter App Credentials"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2233
+#: inc/Builder/CTF_Feed_Builder.php:2236
 msgid "Enter App Name"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2235
+#: inc/Builder/CTF_Feed_Builder.php:2238
 msgid "Enter Consumer Key"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2237
+#: inc/Builder/CTF_Feed_Builder.php:2240
 msgid "Enter Consumer Secret"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2239
+#: inc/Builder/CTF_Feed_Builder.php:2242
 msgid "Enter Access Token"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2241
+#: inc/Builder/CTF_Feed_Builder.php:2244
 msgid "Enter Access Token Secret"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2257
+#: inc/Builder/CTF_Feed_Builder.php:2260
 msgid "Default"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2263
+#: inc/Builder/CTF_Feed_Builder.php:2266
 msgid "Masonry Cards"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2269
+#: inc/Builder/CTF_Feed_Builder.php:2272
 msgid "Simple Carousel"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2275
+#: inc/Builder/CTF_Feed_Builder.php:2278
 msgid "Simple Cards"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2281
+#: inc/Builder/CTF_Feed_Builder.php:2284
 msgid "Showcase Carousel"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2287
+#: inc/Builder/CTF_Feed_Builder.php:2290
 msgid "Latest Tweet"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2293
+#: inc/Builder/CTF_Feed_Builder.php:2296
 msgid "Widget"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2351
+#: inc/Builder/CTF_Feed_Builder.php:2354
 msgid "second"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2352
+#: inc/Builder/CTF_Feed_Builder.php:2355
 msgid "seconds"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2353
+#: inc/Builder/CTF_Feed_Builder.php:2356
 msgid "minute"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2354
+#: inc/Builder/CTF_Feed_Builder.php:2357
 msgid "minutes"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2355
+#: inc/Builder/CTF_Feed_Builder.php:2358
 msgid "hour"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2356
+#: inc/Builder/CTF_Feed_Builder.php:2359
 msgid "hours"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2357
+#: inc/Builder/CTF_Feed_Builder.php:2360
 msgid "day"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2358
+#: inc/Builder/CTF_Feed_Builder.php:2361
 msgid "days"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2359
+#: inc/Builder/CTF_Feed_Builder.php:2362
 msgid "week"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2360
+#: inc/Builder/CTF_Feed_Builder.php:2363
 msgid "weeks"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2361
+#: inc/Builder/CTF_Feed_Builder.php:2364
 msgid "month"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2362
+#: inc/Builder/CTF_Feed_Builder.php:2365
 msgid "months"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2363
+#: inc/Builder/CTF_Feed_Builder.php:2366
 msgid "year"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2364
+#: inc/Builder/CTF_Feed_Builder.php:2367
 msgid "years"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2365
+#: inc/Builder/CTF_Feed_Builder.php:2368
 msgid "ago"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2434
+#: inc/Builder/CTF_Feed_Builder.php:2437
 msgid "Plugin installed & activated"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2486
+#: inc/Builder/CTF_Feed_Builder.php:2489
 msgid "Facebook"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2488
-#: inc/Builder/CTF_Feed_Builder.php:2500
-#: inc/Builder/CTF_Feed_Builder.php:2512
+#: inc/Builder/CTF_Feed_Builder.php:2491
+#: inc/Builder/CTF_Feed_Builder.php:2503
+#: inc/Builder/CTF_Feed_Builder.php:2515
 msgid "By Smash Balloon"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2489
+#: inc/Builder/CTF_Feed_Builder.php:2492
 msgid "To display a Facebook feed, our Facebook plugin is required. </br> It provides a clean and beautiful way to add your Facebook posts to your website. Grab your visitors attention and keep them engaged with your site longer."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2498
+#: inc/Builder/CTF_Feed_Builder.php:2501
 msgid "Instagram"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2501
+#: inc/Builder/CTF_Feed_Builder.php:2504
 msgid "To display an Instagram feed, our Instagram plugin is required. </br> It provides a clean and beautiful way to add your Instagram posts to your website. Grab your visitors attention and keep them engaged with your site longer."
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2510
+#: inc/Builder/CTF_Feed_Builder.php:2513
 msgid "YouTube"
 msgstr ""
 
-#: inc/Builder/CTF_Feed_Builder.php:2513
+#: inc/Builder/CTF_Feed_Builder.php:2516
 msgid "To display a YouTube feed, our YouTube plugin is required. It provides a simple yet powerful way to display videos from YouTube on your website, Increasing engagement with your channel while keeping visitors on your website."
 msgstr ""
 
