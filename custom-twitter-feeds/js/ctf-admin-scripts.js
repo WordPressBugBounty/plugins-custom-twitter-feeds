@@ -182,7 +182,8 @@ jQuery(document).ready(function($){
             url : ctf.ajax_url,
             type : 'post',
             data : {
-                action : 'ctf_clear_cache_admin'
+                action : 'ctf_clear_cache_admin',
+                ctf_nonce: ctf.nonce
             },
             success : function(data) {
                 $ctfClearCacheButton.prop('disabled',false);

@@ -3,13 +3,13 @@
 Plugin Name: Custom Twitter Feeds
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.2.5
+Version: 2.3.0
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
 */
 /*
-Copyright 2024 Smash Balloon LLC (email : hey@smashballoon.com)
+Copyright 2025 Smash Balloon LLC (email : hey@smashballoon.com)
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
@@ -29,7 +29,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.2.5' );
+	define( 'CTF_VERSION', '2.3.0' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -808,6 +808,7 @@ function ctf_clear_cache() {
 add_action( 'ctf_cron_job', 'ctf_clear_cache' );
 
 function ctf_clear_cache_admin() {
+	check_ajax_referer('ctf-admin' , 'ctf_nonce');
 	if ( ! ctf_current_user_can( 'manage_twitter_feed_options' ) ) {
 		wp_send_json_error();
 	}

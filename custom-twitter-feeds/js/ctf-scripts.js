@@ -373,23 +373,70 @@ if(!ctf_js_exists){
             $(document).on('borlabs-cookie-consent-saved', function (event) {
                 ctfAterConsentToggled();
             });
+
+            // devowl.io
+            if (typeof window.consentApi !== 'undefined') {
+                window.consentApi.consent("custom-twitter-feed").then(() => {
+                    try {
+                        // applies full features to feed
+                        setTimeout(function() {
+                            $('.ctf').each(function () {
+                                window.ctfObject.consentGiven = true;
+                                ctfAterConsentToggled();
+                            });
+                        },1000);
+                    }
+                    catch (error) {
+                        // do nothing
+                    }
+                });
+            }
+
+            // Moove Agency
+            $('.moove-gdpr-infobar-allow-all').on('click',function() {
+                setTimeout(function() {
+                    $('.ctf').each(function () {
+                        window.ctfObject.consentGiven = true;
+                        ctfAterConsentToggled();
+                    });
+                },1000);
+            });
+
+            // WPConsent
+            window.addEventListener('wpconsent_consent_saved', function(event) {
+                setTimeout(function() {
+                    $('.ctf').each(function () {
+                        ctfAterConsentToggled();
+                    });
+                },1000);
+            });
+
+            window.addEventListener('wpconsent_consent_updated', function(event) {
+                setTimeout(function() {
+                    $('.ctf').each(function () {
+                        ctfAterConsentToggled();
+                    });
+                },1000);
+            });
         });
 
         function ctfCheckConsent() {
             if (window.ctfObject.consentGiven || !window.ctfObject.gdpr) {
                 return true;
             }
-            if (typeof CLI_Cookie !== "undefined") { // GDPR Cookie Consent by WebToffee
+            if (typeof window.WPConsent !== 'undefined') {
+                window.ctfObject.consentGiven = window.WPConsent.hasConsent('marketing');
+            } else if (typeof CLI_Cookie !== "undefined") { // GDPR Cookie Consent by WebToffee
                 if (CLI_Cookie.read(CLI_ACCEPT_COOKIE_NAME) !== null)  {
 
-                        // WebToffee no longer uses this cookie but being left here to maintain backwards compatibility
-                        if (CLI_Cookie.read('cookielawinfo-checkbox-non-necessary') !== null) {
-                            window.ctfObject.consentGiven = CLI_Cookie.read('cookielawinfo-checkbox-non-necessary') === 'yes';
-                        }
+                    // WebToffee no longer uses this cookie but being left here to maintain backwards compatibility
+                    if (CLI_Cookie.read('cookielawinfo-checkbox-non-necessary') !== null) {
+                        window.ctfObject.consentGiven = CLI_Cookie.read('cookielawinfo-checkbox-non-necessary') === 'yes';
+                    }
 
-                        if (CLI_Cookie.read('cookielawinfo-checkbox-necessary') !== null) {
-                            window.ctfObject.consentGiven = CLI_Cookie.read('cookielawinfo-checkbox-necessary') === 'yes';
-                        }
+                    if (CLI_Cookie.read('cookielawinfo-checkbox-necessary') !== null) {
+                        window.ctfObject.consentGiven = CLI_Cookie.read('cookielawinfo-checkbox-necessary') === 'yes';
+                    }
                 }
 
             } else if (typeof window.cnArgs !== "undefined") { // Cookie Notice by dFactory
@@ -406,7 +453,10 @@ if(!ctf_js_exists){
             } else if (typeof window.Cookiebot !== "undefined") { // Cookiebot by Cybot A/S
                 window.ctfObject.consentGiven = Cookiebot.consented;
             } else if (typeof window.BorlabsCookie !== 'undefined') { // Borlabs Cookie by Borlabs
-                window.ctfObject.consentGiven = window.BorlabsCookie.checkCookieConsent('twitter');
+                window.ctfObject.consentGiven = typeof window.BorlabsCookie.Consents !== 'undefined' ? window.BorlabsCookie.Consents.hasConsent('twitter') : window.BorlabsCookie.checkCookieConsent('twitter');
+            } else if (cffCmplzGetCookie('moove_gdpr_popup')) { // Moove GDPR Popup
+                var moove_gdpr_popup = JSON.parse(decodeURIComponent(ctfCmplzGetCookie('moove_gdpr_popup')));
+                window.ctfObject.consentGiven = typeof moove_gdpr_popup.thirdparty !== "undefined" && moove_gdpr_popup.thirdparty === "1";
             }
 
             var evt = jQuery.Event('ctfcheckconsent');
