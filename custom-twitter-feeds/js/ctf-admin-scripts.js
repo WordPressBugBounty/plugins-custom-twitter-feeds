@@ -598,6 +598,17 @@ jQuery(document).ready(function($){
         },
 
         /**
+         * Return possible plugins/addons URLs
+         *
+         * @since 1.3.9
+         */
+        filterPossibleAddonInstallation : function() {
+          return ctf_admin_strings?.smashPlugins
+            ? Object.values(ctf_admin_strings?.smashPlugins).map((singlePlugin) => singlePlugin.download_plugin)
+            : [];
+        },
+
+        /**
          * Toggle addon state.
          *
          * @since 1.3.9
@@ -615,8 +626,11 @@ jQuery(document).ready(function($){
                 successText;
 
             if ( $btn.hasClass( 'status-go-to-url' ) ) {
-                // Open url in new tab.
-                window.open( $btn.attr('data-plugin'), '_blank' );
+                const possibleUrls = this.filterPossibleAddonInstallation();
+                const gotoUrl = $btn.attr('data-plugin');
+                if (possibleUrls.includes(gotoUrl)) {
+                  window.open(gotoUrl, '_blank');
+                }
                 return;
             }
 

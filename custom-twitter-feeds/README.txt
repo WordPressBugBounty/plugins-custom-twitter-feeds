@@ -4,8 +4,8 @@ Contributors: smashballoon, craig-at-smash-balloon, am, smub
 Support Website: https://smashballoon/custom-twitter-feeds/
 Tags: Twitter, Twitter feed, X feed, Twitter widget, Custom Twitter Feed
 Requires at least: 4.1
-Tested up to: 6.7
-Stable tag: 2.3.0
+Tested up to: 6.8
+Stable tag: 2.3.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -233,6 +233,9 @@ If you're still having trouble displaying your Tweets after trying the common is
 7. To display the Twitter feed just copy and paste the shortcode into a WordPress widget or page
 
 == Changelog ==
+= 2.3.1 =
+* Fix - Additional plugin hardening.
+
 = 2.3.0 =
 * New - Added support for a new GDPR consent plugin [WPConsent](https://wpconsent.com/?utm_campaign=twitter-free-readme&utm_source=changelog&utm_medium=wpconsentannouncement).
 * New - Added support for GDPR Cookie Compliance by Moove Agency and Real Cookie Banner GDPR plugins.

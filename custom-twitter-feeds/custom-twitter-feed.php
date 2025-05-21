@@ -1,9 +1,11 @@
 <?php
+
+use TwitterFeed\Builder\CTF_Feed_Builder;
 /*
 Plugin Name: Custom Twitter Feeds
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.3.0
+Version: 2.3.1
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -29,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.3.0' );
+	define( 'CTF_VERSION', '2.3.1' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -966,6 +968,7 @@ function ctf_admin_scripts_and_styles() {
 		'plugin_install_activate_btn'     => esc_html__( 'Install and Activate', 'custom-twitter-feeds' ),
 		'plugin_install_activate_confirm' => esc_html__( 'needs to be installed and activated to import its forms. Would you like us to install and activate it for you?', 'custom-twitter-feeds' ),
 		'plugin_activate_btn'             => esc_html__( 'Activate', 'custom-twitter-feeds' ),
+		'smashPlugins'					=> CTF_Feed_Builder::install_plugins_popup()
 	);
 	$strings = apply_filters( 'ctf_admin_strings', $strings );
 
