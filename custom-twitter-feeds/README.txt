@@ -4,7 +4,7 @@ Contributors: smashballoon, craig-at-smash-balloon, am, smub
 Support Website: https://smashballoon/custom-twitter-feeds/
 Tags: Twitter, Twitter feed, X feed, Twitter widget, Custom Twitter Feed
 Requires at least: 4.1
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 2.3.1
 Requires PHP: 5.6
 License: GPLv2 or later
