@@ -7,4 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'TwitterFeed\\' => array($baseDir . '/inc'),
+    'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Framework\\' => array($vendorDir . '/smashballoon/framework'),
+    'Smashballoon\\TwitterFeed\\Vendor\\Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Smashballoon\\TwitterFeed\\Vendor\\PhpDocReader\\' => array($vendorDir . '/php-di/phpdoc-reader/src/PhpDocReader'),
+    'Smashballoon\\TwitterFeed\\Vendor\\Laravel\\SerializableClosure\\' => array($vendorDir . '/laravel/serializable-closure/src'),
+    'Smashballoon\\TwitterFeed\\Vendor\\Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
+    'Smashballoon\\TwitterFeed\\Vendor\\DI\\' => array($vendorDir . '/smashballoon/framework/Packages/php-di/src'),
 );

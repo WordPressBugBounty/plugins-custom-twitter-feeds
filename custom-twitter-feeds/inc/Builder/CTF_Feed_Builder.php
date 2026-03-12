@@ -16,6 +16,8 @@ use TwitterFeed\Integrations\Analytics\SB_Analytics;
 
 class CTF_Feed_Builder {
 	private static $instance;
+	public $ctf_sb_analytics;
+
 	public static function instance() {
 		if ( null === self::$instance) {
 			require CTF_PLUGIN_DIR . 'vendor/autoload.php';
@@ -637,19 +639,19 @@ class CTF_Feed_Builder {
 		        	);
 
 					$monthNames = array_map(
-						array(&$wp_locale, 'get_month'),
+						array($wp_locale, 'get_month'),
 						range(1, 12)
 					);
 					$monthNamesShort = array_map(
-						array(&$wp_locale, 'get_month_abbrev'),
+						array($wp_locale, 'get_month_abbrev'),
 						$monthNames
 					);
 					$dayNames = array_map(
-						array(&$wp_locale, 'get_weekday'),
+						array($wp_locale, 'get_weekday'),
 						range(0, 6)
 					);
 					$dayNamesShort = array_map(
-						array(&$wp_locale, 'get_weekday_abbrev'),
+						array($wp_locale, 'get_weekday_abbrev'),
 						$dayNames
 					);
 					wp_localize_script("ctf-date_i18n",
@@ -764,8 +766,15 @@ class CTF_Feed_Builder {
 	 * @since 2.0
 	 */
 	public static function get_account_info( $auth ){
-		$consumer_key = ! empty( $auth['consumer_key'] ) ? $auth['consumer_key'] : 'FPYSYWIdyUIQ76Yz5hdYo5r7y';
-		$consumer_secret = ! empty( $auth['consumer_secret'] ) ? $auth['consumer_secret'] : 'GqPj9BPgJXjRKIGXCULJljocGPC62wN2eeMSnmZpVelWreFk9z';
+		if (empty($auth['consumer_key'])
+			|| empty($auth['consumer_secret'])) {
+			return [
+	    		'error' => true
+	    	];
+		}
+
+		$consumer_key = $auth['consumer_key'];
+		$consumer_secret = $auth['consumer_secret'];
 		$request_settings = array(
 			'consumer_key' => $consumer_key,
 			'consumer_secret' =>  $consumer_secret,

@@ -34,7 +34,10 @@ class CTF_View {
 		$file = self::BASE_PATH . $file . '.php';
 
 		if ( file_exists( $file ) ) {
-            if ( $data !== null && ! empty( $data ) ) extract( $data );
+			// Use EXTR_SKIP to prevent overwriting existing variables for security
+			if ( $data !== null && ! empty( $data ) ) {
+				extract( $data, EXTR_SKIP );
+			}
 			include_once $file;
 		}
 	}

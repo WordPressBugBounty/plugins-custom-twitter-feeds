@@ -103,13 +103,13 @@ class CTF_Feed_Saver_Manager {
 		$feed_data['type'] = $selected_feed;
 		return $feed_data;
 	}
-	
+
 	/**
 	 * Get clean twitter handle URL from user provided string
-	 * 
+	 *
 	 * @since 2.5
 	 * @params string $string
-	 * @return string	 
+	 * @return string
 	 */
 	public static function get_clean_twitter_handle_from_string($string)
 	{
@@ -798,16 +798,21 @@ class CTF_Feed_Saver_Manager {
 			wp_send_json_error(); // This auto-dies.
 		}
 
-		if( !empty( $_POST['access_token'] ) && !empty( $_POST['access_token_secret'] ) ){
-			$consumer_key = ! empty( $_POST['consumer_key'] ) ? $_POST['consumer_key'] : 'FPYSYWIdyUIQ76Yz5hdYo5r7y';
-	        $consumer_secret = ! empty( $_POST['consumer_secret'] ) ? $_POST['consumer_secret'] : 'GqPj9BPgJXjRKIGXCULJljocGPC62wN2eeMSnmZpVelWreFk9z';
-	        $request_settings = array(
-	            'consumer_key' => $consumer_key,
-	            'consumer_secret' =>  $consumer_secret,
-	            'access_token' =>  $_POST['access_token'],
-	            'access_token_secret' =>  $_POST['access_token_secret']
-	        );
-	        $request_method = 'auto';
+		if(!empty($_POST['access_token'])
+			&& !empty($_POST['access_token_secret'])
+			&& !empty($_POST['consumer_key'])
+			&& !empty($_POST['consumer_secret'])
+		){
+			$consumer_key = sanitize_text_field($_POST['consumer_key']);
+			$consumer_secret = sanitize_text_field($_POST['consumer_secret']);
+			$request_settings = array(
+				'consumer_key' => $consumer_key,
+				'consumer_secret' =>  $consumer_secret,
+				'access_token' =>  sanitize_text_field($_POST['access_token']),
+				'access_token_secret' =>  sanitize_text_field($_POST['access_token_secret'])
+			);
+
+			$request_method = 'auto';
 	        $twitter_api = new CtfOauthConnect( $request_settings, 'accountlookup' );
 	        $twitter_api->setUrlBase();
 	        $twitter_api->setRequestMethod( $request_method );

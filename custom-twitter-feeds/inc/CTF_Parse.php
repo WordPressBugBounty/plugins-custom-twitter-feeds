@@ -185,7 +185,7 @@ class CTF_Parse{
             $raw_header_text = $using_custom ? $data['headertext'] : $data['feed_term'];
 
             //List multiple terms
-            $hashtags = explode(" OR ", $data['feed_term']);
+            $hashtags = explode(" OR ", $data['feed_term'] ?? '');
             if ( ! $using_custom ) {
                 $default_header_text = '';
                 $h_index = 0;
@@ -379,7 +379,7 @@ class CTF_Parse{
 
     public static function get_quoted_media( $data, $num_media ) {
         //Quoted Tweets Media
-        $quoted_media = false;
+        $quoted_media = [];
 
         if ( isset( $data['extended_entities']['media'] ) ) {
 

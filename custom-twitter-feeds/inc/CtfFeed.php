@@ -332,11 +332,11 @@ class CtfFeed
 	 */
 	protected function setConsumerKeyAndSecretOptions(){
 		if (! empty( $this->db_options['consumer_key'] ) && ! empty($this->db_options['consumer_secret'] )) {
-			$this->feed_options['consumer_key']    = isset($this->db_options['consumer_key']) && strlen($this->db_options['consumer_key']) > 15 ? $this->db_options['consumer_key'] : 'FPYSYWIdyUIQ76Yz5hdYo5r7y';
-			$this->feed_options['consumer_secret'] = isset($this->db_options['consumer_secret']) && strlen($this->db_options['consumer_secret']) > 30 ? $this->db_options['consumer_secret'] : 'GqPj9BPgJXjRKIGXCULJljocGPC62wN2eeMSnmZpVelWreFk9z';
+			$this->feed_options['consumer_key']    = isset($this->db_options['consumer_key']) && strlen($this->db_options['consumer_key']) > 15 ? $this->db_options['consumer_key'] : '';
+			$this->feed_options['consumer_secret'] = isset($this->db_options['consumer_secret']) && strlen($this->db_options['consumer_secret']) > 30 ? $this->db_options['consumer_secret'] : '';
 		} else {
-			$this->feed_options['consumer_key']    = 'FPYSYWIdyUIQ76Yz5hdYo5r7y';
-			$this->feed_options['consumer_secret'] = 'GqPj9BPgJXjRKIGXCULJljocGPC62wN2eeMSnmZpVelWreFk9z';
+			$this->feed_options['consumer_key']    = '';
+			$this->feed_options['consumer_secret'] = '';
 		}
 	}
 
@@ -1107,7 +1107,7 @@ private function reduceTweetSetData( $tweet_set, $limit = true ) {
 			$this->error_report->process_error( 'too_many_requests' );
 	        $this->tweet_set = array();
         }
-        
+
         if (isset($this->tweet_set['errors'][0])) {
             if (empty($this->api_obj)) {
                 $this->api_obj = new \stdClass();
@@ -1529,7 +1529,8 @@ protected function removeStringFromText( $string, $text) {
      * returns a JSON string to be used in the data attribute that contains the shortcode data
      */
     public function getShortCodeJSON() {
-        return htmlentities(json_encode($this->raw_shortcode_atts));
+        $json = json_encode($this->raw_shortcode_atts);
+        return $json !== false ? htmlentities($json) : '';
     }
 
     /**

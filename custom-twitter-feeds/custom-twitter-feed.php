@@ -5,7 +5,7 @@ use TwitterFeed\Builder\CTF_Feed_Builder;
 Plugin Name: Custom Twitter Feeds
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.3.1
+Version: 2.5.4
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -31,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.3.1' );
+	define( 'CTF_VERSION', '2.5.4' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -104,12 +104,12 @@ if ( ! defined( 'CTF_PLUGIN_BASENAME' ) ) {
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if ( version_compare( phpversion(), '5.6', '<' ) ) {
+if ( version_compare( phpversion(), '7.4', '<' ) ) {
 	if( !function_exists( 'ctf_check_php_notice' ) ){
 		function ctf_check_php_notice(){ ?>
 			<div class="notice notice-error">
 				<div>
-					<p><strong><?php echo esc_html__('Important:','custom-twitter-feeds') ?> </strong><?php echo esc_html__('Your website is using an outdated version of PHP. The Custom Twitter Feeds plugin requires PHP version 5.6 or higher and so has been temporarily deactivated.','custom-twitter-feeds') ?></p>
+					<p><strong><?php echo esc_html__('Important:','custom-twitter-feeds') ?> </strong><?php echo esc_html__('Your website is using an outdated version of PHP. The Custom Twitter Feeds plugin requires PHP version 7.4 or higher and so has been temporarily deactivated.','custom-twitter-feeds') ?></p>
 
 					<p>
 						<?php
@@ -117,7 +117,7 @@ if ( version_compare( phpversion(), '5.6', '<' ) ) {
 
 						echo __('you can either manually reinstall the previous version of the plugin ','custom-twitter-feeds' );
 
-						echo esc_html__('or contact your host to request that they upgrade your PHP version to 5.6 or higher.','custom-twitter-feeds');
+						echo esc_html__('or contact your host to request that they upgrade your PHP version to 7.4 or higher.','custom-twitter-feeds');
 						?>
 					</p>
 				</div>
@@ -144,6 +144,19 @@ function ctf_plugin_init() {
 
 	require 			trailingslashit( CTF_PLUGIN_DIR ) . 'vendor/autoload.php';
 	include_once 		trailingslashit( CTF_PLUGIN_DIR ) . '/inc/ctf-functions.php';
+
+	// Initialize the deactivation feedback survey.
+	if ( class_exists( 'Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Feedback\FeedbackManager' ) ) {
+		Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Feedback\FeedbackManager::init(
+			[
+				'plugin_slug'    => 'custom-twitter-feeds',
+				'plugin_name'    => 'Smash Balloon Custom Twitter Feeds',
+				'plugin_version' => CTF_VERSION,
+				'plugin_file'    => CTF_PLUGIN_DIR . 'custom-twitter-feed.php',
+				'support_url'    => 'https://smashballoon.com/support/',
+			]
+		);
+	}
 
 	if ( is_admin() ) {
 		if ( version_compare( PHP_VERSION,  '5.3.0' ) >= 0

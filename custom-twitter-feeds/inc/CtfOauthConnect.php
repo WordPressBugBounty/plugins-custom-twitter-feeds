@@ -55,6 +55,31 @@ class CtfOauthConnect
     public $json;
 
     /**
+     * @var string
+     */
+    protected $consumer_key;
+
+    /**
+     * @var string
+     */
+    protected $consumer_secret;
+
+    /**
+     * @var string
+     */
+    protected $access_token;
+
+    /**
+     * @var string
+     */
+    protected $access_token_secret;
+
+    /**
+     * @var string
+     */
+    protected $feed_type;
+
+    /**
      * @param array $request_settings   all necessary tokens for OAuth connection
      * @param $feed_type string         type of Twitter feed
      */

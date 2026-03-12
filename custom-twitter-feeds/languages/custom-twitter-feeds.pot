@@ -71,7 +71,7 @@ msgid "Important:"
 msgstr ""
 
 #: custom-twitter-feed.php:110
-msgid "Your website is using an outdated version of PHP. The Custom Twitter Feeds plugin requires PHP version 5.6 or higher and so has been temporarily deactivated."
+msgid "Your website is using an outdated version of PHP. The Custom Twitter Feeds plugin requires PHP version 7.4 or higher and so has been temporarily deactivated."
 msgstr ""
 
 #: custom-twitter-feed.php:114
@@ -83,7 +83,7 @@ msgid "you can either manually reinstall the previous version of the plugin "
 msgstr ""
 
 #: custom-twitter-feed.php:118
-msgid "or contact your host to request that they upgrade your PHP version to 5.6 or higher."
+msgid "or contact your host to request that they upgrade your PHP version to 7.4 or higher."
 msgstr ""
 
 #: custom-twitter-feed.php:402

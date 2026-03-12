@@ -454,16 +454,28 @@ class CTF_Support {
 	 */
 	public static function get_api_info() {
 		$options = get_option( 'ctf_options' );
-		$consumer_key = ! empty( $options['consumer_key'] ) && ! empty( $options['have_own_tokens'] ) ? $options['consumer_key'] : 'FPYSYWIdyUIQ76Yz5hdYo5r7y';
-		$consumer_secret = ! empty( $options['consumer_secret'] ) && ! empty( $options['have_own_tokens'] ) ? $options['consumer_secret'] : 'GqPj9BPgJXjRKIGXCULJljocGPC62wN2eeMSnmZpVelWreFk9z';
-		$request_settings = array(
-			'consumer_key' => $consumer_key,
-			'consumer_secret' => $consumer_secret,
-			'access_token' => $options['access_token'],
-			'access_token_secret' => $options['access_token_secret']
-		);
+
+		$access_token = isset( $options['access_token'] ) ? $options['access_token'] : '';
+		$access_token_secret = isset( $options['access_token_secret'] ) ? $options['access_token_secret'] : '';
+
 		$output = '';
-		if ( isset( $options['request_method'] ) ) {
+		if (isset($options['request_method'])
+			&& ! empty($access_token)
+			&&  !empty($options['consumer_key'])
+			&&  !empty($options['consumer_secret'])&&
+			!empty($options['have_own_tokens'])
+        ) {
+
+			$consumer_key = $options['consumer_key'];
+			$consumer_secret = $options['consumer_secret'];
+
+			$request_settings = array(
+				'consumer_key' => $consumer_key,
+				'consumer_secret' => $consumer_secret,
+				'access_token' => $access_token,
+				'access_token_secret' => $access_token_secret
+			);
+
 			$request_method = isset( $options['request_method'] ) ? $options['request_method'] : 'auto';
 
 			$twitter_api = new \TwitterFeed\V2\CtfOauthConnect( $request_settings, 'usertimeline' );

@@ -4,7 +4,7 @@
 
 $loader = (static function () {
     // Backup the autoloaded Composer files
-    $existingComposerAutoloadFiles = $GLOBALS['__composer_autoload_files'] ?? [];
+    $existingComposerAutoloadFiles = isset($GLOBALS['__composer_autoload_files']) ? $GLOBALS['__composer_autoload_files'] : [];
 
     $loader = require_once __DIR__.'/autoload.php';
     // Ensure InstalledVersions is available
@@ -29,6 +29,11 @@ if (!function_exists('humbug_phpscoper_expose_class')) {
         }
     }
 }
-humbug_phpscoper_expose_class('ComposerAutoloaderInitc2c797528e8101772a14db21f8f0336d', 'Smashballoon\TwitterFeed\Vendor\ComposerAutoloaderInitc2c797528e8101772a14db21f8f0336d');
+humbug_phpscoper_expose_class('ComposerAutoloaderInitb7d650eaa15324e2491f1118874d6494', 'Smashballoon\TwitterFeed\Vendor\ComposerAutoloaderInitb7d650eaa15324e2491f1118874d6494');
+
+// Function aliases. For more information see:
+// https://github.com/humbug/php-scoper/blob/master/docs/further-reading.md#function-aliases
+if (!function_exists('do_action')) { function do_action() { return \Smashballoon\TwitterFeed\Vendor\do_action(...func_get_args()); } }
+if (!function_exists('wp_get_environment_type')) { function wp_get_environment_type() { return \Smashballoon\TwitterFeed\Vendor\wp_get_environment_type(...func_get_args()); } }
 
 return $loader;

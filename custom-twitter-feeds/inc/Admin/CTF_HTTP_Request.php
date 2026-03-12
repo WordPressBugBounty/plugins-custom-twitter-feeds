@@ -109,8 +109,8 @@ class CTF_HTTP_Request {
 	 */
 	public static function get_request_settings(){
 		$options = get_option( 'ctf_options' );
-        $consumer_key = ! empty( $options['consumer_key'] ) && $options['have_own_tokens'] ? $options['consumer_key'] : 'FPYSYWIdyUIQ76Yz5hdYo5r7y';
-        $consumer_secret = ! empty( $options['consumer_secret'] ) && $options['have_own_tokens'] ? $options['consumer_secret'] : 'GqPj9BPgJXjRKIGXCULJljocGPC62wN2eeMSnmZpVelWreFk9z';
+        $consumer_key = ! empty( $options['consumer_key'] ) && $options['have_own_tokens'] ? $options['consumer_key'] : '';
+        $consumer_secret = ! empty( $options['consumer_secret'] ) && $options['have_own_tokens'] ? $options['consumer_secret'] : '';
         $request_settings = array(
             'consumer_key' => $consumer_key,
             'consumer_secret' => $consumer_secret,

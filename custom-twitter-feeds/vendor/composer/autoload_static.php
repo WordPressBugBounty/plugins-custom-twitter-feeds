@@ -4,19 +4,57 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc2c797528e8101772a14db21f8f0336d
+class ComposerStaticInitb7d650eaa15324e2491f1118874d6494
 {
+    public static $files = array (
+        'sb_ctf_b1eb330aa001ae4915f07005b4e993c2' => __DIR__ . '/..' . '/smashballoon/framework/Utilities/functions.php',
+        'sb_ctf_a5f44a166aafa87e1c96130802135926' => __DIR__ . '/..' . '/smashballoon/framework/Packages/php-di/src/functions.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'T' => 
+        'T' =>
         array (
             'TwitterFeed\\' => 12,
+        ),
+        'S' =>
+        array (
+            'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Framework\\' => 55,
+            'Smashballoon\\TwitterFeed\\Vendor\\Psr\\Container\\' => 46,
+            'Smashballoon\\TwitterFeed\\Vendor\\PhpDocReader\\' => 45,
+            'Smashballoon\\TwitterFeed\\Vendor\\Laravel\\SerializableClosure\\' => 60,
+            'Smashballoon\\TwitterFeed\\Vendor\\Invoker\\' => 40,
+            'Smashballoon\\TwitterFeed\\Vendor\\DI\\' => 35,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'TwitterFeed\\' => 
+        'TwitterFeed\\' =>
         array (
             0 => __DIR__ . '/../..' . '/inc',
+        ),
+        'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Framework\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/smashballoon/framework',
+        ),
+        'Smashballoon\\TwitterFeed\\Vendor\\Psr\\Container\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Smashballoon\\TwitterFeed\\Vendor\\PhpDocReader\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader',
+        ),
+        'Smashballoon\\TwitterFeed\\Vendor\\Laravel\\SerializableClosure\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
+        ),
+        'Smashballoon\\TwitterFeed\\Vendor\\Invoker\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
+        ),
+        'Smashballoon\\TwitterFeed\\Vendor\\DI\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/smashballoon/framework/Packages/php-di/src',
         ),
     );
 
@@ -27,9 +65,9 @@ class ComposerStaticInitc2c797528e8101772a14db21f8f0336d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc2c797528e8101772a14db21f8f0336d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc2c797528e8101772a14db21f8f0336d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc2c797528e8101772a14db21f8f0336d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb7d650eaa15324e2491f1118874d6494::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb7d650eaa15324e2491f1118874d6494::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb7d650eaa15324e2491f1118874d6494::$classMap;
 
         }, null, ClassLoader::class);
     }
