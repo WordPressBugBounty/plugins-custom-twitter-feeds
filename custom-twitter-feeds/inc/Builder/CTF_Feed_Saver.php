@@ -328,6 +328,12 @@ class CTF_Feed_Saver {
 			$return['feed_name'] = $settings_db_data[0]['feed_name'];
 		}
 		$return = wp_parse_args( $return, CTF_Feed_Saver::settings_defaults() );
+
+		// Ensure dateformat is always a string for proper select matching in the customizer.
+		if ( isset( $return['dateformat'] ) ) {
+			$return['dateformat'] = (string) $return['dateformat'];
+		}
+
 		return $return;
 	}
 

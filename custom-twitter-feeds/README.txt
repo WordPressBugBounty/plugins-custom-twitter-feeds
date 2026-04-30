@@ -5,7 +5,7 @@ Support Website: https://smashballoon/custom-twitter-feeds/
 Tags: Twitter, Twitter feed, X feed, Twitter widget, Custom Twitter Feed
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 2.5.4
+Stable tag: 2.5.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -233,6 +233,9 @@ If you're still having trouble displaying your Tweets after trying the common is
 7. To display the Twitter feed just copy and paste the shortcode into a WordPress widget or page
 
 == Changelog ==
+= 2.5.5 =
+* Fix: Plugin hardening.
+
 = 2.5.4 =
 * Tweak: Added optional deactivation feedback survey to help us improve the plugin.
 * Fix - Additional plugin hardening.

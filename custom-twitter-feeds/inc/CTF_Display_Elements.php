@@ -502,7 +502,7 @@ class CTF_Display_Elements {
                 <a class="ctf-tweet-text-link" href="<?php echo esc_url( 'https://twitter.com/' . $author_screen_name . '/status/' .$post_id ) ?>" target = "_blank" rel = "noopener noreferrer">
             <?php } ?>
                 <p class="ctf-tweet-text">
-                    <?php echo nl2br( $post_text ) ?>
+                    <?php echo wp_kses_post( nl2br( $post_text ) ) ?>
                     <?php
                         if(!$feed_options['is_legacy'] || ($feed_options['is_legacy'] && ctf_show( 'placeholder', $feed_options ))){
                             echo $post_media_text;
@@ -518,7 +518,7 @@ class CTF_Display_Elements {
             <a class="ctf-tweet-text-link" <?php echo $text_and_link_attr; ?> href="<?php echo esc_url( 'https://twitter.com/' . $author_screen_name . '/status/' .$post_id ) ?>" target = "_blank" rel = "noopener noreferrer">
                 <p class="ctf-tweet-text" <?php echo $post_text_attr; ?>></p>
             </a>
-            <p class="ctf-tweet-text" <?php echo $text_no_link_attr; ?> <?php echo $post_text_attr; ?>><?php echo nl2br( $post_text ) ?></p>
+            <p class="ctf-tweet-text" <?php echo $text_no_link_attr; ?> <?php echo $post_text_attr; ?>><?php echo wp_kses_post( nl2br( $post_text ) ) ?></p>
             <?php
                 if(!$feed_options['is_legacy'] || ($feed_options['is_legacy'] && ctf_show( 'placeholder', $feed_options ))){
                     echo $post_media_text;

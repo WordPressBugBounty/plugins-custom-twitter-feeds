@@ -5,7 +5,7 @@ use TwitterFeed\Builder\CTF_Feed_Builder;
 Plugin Name: Custom Twitter Feeds
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.5.4
+Version: 2.5.5
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -31,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.5.4' );
+	define( 'CTF_VERSION', '2.5.5' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -631,7 +631,7 @@ function ctf_get_formatted_date( $raw_date, $feed_options, $utc_offset ) {
 				$date_str = date_i18n( 'd.m.y', $tz_offset_timestamp );
 				break;
 			case '19':
-				date_i18n( 'd.m.y - G:i', $tz_offset_timestamp );
+				$date_str = date_i18n( 'd.m.y - G:i', $tz_offset_timestamp );
 				break;
 			case '13':
 				$date_str = date_i18n( 'd/m/y', $tz_offset_timestamp );
@@ -648,7 +648,7 @@ function ctf_get_formatted_date( $raw_date, $feed_options, $utc_offset ) {
 			case '17':
 				$date_str = date_i18n( 'l jS F Y, G:i', $tz_offset_timestamp );
 				break;
-			case '18':
+			case '20':
 				$date_str = date_i18n( 'Y-m-d', $tz_offset_timestamp );
 				break;
 			default:

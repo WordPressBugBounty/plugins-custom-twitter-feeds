@@ -135,7 +135,7 @@ class CTF_Builder_Customizer_Tab{
 			'15'		=> date('jS F Y, G:i', $original),
 			'16'		=> date('d M Y, G:i', $original),
 			'17'		=> date('l jS F Y, G:i', $original),
-			'18'		=> date('Y-m-d', $original),
+			'20'		=> date('Y-m-d', $original),
 			'custom'	=> __('Custom','custom-twitter-feeds')
 		];
 	}

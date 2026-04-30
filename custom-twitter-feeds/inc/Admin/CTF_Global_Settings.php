@@ -48,7 +48,7 @@ class CTF_Global_Settings {
 		}
 
 		add_action('admin_menu', [$this, 'register_menu']);
-		add_filter( 'admin_footer_text', [$this, 'remove_admin_footer_text'] );
+		add_action('in_admin_header', [$this, 'maybe_remove_admin_footer']);
 
 		add_action( 'wp_ajax_ctf_save_settings', [$this, 'ctf_save_settings'] );
 		add_action( 'wp_ajax_ctf_activate_license', [$this, 'ctf_activate_license'] );
@@ -687,14 +687,27 @@ class CTF_Global_Settings {
 	}
 
 	/**
-	 * Remove admin footer message
+	 * Conditionally remove admin footer on plugin pages only.
 	 *
-	 * @since 2.0
-	 *
-	 * @return void
+	 * @since 2.6
 	 */
+	public function maybe_remove_admin_footer() {
+		static $plugin_pages = array(
+			'custom-twitter-feeds',
+			'ctf-feed-builder',
+			'ctf-settings',
+			'ctf-about-us',
+			'ctf-support',
+		);
+		$current_page = isset($_GET['page']) ? sanitize_key($_GET['page']) : '';
+		if (in_array($current_page, $plugin_pages, true)) {
+			add_filter('admin_footer_text', [$this, 'remove_admin_footer_text']);
+			add_filter('update_footer', [$this, 'remove_admin_footer_text'], 11);
+		}
+	}
+
 	public function remove_admin_footer_text() {
-		return;
+		return '';
 	}
 
 	/**
@@ -703,8 +716,6 @@ class CTF_Global_Settings {
 	 * @since 2.0
 	 */
 	function register_menu() {
-		// remove admin page update footer
-		add_filter( 'update_footer', [$this, 'remove_admin_footer_text'] );
 
 		$cap = ctf_get_manage_options_cap();
 

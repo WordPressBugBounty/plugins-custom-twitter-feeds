@@ -2955,7 +2955,8 @@ ctfBuilder = new Vue({
 					'16' : 'd M Y, G:i',
 					'17' : 'l jS F Y, G:i',
 					'18' : 'm.d.y - G:i',
-					'19' : 'd.m.y - G:i'
+					'19' : 'd.m.y - G:i',
+					'20' : 'Y-m-d'
 				};
 				if(formatsChoices.hasOwnProperty(dateFortmat)){
 					printDate = date_i18n( formatsChoices[dateFortmat], newTime );
