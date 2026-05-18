@@ -25,6 +25,7 @@
     }));
 
     registerBlockType('ctf/ctf-feed-block', {
+        apiVersion: 3,
         title: 'Twitter Feed',
         icon: ctfIcon,
         category: 'widgets',

@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					The error response from the Twitter API is the following:<br />
 					<code>Error number: <?php echo $this->api_obj->api_error_no  ?> <br />
 					Message: <?php echo $this->api_obj->api_error_message ?> </code>
-					<a href="https://smashballoon.com/custom-twitter-feeds/docs/errors/?utm_campaign=twitter-free&utm_source=frontend&utm_medium=errormessage" target="_blank" rel="noopener noreferrer">Click here to troubleshoot</a></p>
+					<a href="https://smashballoon.com/doc/twitter-api-error-message-reference/?utm_campaign=twitter-free&utm_source=frontend&utm_medium=errormessage" target="_blank" rel="noopener noreferrer">Click here to troubleshoot</a></p>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>

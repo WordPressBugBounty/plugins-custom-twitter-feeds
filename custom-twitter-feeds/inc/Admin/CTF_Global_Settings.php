@@ -647,7 +647,7 @@ class CTF_Global_Settings {
 			$license_key = get_option('ctf_license_key');
 		}
 
-		$upgrade_url 	= sprintf('https://smashballoon.com/custom-twitter-feeds/pricing/?edd_license_key=%s&upgrade=true&utm_campaign=twitter-free&utm_source=settings&utm_medium=upgrade-license', $license_key);
+		$upgrade_url 	= sprintf('https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?edd_license_key=%s&upgrade=true&utm_campaign=twitter-free&utm_source=settings&utm_medium=upgrade-license', $license_key);
 		$renew_url 		= sprintf('https://smashballoon.com/checkout/?edd_license_key=%s&download_id=%s&utm_campaign=twitter-free&utm_source=settings&utm_medium=upgrade-license&utm_content=renew-license', $license_key, '');
 		$learn_more_url = 'https://smashballoon.com/doc/my-license-key-wont-activate/?utm_campaign=twitter-free&utm_source=settings&utm_medium=license&utm_content=learn-more';
 
@@ -813,8 +813,8 @@ class CTF_Global_Settings {
 			$has_license_error = true;
 		}
 
-		$upgrade_url			= sprintf('https://smashballoon.com/custom-twitter-feeds/pricing/?edd_license_key=%s&upgrade=true&utm_campaign=twitter-free&utm_source=settings&utm_medium=upgrade-license', $license_key);
-	    $footer_upgrade_url		= 'https://smashballoon.com/custom-twitter-feeds/demo?utm_campaign=twitter-free&utm_source=settings&utm_medium=footer-banner&utm_content=Try Demo';
+		$upgrade_url			= sprintf('https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?edd_license_key=%s&upgrade=true&utm_campaign=twitter-free&utm_source=settings&utm_medium=upgrade-license', $license_key);
+	    $footer_upgrade_url		= 'https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_campaign=twitter-free&utm_source=settings&utm_medium=footer-banner&utm_content=Try Demo';
 		$usage_tracking_url 	= 'https://smashballoon.com/custom-twitter-feeds/usage-tracking/?utm_campaign=twitter-free&utm_source=settings&utm_medium=footer-banner&utm_content=Usage';
 		$feed_issue_email_url 	= 'https://smashballoon.com/email-report-is-not-in-my-inbox/?twitter&utm_campaign=twitter-free&utm_source=settings&utm_medium=footer-banner&utm_content=Email Issue';
 	    if ( ! empty( $_GET['ctf_site_token'] )
@@ -884,7 +884,7 @@ class CTF_Global_Settings {
 				),
 				'manageAccount'	=> array(
 					'title'	=> __( 'Twitter Integration', 'custom-twitter-feeds' ),
-					'description'	=> sprintf(__( 'Your feeds are automatically updated once per week. <br />Read more %shere%s about Twitter latest changes and how they affect our product.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes-free-version/?twitter" target="_blank">', '</a>' ),
+					'description'	=> sprintf(__( 'Your feeds are automatically updated once per week. <br />Read more %shere%s about Twitter latest changes and how they affect our product.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes-free-version/?twitter&utm_campaign=twitter-free&utm_source=settings&utm_medium=docs" target="_blank">', '</a>' ),
 					'button'	=> __( 'Change', 'custom-twitter-feeds' ),
 					'buttonConnect'	=> __( 'Connect new Account', 'custom-twitter-feeds' ),
 					'buttonConnectOwnApp'	=> __( 'Connect your Own App (V2)', 'custom-twitter-feeds' ),
@@ -920,7 +920,7 @@ class CTF_Global_Settings {
 			'feedsTab'			=> array(
 				'localizationBox' => array(
 					'title'	=> __( 'Localization', 'custom-twitter-feeds' ),
-					'tooltip' => '<p>This controls the language of any predefined text strings provided by Twitter. For example, the descriptive text that accompanies some timeline posts (eg: Smash Balloon created an event) and the text in the \'Like Box\' widget. To find out how to translate the other text in the plugin see <a href="https://smashballoon.com/ctf-how-does-the-plugin-handle-text-and-language-translation/" target="_blank" rel="nofollow noopener">this FAQ</a>.</p>'
+					'tooltip' => '<p>This controls the language of any predefined text strings provided by Twitter. For example, the descriptive text that accompanies some timeline posts (eg: Smash Balloon created an event) and the text in the \'Like Box\' widget. To find out how to translate the other text in the plugin see <a href="https://smashballoon.com/ctf-how-does-the-plugin-handle-text-and-language-translation/?utm_campaign=twitter-free&utm_source=settings&utm_medium=docs" target="_blank" rel="nofollow noopener">this FAQ</a>.</p>'
 				),
 				'timezoneBox' => array(
 					'title'	=> __( 'Timezone', 'custom-twitter-feeds' )
@@ -1045,7 +1045,7 @@ class CTF_Global_Settings {
 				),
 				'templatesBox' => array(
 					'title' => __( 'Custom Templates', 'custom-twitter-feeds' ),
-					'helpText' => sprintf( __( 'The default HTML for the feed can be replaced with custom templates added to your theme\'s folder. Enable this setting to use these templates. See %sthis guide%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/twitter-custom-templates/?twitter" target="_blank">', '</a>' ),
+					'helpText' => sprintf( __( 'The default HTML for the feed can be replaced with custom templates added to your theme\'s folder. Enable this setting to use these templates. See %sthis guide%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/twitter-custom-templates/?twitter&utm_campaign=twitter-free&utm_source=settings&utm_medium=docs" target="_blank">', '</a>' ),
 				),
 				'creditbox' => array(
 					'title' => __( 'Show Credit Link', 'custom-twitter-feeds' ),
@@ -1208,7 +1208,7 @@ class CTF_Global_Settings {
 		return array(
 			'manageLicense' => 'https://smashballoon.com/account/downloads/?utm_campaign=twitter-free&utm_source=settings&utm_medium=manage-license',
 			'popup' => array(
-				'allAccessBundle' => 'https://smashballoon.com/pricing/twitter-feed/?utm_campaign=twitter-free&utm_source=balloon&utm_medium=upgrade-button',
+				'allAccessBundle' => 'https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_campaign=twitter-free&utm_source=balloon&utm_medium=upgrade-button',
 				'fbProfile' => 'https://www.facebook.com/SmashBalloon/',
 				'twitterProfile' => 'https://twitter.com/smashballoon',
 			),
@@ -1377,7 +1377,7 @@ class CTF_Global_Settings {
 	 * @return string $output
 	 */
 	public function get_gdpr_auto_info() {
-		$gdpr_doc_url 			= 'https://smashballoon.com/doc/custom-twitter-feeds-gdpr-compliance/?twitter';
+		$gdpr_doc_url 			= 'https://smashballoon.com/doc/custom-twitter-feeds-gdpr-compliance/?twitter&utm_campaign=twitter-free&utm_source=settings&utm_medium=docs';
 		$output = '';
 		$active_gdpr_plugin = CTF_GDPR_Integrations::gdpr_plugins_active();
 		if ( $active_gdpr_plugin ) {

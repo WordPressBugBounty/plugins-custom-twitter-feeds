@@ -4,8 +4,8 @@ Contributors: smashballoon, craig-at-smash-balloon, am, smub
 Support Website: https://smashballoon/custom-twitter-feeds/
 Tags: Twitter, Twitter feed, X feed, Twitter widget, Custom Twitter Feed
 Requires at least: 5.3
-Tested up to: 6.9
-Stable tag: 2.5.5
+Tested up to: 7.0
+Stable tag: 2.6.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -233,6 +233,10 @@ If you're still having trouble displaying your Tweets after trying the common is
 7. To display the Twitter feed just copy and paste the shortcode into a WordPress widget or page
 
 == Changelog ==
+= 2.6.0 =
+* New: Added a modern Gutenberg block and Elementor widget for the Twitter feed. Existing feeds using the legacy block continue to render without reconfiguration.
+* Tweak: Compatibility with WP 7.
+
 = 2.5.5 =
 * Fix: Plugin hardening.
 
@@ -368,7 +372,7 @@ Fix: Fixed a PHP error occurring in sites using PHP 7.4 or lower.
 * Fix: Removed debugging code causing issue when saving settings on the "Customize" tab.
 
 = 1.5.1 =
-* New: To help us improve the plugin we have added usage tracking so that we can understand what features and settings are being used, and which features matter to you the most. The plugin will send a report in the background once per week with your plugin settings and basic information about your website environment. No personal or sensitive data is collected (such as email addresses, Twitter account information, license keys, etc). You can opt-out by simply disabling the setting at: Twitter Feed > Customize > Misc > Enable Usage Tracking. See [here](https://smashballoon.com/custom-twitter-feeds/docs/usage-tracking/) for more information.
+* New: To help us improve the plugin we have added usage tracking so that we can understand what features and settings are being used, and which features matter to you the most. The plugin will send a report in the background once per week with your plugin settings and basic information about your website environment. No personal or sensitive data is collected (such as email addresses, Twitter account information, license keys, etc). You can opt-out by simply disabling the setting at: Twitter Feed > Customize > Misc > Enable Usage Tracking. See [here](https://smashballoon.com/custom-twitter-feeds/docs/usage-tracking/?utm_campaign=twitter-free&utm_source=readme&utm_medium=docs) for more information.
 * Tweak: When a feed is from a Twitter account that has a lot of reply tweets, the plugin will collect more tweets initially for better performance.
 * Tweak: Hashtag feeds have retweets filtered out by default for improved feed performance.
 * Fix: Several strings updated to be translatable.

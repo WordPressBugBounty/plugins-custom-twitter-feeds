@@ -2579,7 +2579,7 @@ ctfBuilder = new Vue({
 					self.updateFeedTypeAndSourcesCustomizer();
 				break;
                 case 'createMoreFeeds' :
-                    window.open('https://smashballoon.com/pricing/twitter-feed/?utm_source=twitter-free&utm_medium=settings-builder&utm_campaign=multiple-feeds&utm_content=AddNew')
+                    window.open('https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_campaign=twitter-free&utm_source=settings-builder&utm_medium=multiple-feeds&utm_content=AddNew')
                     break;
 			}
 		},

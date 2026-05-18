@@ -16,5 +16,5 @@ $loadmore_attr = CTF_Display_Elements::get_element_attribute( 'loadmore', $feed_
 <?php endif; ?>
 
 <?php if ($options['creditctf']):  ?>
-	<div class="ctf-credit-link"><a href="https://smashballoon.com/custom-twitter-feeds" target="_blank" rel="noopener noreferrer"><?php echo ctf_get_fa_el( 'fa-twitter' ) ?>Custom Twitter Feeds Plugin</a></div>
+	<div class="ctf-credit-link"><a href="https://smashballoon.com/custom-twitter-feeds/?utm_campaign=twitter-free&utm_source=frontend&utm_medium=credit" target="_blank" rel="noopener noreferrer"><?php echo ctf_get_fa_el( 'fa-twitter' ) ?>Custom Twitter Feeds Plugin</a></div>
 <?php endif; ?>

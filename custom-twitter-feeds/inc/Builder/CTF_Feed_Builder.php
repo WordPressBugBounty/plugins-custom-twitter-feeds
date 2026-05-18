@@ -158,7 +158,7 @@ class CTF_Feed_Builder {
 
 				];
 
-				$upgrade_url = 'https://smashballoon.com/custom-twitter-feeds/demo?utm_campaign=twitter-free&utm_source=lite-upgrade-bar';
+				$upgrade_url = 'https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_campaign=twitter-free&utm_source=lite-upgrade-bar&utm_medium=upgrade-link';
 
 		        $ctf_builder = array(
 					'ajax_handler'		=> 	admin_url( 'admin-ajax.php' ),
@@ -969,7 +969,7 @@ class CTF_Feed_Builder {
 			'advanced' => __( 'Advanced', 'custom-twitter-feeds' ),
 			'error' => __( 'Error:', 'custom-twitter-feeds' ),
 			'errorNotice' => __( 'There was an error when trying to connect to Instagram.', 'custom-twitter-feeds' ),
-			'errorDirections' => '<a href="https://smashballoon.com/custom-twitter-feeds/docs/errors/" target="_blank" rel="nofollow noopener">' . __( 'Directions on How to Resolve This Issue', 'custom-twitter-feeds' )  . '</a>',
+			'errorDirections' => '<a href="https://smashballoon.com/doc/twitter-api-error-message-reference/?utm_campaign=twitter-free&utm_source=feed-builder&utm_medium=docs" target="_blank" rel="nofollow noopener">' . __( 'Directions on How to Resolve This Issue', 'custom-twitter-feeds' )  . '</a>',
 			'errorSource' => __( 'Source Invalid', 'custom-twitter-feeds' ),
 			'invalid' => __( 'Invalid', 'custom-twitter-feeds' ),
 			'reconnect' => __( 'Reconnect', 'custom-twitter-feeds' ),
@@ -1085,7 +1085,7 @@ class CTF_Feed_Builder {
 			),
             'twitterApiLimit' => array(
 				'heading' =>  __( 'Some feed types are not available', 'custom-twitter-feeds' ),
-				'description' =>  sprintf( __( 'Due to Twitter API changes, we can no longer support Search, Home Timeline, Hashtag, Mentions and Lists feeds. To continue using them, you will have to connect your own Twitter app which Twitter charges $100/month for. You can learn more about it %shere%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/custom-twitter-feeds/" target="_blank" rel="nofollow noopener">', '</a>' ),
+				'description' =>  sprintf( __( 'Due to Twitter API changes, we can no longer support Search, Home Timeline, Hashtag, Mentions and Lists feeds. To continue using them, you will have to connect your own Twitter app which Twitter charges $100/month for. You can learn more about it %shere%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/custom-twitter-feeds/?utm_campaign=twitter-free&utm_source=feed-builder&utm_medium=docs" target="_blank" rel="nofollow noopener">', '</a>' ),
 			),
 			'disabledFeedTooltipNotice' =>  sprintf(
                 __( '%sThis feed is disabled%s
@@ -1397,7 +1397,7 @@ class CTF_Feed_Builder {
 			'upgrade' => [
 					'name' => __( 'Upgrade to Pro', 'custom-twitter-feeds' ),
 					'icon' => 'twitter',
-					'link' => 'https://smashballoon.com/twitter-feed/'
+					'link' => 'https://smashballoon.com/twitter-feed/?utm_campaign=twitter-free&utm_source=feed-builder&utm_medium=cross-sell'
 			],
 			'platforms' => [
 				[
@@ -1461,7 +1461,7 @@ class CTF_Feed_Builder {
 			'type' => $type,
 			'legacyFeeds' => array(
 				'heading' => __( 'Legacy Feed Settings', 'custom-twitter-feeds' ),
-				'description' => sprintf( __( 'These settings will impact %s legacy feeds on your site. You can learn more about what legacy feeds are and how they differ from new feeds %shere%s.', 'custom-twitter-feeds' ), '<span class="cff-fb-count-placeholder"></span>', '<a href="https://smashballoon.com/doc/facebook-legacy-feeds/" target="_blank" rel="nofollow noopener">', '</a>' ),
+				'description' => sprintf( __( 'These settings will impact %s legacy feeds on your site. You can learn more about what legacy feeds are and how they differ from new feeds %shere%s.', 'custom-twitter-feeds' ), '<span class="cff-fb-count-placeholder"></span>', '<a href="https://smashballoon.com/doc/facebook-legacy-feeds/?utm_campaign=twitter-free&utm_source=feed-builder&utm_medium=docs" target="_blank" rel="nofollow noopener">', '</a>' ),
 			),
 			'getStarted' => __( 'You can now create and customize feeds individually. Click "Add New" to get started.', 'custom-twitter-feeds' ),
 		);
@@ -1667,7 +1667,7 @@ class CTF_Feed_Builder {
 					'postDateDescription' => __( 'The date of the post', 'custom-twitter-feeds' ),
 					'format' => __( 'Format', 'custom-twitter-feeds' ),
 					'custom' => __( 'Custom', 'custom-twitter-feeds' ),
-					'learnMoreFormats' => '<a href="https://smashballoon.com/doc/date-formatting-reference/" target="_blank" rel="nofollow noopener">' . __( 'Learn more about custom formats', 'custom-twitter-feeds' ) . '</a>',
+					'learnMoreFormats' => '<a href="https://smashballoon.com/doc/date-formatting-reference/?utm_campaign=twitter-free&utm_source=customizer&utm_medium=docs" target="_blank" rel="nofollow noopener">' . __( 'Learn more about custom formats', 'custom-twitter-feeds' ) . '</a>',
 					'addTextBefore' => __( 'Add text before date', 'custom-twitter-feeds' ),
 					'addTextBeforeEG' => __( 'E.g. Posted', 'custom-twitter-feeds' ),
 					'addTextAfter' => __( 'Add text after date', 'custom-twitter-feeds' ),
@@ -1743,9 +1743,9 @@ class CTF_Feed_Builder {
 		$sourceCombineCTA = sprintf('https://smashballoon.com/social-wall/?edd_license_key=%s&upgrade=true&utm_campaign=twitter-free&utm_source=customizer&utm_medium=sources&utm_content=social-wall', $license_key);
 
 		return array(
-			'allAccessBundle' => 'https://smashballoon.com/pricing/twitter-feed/?utm_campaign=twitter-free&utm_source=balloon&utm_medium=upgrade-button',
+			'allAccessBundle' => 'https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_campaign=twitter-free&utm_source=balloon&utm_medium=upgrade-button',
 			'popup' => array(
-				'allAccessBundle' => 'https://smashballoon.com/pricing/twitter-feed/?utm_campaign=twitter-free&utm_source=balloon&utm_medium=upgrade-button',
+				'allAccessBundle' => 'https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_campaign=twitter-free&utm_source=balloon&utm_medium=upgrade-button',
 				'fbProfile' => 'https://www.facebook.com/SmashBalloon/',
 				'twitterProfile' => 'https://twitter.com/smashballoon',
 			),

@@ -126,7 +126,7 @@ class CTF_Tooltip_Wizard {
 			<div class="ctf-tlp-wizard-content">
 				<strong class="ctf-tooltip-wizard-head"><?php echo __('Add a Block','custom-twitter-feeds') ?></strong>
 				<p class="ctf-tooltip-wizard-txt"><?php echo __('Click the plus button, search for Custom Twitter Feed','custom-twitter-feeds'); ?>
-                    <br/><?php echo __('Feed, and click the block to embed it.','custom-twitter-feeds') ?> <a href="https://smashballoon.com/doc/wordpress-5-block-page-editor-gutenberg/?twitter" rel="noopener" target="_blank" rel="nofollow noopener"><?php echo __('Learn More','custom-twitter-feeds') ?></a></p>
+                    <br/><?php echo __('Feed, and click the block to embed it.','custom-twitter-feeds') ?> <a href="https://smashballoon.com/doc/wordpress-5-block-page-editor-gutenberg/?twitter&utm_campaign=twitter-free&utm_source=settings&utm_medium=docs" rel="noopener" target="_blank" rel="nofollow noopener"><?php echo __('Learn More','custom-twitter-feeds') ?></a></p>
 				<div class="ctf-tooltip-wizard-actions">
 					<button class="ctf-tlp-wizard-close"><?php echo __('Done','custom-twitter-feeds') ?></button>
 				</div>

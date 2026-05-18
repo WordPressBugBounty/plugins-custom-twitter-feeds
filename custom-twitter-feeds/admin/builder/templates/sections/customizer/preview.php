@@ -33,7 +33,7 @@
         <div class="ctf-preview-disabled-text ctf-disabled-feed-notice" v-html="(checkNotEmpty(customizerFeedData.settings.type) && customizerFeedData.settings.type.toLowerCase() === 'usertimeline') ? genericText.disabledFeedTooltipNotice : genericText.disabledFeedTypeTooltipNotice"></div>
         <div class="ctf-preview-disabled-actions">
             <button class="ctf-fb-btn ctf-btn-grey" @click.prevent.default="window.location = builderUrl"><?php echo __('Back to All Feeds', 'custom-twitter-feeds' ) ?></button>
-            <a class="ctf-fb-btn ctf-btn-blue" v-if="(checkNotEmpty(customizerFeedData.settings.type) && customizerFeedData.settings.type.toLowerCase() === 'usertimeline')" target="_blank" href="https://smashballoon.com/custom-twitter-feeds/"><?php echo __('Upgrade to Pro', 'custom-twitter-feeds' ) ?></a>
+            <a class="ctf-fb-btn ctf-btn-blue" v-if="(checkNotEmpty(customizerFeedData.settings.type) && customizerFeedData.settings.type.toLowerCase() === 'usertimeline')" target="_blank" href="https://smashballoon.com/custom-twitter-feeds/?utm_campaign=twitter-free&utm_source=customizer&utm_medium=upgrade-link"><?php echo __('Upgrade to Pro', 'custom-twitter-feeds' ) ?></a>
             <button class="ctf-fb-btn ctf-btn-red" v-if="(checkNotEmpty(customizerFeedData.settings.type) && customizerFeedData.settings.type.toLowerCase() !== 'usertimeline')" @click.prevent.default="feedActionDelete([customizerFeedData.feed_info.id], true)"><?php echo __('Delete Feed', 'custom-twitter-feeds' ) ?></button>
         </div>
     </div>

@@ -149,7 +149,7 @@ class CTF_Support {
             'nonce'             =>  wp_create_nonce( 'ctf-admin' ),
             'links'             => \TwitterFeed\Builder\CTF_Feed_Builder::get_links_with_utm(),
             'supportPageUrl'    => admin_url( 'admin.php?page=ctf-support' ),
-            'siteSearchUrl'     => 'https://smashballoon.com/search/',
+            'siteSearchUrl'     => 'https://smashballoon.com/search/?utm_campaign=twitter-free&utm_source=support&utm_medium=search',
             'system_info'       => $this->get_system_info(),
             'system_info_n'     => str_replace("</br>", "\n", $this->get_system_info()),
             'feeds'             => $feeds,
@@ -226,7 +226,7 @@ class CTF_Support {
                     ),
                     array(
                         'title' => __( 'How to Resolve Error Messages', 'custom-twitter-feeds' ),
-                        'link' => 'https://smashballoon.com/custom-twitter-feeds/docs/errors/?twitter&utm_campaign=twitter-free&utm_source=support&utm_medium=docs&utm_content=How to Resolve Error Messages'
+                        'link' => 'https://smashballoon.com/doc/twitter-api-error-message-reference/?twitter&utm_campaign=twitter-free&utm_source=support&utm_medium=docs&utm_content=How to Resolve Error Messages'
                     ),
                     array(
                         'title' => __( 'My Feed Stopped Updating', 'custom-twitter-feeds' ),
@@ -236,7 +236,7 @@ class CTF_Support {
                 'resources' => array(
                     array(
                         'title' => __( 'How to Create a Twitter Developer App', 'custom-twitter-feeds' ),
-                        'link' => 'https://smashballoon.com/custom-twitter-feeds/docs/create-twitter-app/?twitter&utm_campaign=twitter-free&utm_source=support&utm_medium=docs&utm_content=How to Create a Twitter Developer App'
+                        'link' => 'https://smashballoon.com/doc/create-your-own-twitter-app/?twitter&utm_campaign=twitter-free&utm_source=support&utm_medium=docs&utm_content=How to Create a Twitter Developer App'
                     ),
                     array(
                         'title' => __( 'Is the Content of My Feed Crawlable by Search Engines?', 'custom-twitter-feeds' ),
@@ -722,7 +722,7 @@ class CTF_Support {
      * @return string $url
      */
     public function get_support_url() {
-        $url = 'https://smashballoon.com/custom-twitter-feeds/support/';
+        $url = 'https://smashballoon.com/custom-twitter-feeds/support/?utm_campaign=twitter-free&utm_source=support&utm_medium=support';
         $license_type = ctf_is_pro_version() ? 'pro' : 'free';
 
         $args = array();

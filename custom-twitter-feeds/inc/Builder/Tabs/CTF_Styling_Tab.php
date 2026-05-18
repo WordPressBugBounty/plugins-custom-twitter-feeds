@@ -215,7 +215,7 @@ class CTF_Styling_Tab{
 			[
 				'type' 				=> 'heading',
 				'stacked'			=> 'true',
-				'heading' 			=> sprintf( __( '%sLearn more about custom formats %s', 'custom-twitter-feeds' ), '<a class="sb-customizer-ctrl-link" href="https://smashballoon.com/doc/date-formatting-reference/" target="_blank" rel="noopener">', '</a>' ),
+				'heading' 			=> sprintf( __( '%sLearn more about custom formats %s', 'custom-twitter-feeds' ), '<a class="sb-customizer-ctrl-link" href="https://smashballoon.com/doc/date-formatting-reference/?utm_campaign=twitter-free&utm_source=customizer&utm_medium=docs" target="_blank" rel="noopener">', '</a>' ),
 			],
 			[
 				'type' 				=> 'separator',

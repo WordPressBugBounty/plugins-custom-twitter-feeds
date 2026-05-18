@@ -55,7 +55,7 @@ class CtfAdmin
             __( 'Upgrade to Pro', 'custom-twitter-feeds' ),
             __( '<span class="ctf_get_pro">Upgrade to Pro</span>', 'custom-twitter-feeds' ),
             $cap,
-            'https://smashballoon.com/custom-twitter-feeds/demo/?utm_campaign=twitter-free&utm_source=menu-link&utm_medium=upgrade-link',
+            'https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_campaign=twitter-free&utm_source=menu-link&utm_medium=upgrade-link',
             ''
         );
 
@@ -112,7 +112,7 @@ class CtfAdmin
         <label for="ctf_have_own_tokens" class="ctf_checkbox"><?php _e( 'Or, manually enter my own Twitter app information' ); ?></label>
         <span class="ctf-tooltip-wrap">
             <a class="ctf-tooltip-link" href="JavaScript:void(0);"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-            <p class="ctf-tooltip ctf-more-info"><?php _e( 'Check this box if you would like to manually enter the information from your own <a href="https://smashballoon.com/custom-twitter-feeds/docs/create-twitter-app/?utm_campaign=twitter-free&utm_source=settings&utm_medium=createownapp" target="_blank">Twitter app</a>', 'custom-twitter-feeds' ); ?>.</p>
+            <p class="ctf-tooltip ctf-more-info"><?php _e( 'Check this box if you would like to manually enter the information from your own <a href="https://smashballoon.com/doc/create-your-own-twitter-app/?utm_campaign=twitter-free&utm_source=settings&utm_medium=createownapp" target="_blank">Twitter app</a>', 'custom-twitter-feeds' ); ?>.</p>
         </span>
         <?php
     }

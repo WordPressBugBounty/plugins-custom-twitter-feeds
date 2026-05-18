@@ -1749,7 +1749,7 @@ return $ctf_feed_html;
         }
 
         if ( $feed_options['creditctf'] ) {
-            $ctf_feed_html .= '<div class="ctf-credit-link"><a href="https://smashballoon.com/custom-twitter-feeds" target="_blank" rel="noopener noreferrer">' . ctf_get_fa_el( 'fa-twitter' ) . 'Custom Twitter Feeds Plugin</a></div>';
+            $ctf_feed_html .= '<div class="ctf-credit-link"><a href="https://smashballoon.com/custom-twitter-feeds/?utm_campaign=twitter-free&utm_source=frontend&utm_medium=credit" target="_blank" rel="noopener noreferrer">' . ctf_get_fa_el( 'fa-twitter' ) . 'Custom Twitter Feeds Plugin</a></div>';
         }
 
         $ctf_feed_html .= '</div>'; // closing div tag for #ctf
@@ -1928,7 +1928,7 @@ return $ctf_feed_html;
           if ($this->missing_credentials) {
             $error_html .= 'There is a problem with your access token, access token secret, consumer token, or consumer secret<br />';
         }
-          $error_html .= '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes-free-version/?utm_source=twitter-free&utm_medium=error-notice&utm_campaign=smash-twitter-update&utm_content=CustomTwitterFeedChanges" target="_blank" rel="noopener noreferrer">Custom Twitter Feed Changes</a></p>';
+          $error_html .= '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes-free-version/?utm_source=feed-error&utm_medium=error-notice&utm_campaign=twitter-free&utm_content=CustomTwitterFeedChanges" target="_blank" rel="noopener noreferrer">Custom Twitter Feed Changes</a></p>';
 
 		      $error_html .= '</div>';
 		  } else {

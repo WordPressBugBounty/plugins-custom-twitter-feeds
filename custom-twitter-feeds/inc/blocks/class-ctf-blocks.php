@@ -33,7 +33,8 @@ class CTF_Blocks {
 	 */
 	protected function hooks() {
 		add_action( 'init', array( $this, 'register_block' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), 25 );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_content_assets' ) );
 	}
 
 	/**
@@ -65,10 +66,26 @@ class CTF_Blocks {
 		register_block_type(
 			'ctf/ctf-feed-block',
 			array(
+				'api_version'     => 3,
 				'attributes'      => $attributes,
 				'render_callback' => array( $this, 'get_feed_html' ),
+				'supports'        => array( 'inserter' => false ),
 			)
 		);
+	}
+
+	/**
+	 * Enqueue feed frontend assets so the legacy block preview renders inside
+	 * the WP 6.7+ iframe block editor. Mirrors SB_Feed_Block::enqueue_block_content_assets().
+	 *
+	 * @since 2.6.0
+	 */
+	public function enqueue_block_content_assets() {
+		if ( ! is_admin() ) {
+			return;
+		}
+		ctf_scripts_and_styles( true );
+		wp_enqueue_style( 'ctf-blocks-styles' );
 	}
 
 	/**
@@ -77,9 +94,6 @@ class CTF_Blocks {
 	 * @since 1.7.1
 	 */
 	public function enqueue_block_editor_assets() {
-		ctf_scripts_and_styles( true );
-
-		wp_enqueue_style( 'ctf-blocks-styles' );
 		wp_enqueue_script(
 			'ctf-feed-block',
 			trailingslashit( CTF_PLUGIN_URL ) . 'js/ctf-blocks.js',

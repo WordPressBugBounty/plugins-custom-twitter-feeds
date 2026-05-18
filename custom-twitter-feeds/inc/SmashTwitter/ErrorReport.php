@@ -88,7 +88,7 @@ class ErrorReport {
 
 				$error_array = array(
 					'message' => 'HTTP request error - ' . $error_message,
-					'directions' => sprintf(  __( 'Troubleshoot using %sthis doc%s on our website.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/twitter-api-error-message-reference/?twitter&utm_source=twitter-free&utm_medium=error-notice&utm_campaign=smash-twitter&utm_content=ThisDoc" target="_blank" rel="noopener">','</a>' )
+					'directions' => sprintf(  __( 'Troubleshoot using %sthis doc%s on our website.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/twitter-api-error-message-reference/?twitter&utm_source=feed-error&utm_medium=error-notice&utm_campaign=twitter-free&utm_content=ThisDoc" target="_blank" rel="noopener">','</a>' )
 				);
 				$added = $this->maybe_add_critical_error( $error_array );
 
@@ -104,7 +104,7 @@ class ErrorReport {
 			if ( $error['code'] === 429 ) {
 				$error_array = array(
 					'message' => sprintf( __( 'It looks like you\'ve exceeded your daily feed update limit for this site as of %s. You will not see new tweets in your feed until the limit resets.', 'custom-twitter-feeds' ), date( 'Y-m-d H:i:s' ) ),
-					'directions' => __( 'This limit will automatically reset within the next week. No action required.', 'custom-twitter-feeds'   ) . ' ' . sprintf( __( 'For more information on limitations due to the Twitter API changes effective April 2023, %svisit this page%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes/?twitter&utm_source=twitter-free&utm_medium=error-notice&utm_campaign=smash-twitter&utm_content=ThisPage" target="_blank" rel="noopener">','</a>' )
+					'directions' => __( 'This limit will automatically reset within the next week. No action required.', 'custom-twitter-feeds'   ) . ' ' . sprintf( __( 'For more information on limitations due to the Twitter API changes effective April 2023, %svisit this page%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes/?twitter&utm_source=feed-error&utm_medium=error-notice&utm_campaign=twitter-free&utm_content=ThisPage" target="_blank" rel="noopener">','</a>' )
 				);
 				$added = $this->maybe_add_critical_error( $error_array );
 			} elseif ( $error['code'] === 401 ) {
@@ -127,7 +127,7 @@ class ErrorReport {
 				}
 				$error_array = array(
 					'message' => sprintf( __( 'Error %s: %s.', 'custom-twitter-feeds' ), $error['code'], $message ),
-					'directions' => sprintf(  __( 'Troubleshoot using %sthis doc%s on our website.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/twitter-api-error-message-reference/?twitter&utm_source=twitter-free&utm_medium=error-notice&utm_campaign=smash-twitter&utm_content=ThisDoc" target="_blank" rel="noopener">','</a>' )
+					'directions' => sprintf(  __( 'Troubleshoot using %sthis doc%s on our website.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/twitter-api-error-message-reference/?twitter&utm_source=feed-error&utm_medium=error-notice&utm_campaign=twitter-free&utm_content=ThisDoc" target="_blank" rel="noopener">','</a>' )
 				);
 				$added = $this->maybe_add_critical_error( $error_array );
 			}
@@ -152,7 +152,7 @@ class ErrorReport {
 			} elseif ( $error === 'no_tweets_found_cache' ) {
 				$error_array = array(
 					'message' => __( 'No tweets found for your selected feed sources.', 'custom-twitter-feeds' ),
-					'directions' => __( 'Make sure there are tweets available on Twitter that fit your settings and then clear your cache using the button found on the Settings page. It\'s also possible that you\'re encountering a limitation of our new system for updating feeds.', 'custom-twitter-feeds' ). ' ' . sprintf( __( 'For more information on limitations due to the Twitter API changes effective April 2023, %svisit this page%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes-free-version/?twitter&utm_source=twitter-free&utm_medium=error-notice&utm_campaign=smash-twitter&utm_content=ThisPage" target="_blank" rel="noopener">','</a>' )
+					'directions' => __( 'Make sure there are tweets available on Twitter that fit your settings and then clear your cache using the button found on the Settings page. It\'s also possible that you\'re encountering a limitation of our new system for updating feeds.', 'custom-twitter-feeds' ). ' ' . sprintf( __( 'For more information on limitations due to the Twitter API changes effective April 2023, %svisit this page%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/doc/smash-balloon-twitter-changes-free-version/?twitter&utm_source=feed-error&utm_medium=error-notice&utm_campaign=twitter-free&utm_content=ThisPage" target="_blank" rel="noopener">','</a>' )
 				);
 				$added = $this->maybe_add_critical_error( $error_array );
 			} elseif ( $error === 'too_many_requests' ) {

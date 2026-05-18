@@ -251,7 +251,7 @@ jQuery(document).ready(function($){
     }
 
     //Pro version notices
-    var ctfUpgradeNote = '<span class="ctf_note"> - <a href="https://smashballoon.com/custom-twitter-feeds/?utm_source=twitter-free&utm_source=settings&utm_medium=layout" target="_blank">Available in Pro version</a></span>';
+    var ctfUpgradeNote = '<span class="ctf_note"> - <a href="https://smashballoon.com/custom-twitter-feeds/?utm_campaign=twitter-free&utm_source=settings&utm_medium=layout" target="_blank">Available in Pro version</a></span>';
     $('.ctf_pro').each(function(){
         var $pro = $(this);
         if (!$pro.find('.ctf_layout_options_wrap').length) {

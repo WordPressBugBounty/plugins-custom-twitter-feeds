@@ -60,7 +60,7 @@ function ctf_admin_database_warning() {
 				<?php echo esc_html__( 'Heads up! It looks like you have over 500 Twitter feeds stored in your WordPress database. This is typically caused by a large number of hashtag feeds on your site, as the plugin permanently stores older Tweets to work around Twitter\'s 7 day hashtag feed limit. This many caches may lead to performance issues.', 'custom-twitter-feeds' ); ?>
 			</p>
 			<p>
-				<?php echo sprintf( __( 'For a solution, please follow the directions %shere%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/why-does-my-database-have-a-lot-of-twitter-feed-caches/" target="_blank" rel="noopener noreferrer">', '</a>' ); ?>
+				<?php echo sprintf( __( 'For a solution, please follow the directions %shere%s.', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/why-does-my-database-have-a-lot-of-twitter-feed-caches/?utm_campaign=twitter-free&utm_source=notices&utm_medium=docs" target="_blank" rel="noopener noreferrer">', '</a>' ); ?>
 			</p>
 		</div>
 		<?php
@@ -97,7 +97,7 @@ function ctf_usage_opt_in() {
         <p>
             <strong><?php echo __( 'Help us improve the Custom Twitter Feed plugin', 'custom-twitter-feeds' ); ?></strong><br>
 			<?php echo __( 'Understanding how you are using the plugin allows us to further improve it. Opt-in below to agree to send a weekly report of plugin usage data.', 'custom-twitter-feeds' ); ?>
-            <a target="_blank" rel="noopener noreferrer" href="https://smashballoon.com/custom-twitter-feeds/docs/usage-tracking/"><?php echo __( 'More information', 'custom-twitter-feeds' ); ?></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://smashballoon.com/doc/usage-tracking-in-the-x-twitter-feeds-plugin/?utm_campaign=twitter-free&utm_source=notices&utm_medium=docs"><?php echo __( 'More information', 'custom-twitter-feeds' ); ?></a>
         </p>
         <p>
             <a href="<?php echo admin_url('admin.php?page=custom-twitter-feeds&trackingdismiss=1') ?>" type="submit" class="button button-primary ctf-opt-in"><?php echo __( 'Yes, I\'d like to help', 'custom-twitter-feeds' ); ?></a>

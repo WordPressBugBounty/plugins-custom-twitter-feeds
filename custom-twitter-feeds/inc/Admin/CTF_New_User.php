@@ -333,7 +333,7 @@ class CTF_New_User extends CTF_Notifications {
 			// check if this is a review notice
 			if( $type == 'review' ) {
 				$review_consent = get_option( 'ctf_review_consent' );
-				$ctf_open_feedback_url = 'https://smashballoon.com/feedback/?plugin=twitter-free';
+				$ctf_open_feedback_url = 'https://smashballoon.com/feedback/?plugin=twitter-free&utm_campaign=twitter-free&utm_source=notifications&utm_medium=feedback';
 				// step #1 for the review notice
 				if ( ! $review_consent ) {
 					?>
