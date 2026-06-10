@@ -4,7 +4,6 @@ var extensions_data = {
     extentions_bundle: ctf_about.extentions_bundle,
     supportPageUrl: ctf_about.supportPageUrl,
     plugins: ctf_about.pluginsInfo,
-    stickyWidget: false,
     socialWallActivated: ctf_about.socialWallActivated,
     socialWallLinks: ctf_about.socialWallLinks,
     recommendedPlugins: ctf_about.recommendedPlugins,
@@ -132,15 +131,6 @@ var ctfAbout = new Vue({
             if ( this.btnStatus == 'loading' ) {
                 return this.icons.loaderSVG
             }
-        },
-
-        /**
-         * Toggle Sticky Widget view
-         *
-         * @since 2.0
-         */
-         toggleStickyWidget: function() {
-            this.stickyWidget = !this.stickyWidget;
         },
     }
 })

@@ -1,11 +1,11 @@
 === Custom Twitter Feeds - A Tweets Widget or X Feed Widget ===
 Author: Smash Balloon
 Contributors: smashballoon, craig-at-smash-balloon, am, smub
-Support Website: https://smashballoon/custom-twitter-feeds/
+Support Website: https://smashballoon.com/custom-twitter-feeds/
 Tags: Twitter, Twitter feed, X feed, Twitter widget, Custom Twitter Feed
 Requires at least: 5.3
 Tested up to: 7.0
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -233,6 +233,12 @@ If you're still having trouble displaying your Tweets after trying the common is
 7. To display the Twitter feed just copy and paste the shortcode into a WordPress widget or page
 
 == Changelog ==
+= 2.6.1 =
+* New: Added a Help widget to the feed builder for in-app access to documentation and support.
+* Tweak: Corrected typos and grammar in several admin UI strings.
+* Fix: Block editor preview interactions and block conflicts with other Smash Balloon plugins are now resolved.
+* Fix: The Elementor widget title is now translatable.
+
 = 2.6.0 =
 * New: Added a modern Gutenberg block and Elementor widget for the Twitter feed. Existing feeds using the legacy block continue to render without reconfiguration.
 * Tweak: Compatibility with WP 7.

@@ -331,7 +331,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -352,7 +352,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -373,7 +373,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -394,7 +394,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -437,7 +437,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -458,7 +458,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -480,7 +480,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -502,7 +502,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -524,7 +524,7 @@ class CTF_Feed_Builder {
 								'heading' => __( 'And get much more!', 'custom-twitter-feeds' ),
 								'content' => [
 									__( 'Display photos, videos & GIFs', 'custom-twitter-feeds' ),
-									__( 'Combine mulitple feeds into one', 'custom-twitter-feeds' ),
+									__( 'Combine multiple feeds into one', 'custom-twitter-feeds' ),
 									__( 'Unlimited feeds, 12 daily updates', 'custom-twitter-feeds' ),
 									__( 'Auto load tweets on scroll', 'custom-twitter-feeds' ),
 									__( 'Powerful Tweet filters', 'custom-twitter-feeds' ),
@@ -932,7 +932,7 @@ class CTF_Feed_Builder {
 			'delete' => __( 'Delete', 'custom-twitter-feeds' ),
 			'remove' => __( 'Remove', 'custom-twitter-feeds' ),
 			'removeSource' => __( 'Remove Source', 'custom-twitter-feeds' ),
-			'atLeastOneSource' => __( 'You need to have<br/>atleast one source', 'custom-twitter-feeds' ),
+			'atLeastOneSource' => __( 'You need to have<br/>at least one source', 'custom-twitter-feeds' ),
 			'shortcode' => __( 'Shortcode', 'custom-twitter-feeds' ),
 			'clickViewInstances' => __( 'Click to view Instances', 'custom-twitter-feeds' ),
 			'usedIn' => __( 'Used in', 'custom-twitter-feeds' ),
@@ -1707,14 +1707,14 @@ class CTF_Feed_Builder {
 				'postType' => __( 'Post Type', 'custom-twitter-feeds' ),
 				'boxed' => __( 'boxed', 'custom-twitter-feeds' ),
 				'regular' => __( 'Regular', 'custom-twitter-feeds' ),
-				'indvidualProperties' => __( 'Indvidual Properties', 'custom-twitter-feeds' ),
+				'indvidualProperties' => __( 'Individual Properties', 'custom-twitter-feeds' ),
 				'backgroundColor' => __( 'Background Color', 'custom-twitter-feeds' ),
 				'borderRadius' => __( 'Border Radius', 'custom-twitter-feeds' ),
 				'boxShadow' => __( 'Box Shadow', 'custom-twitter-feeds' ),
 			],
 			'shoppableFeedScreen' => [
 				'heading1' => __( 'Make your Instagram Feed Shoppable', 'custom-twitter-feeds' ),
-				'description1' => __( 'This feature links the post to the one specificed in your caption.<br/><br/>Don’t want to add links to the caption? You can add links manually to each post.<br/><br/>Enable it to get started.', 'custom-twitter-feeds' ),
+				'description1' => __( 'This feature links the post to the one specified in your caption.<br/><br/>Don’t want to add links to the caption? You can add links manually to each post.<br/><br/>Enable it to get started.', 'custom-twitter-feeds' ),
 				'heading2' => __( 'Tap “Add” or “Update” on an<br/>image to add/update it’s URL', 'custom-twitter-feeds' ),
 
 			]
@@ -2160,7 +2160,7 @@ class CTF_Feed_Builder {
 		    [
 			    'type' => 'lists',
 			    'title' => __( 'Lists', 'custom-twitter-feeds' ),
-			    'description'=> __( 'Curated Tweets from a speicific Twitter list', 'custom-twitter-feeds' ),
+			    'description'=> __( 'Curated Tweets from a specific Twitter list', 'custom-twitter-feeds' ),
 			    'icon'	=>  'listsIcon'
 		    ],
 			[

@@ -15,7 +15,6 @@ var settings_data = {
     ctfRebrand 		: ctf_settings.ctfRebrand,
     socialWallActivated: ctf_settings.socialWallActivated,
     socialWallLinks: ctf_settings.socialWallLinks,
-    stickyWidget: false,
     exportFeed: 'none',
     locales: ctf_settings.locales,
     timezones: ctf_settings.timezones,
@@ -828,15 +827,6 @@ var ctfSettings = new Vue({
             return `<i class="fa fa-times-circle"></i>`;
         }
     },
-
-        /**
-         * Toggle Sticky Widget view
-         *
-         * @since 2.0
-         */
-         toggleStickyWidget: function() {
-            this.stickyWidget = !this.stickyWidget;
-        },
 
         printUsedInText: function( usedInNumber ){
             if(usedInNumber == 0){

@@ -33,7 +33,7 @@ class CTF_Modern_Elementor_Widget extends SB_Elementor_Feed_Widget
 	 */
 	protected function get_widget_title() // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps
 	{
-		return 'Twitter Feed';
+		return __( 'Twitter Feed', 'custom-twitter-feeds' );
 	}
 
 	/**

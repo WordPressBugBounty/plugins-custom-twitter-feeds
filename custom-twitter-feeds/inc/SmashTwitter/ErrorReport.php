@@ -158,12 +158,12 @@ class ErrorReport {
 			} elseif ( $error === 'too_many_requests' ) {
 				$error_array = array(
 					'message' => __( 'Too many requests', 'custom-twitter-feeds' ),
-					'directions' => __( 'There were too many requests coming for the API within the certain periodof time.', 'custom-twitter-feeds' )
+					'directions' => __( 'There were too many requests coming for the API within a certain period of time.', 'custom-twitter-feeds' )
 				);
 				$added = $this->maybe_add_critical_error( $error_array );
 			} elseif ( $error === 'too_much_filtering' ) {
 				$error_array = array(
-					'message' => __( 'It looks there were no tweets found that fit your feed moderation settings.', 'custom-twitter-feeds' ),
+					'message' => __( 'It looks like there were no tweets found that fit your feed moderation settings.', 'custom-twitter-feeds' ),
 					'directions' => sprintf(  __( 'Try %sediting your feed settings%s to include more tweets or wait until new tweets that fit your filters are retrieved.', 'custom-twitter-feeds' ), '<a href="'.esc_url( $feed_edit_url ).'" target="_blank" rel="noopener">','</a>' )
 				);
 				$added = $this->maybe_add_critical_error( $error_array );

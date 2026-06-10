@@ -5,7 +5,7 @@ use TwitterFeed\Builder\CTF_Feed_Builder;
 Plugin Name: Custom Twitter Feeds
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.6.0
+Version: 2.6.1
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -31,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.6.0' );
+	define( 'CTF_VERSION', '2.6.1' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -154,11 +154,13 @@ function ctf_plugin_init() {
 	if ( class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Feedback\FeedbackManager' ) ) {
 		\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Feedback\FeedbackManager::init(
 			[
-				'plugin_slug'    => 'custom-twitter-feeds',
-				'plugin_name'    => 'Smash Balloon Custom Twitter Feeds',
-				'plugin_version' => CTF_VERSION,
-				'plugin_file'    => CTF_PLUGIN_DIR . 'custom-twitter-feed.php',
-				'support_url'    => 'https://smashballoon.com/support/?utm_campaign=twitter-free&utm_source=plugin&utm_medium=support',
+				'plugin_slug'        => 'custom-twitter-feeds',
+				'plugin_name'        => 'Smash Balloon Custom Twitter Feeds',
+				'plugin_version'     => CTF_VERSION,
+				'plugin_file'        => CTF_PLUGIN_DIR . 'custom-twitter-feed.php',
+				'support_url'        => 'https://smashballoon.com/support/?utm_campaign=twitter-free&utm_source=plugin&utm_medium=support',
+				'enable_help_widget' => true,
+				'help_url'           => 'https://smashballoon.com/docs/twitter/',
 			]
 		);
 	}

@@ -130,7 +130,6 @@ ctfBuilder = new Vue({
 				'welcome',
 				'selectFeed'
 			],
-			footerWidget : false,
 
 			// welcome, selectFeed
 			pageScreen : 'welcome',

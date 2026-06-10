@@ -5,7 +5,6 @@ var support_data = {
     system_info: ctf_support.system_info,
     system_info_n: ctf_support.system_info_n,
     exportFeed: 'none',
-    stickyWidget: false,
     feeds: ctf_support.feeds,
     supportUrl: ctf_support.supportUrl,
     socialWallActivated: ctf_support.socialWallActivated,
@@ -109,14 +108,6 @@ var ctfsupport = new Vue({
             if ( this.searchKeywords !== null && this.siteSearchUrlWithArgs !== null ) {
                 window.open( this.siteSearchUrlWithArgs, '_blank');
             }
-        },
-        /**
-         * Toggle Sticky Widget view
-         *
-         * @since 2.0
-         */
-         toggleStickyWidget: function() {
-            this.stickyWidget = !this.stickyWidget;
         },
     },
 })

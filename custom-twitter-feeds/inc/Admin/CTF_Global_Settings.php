@@ -979,7 +979,7 @@ class CTF_Global_Settings {
 						'headline' => __( 'Features that would be disabled or limited include: ', 'custom-twitter-feeds'),
 						'features' => array(
 							__( 'Only local images (not from Twitter\'s CDN) will be displayed in the feed.', 'custom-twitter-feeds'),
-							__( 'Users will leave your site in order to reply, shre, or like a tweet in your feed.', 'custom-twitter-feeds'),
+							__( 'Users will leave your site in order to reply, share, or like a tweet in your feed.', 'custom-twitter-feeds'),
 						)
 					)
 				),
