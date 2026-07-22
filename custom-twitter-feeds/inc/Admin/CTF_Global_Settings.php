@@ -16,6 +16,7 @@ use TwitterFeed\Admin\CTF_HTTP_Request;
 use TwitterFeed\CTF_GDPR_Integrations;
 use TwitterFeed\Pro\CTF_Resizer;
 use TwitterFeed\SB_Twitter_Cron_Updater;
+use TwitterFeed\UsageTracking\Config as SmashTrackingConfig;
 
 class CTF_Global_Settings {
 	//use CTF_Settings;
@@ -167,20 +168,27 @@ class CTF_Global_Settings {
 		$ctf_settings['curlcards'] 				= (bool)$advanced['curlcards'];
 
 
-		$usage_tracking = get_option( 'ctf_usage_tracking', array( 'last_send' => 0, 'enabled' => ctf_is_pro_version() ) );
-		if ( isset( $advanced['email_notification_addresses'] ) ) {
-			$usage_tracking['enabled'] = false;
-			if ( isset( $advanced['usage_tracking'] ) ) {
-				if ( ! is_array( $usage_tracking ) ) {
-					$usage_tracking = array(
-						'enabled' => $advanced['usage_tracking'],
-						'last_send' => 0,
-					);
-				} else {
-					$usage_tracking['enabled'] = $advanced['usage_tracking'];
-				}
+		if ( isset( $advanced['usage_tracking'] ) ) {
+			$tracking_enabled = (bool) $advanced['usage_tracking'];
+			$usage_tracking   = get_option(
+				'ctf_usage_tracking',
+				array(
+					'enabled'   => SmashTrackingConfig::DEFAULT_ENABLED,
+					'last_send' => 0,
+				)
+			);
+			$last_send        = is_array( $usage_tracking ) && isset( $usage_tracking['last_send'] ) ? $usage_tracking['last_send'] : 0;
+			update_option(
+				'ctf_usage_tracking',
+				array(
+					'enabled'   => $tracking_enabled,
+					'last_send' => $last_send,
+				),
+				false
+			);
+			if ( ! $tracking_enabled ) {
+				wp_clear_scheduled_hook( SmashTrackingConfig::CRON_HOOK );
 			}
-			update_option( 'ctf_usage_tracking', $usage_tracking, false );
 		}
 
 		// Update the ctf_style_settings option that contains data for translation and advanced tabs
@@ -1081,6 +1089,10 @@ class CTF_Global_Settings {
 					'title' => __( 'Use cURL for Retrieval', 'custom-twitter-feeds' ),
 					'helpText' => __( 'This will fix mixed-content warnings when Twitter card links are non-https. After enabling, clear your Twitter cards using the button above.', 'custom-twitter-feeds' ),
 				),
+				'usageBox' => array(
+					'title' => __( 'Usage Tracking', 'custom-twitter-feeds' ),
+					'helpText' => sprintf( __( 'Send a weekly report to Smash Balloon to help improve the product. No sensitive data is collected. You can disable this at any time. %s', 'custom-twitter-feeds' ), '<a href="https://smashballoon.com/custom-twitter-feeds/usage-tracking/" target="_blank">' . __( 'Learn More', 'custom-twitter-feeds' ) . '</a>' ),
+				),
 				'twittercard' => array(
 					'title' => __( 'Twitter Cards', 'custom-twitter-feeds' ),
 					'description' => __( 'Twitter Cards are rich visual previews of the link in your Tweet.', 'custom-twitter-feeds' ),
@@ -1254,7 +1266,6 @@ class CTF_Global_Settings {
 		$ctf_cache_cron_time     	= $ctf_settings['ctf_cache_cron_time'];
 		$ctf_cache_cron_am_pm   	= $ctf_settings['ctf_cache_cron_am_pm'];
 
-		$usage_tracking = get_option( 'ctf_usage_tracking', array( 'last_send' => 0, 'enabled' => \ctf_is_pro_version() ) );
 		$ctf_ajax = $ctf_settings['ajax_theme'];
 		$active_gdpr_plugin = CTF_GDPR_Integrations::gdpr_plugins_active();
 		$ctf_preserve_settings = $ctf_settings['preserve_settings'];
@@ -1304,7 +1315,7 @@ class CTF_Global_Settings {
 			),
 			'advanced' => array(
 				'rebranding' => $ctf_settings['rebranding'],
-				'usage_tracking' => $usage_tracking['enabled'],
+				'usage_tracking' => SmashTrackingConfig::is_enabled(),
 				'resizing' => $ctf_settings['resizing'],
 				'persistentcache' => $ctf_settings['persistentcache'],
 				'ajax_theme' => $ctf_settings['ajax_theme'],

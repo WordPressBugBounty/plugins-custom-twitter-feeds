@@ -100,6 +100,31 @@ class SB_Twitter_Cron_Updater {
 	}
 
 	/**
+	 * Per-site random offset applied to the scheduled cron start time.
+	 *
+	 * Anchoring every site to a whole clock hour synchronizes feed updates
+	 * across all installs (sites on the default UTC timezone all fire at the
+	 * same instant) and stampedes the SmashTwitter relay. A ±15 minute offset,
+	 * generated once and persisted so the site keeps the same slot across
+	 * settings saves, spreads the load while keeping the update time close to
+	 * what the user configured.
+	 *
+	 * @return int offset in seconds, between -900 and 900
+	 *
+	 * @since 2.6.2
+	 */
+	public static function get_cron_start_jitter() {
+		$jitter = get_option( 'ctf_cron_start_jitter', false );
+
+		if ( false === $jitter ) {
+			$jitter = mt_rand( -900, 900 );
+			update_option( 'ctf_cron_start_jitter', $jitter, false );
+		}
+
+		return (int) $jitter;
+	}
+
+	/**
 	 * Start cron jobs based on user's settings for cron cache update frequency.
 	 * This is triggered when settings are saved on the "Configure" tab.
 	 *
@@ -118,6 +143,7 @@ class SB_Twitter_Cron_Updater {
 			$base_day = strtotime( date( 'Y-m-d', $relative_time_now ) );
 			$add_time = $ctf_cache_cron_am_pm === 'pm' ? (int)$ctf_cache_cron_time + 12 : (int)$ctf_cache_cron_time;
 			$utc_start_time = $base_day + (($add_time * 60 * 60) - ctf_get_utc_offset());
+			$utc_start_time += self::get_cron_start_jitter();
 
 			if ( $utc_start_time < time() ) {
 				if ( $ctf_cache_cron_interval === '12hours' ) {

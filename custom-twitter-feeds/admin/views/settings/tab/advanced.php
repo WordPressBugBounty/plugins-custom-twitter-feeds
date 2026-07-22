@@ -19,6 +19,23 @@
             </div>
         </div>
     </div>
+    <div class="sb-tab-box sb-usage-box sb-reset-box-style clearfix">
+        <div class="tab-label">
+            <h3>{{advancedTab.usageBox.title}}</h3>
+        </div>
+
+        <div class="ctf-tab-form-field">
+            <div class="sb-form-field">
+                <label for="usage-tracking" class="ctf-checkbox">
+                    <input type="checkbox" name="usage-tracking" id="usage-tracking" v-model="model.advanced.usage_tracking">
+                    <span class="toggle-track">
+                        <div class="toggle-indicator"></div>
+                    </span>
+                </label>
+                <span class="help-text" v-html="advancedTab.usageBox.helpText"></span>
+            </div>
+        </div>
+    </div>
 
     <div class="sb-tab-box sb-resizing-box sb-reset-box-style clearfix">
         <div class="tab-label">

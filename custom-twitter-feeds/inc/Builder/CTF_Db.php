@@ -509,6 +509,12 @@ class CTF_Db {
 			        " );
 		delete_option( 'ctf_usage_tracking' );
 		delete_option( 'ctf_usage_tracking_config' );
+		delete_option( 'ctf_smash_usage_tracking' );
+		delete_option( 'ctf_smash_usage_tracking_site_token' );
+		delete_option( 'ctf_smash_usage_tracking_schedule' );
+		delete_option( 'ctf_smash_usage_events' );
+		delete_option( 'ctf_smash_usage_active_dates' );
+		delete_option( 'ctf_smash_usage_session_durations' );
 		delete_option( 'ctf_configure' );
 		delete_option( 'ctf_customize' );
 		delete_option( 'ctf_style' );
@@ -524,6 +530,7 @@ class CTF_Db {
 		$wp_roles->remove_cap( 'administrator', 'manage_twitter_feed_options' );
 		wp_clear_scheduled_hook( 'ctf_feed_update' );
 		wp_clear_scheduled_hook( 'ctf_usage_tracking_cron' );
+		wp_clear_scheduled_hook( \TwitterFeed\UsageTracking\Config::CRON_HOOK );
 	}
 
 		/**

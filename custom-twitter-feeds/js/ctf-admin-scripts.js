@@ -218,38 +218,6 @@ jQuery(document).ready(function($){
         }); // ajax call
     }); // clear-persistent-cache click
 
-    $('.ctf-opt-in').on('click',function(event) {
-        event.preventDefault();
-
-        var $btn = jQuery(this);
-        $btn.prop( 'disabled', true ).addClass( 'loading' ).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
-
-        ctfSubmitOptIn(true);
-    }); // clear_comment_cache click
-
-    $('.ctf-no-usage-opt-out').on('click',function(event) {
-        event.preventDefault();
-
-        var $btn = jQuery(this);
-        $btn.prop( 'disabled', true ).addClass( 'loading' ).html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
-
-        ctfSubmitOptIn(false);
-    }); // clear_comment_cache click
-
-    function ctfSubmitOptIn(choice) {
-        $.ajax({
-            url : ctf.ajax_url,
-            type : 'post',
-            data : {
-                action : 'ctf_usage_opt_in_or_out',
-                opted_in: choice,
-            },
-            success : function(data) {
-                $('.ctf-no-usage-opt-out').closest('.ctf-admin-notice').fadeOut();
-            }
-        }); // ajax call
-    }
-
     //Pro version notices
     var ctfUpgradeNote = '<span class="ctf_note"> - <a href="https://smashballoon.com/custom-twitter-feeds/?utm_campaign=twitter-free&utm_source=settings&utm_medium=layout" target="_blank">Available in Pro version</a></span>';
     $('.ctf_pro').each(function(){

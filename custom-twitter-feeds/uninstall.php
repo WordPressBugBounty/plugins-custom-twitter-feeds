@@ -19,6 +19,7 @@ if ( ! $ctf_preserve_settings ) {
 	delete_option( 'ctf_rating_notice' );
 	delete_option( 'ctf_notifications' );
 	delete_option( 'ctf_local_avatars' );
+	delete_option( 'ctf_cron_start_jitter' );
 
 	// delete tweet cache in transients
 	global $wpdb;
@@ -48,9 +49,23 @@ if ( ! $ctf_preserve_settings ) {
 	wp_clear_scheduled_hook( 'ctf_cron_job' );
 
 	delete_option( 'ctf_usage_tracking_config' );
-	delete_option( 'ctf_usage_tracking' );
+	// Usage-tracking consent, site token and telemetry are shared with the Pro plugin. Only remove
+	// them when Pro is not active, otherwise deleting the free plugin would reset Pro's consent.
+	$ctf_network_active = is_multisite() ? (array) get_site_option( 'active_sitewide_plugins', array() ) : array();
+	$ctf_pro_active = in_array( 'custom-twitter-feeds-pro/custom-twitter-feed.php', (array) get_option( 'active_plugins', array() ), true )
+		|| isset( $ctf_network_active['custom-twitter-feeds-pro/custom-twitter-feed.php'] );
+	if ( ! $ctf_pro_active ) {
+		delete_option( 'ctf_usage_tracking' );
+		delete_option( 'ctf_smash_usage_tracking' );
+		delete_option( 'ctf_smash_usage_tracking_site_token' );
+		delete_option( 'ctf_smash_usage_tracking_schedule' );
+		delete_option( 'ctf_smash_usage_events' );
+		delete_option( 'ctf_smash_usage_active_dates' );
+		delete_option( 'ctf_smash_usage_session_durations' );
+	}
 
 	wp_clear_scheduled_hook( 'ctf_usage_tracking_cron' );
+	wp_clear_scheduled_hook( 'ctf_free_smash_usage_tracking_cron' );
 	wp_clear_scheduled_hook( 'ctf_feed_update' );
 
 	delete_option( 'ctf_db_version' );

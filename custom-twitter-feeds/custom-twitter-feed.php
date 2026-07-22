@@ -5,7 +5,7 @@ use TwitterFeed\Builder\CTF_Feed_Builder;
 Plugin Name: Custom Twitter Feeds
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.6.1
+Version: 2.7.0
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -31,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.6.1' );
+	define( 'CTF_VERSION', '2.7.0' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -57,6 +57,9 @@ if ( ! defined( 'OAUTH_PROCESSOR_URL' ) ) {
 
 if ( ! defined( 'CTF_PLUGIN_NAME' ) ) {
 	define( 'CTF_PLUGIN_NAME', 'Custom Twitter Feeds' );
+}
+if ( ! defined( 'CTF_SMASH_USAGE_TRACKING_API_URL' ) ) {
+	define( 'CTF_SMASH_USAGE_TRACKING_API_URL', 'https://usage.smashballoon.com/api' );
 }
 
 // Plugin Folder Path.
@@ -195,6 +198,8 @@ function ctf_plugin_init() {
 
 	$error_reporter = new \TwitterFeed\SmashTwitter\Services\ErrorReporterService();
 	$error_reporter->init_hooks();
+
+	$GLOBALS['ctf_smash_usage_tracking'] = new \TwitterFeed\UsageTracking\SmashUsageTracking();
 
 	// Initialize Elementor integration.
 	\TwitterFeed\Integrations\Elementor\CTF_Elementor_Base::register();
@@ -863,13 +868,18 @@ function ctf_clear_cache_admin() {
 add_action( 'wp_ajax_ctf_clear_cache_admin', 'ctf_clear_cache_admin' );
 
 function ctf_activate() {
-	// set usage tracking to false if fresh install.
+	// set usage tracking to false if fresh install. Skip when the Pro plugin is active: it shares
+	// this option and defaults tracking on, so seeding a disabled record here would silently turn it off.
 	$usage_tracking = get_option( 'ctf_usage_tracking', false );
 
     global $wp_roles;
 	$wp_roles->add_cap( 'administrator', 'manage_twitter_feed_options' );
 
-	if ( ! is_array( $usage_tracking ) ) {
+	$ctf_network_active = is_multisite() ? (array) get_site_option( 'active_sitewide_plugins', array() ) : array();
+	$ctf_pro_active = in_array( 'custom-twitter-feeds-pro/custom-twitter-feed.php', (array) get_option( 'active_plugins', array() ), true )
+		|| isset( $ctf_network_active['custom-twitter-feeds-pro/custom-twitter-feed.php'] );
+
+	if ( ! is_array( $usage_tracking ) && ! $ctf_pro_active ) {
 		$usage_tracking = array(
 			'enabled' => false,
 			'last_send' => 0
@@ -889,6 +899,7 @@ function ctf_deactivate() {
     ctf_clear_cache();
 
     wp_clear_scheduled_hook( 'ctf_cron_job' );
+    wp_clear_scheduled_hook( \TwitterFeed\UsageTracking\Config::CRON_HOOK );
 }
 register_deactivation_hook( __FILE__, 'ctf_deactivate' );
 
