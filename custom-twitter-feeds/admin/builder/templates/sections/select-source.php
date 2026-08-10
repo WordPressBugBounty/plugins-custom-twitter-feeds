@@ -9,8 +9,8 @@
         </div>
         <div class="ctf-fb-apilimit-notice-description ctf-fb-fs" v-html="genericText.twitterApiLimit.description"></div>
     </div>
-    <div v-if="! maxTypesAdded()" class="ctf-addsource-type-btn ctf-fb-fs" @click.prevent.default="activateView('feedtypesPopup')">
-        <svg width="14" height="14" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div v-if="! maxTypesAdded()" class="ctf-addsource-type-btn ctf-fb-fs" role="button" tabindex="0" @click.prevent.default="activateView('feedtypesPopup')" @keydown.enter.prevent="activateView('feedtypesPopup')" @keydown.space.prevent="activateView('feedtypesPopup')">
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9.66634 5.66634H5.66634V9.66634H4.33301V5.66634H0.333008V4.33301H4.33301V0.333008H5.66634V4.33301H9.66634V5.66634Z"/>
         </svg>
         <span>{{genericText.addSourceType}}</span>

@@ -2,7 +2,7 @@
 	<!--Visual header-->
 	<div class="ctf-preview-header-visual ctf-fb-fs" v-if="customizerFeedData.settings.headertype == 'visual'">
 		<div class="ctf-preview-header-cover ctf-fb-fs" v-if="valueIsEnabled(customizerFeedData.settings.headercover)">
-			<img v-if="hasOwnNestedProperty(customizerFeedData,  'header.cover.source')" :src="customizerFeedData.header.cover.source">
+			<img v-if="hasOwnNestedProperty(customizerFeedData,  'header.cover.source')" :src="customizerFeedData.header.cover.source" alt="">
 			<div class="ctf-preview-header-likebox" v-if="valueIsEnabled(customizerFeedData.settings.headerbio)">
 				<div v-html="svgIcons['facebook']"></div>
 				<span>{{customizerFeedData.header.fan_count}}</span>
@@ -10,7 +10,7 @@
 		</div>
 		<div class="ctf-preview-header-info-ctn ctf-fb-fs">
 			<div class="ctf-preview-header-avatar" v-if="valueIsEnabled(customizerFeedData.settings.headername)" >
-				<img v-if="hasOwnNestedProperty(customizerFeedData,  'header.picture.data.url')" :src="customizerFeedData.header.picture.data.url">
+				<img v-if="hasOwnNestedProperty(customizerFeedData,  'header.picture.data.url')" :src="customizerFeedData.header.picture.data.url" :alt="customizerFeedData.header.name ? customizerFeedData.header.name + ' avatar' : ''">
 			</div>
 			<div class="ctf-preview-header-info">
 				<h3 class="ctf-preview-header-name" v-if="valueIsEnabled(customizerFeedData.settings.headername)" >{{customizerFeedData.header.name}}</h3>

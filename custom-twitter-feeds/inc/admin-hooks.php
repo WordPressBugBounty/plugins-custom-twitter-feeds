@@ -183,11 +183,11 @@ function ctf_pro_autoscroll_section() {
     <div class="ctf-pro-options">
         <table class="form-table"><tbody><tr><th scope="row"><label for="ctf_autoscroll" title="Click for shortcode option">Set Load More on Scroll as Default</label><code class="ctf_shortcode">autoscroll
                         Eg: autoscroll=true</code></th><td>        <input name="ctf_options[autoscroll]" id="ctf_autoscroll" type="checkbox" disabled>
-                    <a class="ctf-tooltip-link" href="JavaScript:void(0);"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                    <a class="ctf-tooltip-link" href="JavaScript:void(0);" role="button" aria-label="More information"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
                     <p class="ctf-tooltip ctf-more-info">This will make every Twitter feed load more Tweets as the user gets to the bottom of the feed.</p>
                 </td></tr><tr class="default-text"><th scope="row"><label for="ctf_autoscrolldistance">Auto Scroll Trigger Distance</label><code class="ctf_shortcode">autoscrolldistance
                         Eg: autoscrolldistance=2</code></th><td>        <input name="ctf_options[autoscrolldistance]" id="ctf_autoscrolldistance" class="default-text" type="text" value="200" disabled>
-                    <a class="ctf-tooltip-link" href="JavaScript:void(0);"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                    <a class="ctf-tooltip-link" href="JavaScript:void(0);" role="button" aria-label="More information"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
                     <p class="ctf-tooltip ctf-more-info">This is the distance in pixels from the bottom of the page the user must scroll to to trigger the loading of more tweets.</p>
                 </td></tr></tbody></table>
     </div>
@@ -225,7 +225,7 @@ function ctf_pro_moderation_section() {
                         of the "excludewords"
                     </p>
                 </td></tr><tr><th scope="row"><label for="ctf_remove_by_id">Hide Specific Tweets</label></th><td>    <textarea name="ctf_options[remove_by_id]" id="ctf_remove_by_id" style="width: 70%;" rows="3" disabled></textarea>
-                    <p>separate IDs by comma        <a class="ctf-tooltip-link" href="JavaScript:void(0);"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                    <p>separate IDs by comma        <a class="ctf-tooltip-link" href="JavaScript:void(0);" role="button" aria-label="More information"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
                         <span class="ctf-tooltip ctf-more-info">These are the specific ID numbers associated with a tweet. You can find the ID of a Tweet by viewing the Tweet on Twitter and copy/pasting the ID number from the end of the URL.</span>
                     </p>     </td></tr></tbody></table>
     </div>
@@ -301,7 +301,7 @@ function ctf_remove_by_id( $args ) {
     ?>
     <textarea name="<?php echo $args['option'].'['.$args['name'].']'; ?>" id="ctf_<?php echo $args['name']; ?>" style="width: 70%;" rows="3"><?php esc_attr_e( stripslashes( $option_string ) ); ?></textarea>
     <?php if ( isset( $args['extra'] ) ) : ?><p><?php _e( $args['extra'], 'custom-twitter-feeds' ); ?>
-        <a class="ctf-tooltip-link" href="JavaScript:void(0);"><span class="fa fa-question-circle" aria-hidden="true"></span></a>
+        <a class="ctf-tooltip-link" href="JavaScript:void(0);" role="button" aria-label="More information"><span class="fa fa-question-circle" aria-hidden="true"></span></a>
         <span class="ctf-tooltip ctf-more-info"><?php _e( $args['whatis'], 'custom-twitter-feeds' ); ?>.</span>
         </p> <?php endif; ?>
     <?php
@@ -310,7 +310,7 @@ function ctf_remove_by_id( $args ) {
 function ctf_clear_tc_cache_button() {
     ?>
     <input id="ctf-clear-tc-cache" class="button-secondary" style="margin-top: 1px;" type="submit" value="<?php esc_attr_e( 'Clear Twitter Cards' ); ?>" />
-    <a class="ctf-tooltip-link" href="JavaScript:void(0);"><span class="fa fa-question-circle" aria-hidden="true"></span></a>
+    <a class="ctf-tooltip-link" href="JavaScript:void(0);" role="button" aria-label="More information"><span class="fa fa-question-circle" aria-hidden="true"></span></a>
     <p class="ctf-tooltip ctf-more-info"><?php _e( 'Clicking this button will clear all cached data for your links that have Twitter Cards', 'custom-twitter-feeds' ); ?>.</p>
     <?php
 }
@@ -340,7 +340,7 @@ function ctf_filter_operator( $args ) {
         of the "excludewords"
     </p>
     <?php if ( isset( $args['whatis'] ) ) : ?>
-        <a class="ctf-tooltip-link" href="JavaScript:void(0);"><span class="fa fa-question-circle" aria-hidden="true"></span></a>
+        <a class="ctf-tooltip-link" href="JavaScript:void(0);" role="button" aria-label="More information"><span class="fa fa-question-circle" aria-hidden="true"></span></a>
         <p class="ctf-tooltip ctf-more-info"><?php _e( $args['whatis'], 'custom-twitter-feeds' ); ?>.</p>
     <?php endif; ?>
     <?php

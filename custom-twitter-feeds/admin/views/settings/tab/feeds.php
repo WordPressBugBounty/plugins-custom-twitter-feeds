@@ -1,4 +1,4 @@
-<div v-if="selected === 'app-2'">
+<div v-if="selected === 'app-2'" id="ctf-panel-feeds" role="tabpanel" aria-labelledby="ctf-settings-tab-feeds" tabindex="0">
     <!--
     <div class="sb-tab-box sb-caching-box sb-reset-box-style clearfix">
         <div class="tab-label">
@@ -61,7 +61,7 @@
                 <span class="ctf-notice-cach-text">{{feedsTab.cachingBox.noticeText}}</span>
                 <a :href="links.optimizeImagesLink" target="_blank">{{feedsTab.cachingBox.promoText}}
                     <span class="ctf-upgrade-cta-icon">
-                        <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg aria-hidden="true" focusable="false" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.8332 0L0.658203 1.175L4.47487 5L0.658203 8.825L1.8332 10L6.8332 5L1.8332 0Z" fill="#0068A0"/>
                         </svg>
                     </span>
@@ -73,13 +73,13 @@
         <div class="tab-label">
             <h3>
                 {{feedsTab.gdprBox.title}}
-                <span class="sb-tooltip-info gdpr-tooltip" id="ctf-tooltip" v-html="tooltipHelpSvg"   @mouseover.prevent.default="toggleElementTooltip(feedsTab.gdprBox.tooltip, 'show', 'left')" @mouseleave.prevent.default="toggleElementTooltip('', 'hide')"></span>
+                <span class="sb-tooltip-info gdpr-tooltip" id="ctf-tooltip" tabindex="0" role="img" :aria-label="feedsTab.gdprBox.tooltip" v-html="tooltipHelpSvg"   @mouseover.prevent.default="toggleElementTooltip(feedsTab.gdprBox.tooltip, 'show', 'left', $event)" @mouseleave.prevent.default="toggleElementTooltip('', 'hide', 'center', $event)" @focus.prevent.default="toggleElementTooltip(feedsTab.gdprBox.tooltip, 'show', 'left', $event)" @blur.prevent.default="toggleElementTooltip('', 'hide', 'center', $event)"></span>
             </h3>
         </div>
         <div class="ctf-tab-form-field">
             <div class="sb-form-field">
                 <div class="d-flex mb-10">
-                    <select id="ctf-gdpr-options" class="ctf-select size-md" v-model="model.feeds.gdpr" @change="gdprOptions">
+                    <select id="ctf-gdpr-options" class="ctf-select size-md" :aria-label="feedsTab.gdprBox.selectLabel" v-model="model.feeds.gdpr" @change="gdprOptions">
                         <option value="auto">{{feedsTab.gdprBox.automatic}}</option>
                         <option value="yes">{{feedsTab.gdprBox.yes}}</option>
                         <option value="no">{{feedsTab.gdprBox.no}}</option>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="help-text" v-if="model.feeds.gdpr == 'auto'" :class="['gdpr-help-text-' + model.feeds.gdpr, {'sb-gdpr-active': model.feeds.gdprPlugin}]">
                     <span class="gdpr-active-icon" v-if="model.feeds.gdprPlugin">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.0003 1.66667C5.41699 1.66667 1.66699 5.41667 1.66699 10C1.66699 14.5833 5.41699 18.3333 10.0003 18.3333C14.5837 18.3333 18.3337 14.5833 18.3337 10C18.3337 5.41667 14.5837 1.66667 10.0003 1.66667ZM8.33366 14.1667L4.16699 10L5.34199 8.82501L8.33366 11.8083L14.6587 5.48334L15.8337 6.66667L8.33366 14.1667Z" fill="#59AB46"/>
                         </svg>
                     </span>
@@ -116,7 +116,7 @@
         <div class="ctf-tab-form-field">
             <div class="sb-form-field">
                 <div class="d-flex mb-15">
-                    <textarea name="" class="ctf-textarea" v-model="model.feeds.customCSS" :placeholder="feedsTab.customCSSBox.placeholder"></textarea>
+                    <textarea name="" class="ctf-textarea" v-model="model.feeds.customCSS" :aria-label="feedsTab.customCSSBox.title" :placeholder="feedsTab.customCSSBox.placeholder"></textarea>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
         <div class="ctf-tab-form-field">
             <div class="sb-form-field">
                 <div class="d-flex mb-15">
-                    <textarea name="" class="ctf-textarea" v-model="model.feeds.customJS" :placeholder="feedsTab.customJSBox.placeholder"></textarea>
+                    <textarea name="" class="ctf-textarea" v-model="model.feeds.customJS" :aria-label="feedsTab.customJSBox.title" :placeholder="feedsTab.customJSBox.placeholder"></textarea>
                 </div>
             </div>
         </div>

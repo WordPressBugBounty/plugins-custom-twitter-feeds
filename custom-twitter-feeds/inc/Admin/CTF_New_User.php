@@ -339,7 +339,7 @@ class CTF_New_User extends CTF_Notifications {
 					?>
 					<div class="ctf_notice ctf_review_notice_step_1">
 						<div class="ctf_thumb">
-							<img src="<?php echo esc_url( str_replace( array( 'sbi', 'png' ), array( 'ctf', 'svg' ), $img_src ) ); ?>" alt="notice">
+							<img src="<?php echo esc_url( str_replace( array( 'sbi', 'png' ), array( 'ctf', 'svg' ), $img_src ) ); ?>" alt="">
 						</div>
 						<div class="ctf-notice-text">
 							<p class="ctf-notice-text-p"><?php echo __( 'Are you enjoying the Twitter Feed Plugin?', 'custom-twitter-feeds' ); ?></p>
@@ -403,7 +403,7 @@ class CTF_New_User extends CTF_Notifications {
 
 		<div class="ctf_notice_op ctf_notice ctf_<?php echo esc_attr( $type ); ?>_notice" <?php echo !empty( $review_step2_style ) ? $review_step2_style : ''; ?>>
 			<div class="ctf_thumb">
-				<img src="<?php echo esc_url( str_replace( array( 'sbi', 'png' ), array( 'ctf', 'svg' ), $img_src ) ); ?>" alt="notice">
+				<img src="<?php echo esc_url( str_replace( array( 'sbi', 'png' ), array( 'ctf', 'svg' ), $img_src ) ); ?>" alt="">
 				<?php echo $image_overlay; ?>
 			</div>
 			<div class="ctf-notice-text">

@@ -37,7 +37,7 @@ class SB_Datepicker_Control extends SB_Controls_Base{
 	public function get_control_output($controlEditingTypeModel){
 		?>
 		<div class="sb-control-input-ctn ctf-fb-fs">
-			<input type="date" class="sb-control-input ctf-fb-fs" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" @change.prevent.default="changeSettingValue(control.id, false,false, control.ajaxAction ? control.ajaxAction : false)"  :placeholder="control.placeholder ? control.placeholder : ''">
+			<input type="date" class="sb-control-input ctf-fb-fs" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" @change.prevent.default="changeSettingValue(control.id, false,false, control.ajaxAction ? control.ajaxAction : false)"  :placeholder="control.placeholder ? control.placeholder : ''" :aria-label="control.heading || control.label || 'Date'">
 		</div>
 		<?php
 	}

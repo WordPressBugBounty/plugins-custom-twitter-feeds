@@ -119,7 +119,7 @@ class CTF_Display_Elements {
         } elseif ( $feed_options['disablelinks'] ) {
             $return = '<span class="ctf-tweet-text-media-wrap'.$multi_class.'">' . $html . '</span>';
         } else {
-            $return =  '</p><a href="https://twitter.com/' . $post['user']['screen_name'] . '/status/' . $post['id_str'] . '" target="_blank" rel="noopener noreferrer" class="ctf-tweet-text-media-wrap'.$multi_class.'">' . $html . '</a>';
+            $return =  '</p><a href="https://twitter.com/' . $post['user']['screen_name'] . '/status/' . $post['id_str'] . '" target="_blank" rel="noopener noreferrer" aria-label="' . esc_attr( sprintf( __( 'View @%s tweet media on Twitter', 'custom-twitter-feeds' ), $post['user']['screen_name'] ) ) . '" class="ctf-tweet-text-media-wrap'.$multi_class.'">' . $html . '</a>';
         }
 
         return $return;
@@ -235,6 +235,11 @@ class CTF_Display_Elements {
     /**
      * Print Element HTML Attribute
      *
+     * Output is echoed raw onto the #ctf div, so escaping here is what stops a
+     * settings value closing its attribute (SMASH-1770). vue_content is left
+     * unescaped: every call site passes a hardcoded expression. Keep it that way,
+     * a user-supplied one would be code in a compiled template.
+     *
      * @param bool $customizer
      * @param array $args
      *
@@ -247,7 +252,7 @@ class CTF_Display_Elements {
             return ' :' . $args['attr'] . '="' . $args['vue_content'] . '"';
         }
         if( ( isset( $args['php_condition'] ) && $args['php_condition'] ) || !isset( $args['php_condition'] ) ){
-            return ' ' . $args['attr'] . '="' . $args['php_content'] . '"';
+            return ' ' . sanitize_key( $args['attr'] ) . '="' . esc_attr( $args['php_content'] ) . '"';
         }
     }
 
@@ -447,12 +452,15 @@ class CTF_Display_Elements {
      * @return mixed
      */
     public static function sanitize_caption( $caption ) {
+        // Decode the apostrophe entity (esc_html now produces it) before the quote
+        // replacement below so it degrades to a backtick like a literal apostrophe,
+        // instead of the historical "/" substitution (SMASH-1796).
+        $caption = str_replace( '&#039;', "'", $caption );
         $caption = str_replace( array( "'" ), '`', $caption );
         $caption = str_replace( '&amp;', '&', $caption );
         $caption = str_replace( '&lt;', '<', $caption );
         $caption = str_replace( '&gt;', '>', $caption );
         $caption = str_replace( '&quot;', '"', $caption );
-        $caption = str_replace( '&#039;', '/', $caption );
         $caption = str_replace( '&#92;', '\/', $caption );
 
         $caption = str_replace( array( "\r", "\n" ), '<br>', $caption );
@@ -479,6 +487,11 @@ class CTF_Display_Elements {
 
     public static function post_text( $post, $feed_options ) {
         $text = isset($post['text']) ? $post['text'] : (isset($post['full_text']) ? $post['full_text'] : '');
+        // Escaped here, ahead of the filter chain: ctf_maybe_shorten_text() is a
+        // ctf_tweet_text filter that INJECTS the read-more anchor into this value, so
+        // escaping at the sink instead would render the plugin's own markup as text
+        // and permanently satisfy the !$ctfText.find('a').length guard (SMASH-1796).
+        $text = esc_html( $text );
         $post_text = apply_filters( 'ctf_tweet_text', $text, $feed_options, $post );
 
         return $post_text;
@@ -498,20 +511,32 @@ class CTF_Display_Elements {
         $text_and_link_attr = CTF_Display_Elements::get_element_attribute( 'text_and_link', $feed_options );
         $text_no_link_attr = CTF_Display_Elements::get_element_attribute( 'text_no_link', $feed_options );
         if( !$customizer ){
-            if( $feed_options['linktexttotwitter'] ){ ?>
-                <a class="ctf-tweet-text-link" href="<?php echo esc_url( 'https://twitter.com/' . $author_screen_name . '/status/' .$post_id ) ?>" target = "_blank" rel = "noopener noreferrer">
-            <?php } ?>
+            // a11y: ctf_maybe_shorten_text injects the read-more <button> + .ctf_remaining
+            // span into the tweet text; keep them out of the tweet-text anchor so no
+            // interactive control is nested inside a link (WCAG 4.1.2).
+            $read_more_markup = '';
+            if ( $feed_options['linktexttotwitter'] ) {
+                $read_more_pos = strpos( $post_text, '<button type="button" class="ctf_more"' );
+                if ( false !== $read_more_pos ) {
+                    $read_more_markup = substr( $post_text, $read_more_pos );
+                    $post_text = substr( $post_text, 0, $read_more_pos );
+                }
+            }
+            ?>
                 <p class="ctf-tweet-text">
+                    <?php if( $feed_options['linktexttotwitter'] ){ ?>
+                        <a class="ctf-tweet-text-link" href="<?php echo esc_url( 'https://twitter.com/' . $author_screen_name . '/status/' .$post_id ) ?>" target = "_blank" rel = "noopener noreferrer">
+                    <?php } ?>
                     <?php echo wp_kses_post( nl2br( $post_text ) ) ?>
                     <?php
                         if(!$feed_options['is_legacy'] || ($feed_options['is_legacy'] && ctf_show( 'placeholder', $feed_options ))){
                             echo $post_media_text;
                         }
                     ?>
+                    <?php if( $feed_options['linktexttotwitter'] ){ ?>
+                        </a><?php echo wp_kses_post( nl2br( $read_more_markup ) ); ?>
+                    <?php } ?>
                 </p>
-            <?php if( $feed_options['linktexttotwitter'] ){ ?>
-                </a>
-            <?php } ?>
             <?php
         }else{
             ?>

@@ -1,4 +1,4 @@
-<div v-if="selected === 'app-4'">
+<div v-if="selected === 'app-4'" id="ctf-panel-advanced" role="tabpanel" aria-labelledby="ctf-settings-tab-advanced" tabindex="0">
 
     <div class="sb-tab-box sb-rebranding-box sb-reset-box-style clearfix">
         <div class="tab-label">
@@ -63,7 +63,7 @@
             <span>
                 <a :href="links.optimizeImagesLink" target="_blank">{{advancedTab.optimizeBox.promoText}}
                     <span class="ctf-upgrade-cta-icon">
-                        <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg aria-hidden="true" focusable="false" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.8332 0L0.658203 1.175L4.47487 5L0.658203 8.825L1.8332 10L6.8332 5L1.8332 0Z" fill="#0068A0"/>
                         </svg>
                     </span>
@@ -199,7 +199,7 @@
         <div class="ctf-tab-form-field">
             <div class="sb-form-field">
                 <div class="d-flex mb-10">
-                    <select id="ctf-send-report" class="ctf-select size-md" v-model="model.advanced.request_method">
+                    <select id="ctf-send-report" class="ctf-select size-md" :aria-label="advancedTab.requestMethodBox.selectLabel" v-model="model.advanced.request_method">
                         <option v-for="(name, key) in advancedTab.requestMethodBox.options" :value="key">{{name}}</option>
                     </select>
                 </div>

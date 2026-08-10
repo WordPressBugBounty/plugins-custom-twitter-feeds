@@ -10,7 +10,7 @@ use TwitterFeed\CTF_Display_Elements;
 ?>
 
 <!-- Custom Twitter Feeds by Smash Balloon -->
-<div id="ctf" <?php echo $ctf_feed_classes ?>  data-ctfshortcode="<?php echo $this->getShortCodeJSON() ?>"  <?php echo $ctf_main_atts ?> data-ctfneeded="<?php echo esc_attr( $ctf_data_needed ) ?>">
+<div id="ctf" role="region" aria-label="<?php echo esc_attr__( 'Twitter Feed', 'custom-twitter-feeds' ) ?>" <?php echo $ctf_feed_classes ?>  data-ctfshortcode="<?php echo $this->getShortCodeJSON() ?>"  <?php echo $ctf_main_atts ?> data-ctfneeded="<?php echo esc_attr( $ctf_data_needed ) ?>">
     <?php
 
     do_action( 'ctf_before_feed_start', $this );
@@ -21,7 +21,7 @@ use TwitterFeed\CTF_Display_Elements;
         	CTF_Display_Elements::display_header( $feed_options, $tweet_set );
     	endif;
     ?>
-    <div class="ctf-tweets">
+    <div class="ctf-tweets" role="list">
    		<?php $this->tweet_loop( $tweet_set, $feed_options, $is_pagination ); ?>
     </div>
     <?php

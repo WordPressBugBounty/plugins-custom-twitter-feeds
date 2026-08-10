@@ -37,7 +37,7 @@ class SB_Textarea_Control extends SB_Controls_Base{
 	public function get_control_output($controlEditingTypeModel){
 		?>
 		<div class="sb-control-textarea-ctn ctf-fb-fs">
-			<textarea class="sb-control-input-textrea ctf-fb-fs" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" :placeholder="control.placeholder ? control.placeholder : ''" @focusout.prevent.default="changeSettingValue(false,false,false, control.ajaxAction ? control.ajaxAction : false)"></textarea>
+			<textarea class="sb-control-input-textrea ctf-fb-fs" :aria-label="control.heading || control.placeholder || 'Text area'" :aria-disabled="control.disabledInput != undefined ? 'true' : null" :tabindex="control.disabledInput != undefined ? -1 : null" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" :placeholder="control.placeholder ? control.placeholder : ''" @focusout.prevent.default="changeSettingValue(false,false,false, control.ajaxAction ? control.ajaxAction : false)"></textarea>
 		</div>
 		<?php
 	}

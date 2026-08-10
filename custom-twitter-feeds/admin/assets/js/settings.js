@@ -136,7 +136,7 @@ var settings_data = {
 Vue.component("tab", {
     props: ["section", "index"],
     template: `
-    <a class='tab' :id='section.toLowerCase().trim()' @click='emitWidth($el);changeComponent(index);activeTab(section)'>{{section}}</a>
+    <button type="button" class="tab" :id="'ctf-settings-tab-' + section.toLowerCase().trim()" role="tab" :aria-selected="section === $parent.currentTab ? 'true' : 'false'" :aria-controls="'ctf-panel-' + section.toLowerCase().trim()" :tabindex="section === $parent.currentTab ? 0 : -1" @click="emitWidth($el);changeComponent(index);activeTab(section)" @keydown="onTabKeydown">{{section}}</button>
     `,
     created: () => {
         let urlParams = new URLSearchParams(window.location.search);
@@ -171,6 +171,28 @@ Vue.component("tab", {
         },
         setView: function(section) {
             history.replaceState({}, null, settings_data.adminUrl + 'admin.php?page=ctf-settings&view=' + section);
+        },
+        // WAI-ARIA Authoring Practices tablist keyboard interaction (ports IG settings tabs).
+        onTabKeydown: function(e) {
+            var tabs = Array.prototype.slice.call(
+                document.querySelectorAll('#ctf-settings [role="tablist"] [role="tab"]')
+            );
+            var idx = tabs.indexOf(e.currentTarget);
+            if (idx === -1) return;
+            var next = null;
+            if (e.key === 'ArrowRight' || e.keyCode === 39) {
+                next = tabs[(idx + 1) % tabs.length];
+            } else if (e.key === 'ArrowLeft' || e.keyCode === 37) {
+                next = tabs[(idx - 1 + tabs.length) % tabs.length];
+            } else if (e.key === 'Home' || e.keyCode === 36) {
+                next = tabs[0];
+            } else if (e.key === 'End' || e.keyCode === 35) {
+                next = tabs[tabs.length - 1];
+            }
+            if (!next) return;
+            e.preventDefault();
+            next.focus();
+            next.click();
         }
     }
 });
@@ -194,7 +216,11 @@ var ctfSettings = new Vue({
     mounted: function(){
         var self = this;
         // set the current view page on page load
-        let activeEl = document.querySelector('a.tab#' + settings_data.currentView);
+        let activeEl = document.querySelector('button.tab#ctf-settings-tab-' + settings_data.currentView);
+        // SMASH-1378: bail out if the tab for the current ?view= param does not
+        // exist (e.g. an invalid/mistyped view) so we do not dereference null on
+        // activeEl.offsetWidth below and crash the settings UI bootstrap.
+        if ( ! activeEl ) { return; }
         // we have to uppercase the first letter
         let currentView = settings_data.currentView.charAt(0).toUpperCase() + settings_data.currentView.slice(1);
         let viewIndex = settings_data.sections.indexOf(currentView) + 1;
@@ -947,9 +973,9 @@ var ctfSettings = new Vue({
          *
          * @since 2.0
          */
-         toggleElementTooltip : function(tooltipText, type, align = 'center'){
+         toggleElementTooltip : function(tooltipText, type, align = 'center', event){
             var self = this,
-            target = window.event.currentTarget,
+            target = (event && event.currentTarget) || (window.event && window.event.currentTarget),
             tooltip = (target != undefined && target != null) ? document.querySelector('.sb-control-elem-tltp-content') : null;
             if(tooltip != null && type == 'show'){
                 self.tooltip.text = tooltipText;

@@ -12,6 +12,41 @@ function ctf_should_rebrand_to_x() {
 }
 
 /**
+ * Reduces a user-supplied value to a whitespace-separated list of CSS class names.
+ *
+ * Characters that carry meaning in HTML markup are removed rather than encoded, so the
+ * result is safe to concatenate into a class list. Characters that are legal in modern
+ * class names -- ':' (variant prefixes), '/', '.', '-' and '_' -- are preserved so
+ * utility-framework and namespaced class names survive unchanged.
+ *
+ * @param mixed $value Raw class list.
+ *
+ * @return string Sanitized, whitespace-normalized class list.
+ *
+ * @since 2.7.1
+ */
+function ctf_sanitize_css_class_list( $value ) {
+	if ( ! is_scalar( $value ) ) {
+		return '';
+	}
+
+	$value = wp_strip_all_tags( (string) $value );
+
+	// Control characters become separators rather than being deleted, so that a newline
+	// or tab between two class names cannot silently merge them into one.
+	// Bails to an empty class list on malformed UTF-8.
+	$stripped = preg_replace( '/[^\P{C}]/u', ' ', $value );
+	if ( null === $stripped ) {
+		return '';
+	}
+
+	$stripped = preg_replace( '/[<>"\'`=\\\\]/', '', $stripped );
+	$stripped = preg_replace( '/\s+/', ' ', (string) $stripped );
+
+	return trim( (string) $stripped );
+}
+
+/**
  * May include support for templates in theme folders in the future
  *
  * @return string full path to template
@@ -363,3 +398,4 @@ function parse_json_data($data)
 	}
 	return is_array($json) ? $json : [];
 }
+

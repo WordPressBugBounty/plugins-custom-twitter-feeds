@@ -111,7 +111,7 @@ class CtfAdmin
         <input name="<?php echo 'ctf_options'.'[have_own_tokens]'; ?>" id="ctf_have_own_tokens" type="checkbox" <?php if ( $option_checked ) echo "checked"; ?> />
         <label for="ctf_have_own_tokens" class="ctf_checkbox"><?php _e( 'Or, manually enter my own Twitter app information' ); ?></label>
         <span class="ctf-tooltip-wrap">
-            <a class="ctf-tooltip-link" href="JavaScript:void(0);"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+            <a class="ctf-tooltip-link" href="JavaScript:void(0);" role="button" aria-label="More information"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
             <p class="ctf-tooltip ctf-more-info"><?php _e( 'Check this box if you would like to manually enter the information from your own <a href="https://smashballoon.com/doc/create-your-own-twitter-app/?utm_campaign=twitter-free&utm_source=settings&utm_medium=createownapp" target="_blank">Twitter app</a>', 'custom-twitter-feeds' ); ?>.</p>
         </span>
         <?php

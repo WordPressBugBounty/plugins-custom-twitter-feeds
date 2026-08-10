@@ -53,9 +53,9 @@ if (isset( $retweeter ) && ctf_show( 'retweeter', $feed_options )) :
 				<?php endif;?>
 
 				<?php if (ctf_show( 'author_text', $feed_options )): ?>
-					<a href="<?php echo esc_url( 'https://twitter.com/' . $author_screen_name ); ?>" target="_blank" rel="noopener noreferrer" class="ctf-author-name" <?php echo $author_text_attr; ?>><?php echo esc_html( $author_display_name ); ?></a>
+					<h3 class="ctf-author-name-heading" style="display:inline;margin:0;padding:0;font:inherit;color:inherit;"><a href="<?php echo esc_url( 'https://twitter.com/' . $author_screen_name ); ?>" target="_blank" rel="noopener noreferrer" class="ctf-author-name" <?php echo $author_text_attr; ?>><?php echo esc_html( $author_display_name ); ?></a></h3>
 					<?php if ((int) $verified === 1) : ?>
-						<span class="ctf-verified" <?php echo $author_text_attr; ?> ><?php echo ctf_get_fa_el( 'fa-check-circle' ) ?></span>
+						<span class="ctf-verified" <?php echo $author_text_attr; ?> ><?php echo ctf_get_fa_el( 'fa-check-circle' ) ?><span class="ctf-screenreader"><?php esc_html_e( 'Verified account', 'custom-twitter-feeds' ); ?></span></span>
 					<?php endif;?>
 					<a href="<?php echo esc_url( 'https://twitter.com/' . $author_screen_name ); ?>" class="ctf-author-screenname" target="_blank" rel="noopener noreferrer" <?php echo $author_text_attr; ?>>@<?php echo esc_html( $author_screen_name ); ?></a>
 					<span class="ctf-screename-sep">&middot;</span>

@@ -102,7 +102,7 @@
                         <div class="addon-container" id="install_<?php echo $plugin_slug; ?>">
                             <div class="addon-item">
                                 <div class="details ctf-clear">
-                                    <img src="<?php echo esc_url( $plugin_data['details']['icon'] ); ?>">
+                                    <img src="<?php echo esc_url( $plugin_data['details']['icon'] ); ?>" alt="<?php echo esc_attr( $plugin_data['details']['name'] ); ?>">
                                     <h5 class="addon-name">
                                         <?php echo esc_html( $plugin_data['details']['name'] ); ?>
                                     </h5>
@@ -154,7 +154,7 @@
                                 <div class="addon-container" id="install_<?php echo $plugin_slug; ?>">
                                     <div class="addon-item">
                                         <div class="details ctf-clear">
-                                            <img src="<?php echo esc_url( $plugin_data['details']['icon'] ); ?>">
+                                            <img src="<?php echo esc_url( $plugin_data['details']['icon'] ); ?>" alt="<?php echo esc_attr( $plugin_data['details']['name'] ); ?>">
                                             <h5 class="addon-name">
                                                 <?php echo esc_html( $plugin_data['details']['name'] ); ?>
                                             </h5>

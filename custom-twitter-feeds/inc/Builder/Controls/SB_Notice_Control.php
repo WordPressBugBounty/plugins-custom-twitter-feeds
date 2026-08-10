@@ -36,13 +36,13 @@ class SB_Notice_Control extends SB_Controls_Base{
 	*/
 	public function get_control_output($controlEditingTypeModel){
 		?>
-		<div class="sb-control-notice-ctn ctf-fb-fs" @click.prevent.default="control.containerAction != undefined ? noticeClickAction(control.containerAction) : false" :data-notice-action="control.containerAction != undefined ? 'true': false">
+		<div class="sb-control-notice-ctn ctf-fb-fs" :role="control.containerAction != undefined ? 'button' : null" :tabindex="control.containerAction != undefined ? '0' : null" @click.prevent.default="control.containerAction != undefined ? noticeClickAction(control.containerAction) : false" @keydown.enter.prevent="control.containerAction != undefined ? noticeClickAction(control.containerAction) : false" @keydown.space.prevent="control.containerAction != undefined ? noticeClickAction(control.containerAction) : false" :data-notice-action="control.containerAction != undefined ? 'true': false">
 			<div class="sb-control-notice-content ctf-fb-fs">
 				<div class="sb-control-notice-icon" v-if="control.noticeIcon != undefined" v-html="svgIcons[control.noticeIcon]"></div>
 				<div v-html="control.noticeDescription"></div>
 			</div>
 			<div class="ctf-fb-fs">
-				<div class="sb-control-notice-btn ctf-fb-hd-btn ctf-btn-grey sb-button-standard ctf-small-chevron" data-icon="right" v-if="control.buttonAction != undefined" @click.prevent.default="noticeClickAction(control.buttonAction)">
+				<div class="sb-control-notice-btn ctf-fb-hd-btn ctf-btn-grey sb-button-standard ctf-small-chevron" role="button" tabindex="0" data-icon="right" v-if="control.buttonAction != undefined" @click.prevent.default="noticeClickAction(control.buttonAction)" @keydown.enter.prevent="noticeClickAction(control.buttonAction)" @keydown.space.prevent="noticeClickAction(control.buttonAction)">
 					<span v-html="control.buttonActionText"></span>
 				</div>
 			</div>

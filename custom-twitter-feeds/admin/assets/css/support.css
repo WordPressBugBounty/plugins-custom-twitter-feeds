@@ -130,7 +130,6 @@
     text-decoration: none;
 }
 .sb-social-wall-link a:focus {
-    outline: none;
     box-shadow: none;
 }
 .sb-social-wall-link:last-child {
@@ -174,7 +173,6 @@
     transition: all 0.15s ease-in-out;
 }
 .ctf-fb-hd-btn:focus {
-    outline: none;
     box-shadow: none;
 }
 .ctf-fb-hd-btn:hover {
@@ -231,7 +229,6 @@
 .ctf-section-header .ctf-search-doc .ctf-search-doc-field .sb-btn-input {
     height: 100%;
     border: none;
-    outline: none;
     background-color: transparent;
     margin-left: 25px;
     color: #141B38;
@@ -243,7 +240,6 @@
 }
 .ctf-section-header .ctf-search-doc .ctf-search-doc-field:focus,
 .ctf-section-header .ctf-search-doc .ctf-search-doc-field .sb-btn-input:focus {
-    outline: none;
     box-shadow: none;
 }
 .ctf-section-header .ctf-search-doc .ctf-search-doc-field .sb-btn-icon {
@@ -444,7 +440,6 @@
 .ctf-support-contact-block .sb-cb-btn:active {
     background: #BC120E;
     border-color: #BC120E;
-    outline: none;
     box-shadow: none;
 }
 .ctf-support-contact-block .sb-cb-btn span {
@@ -534,7 +529,6 @@
     border-bottom: 1px solid #E8E8EB;
 }
 .ctf-system-info-section .ctf-system-info .system_info:focus {
-    outline: none;
     box-shadow: none;
 }
 .ctf-system-info-section .ctf-system-info .system_info a {

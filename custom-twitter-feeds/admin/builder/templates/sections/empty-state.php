@@ -2,11 +2,11 @@
 	<div class="ctf-fb-wlcm-content ctf-fb-fs">
 		<div class="ctf-fb-wlcm-inf-1 ctf-fb-fs">
 			<div class="ctf-fb-inf-svg">
-                <svg class="sb-head" width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-hidden="true" focusable="false" class="sb-head" width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 6L5.5 1L11.5 6" stroke="#141B38" stroke-width="2" stroke-linejoin="round"/>
                 </svg>
 
-                <svg class="sb-shaft" width="85" height="62" viewBox="0 0 85 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-hidden="true" focusable="false" class="sb-shaft" width="85" height="62" viewBox="0 0 85 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M84.5 59C63.5 66 4.5 54 1.5 0.5" stroke="#141B38" stroke-width="2" stroke-linejoin="round"/>
                 </svg>
             </div>
@@ -27,7 +27,7 @@
                 <p class="sb-small-p">{{welcomeScreen.customizeFeedDescription}}</p>
             </div>
             <div class="ctf-fb-inf-img">
-                <svg width="125" height="119" viewBox="0 0 125 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-hidden="true" focusable="false" width="125" height="119" viewBox="0 0 125 119" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="8.00391" y="0.0622559" width="116.775" height="110.72" rx="2" transform="rotate(4 8.00391 0.0622559)" fill="#D0D1D7"/>
                     <g filter="url(#filter0_dd_1092_32)">
                         <rect x="32.1937" y="30.0425" width="40.3636" height="37" rx="1.12121" transform="rotate(1 32.1937 30.0425)" fill="white"/>
@@ -86,7 +86,7 @@
     <div class="ctf-fb-wlcm-inf-3 ctf-fb-fs">
      <div class="ctf-fb-inf-cnt">
         <div class="ctf-fb-inf-img">
-            <svg width="121" height="134" viewBox="0 0 121 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg aria-hidden="true" focusable="false" width="121" height="134" viewBox="0 0 121 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="0.00878906" y="8.56641" width="111.967" height="125.336" rx="2" transform="rotate(-4 0.00878906 8.56641)" fill="#D0D1D7"/>
                 <g filter="url(#filter0_d_503:1671)">
                     <rect x="15.0002" y="54.0273" width="86.4064" height="27.65" rx="1.15209" transform="rotate(-4 15.0002 54.0273)" fill="white"/>

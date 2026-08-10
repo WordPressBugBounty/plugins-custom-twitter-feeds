@@ -104,7 +104,6 @@
     padding: 8px;
 }
 .sb-form-field .ctf-form-field:focus {
-    outline: none;
     box-shadow: none;
 }
 .sb-form-field .field-icon {
@@ -152,6 +151,11 @@
 }
 .ctf-checkbox input[type=checkbox]:checked + .toggle-track {
     background: #0096CC;
+}
+/* a11y: route the focus ring of the visually-clipped native checkbox to the visible toggle track */
+.ctf-checkbox input[type=checkbox]:focus-visible + .toggle-track {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
 }
 
 .ctf-error-text {
@@ -218,7 +222,6 @@
     color: #8C8F9A;
 }
 .sb-form-field .ctf-textarea:focus {
-    outline: none;
     box-shadow: none;
     border-color: #9c9ca0;
 }
@@ -505,6 +508,20 @@
     bottom: 0px;
     left: 0px;
     z-index: -1;
+}
+/* Reset UA button defaults so <button class="tab"> renders as a tab strip, not a row of boxed buttons (ARIA tabs follow-up).
+   NOTE: do NOT use `font: inherit` here — the `.sb-tabs-container .sb-tabs .tab` rule below sets explicit
+   font-size/font-weight and has higher specificity than `button.tab`, so it defines the typography. */
+.sb-tabs-container .sb-tabs button.tab {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 0;
+    margin: 0;
+    color: inherit;
+    text-align: left;
+    box-shadow: none;
+    border-radius: 0;
 }
 .sb-tabs-container .sb-tabs .tab {
     position: relative;
@@ -1081,7 +1098,6 @@
 }
 .ctf-table tbody .ctf-input:focus {
     border: 1px solid #97989c;
-    outline: none;
     box-shadow: none;
 }
 @media (max-width: 767px) {
@@ -1541,7 +1557,6 @@ Sources Instance Popup
 }
 .ctf-fb-inst-tbl-ctn a, .ctf-fb-inst-tbl-ctn a:focus {
     text-decoration: none;
-    outline: none;
 }
 .ctf-fd-lst-actions .ctf-fd-lst-btn, .ctf-fb-inst-tbl-ctn .ctf-fd-lst-btn {
     box-sizing: border-box;

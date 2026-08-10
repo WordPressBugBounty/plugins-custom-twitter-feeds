@@ -85,13 +85,23 @@ if(!ctf_js_exists){
                                 c = "(?:(?:[^\\s!@#$%^&*()_=+[\\]{}\\\\|;:'\",.<>/?]+)\\.)+",
                                 n = "(?:ac|ad|aero|ae|af|ag|ai|al|am|an|ao|aq|arpa|ar|asia|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|biz|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|cat|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|coop|com|co|cr|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|edu|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gov|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|info|int|in|io|iq|ir|is|it|je|jm|jobs|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mil|mk|ml|mm|mn|mobi|mo|mp|mq|mr|ms|mt|museum|mu|mv|mw|mx|my|mz|name|na|nc|net|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|org|pa|pe|pf|pg|ph|pk|pl|pm|pn|pro|pr|ps|pt|pw|py|qa|re|ro|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tel|tf|tg|th|tj|tk|tl|tm|tn|to|tp|travel|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|xn--0zwm56d|xn--11b5bs3a9aj6g|xn--80akhbyknj4f|xn--9t4b11yi5a|xn--deba0ad|xn--g6w251d|xn--hgbk6aj7f53bba|xn--hlcj6aya9esc7a|xn--jxalpdlp|xn--kgbechtv|xn--zckzah|ye|yt|yu|za|zm|zw)",
                                 f = "(?:" + c + n + "|" + h + ")", o = "(?:[;/][^#?<>\\s]*)?",
-                                e = "(?:\\?[^#<>\\s]*)?(?:#[^<>\\s]*)?", d = "\\b" + k + "[^<>\\s]+",
+                                e = "(?:\\?[^#<>\\s]*)?(?:#[^<>\\s]*)?", d = "\\b" + k + "[^<>\"'\\s]+",
                                 a = "\\b" + f + o + e + "(?!\\w)", m = "mailto:",
                                 j = "(?:" + m + ")?[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@" + f + e + "(?!\\w)",
                                 l = new RegExp("(?:" + d + "|" + a + "|" + j + ")", "ig"), g = new RegExp("^" + k, "i"),
                                 b = {"'": "`", ">": "<", ")": "(", "]": "[", "}": "{", "B;": "B+", "b:": "b9"}, i = {
                                     callback: function (q, p) {
-                                        return p ? '<a href="' + p + '" title="' + p + '" target="_blank">' + q + "</a>" : q
+                                        // The matched URL is interpolated into two quoted attributes and the
+                                        // result is assigned with .html(), so it must be escaped here and
+                                        // restricted to http(s) (SMASH-1796).
+                                        if (!p) { return q; }
+                                        if (!/^https?:\/\//i.test(p)) { return q; }
+                                        // The matched text comes from .html() serialization, so any "&" in it
+                                        // is already the start of an entity (&amp; etc.) — re-encoding those
+                                        // corrupts query strings, so only bare ampersands are encoded.
+                                        var ctfSafeUrl = String(p).replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]*|#\d+|#x[0-9a-fA-F]+);)/g, '&amp;').replace(/"/g, '&quot;')
+                                                                  .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                                        return '<a href="' + ctfSafeUrl + '" title="' + ctfSafeUrl + '" target="_blank">' + q + "</a>";
                                     },
                                     punct_regexp: /(?:[!?.,:;'"]|(?:&|&amp;)(?:lt|gt|quot|apos|raquo|laquo|rsaquo|lsaquo);)$/
                                 };
@@ -148,7 +158,10 @@ if(!ctf_js_exists){
                         })();
                         if (!$ctfText.find('a').length) {
                             $ctfText.find('.emoji').each(function() {
-                                $(this).replaceWith($(this).attr('alt'));
+                                // .attr() returns the value the HTML parser already decoded and
+                                // .replaceWith(string) parses it as HTML, which voids the
+                                // wp_kses_post() applied server-side (SMASH-1796).
+                                $(this).replaceWith(document.createTextNode($(this).attr('alt') || ''));
                             });
                             ctfTextStr = ' ' +$ctfText.html();
                             ctfTextStr = ctfLinkify(ctfTextStr);
@@ -211,7 +224,10 @@ if(!ctf_js_exists){
 
                 $ctf.find('.ctf_more').off('click').on('click', function (e) {
                     e.preventDefault();
-                    $(this).hide().next('.ctf_remaining').show();
+                    var $ctfRemaining = $(this).next('.ctf_remaining');
+                    $(this).attr('aria-expanded', 'true').hide();
+                    // Focus the revealed text so keyboard users aren't dropped to <body> (WCAG 2.4.3)
+                    $ctfRemaining.show().attr('tabindex', '-1').focus();
                 });
 
                 // Call Custom JS if it exists
@@ -246,6 +262,10 @@ if(!ctf_js_exists){
                         v2feed: v2feed,
                     },
                     success: function (data) {
+                        var ctfPrevCount = $ctf.find('.ctf-item').length;
+                        var ctfEndOfFeedText = '';
+                        // Localized live-region strings (wp_localize_script), with English fallbacks
+                        var ctfI18n = (typeof ctf !== 'undefined' && ctf.i18n) ? ctf.i18n : {};
                         if (lastIDData !== '') {
                             // appends the html echoed out in ctf_get_new_posts() to the last post element
                             if (data.indexOf('<meta charset') == -1) {
@@ -253,12 +273,47 @@ if(!ctf_js_exists){
                             }
 
                             if ($ctf.find('.ctf-out-of-tweets').length) {
+                                var ctfMoreFocused = $ctfMore.is(':focus');
                                 $ctfMore.hide();
                                 //Fade in the no more tweets message
                                 $ctf.find('.ctf-out-of-tweets p').eq(0).fadeIn().end().eq(1).delay(500).fadeIn();
+                                // End of the feed: announce the visible message via the live region (WCAG 4.1.3)
+                                ctfEndOfFeedText = $ctf.find('.ctf-out-of-tweets p').eq(0).text() || ctfI18n.noMoreTweets || "That's all! No more Tweets to load";
+                                // Load More just disappeared from under the user's focus; move
+                                // focus to the first new item so it is not dropped to <body>
+                                if (ctfMoreFocused) {
+                                    var $ctfFirstNew = $ctf.find('.ctf-item.ctf-new').first();
+                                    if ($ctfFirstNew.length) {
+                                        $ctfFirstNew.attr('tabindex', '-1').focus();
+                                    } else {
+                                        // Zero new items on the last page; keep focus in the feed (WCAG 2.4.3)
+                                        var $ctfNoMore = $ctf.find('.ctf-out-of-tweets').first();
+                                        if ($ctfNoMore.length) {
+                                            $ctfNoMore.attr('tabindex', '-1').focus();
+                                        } else {
+                                            $ctf.attr('tabindex', '-1').focus();
+                                        }
+                                    }
+                                }
                             }
                         } else {
                             $ctf.find('.ctf-tweets').append(data);
+                        }
+
+                        // Announce newly loaded tweets and/or the end of the feed to assistive technology (WCAG 4.1.3)
+                        var ctfNewCount = $ctf.find('.ctf-item').length - ctfPrevCount;
+                        var ctfStatusText = '';
+                        if (ctfNewCount > 0) {
+                            ctfStatusText = (ctfI18n.newTweetsLoaded || '%s new tweets loaded').replace('%s', ctfNewCount);
+                        }
+                        if (ctfEndOfFeedText !== '') {
+                            ctfStatusText = ctfStatusText === '' ? ctfEndOfFeedText : ctfStatusText + '. ' + ctfEndOfFeedText;
+                        }
+                        if (ctfStatusText !== '') {
+                            var ctfStatusEl = $ctf.find('[data-ctf-feed-status]');
+                            if (ctfStatusEl.length) {
+                                ctfStatusEl.text(ctfStatusText);
+                            }
                         }
 
 
@@ -479,10 +534,28 @@ if(!ctf_js_exists){
             ctfMaybeAddIntents();
             $ctf.find('.ctf-item.ctf-no-consent').removeClass('ctf-hide-avatar');
             $ctf.find('.ctf-author-avatar').each(function() {
-                $(this).find('span').replaceWith('<img src="'+$(this).find('span').attr('data-avatar')+'" alt="'+$(this).find('span').attr('data-alt')+'" width="48" height="48">');
+                var $ctfSpan = $(this).find('span');
+                // Built as an element rather than spliced into an HTML string: both
+                // data-* values are attacker-reachable and .attr() hands them back
+                // decoded (SMASH-1796).
+                $ctfSpan.replaceWith($('<img>', {
+                    src: $ctfSpan.attr('data-avatar') || '',
+                    alt: $ctfSpan.attr('data-alt') || '',
+                    width: 48,
+                    height: 48
+                }));
             });
             $ctf.find('.ctf-header-img').each(function() {
-                $(this).find('span').replaceWith('<img src="'+$(this).find('span').attr('data-avatar')+'" alt="'+$(this).find('span').attr('data-alt')+'" width="48" height="48">');
+                var $ctfSpan = $(this).find('span');
+                // Built as an element rather than spliced into an HTML string: both
+                // data-* values are attacker-reachable and .attr() hands them back
+                // decoded (SMASH-1796).
+                $ctfSpan.replaceWith($('<img>', {
+                    src: $ctfSpan.attr('data-avatar') || '',
+                    alt: $ctfSpan.attr('data-alt') || '',
+                    width: 48,
+                    height: 48
+                }));
             });
             $ctf.find('.ctf-no-consent').removeClass('ctf-no-consent');
             //Header profile pic hover

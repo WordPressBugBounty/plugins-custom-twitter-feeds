@@ -1,4 +1,4 @@
-<div v-if="selected === 'app-3'">
+<div v-if="selected === 'app-3'" id="ctf-panel-translation" role="tabpanel" aria-labelledby="ctf-settings-tab-translation" tabindex="0">
     <div class="sb-tab-box sb-custom-text-box d-flex">
         <div class="tab-label tab-label-full">
             <h3>{{translationTab.title}}</h3>
@@ -19,12 +19,12 @@
                         </tr>
                         <tr>
                             <td>{{translationTab.table.retweeted}}</td>
-                            <td><input type="text" class="ctf-input" :placeholder="model.translation.retweeted" v-model:value="model.translation.retweetedtext"></td>
+                            <td><input type="text" class="ctf-input" :placeholder="model.translation.retweeted" :aria-label="translationTab.table.retweeted" v-model:value="model.translation.retweetedtext"></td>
                             <td>{{translationTab.table.retweetedCtnx}}</td>
                         </tr>
                         <tr>
                             <td>{{translationTab.table.loadMore}}</td>
-                            <td><input type="text" class="ctf-input" :placeholder="model.translation.loadMore" v-model:value="model.translation.buttontext"></td>
+                            <td><input type="text" class="ctf-input" :placeholder="model.translation.loadMore" :aria-label="translationTab.table.loadMore" v-model:value="model.translation.buttontext"></td>
                             <td>{{translationTab.table.loadMoreCtnx}}</td>
                         </tr>
                     </tbody>
@@ -34,17 +34,17 @@
                         </tr>
                         <tr>
                             <td>{{translationTab.table.mtime}}</td>
-                            <td><input type="text" class="ctf-input" :placeholder="translationTab.table.mtime" v-model:value="model.translation.mtime"></td>
+                            <td><input type="text" class="ctf-input" :placeholder="translationTab.table.mtime" :aria-label="translationTab.table.mtime" v-model:value="model.translation.mtime"></td>
                             <td>{{translationTab.table.usedinTimeline}}</td>
                         </tr>
                         <tr>
                             <td>{{translationTab.table.htime}}</td>
-                            <td><input type="text" class="ctf-input" :placeholder="translationTab.table.htime" v-model:value="model.translation.htime"></td>
+                            <td><input type="text" class="ctf-input" :placeholder="translationTab.table.htime" :aria-label="translationTab.table.htime" v-model:value="model.translation.htime"></td>
                             <td>{{translationTab.table.usedinTimeline}}</td>
                         </tr>
                         <tr>
                             <td>{{translationTab.table.nowtime}}</td>
-                            <td><input type="text" class="ctf-input" :placeholder="translationTab.table.nowtime" v-model:value="model.translation.nowtime"></td>
+                            <td><input type="text" class="ctf-input" :placeholder="translationTab.table.nowtime" :aria-label="translationTab.table.nowtime" v-model:value="model.translation.nowtime"></td>
                             <td>{{translationTab.table.usedinTimeline}}</td>
                         </tr>
 

@@ -18,13 +18,13 @@ $header_attr = CTF_Display_Elements::get_element_attribute( 'header', $feed_opti
 $username 			= CTF_Parse::get_user_name( $header_info );
 $header_text 		= CTF_Parse::get_header_text( $header_info, $feed_options );
 $header_description = CTF_Parse::get_header_description( $header_info );
-$verified_account 	= ( $header_info['verified'] == 1 ) ? ctf_get_fa_el( 'fa-check-circle' ) : "";
+$verified_account 	= ( $header_info['verified'] == 1 ) ? ctf_get_fa_el( 'fa-check-circle' ) . '<span class="ctf-screenreader">' . esc_html__( 'Verified account', 'custom-twitter-feeds' ) . '</span>' : "";
 $bio_attr 			= CTF_Display_Elements::get_element_attribute( 'headerbio', $feed_options );
 $avatar 			= CTF_Parse::get_header_avatar( $header_info, $feed_options );
 ?>
 
 <div class="ctf-header <?php echo $header_no_bio ?>" <?php echo $header_attr ?>>
-    <a href="<?php echo esc_url('https://twitter.com/' . $username . '/' ); ?>" target="_blank" rel="noopener noreferrer" title="@<?php echo esc_attr( $username ); ?>" class="ctf-header-link">
+    <a href="<?php echo esc_url('https://twitter.com/' . $username . '/' ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( sprintf( __( '%s on Twitter', 'custom-twitter-feeds' ), $username ) ); ?>" title="@<?php echo esc_attr( $username ); ?>" class="ctf-header-link">
         <div class="ctf-header-text">
             <p class="ctf-header-user">
                 <span class="ctf-header-name"><?php echo wp_kses_post( $header_text ); ?></span>

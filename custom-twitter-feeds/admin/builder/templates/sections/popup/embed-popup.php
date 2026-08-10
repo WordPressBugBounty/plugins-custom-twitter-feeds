@@ -1,6 +1,6 @@
-<div class="ctf-fb-embed-ctn sb-fs-boss ctf-fb-center-boss" v-if="viewsActive.embedPopup">
+<div class="ctf-fb-embed-ctn sb-fs-boss ctf-fb-center-boss" v-if="viewsActive.embedPopup" role="dialog" aria-modal="true" :aria-label="genericText.dialogEmbedFeed">
 	<div class="ctf-fb-embed-popup ctf-fb-popup-inside">
-		<div class="ctf-fb-popup-cls" @click.prevent.default="activateView('embedPopup')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<div class="ctf-fb-popup-cls" role="button" tabindex="0" :aria-label="genericText.close" @click.prevent.default="activateView('embedPopup')" @keydown.enter.prevent="activateView('embedPopup')" @keydown.space.prevent="activateView('embedPopup')"><svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="#141B38"/>
             </svg>
         </div>
@@ -27,7 +27,7 @@
               <div v-html="svgIcons['addPage']"></div>
                   <span>{{embedPopupScreen.addPage}}</span>
               </div>
-              <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg aria-hidden="true" focusable="false" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.83516 0L0.660156 1.175L4.47682 5L0.660156 8.825L1.83516 10L6.83516 5L1.83516 0Z" fill="#141B38"/>
               </svg>
 
@@ -37,7 +37,7 @@
                   <div v-html="svgIcons['addWidget']"></div>
                   <span>{{embedPopupScreen.addWidget}}</span>
               </div>
-              <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg aria-hidden="true" focusable="false" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.83516 0L0.660156 1.175L4.47682 5L0.660156 8.825L1.83516 10L6.83516 5L1.83516 0Z" fill="#141B38"/>
               </svg>
 					</a>
@@ -47,7 +47,7 @@
 
 		<div class="ctf-fb-embed-step-2 ctf-fb-fs" v-show="viewsActive.embedPopupScreen == 'step_2'">
 			<div class="sb-embed-breadcrumb ctf-fb-fs">
-                <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.27203 0.94L4.33203 0L0.332031 4L4.33203 8L5.27203 7.06L2.2187 4L5.27203 0.94Z" fill="#434960"></path></svg>
+                <svg aria-hidden="true" focusable="false" width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.27203 0.94L4.33203 0L0.332031 4L4.33203 8L5.27203 7.06L2.2187 4L5.27203 0.94Z" fill="#434960"></path></svg>
                 <a @click.prevent.default="switchScreen('embedPopupScreen','step_1')">{{embedPopupScreen.heading}}</a>
 			</div>
 			<h3>{{embedPopupScreen.addPage}}</h3>
@@ -65,7 +65,7 @@
 			</div>
 			<div class="ctf-fb-embed-step-2-action ctf-fb-fs">
 				<a class="ctf-fb-srcs-update ctf-fb-btn ctf-fb-fs ctf-btn-orange" :href="viewsActive.embedPopupSelectedPage != null ? adminPostURL + '?post='+viewsActive.embedPopupSelectedPage+'&action=edit&ctf_wizard=' + customizerFeedData.feed_info.id : '#'" target="_blank" :data-active="viewsActive.embedPopupSelectedPage != null ? 'true' : 'false'">
-          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg aria-hidden="true" focusable="false" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M5.58058 8.36158L13.5355 0.406627L15.3033 2.17439L5.58058 11.8971L0.277281 6.59381L2.04505 4.82604L5.58058 8.36158Z" fill="currentColor"/>
           </svg>
 

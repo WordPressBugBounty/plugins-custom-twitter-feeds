@@ -202,6 +202,7 @@ class CTF_Feed_Builder {
 							'actionsText' => __( 'Actions', 'custom-twitter-feeds' ),
 						),
 						'bulkActions' => __( 'Bulk Actions', 'custom-twitter-feeds' ),
+						'selectAll' => __( 'Select all feeds', 'custom-twitter-feeds' ),
 						'legacyFeeds' => array(
 							'heading' => __( 'Legacy Feeds', 'custom-twitter-feeds' ),
 							'toolTip' => __( 'What are Legacy Feeds?', 'custom-twitter-feeds' ),
@@ -620,12 +621,16 @@ class CTF_Feed_Builder {
 					}
 		        	if(  ! empty( $feed_id ) ){
 			        	$settings_preview = self::add_customizer_att( $customizer_atts );
+			        	// htmlspecialchars is load-bearing, not escaping: wp_localize_script
+			        	// html_entity_decode()s every scalar, which would otherwise strip the
+			        	// entities already inside the markup (getShortCodeJSON) and break the
+			        	// #ctf tag. Encoding here survives that decode intact.
 			        	if ( $feed_id === 'legacy' ) {
 							$preview_settings = \TwitterFeed\CtfFeed::get_legacy_feed_settings();
 							$preview_settings['customizer'] = true;
-							$ctf_builder['feedInitOutput'] = htmlspecialchars(ctf_init( $customizer_atts, $preview_settings ));
+							$ctf_builder['feedInitOutput'] = htmlspecialchars( ctf_init( $customizer_atts, $preview_settings ) );
 						} else {
-							$ctf_builder['feedInitOutput'] = htmlspecialchars(ctf_init( $settings_preview, true ));
+							$ctf_builder['feedInitOutput'] = htmlspecialchars( ctf_init( $settings_preview, true ) );
 						}
 		        	}
 
@@ -826,10 +831,24 @@ class CTF_Feed_Builder {
 	 * @since 2.0
 	 */
    public static function global_enqueue_ressources_scripts($is_settings = false){
+		// SMASH-1378: register ctf-tokens-local here as well as in the main
+		// admin enqueue (custom-twitter-feed.php). global_enqueue_ressources_scripts()
+		// is hooked into the builder/settings page lifecycle, which can fire
+		// BEFORE the admin stylesheet callback on some page loads, so the
+		// dependency below would otherwise reference an unregistered handle and
+		// trigger "WP_Styles::add was called incorrectly" in WP 6.9.1+.
+		// wp_register_style() is idempotent — re-registering an existing handle
+		// is a no-op.
+		wp_register_style(
+			'ctf-tokens-local',
+			CTF_PLUGIN_URL . 'assets/tokens/ctf-tokens-local.css',
+			array(),
+			CTF_VERSION
+		);
 	   	wp_enqueue_style(
 	   		'feed-global-style',
 	   		CTF_PLUGIN_URL . 'admin/builder/assets/css/global.css',
-	   		false,
+	   		array( 'ctf-tokens-local' ),
 	   		CTF_VERSION
 	   	);
 	   	wp_enqueue_script(
@@ -884,6 +903,20 @@ class CTF_Feed_Builder {
 	   		true
 	   	);
 
+		// SMASH-1378 A11Y-004: focus trap for popups declared as role="dialog".
+		// Ported from instagram-feed-pro (canonical pattern) via TW Pro. Later
+		// dialog-role additions on TW Free popups will be picked up automatically
+		// by the MutationObserver. This static helper is invoked from BOTH the
+		// builder page (feed_builder) AND CTF_Global_Settings::global_settings(),
+		// so a single enqueue covers both dialog-bearing admin surfaces.
+		wp_enqueue_script(
+			'ctf-popup-focus-trap',
+			CTF_PLUGIN_URL . 'admin/builder/assets/js/popup-focus-trap.js',
+			array(),
+			CTF_VERSION,
+			true
+		);
+
 	}
 
 	/**
@@ -904,6 +937,18 @@ class CTF_Feed_Builder {
 			'connect' => __( 'Connect', 'custom-twitter-feeds' ),
 
 			'addSource' => __( 'Add Source', 'custom-twitter-feeds' ),
+			'sourcesList' => __( 'Sources list', 'custom-twitter-feeds' ),
+			'dialogConnectAccount' => __( 'Connect account', 'custom-twitter-feeds' ),
+			'dialogConfirmAction' => __( 'Confirm action', 'custom-twitter-feeds' ),
+			'dialogExtension' => __( 'Extension', 'custom-twitter-feeds' ),
+			'dialogSources' => __( 'Sources', 'custom-twitter-feeds' ),
+			'dialogEmbedFeed' => __( 'Embed feed', 'custom-twitter-feeds' ),
+			'dialogAddSource' => __( 'Add source', 'custom-twitter-feeds' ),
+			'dialogFeedTypes' => __( 'Feed types', 'custom-twitter-feeds' ),
+			'dialogFeedTemplates' => __( 'Feed templates', 'custom-twitter-feeds' ),
+			'dialogOnboarding' => __( 'Onboarding', 'custom-twitter-feeds' ),
+			'saveFeedName' => __( 'Save feed name', 'custom-twitter-feeds' ),
+			'editFeedName' => __( 'Edit feed name', 'custom-twitter-feeds' ),
 			'addAnotherSource' => __( 'Add another Source', 'custom-twitter-feeds' ),
 			'addSourceType' => __( 'Add Another Source Type', 'custom-twitter-feeds' ),
 			'previous' => __( 'Previous', 'custom-twitter-feeds' ),
@@ -927,6 +972,9 @@ class CTF_Feed_Builder {
 			'photo' => __( 'Photo', 'custom-twitter-feeds' ),
 			'apply' => __( 'Apply', 'custom-twitter-feeds' ),
 			'copy' => __( 'Copy', 'custom-twitter-feeds' ),
+			'select' => __( 'Select', 'custom-twitter-feeds' ),
+			'close' => __( 'Close', 'custom-twitter-feeds' ),
+			'view' => __( 'View', 'custom-twitter-feeds' ),
 			'edit' => __( 'Edit', 'custom-twitter-feeds' ),
 			'duplicate' => __( 'Duplicate', 'custom-twitter-feeds' ),
 			'delete' => __( 'Delete', 'custom-twitter-feeds' ),
@@ -952,6 +1000,8 @@ class CTF_Feed_Builder {
 			'admin' => __( 'Admin', 'custom-twitter-feeds' ),
 			'member' => __( 'Member', 'custom-twitter-feeds' ),
 			'reset' => __( 'Reset', 'custom-twitter-feeds' ),
+			'openColorPicker' => __( 'Open color picker', 'custom-twitter-feeds' ),
+			'colorPicker' => __( 'Color picker', 'custom-twitter-feeds' ),
 			'preview' => __( 'Preview', 'custom-twitter-feeds' ),
 			'name' => __( 'Name', 'custom-twitter-feeds' ),
 			'id' => __( 'ID', 'custom-twitter-feeds' ),
@@ -962,6 +1012,7 @@ class CTF_Feed_Builder {
 			'clearFeedCache' => __( 'Clear Feed Cache', 'custom-twitter-feeds' ),
 			'saveSettings' => __( 'Save Changes', 'custom-twitter-feeds' ),
 			'feedName' => __( 'Feed Name', 'custom-twitter-feeds' ),
+			'feedInstances' => __( 'Feed instances', 'custom-twitter-feeds' ),
 			'shortcodeText' => __( 'Shortcode', 'custom-twitter-feeds' ),
 			'general' => __( 'General', 'custom-twitter-feeds' ),
 			'feeds' => __( 'Feeds', 'custom-twitter-feeds' ),

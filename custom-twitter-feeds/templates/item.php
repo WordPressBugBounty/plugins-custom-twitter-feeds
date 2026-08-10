@@ -27,7 +27,7 @@ $text_and_link_attr = CTF_Display_Elements::get_element_attribute( 'text_and_lin
 $text_no_link_attr 	= CTF_Display_Elements::get_element_attribute( 'text_no_link', $feed_options );
 ?>
 
-<div <?php echo $tweet_classes ?> id="<?php echo esc_attr( $post_id ); ?>" <?php echo $retweet_data_att ?>>
+<div role="listitem" <?php echo $tweet_classes ?> id="<?php echo esc_attr( $post_id ); ?>" <?php echo $retweet_data_att ?>>
 
 	<?php include ctf_get_feed_template_part( 'author', $feed_options ); ?>
 	<div class="ctf-tweet-content">

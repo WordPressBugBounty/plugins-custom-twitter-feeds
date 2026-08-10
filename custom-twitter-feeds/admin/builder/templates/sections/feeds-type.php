@@ -3,7 +3,7 @@
 		<h4>{{selectFeedTypeScreen.feedTypeHeading}}</h4>
 		<span class="ctf-fb-types-desc">{{selectFeedTypeScreen.mainDescription}}</span>
 		<div class="ctf-fb-types-list">
-			<div class="ctf-fb-type-el" v-for="(feedTypeEl, feedTypeIn) in feedTypes" :data-active="selectedFeed.includes(feedTypeEl.type) && feedTypeEl.type != 'socialwall'" :data-type="feedTypeEl.type" @click.prevent.default="chooseFeedType(feedTypeEl)">
+			<div class="ctf-fb-type-el" v-for="(feedTypeEl, feedTypeIn) in feedTypes" role="button" tabindex="0" :aria-label="feedTypeEl.title" :aria-pressed="selectedFeed.includes(feedTypeEl.type) && feedTypeEl.type != 'socialwall' ? 'true' : 'false'" :data-active="selectedFeed.includes(feedTypeEl.type) && feedTypeEl.type != 'socialwall'" :data-type="feedTypeEl.type" @click.prevent.default="chooseFeedType(feedTypeEl)" @keydown.enter.prevent="chooseFeedType(feedTypeEl)" @keydown.space.prevent="chooseFeedType(feedTypeEl)">
 				<div class="ctf-fb-type-el-img ctf-fb-fs" v-html="svgIcons[feedTypeEl.icon]"></div>
 				<div class="ctf-fb-type-el-info ctf-fb-fs">
 					<span class="sb-small-p sb-bold sb-dark-text" v-html="feedTypeEl.title"></span>

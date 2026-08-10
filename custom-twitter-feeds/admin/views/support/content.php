@@ -12,8 +12,8 @@
             <h2>{{genericText.title}}</h2>
             <div class="ctf-search-doc">
                 <div :href="links.doc" target="_blank" class="ctf-search-doc-field">
-                    <span class="sb-btn-icon" @click="goToSearchDocumentation()" v-html="icons.magnify"></span>
-                    <input class="sb-btn-input" id="ctf-search-doc-input" v-model="searchKeywords" v-on:keyup="searchDoc" v-on:paste="searchDocStrings" :placeholder="buttons.searchDoc">
+                    <span class="sb-btn-icon" role="button" tabindex="0" :aria-label="buttons.searchDoc" @click="goToSearchDocumentation()" @keydown.enter.prevent="goToSearchDocumentation()" @keydown.space.prevent="goToSearchDocumentation()" v-html="icons.magnify"></span>
+                    <input class="sb-btn-input" id="ctf-search-doc-input" v-model="searchKeywords" v-on:keyup="searchDoc" v-on:paste="searchDocStrings" :aria-label="buttons.searchDoc" :placeholder="buttons.searchDoc">
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
             </div>
             <div class="sb-contact-block-right">
                 <div>
-                    <img :src="images.supportMembers">
+                    <img :src="images.supportMembers" alt="">
                 </div>
                 <p>{{genericText.ourFast}}</p>
             </div>
@@ -133,7 +133,7 @@
                 <p>{{genericText.shareYour}}</p>
             </div>
             <div class="ctf-export-right">
-                <select name="" id="ctf-feeds-list" class="ctf-select" v-model="exportFeed" ref="export_feed">
+                <select name="" id="ctf-feeds-list" class="ctf-select" v-model="exportFeed" ref="export_feed" aria-label="<?php esc_attr_e( 'Select a feed', 'custom-twitter-feeds' ); ?>">
                     <option value="none" selected disabled>Select Feed</option>
                     <option v-for="feed in feeds" :value="feed.id">{{ feed.name }}</option>
                 </select>
@@ -145,7 +145,7 @@
         </div>
     </div>
 </div>
-<div class="sb-notification-ctn" :data-active="notificationElement.shown" :data-type="notificationElement.type">
+<div class="sb-notification-ctn" :data-active="notificationElement.shown" :data-type="notificationElement.type" role="status" aria-live="polite" aria-atomic="true">
 	<div class="sb-notification-icon" v-html="svgIcons[notificationElement.type+'Notification']"></div>
 	<span class="sb-notification-text" v-html="notificationElement.text"></span>
 </div>

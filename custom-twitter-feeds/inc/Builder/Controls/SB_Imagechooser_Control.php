@@ -38,16 +38,16 @@ class SB_Imagechooser_Control extends SB_Controls_Base{
 		?>
 		<div class="sb-control-imagechooser-ctn ctf-fb-fs">
 			<div class="ctf-fb-fs">
-				<input type="text" class="sb-control-imagechooser-input ctf-fb-fs" :class="checkNotEmpty(<?php echo $controlEditingTypeModel ?>[control.id]) ? 'sb-control-imagechooser-padding' : ''" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" :placeholder="control.placeholder ? control.placeholder : <?php echo $controlEditingTypeModel ?>[control.id]" disabled>
+				<input type="text" class="sb-control-imagechooser-input ctf-fb-fs" :class="checkNotEmpty(<?php echo $controlEditingTypeModel ?>[control.id]) ? 'sb-control-imagechooser-padding' : ''" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" :placeholder="control.placeholder ? control.placeholder : <?php echo $controlEditingTypeModel ?>[control.id]" :aria-label="control.heading || control.label || 'Image URL'" disabled>
 				<div class="sb-control-imagechooser-clear ctf-fb-tltp-parent" v-if="checkNotEmpty(<?php echo $controlEditingTypeModel ?>[control.id])">
-					<div class="sb-control-imagechooser-clear-icon" @click.prevent.default="changeSettingValue(control.id, '')"></div>
-					<div class="ctf-fb-tltp-elem"><span>{{genericText.clear.replace(/ /g,"&nbsp;")}}</span></div>
+					<button type="button" class="sb-control-imagechooser-clear-icon" :aria-label="genericText.clear" @click.prevent.default="changeSettingValue(control.id, '')"></button>
+					<div class="ctf-fb-tltp-elem" aria-hidden="true"><span>{{genericText.clear.replace(/ /g,"&nbsp;")}}</span></div>
 				</div>
 			</div>
-			<div class="sb-control-imagechooser-btn" @click.prevent.default="imageChooser( control.id )">
-				<div v-html="svgIcons['imageChooser']"></div>
+			<button type="button" class="sb-control-imagechooser-btn" @click.prevent.default="imageChooser( control.id )">
+				<div v-html="svgIcons['imageChooser']" aria-hidden="true"></div>
 				{{genericText.addImage.replace(/ /g,"&nbsp;")}}
-			</div>
+			</button>
 		</div>
 		<?php
 	}

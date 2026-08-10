@@ -971,6 +971,7 @@ class CTF_Global_Settings {
 				),
 				'gdprBox' => array(
 					'title'	=> __( 'GDPR', 'custom-twitter-feeds' ),
+					'selectLabel'	=> __( 'GDPR method', 'custom-twitter-feeds' ),
 					'automatic'	=> __( 'Automatic', 'custom-twitter-feeds' ),
 					'yes'	=> __( 'Yes', 'custom-twitter-feeds' ),
 					'no'	=> __( 'No', 'custom-twitter-feeds' ),
@@ -1069,6 +1070,7 @@ class CTF_Global_Settings {
 				),
 				'requestMethodBox' => array(
 					'title' => __( 'Request Method', 'custom-twitter-feeds' ),
+					'selectLabel' => __( 'Request method', 'custom-twitter-feeds' ),
 					'helpText' => __( 'Explicitly set the request method. You would only want to change this if you are unable to connect to the Twitter API.', 'custom-twitter-feeds' ),
 					'options' => array(
 						'auto' => __( 'Auto', 'custom-twitter-feeds' ),

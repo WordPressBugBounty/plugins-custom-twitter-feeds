@@ -543,8 +543,10 @@
     position: relative;
     text-align: center;
     box-sizing: border-box;
-    outline: none;
     text-decoration: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
 
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -554,6 +556,11 @@
     -webkit-transition: background 0.1s ease-in-out;
     -o-transition: background 0.1s ease-in-out;
     transition: background 0.1s ease-in-out;
+}
+#ctf #ctf-more:focus-visible,
+#ctf .ctf_more:focus-visible{
+    outline: 2px solid #0096CC;
+    outline-offset: 2px;
 }
 #ctf #ctf-more:hover{
     background: #ddd;
@@ -995,4 +1002,13 @@
 }
 .ctf-rebranded .ctf-header-follow svg path {
     fill: white;
+}
+
+/* a11y: read-more reveal and load-more last-page redirects move focus to
+   non-interactive targets (tabindex=-1); suppress the UA ring there only. */
+#ctf .ctf_remaining[tabindex="-1"]:focus,
+#ctf .ctf-item[tabindex="-1"]:focus,
+#ctf .ctf-out-of-tweets[tabindex="-1"]:focus {
+	outline: none;
+	box-shadow: none;
 }

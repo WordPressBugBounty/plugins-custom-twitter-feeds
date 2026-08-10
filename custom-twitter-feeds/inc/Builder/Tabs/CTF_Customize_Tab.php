@@ -459,7 +459,12 @@ class CTF_Customize_Tab{
 	 * @return array
 	*/
 	static function get_customize_colorscheme_controls(){
-		$feed_id = isset($_GET['feed_id']) ? $_GET['feed_id'] : '';
+		// Interpolated into five CSS selectors that are assembled client-side and rendered
+		// through v-html, where a </style> sequence breaks out. A feed id is either the
+		// literal 'legacy' or an integer; the sibling reader in CTF_Feed_Builder treats
+		// those the same two ways (SMASH-1796).
+		$feed_id = isset($_GET['feed_id']) ? $_GET['feed_id'] : 0;
+		$feed_id = $feed_id === 'legacy' ? 'legacy' : absint( $feed_id );
 		$color_scheme_array = [
 			[
 				'type' 		=> 'toggleset',

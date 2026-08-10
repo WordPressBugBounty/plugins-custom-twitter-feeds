@@ -103,7 +103,6 @@
     text-decoration: none;
 }
 .sb-social-wall-link a:focus {
-    outline: none;
     box-shadow: none;
 }
 .sb-social-wall-link:last-child {
@@ -147,7 +146,6 @@
     transition: all 0.15s ease-in-out;
 }
 .ctf-fb-hd-btn:focus {
-    outline: none;
     box-shadow: none;
 }
 .ctf-fb-hd-btn:hover {
@@ -241,7 +239,6 @@
     background: #E8E8EB;
     border: 1px solid #D0D1D7;
     box-shadow: none;
-    outline: none;
 }
 .sb-action-buttons .ctf-btn.loading svg {
     height: 13px;

@@ -37,7 +37,7 @@ class SB_Select_Control extends SB_Controls_Base{
 	public function get_control_output($controlEditingTypeModel){
 		?>
 		<div class="sb-control-input-ctn ctf-fb-fs">
-			<select class="sb-control-input ctf-fb-fs" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" @change.prevent.default="changeSettingValue(control.id,false,false, control.ajaxAction ? control.ajaxAction : false)">
+			<select class="sb-control-input ctf-fb-fs" :aria-label="control.heading || control.label || 'Select option'" :aria-disabled="control.disabledInput != undefined ? 'true' : null" :tabindex="control.disabledInput != undefined ? -1 : null" v-model="<?php echo $controlEditingTypeModel ?>[control.id]" @change.prevent.default="changeSettingValue(control.id,false,false, control.ajaxAction ? control.ajaxAction : false)">
 				<option v-for="(opName, opValue) in control.options" :value="opValue">{{opName}}</option>
 			</select>
 		</div>

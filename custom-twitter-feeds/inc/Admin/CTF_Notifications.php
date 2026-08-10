@@ -571,17 +571,17 @@ class CTF_Notifications {
 			} else {
 				if ( $notification['image'] === 'balloon' ) {
 					$image_html = sprintf(
-						'<div class="bell"><img src="%s" alt="notice">',
+						'<div class="bell"><img src="%s" alt="">',
 						CTF_PLUGIN_URL . 'admin/assets/img/balloon.svg' );
 				} else if ( $notification['id'] === 'review' || $notification['id'] === 'discount' ) {
 					$image_html = sprintf(
-						'<div class="bell"><img src="%s" alt="notice">',
+						'<div class="bell"><img src="%s" alt="">',
 						CTF_PLUGIN_URL . 'admin/assets/img/' . sanitize_text_field( str_replace( array( 'sbi', '.png' ), array( 'ctf', '.svg' ), $notification['image'] ) )
 					);
 				} else {
 					$image_html = '<div class="thumb">';
 					$img_src = CTF_PLUGIN_URL . 'admin/assets/img/' . sanitize_text_field( $notification['image'] );
-					$image_html .= '<img src="'.esc_url( $img_src ).'" alt="notice">';
+					$image_html .= '<img src="'.esc_url( $img_src ).'" alt="">';
 
 					if ( isset( $notification['image_overlay'] ) ) {
 						$image_html .= '<div class="img-overlay">'. esc_html( str_replace( '%', '%%', $notification['image_overlay'] ) ).'</div>';
@@ -594,7 +594,7 @@ class CTF_Notifications {
 			// Check if it's review notice then show step #1
 			if ( $type == 'review' ) {
 				$step1_img = CTF_PLUGIN_URL . 'admin/assets/img/' . sanitize_text_field( str_replace( array( 'sbi', 'png' ), array( 'ctf', 'svg' ), $notification['image'] ) );
-				$step1_img_html = sprintf('<div class="bell"><img src="%s" alt="notice"></div>', $step1_img);
+				$step1_img_html = sprintf('<div class="bell"><img src="%s" alt=""></div>', $step1_img);
 
 				$review_consent = get_option( 'ctf_review_consent' );
 				$ctf_open_feedback_url = 'https://smashballoon.com/feedback/?plugin=twitter-free&utm_campaign=twitter-free&utm_source=notifications&utm_medium=feedback';

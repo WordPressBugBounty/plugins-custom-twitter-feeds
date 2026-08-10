@@ -20,6 +20,37 @@ body{
     background: #2A65DB;
 }
 
+/* SMASH-1378: reset UA button defaults for elements converted from <div>/<a>/<span>
+   to <button> during the a11y semantic upgrade. TW's builder.css has no chrome
+   reset for these, so the browser's default <button> border/background renders as an
+   unwanted outer border on checkbox and other controls. Wrapped in :where() so the
+   reset has specificity (0,0,0) and any per-control rule (e.g. padding/background on
+   .sb-control-imagechooser-btn) still wins automatically. */
+:where(
+    button.sb-control-switcher-ctn,
+    button.sb-control-checkbox-ctn,
+    button.sb-control-checkbox,
+    button.sb-control-checkboxsection-open,
+    button.sb-control-colorpicker-btn,
+    button.sb-control-colorpicker-swatch,
+    button.sb-control-imagechooser-clear-icon,
+    button.sb-control-imagechooser-btn,
+    button.sb-control-input-info,
+    button.ctf-fb-popup-cls
+) {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: inherit;
+    line-height: inherit;
+}
+
 /****
 Buttons
  */
@@ -647,6 +678,20 @@ Welcome Screen Empty State
     position: absolute;
     left: 12px;
 }
+/* a11y: ctf-fb-btn-new converted from <div> to native <button>; reset UA button styles so it matches the original design */
+button.ctf-fb-btn-new{
+    font-family: inherit;
+    text-align: left;
+    line-height: 17px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+/* a11y: restore a visible keyboard focus ring (parent .ctf-fb-btn forces outline:none) */
+button.ctf-fb-btn-new:focus-visible{
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px #2271b1;
+}
 
 .ctf-fb-inf-cnt{
     position: relative;
@@ -785,6 +830,14 @@ Welcome Screen Empty State
 #ctf-builder-app .ctf-fb-create-ctn h4,
 #ctf-builder-app .ctf-fb-feedtypes-pp-ctn  h4{
     margin-bottom: 1px;
+}
+/* SMASH-1378: feed-creation step headings receive programmatic focus on step
+   change for screen-reader context only (tabindex=-1, not in the tab order),
+   so suppress the visible focus ring on the heading itself. */
+#ctf-builder-app .ctf-fb-create-ctn h4:focus,
+#ctf-builder-app .ctf-fb-create-ctn h4:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 #ctf-builder-app .ctf-fb-feedtypes-pp-ctn[data-screen="customizer"] .ctf-fb-types {
     margin-top: 20px;
@@ -3430,6 +3483,17 @@ flex: 1;
 .sb-control-checkbox-ctn > div{
 	z-index: 3;
 }
+/* SMASH-1378: restore checkboxsection row layout after div→button a11y conversion.
+   Chevron moved inside .sb-control-checkboxsection-open; `> div{z-index:3}` no longer
+   matches the <button> children → chevron not far-right + hover overlay (z-index:1)
+   covered label+chevron. Flex the open-button (chevron right) + raise above overlay. */
+.sb-control-checkboxsection-open {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+}
 .sb-control-checkbox-ctn:hover .sb-control-checkbox-hover{
 	opacity: 1;
 }
@@ -4185,7 +4249,8 @@ font-style: normal;
     width: 12px;
     height: 12px;
 }
-.sb-onboarding-tooltip h3 {
+.sb-onboarding-tooltip h3,
+.sb-onboarding-tooltip .sb-onboarding-wizard-step-heading {
     font-size: 16px;
     color: #141B38;
     line-height: 160%;

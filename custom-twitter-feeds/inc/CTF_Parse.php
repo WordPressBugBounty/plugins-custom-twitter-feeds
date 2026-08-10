@@ -431,21 +431,37 @@ class CTF_Parse{
         if( ctf_doing_customizer( $feed_options ) ){
             return ' :class="$parent.getFeedClasses()" ';
         }else{
-            $ctf_feed_classes = 'ctf ctf-type-' . CTF_Parse::get_feed_type( $feed_options );
+            // Every value below reaches the container's class attribute. A shortcode may
+            // set them directly (legacy-shortcode installs skip the attribute allowlist), and
+            // a bare double quote breaks out of the attribute, so each is reduced to the
+            // identifier shape it is documented to have (SMASH-1796).
+            $allowed_types = array( 'usertimeline', 'hometimeline', 'hashtag', 'search', 'mentionstimeline', 'lists', 'multiple' );
+            $type          = CTF_Parse::get_feed_type( $feed_options );
+            $type          = in_array( $type, $allowed_types, true ) ? $type : 'usertimeline';
+
+            // The "CSS class" field legitimately holds several space-separated classes, so
+            // sanitize per token and keep the separators rather than collapsing them.
+            $ctf_sanitize_classes = static function ( $value ) {
+                $tokens = preg_split( '/\s+/', (string) $value, -1, PREG_SPLIT_NO_EMPTY );
+                return implode( ' ', array_filter( array_map( 'sanitize_html_class', (array) $tokens ), 'strlen' ) );
+            };
+
+            $ctf_feed_classes = 'ctf ctf-type-' . $type;
             $ctf_feed_classes .= \ctf_should_rebrand_to_x() ? ' ctf-rebranded' : '';
-            $ctf_feed_classes .= ($feed_id !== false ) ?  ' ctf-feed-' . $feed_id : '';
-            $ctf_feed_classes .= ' ' . $feed_options['class'] . ' ctf-styles';
-            $ctf_feed_classes .= ($feed_options['layout']) ?  ' ctf-' . $feed_options['layout']: '';
-            $ctf_feed_classes .= ( isset( $feed_options['tweetpoststyle'] ) ) ?  ' ctf-' . $feed_options['tweetpoststyle'] . '-style' : '';
+            $ctf_feed_classes .= ($feed_id !== false ) ?  ' ctf-feed-' . absint( $feed_id ) : '';
+            $ctf_feed_classes .= ' ' . $ctf_sanitize_classes( $feed_options['class'] ) . ' ctf-styles';
+            $ctf_feed_classes .= ($feed_options['layout']) ?  ' ctf-' . sanitize_html_class( $feed_options['layout'] ): '';
+            $ctf_feed_classes .= ( isset( $feed_options['tweetpoststyle'] ) ) ?  ' ctf-' . sanitize_html_class( $feed_options['tweetpoststyle'] ) . '-style' : '';
             if ( ! empty( $feed_options['height'] ) ) $ctf_feed_classes .= ' ctf-fixed-height';
             $ctf_feed_classes .= $feed_options['width_mobile_no_fixed'] ? ' ctf-width-resp' : '';
             if ( $check_for_duplicates ) { $ctf_feed_classes .= ' ctf-no-duplicates'; }
             if( isset($feed_options['colorpalette']) && $feed_options['colorpalette'] !== 'inherit' && $feed_id !== false ){
-                $feed_id_class = $feed_options['colorpalette'] === 'custom' ? ('_' . $feed_id) : '';
-                $ctf_feed_classes .= ' ctf_palette_' . $feed_options['colorpalette'] . $feed_id_class;
+                $palette       = sanitize_html_class( $feed_options['colorpalette'] );
+                $feed_id_class = $palette === 'custom' ? ('_' . absint( $feed_id )) : '';
+                $ctf_feed_classes .= ' ctf_palette_' . $palette . $feed_id_class;
             }
             $ctf_feed_classes = apply_filters( 'ctf_feed_classes', $ctf_feed_classes );
-            return 'class=" ' . $ctf_feed_classes .'" ';
+            return 'class=" ' . esc_attr( $ctf_feed_classes ) .'" ';
         }
 
     }

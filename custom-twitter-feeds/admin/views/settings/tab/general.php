@@ -1,4 +1,4 @@
-<div v-if="selected === 'app-1'">
+<div v-if="selected === 'app-1'" id="ctf-panel-general" role="tabpanel" aria-labelledby="ctf-settings-tab-general" tabindex="0">
     <div class="sb-tab-box sb-license-box clearfix">
         <div class="tab-label">
             <h3>{{generalTab.licenseBox.title}}</h3>
@@ -20,7 +20,7 @@
                 <div v-else class="d-flex">
                     <div class="field-left-content">
                         <div class="sb-form-field">
-                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" :placeholder="generalTab.licenseBox.inactiveFieldPlaceholder" v-model="licenseKey">
+                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" :aria-label="generalTab.licenseBox.title" :placeholder="generalTab.licenseBox.inactiveFieldPlaceholder" v-model="licenseKey">
                         </div>
                         <div class="form-info d-flex justify-between">
 
@@ -66,7 +66,7 @@
                 <div v-else class="d-flex">
                     <div class="field-left-content">
                         <div class="sb-form-field">
-                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" :placeholder="generalTab.licenseBox.inactiveFieldPlaceholder" v-model="licenseKey">
+                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" :aria-label="generalTab.licenseBox.title" :placeholder="generalTab.licenseBox.inactiveFieldPlaceholder" v-model="licenseKey">
                         </div>
                         <div class="form-info d-flex justify-between">
 
@@ -100,7 +100,7 @@
                 <div class="d-flex">
                     <div class="field-left-content">
                         <div class="sb-form-field">
-                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" value="******************************" v-model="licenseKey">
+                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" :aria-label="generalTab.licenseBox.title" value="******************************" v-model="licenseKey">
                             <span class="field-icon fa fa-check-circle"></span>
                         </div>
                         <div class="form-info d-flex justify-between">
@@ -144,7 +144,7 @@
                 <div class="d-flex">
                     <div class="field-left-content">
                         <div class="sb-form-field">
-                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" :placeholder="generalTab.licenseBox.inactiveFieldPlaceholder" v-model="licenseKey">
+                            <input type="password" name="license-key" id="license-key" class="ctf-form-field" :aria-label="generalTab.licenseBox.title" :placeholder="generalTab.licenseBox.inactiveFieldPlaceholder" v-model="licenseKey">
                             <span class="field-icon field-icon-error fa fa-times-circle" v-if="licenseErrorMsg !== null"></span>
                         </div>
                         <div class="mb-6" v-if="licenseErrorMsg !== null">
@@ -189,20 +189,20 @@
             <div class="d-flex ctf-manage-account-inputs" v-if="checkAccountDetails()" :data-active="viewsActive['accountDetailsActive'] ? 'true' : 'false'">
                 <div class="field-left-content">
                     <div class="ctf-manage-account-info">
-                        <img :src="accountDetails.account_avatar" :alt="accountDetails.account_handle">
+                        <img :src="accountDetails.account_avatar" alt="" aria-hidden="true">
                         <strong>{{accountDetails.account_handle}}</strong>
-                        <div class="ctf-manage-account-edit-icon" v-html="svgIcons['cog']" @click.prevent.default="activateView('accountDetailsActive')"></div>
-                        <div class="ctf-manage-account-delete-icon" v-html="svgIcons['delete']" @click.prevent.default="openDialogBox('deleteAccount')"></div>
+                        <div class="ctf-manage-account-edit-icon" role="button" tabindex="0" :aria-label="genericText.edit + ' ' + accountDetails.account_handle" v-html="svgIcons['cog']" @click.prevent.default="activateView('accountDetailsActive')" @keydown.enter.prevent="activateView('accountDetailsActive')" @keydown.space.prevent="activateView('accountDetailsActive')"></div>
+                        <div class="ctf-manage-account-delete-icon" role="button" tabindex="0" :aria-label="genericText.delete + ' ' + accountDetails.account_handle" v-html="svgIcons['delete']" @click.prevent.default="openDialogBox('deleteAccount')" @keydown.enter.prevent="openDialogBox('deleteAccount')" @keydown.space.prevent="openDialogBox('deleteAccount')"></div>
                     </div>
                     <div class="ctf-acc-info-item">
                         <strong>{{generalTab.manageAccount.aToken}}</strong>
                         <span>{{accountDetails.access_token}}</span>
-                        <div class="ctf-acc-info-icon" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token)"></div>
+                        <div class="ctf-acc-info-icon" role="button" tabindex="0" :aria-label="genericText.copy + ' ' + generalTab.manageAccount.aToken" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token)" @keydown.enter.prevent="copyToClipBoard(accountDetails.access_token)" @keydown.space.prevent="copyToClipBoard(accountDetails.access_token)"></div>
                     </div>
                     <div class="ctf-acc-info-item">
                         <strong>{{generalTab.manageAccount.aTokenSecret}}</strong>
                         <span>{{accountDetails.access_token_secret}}</span>
-                        <div class="ctf-acc-info-icon" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token_secret)"></div>
+                        <div class="ctf-acc-info-icon" role="button" tabindex="0" :aria-label="genericText.copy + ' ' + generalTab.manageAccount.aTokenSecret" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token_secret)" @keydown.enter.prevent="copyToClipBoard(accountDetails.access_token_secret)" @keydown.space.prevent="copyToClipBoard(accountDetails.access_token_secret)"></div>
                     </div>
                 </div>
                 <button type="button" class="ctf-btn sb-btn-lg export-btn" @click.prevent.default="activateView('connectAccountPopup');switchScreen('connectAccountStep','step_1');">
@@ -212,7 +212,7 @@
             </div>
         </div>
         <div class="ctf-add-account ctf-fs">
-            <div class="ctf-add-account-btn ctf-fs"  v-if="!checkAppData()" @click.prevent.default="activateView('connectAccountPopup');switchScreen('connectAccountStep','step_2');">
+            <div class="ctf-add-account-btn ctf-fs"  v-if="!checkAppData()" role="button" tabindex="0" :aria-label="generalTab.manageAccount.buttonConnectOwnApp" @click.prevent.default="activateView('connectAccountPopup');switchScreen('connectAccountStep','step_2');" @keydown.enter.prevent.default="activateView('connectAccountPopup');switchScreen('connectAccountStep','step_2');" @keydown.space.prevent.default="activateView('connectAccountPopup');switchScreen('connectAccountStep','step_2');">
                 <div v-html="svgIcons['linkIcon']"></div>
                 {{generalTab.manageAccount.buttonConnectOwnApp}}
             </div>
@@ -228,28 +228,28 @@
                             <div class="ctf-manage-account-info">
                                 <div class="ctf-manage-account-info-icon" v-html="svgIcons['twitter']"></div>
                                 <strong>{{accountDetails.app_name}}</strong>
-                                <div class="ctf-manage-account-edit-icon" v-html="svgIcons['cog']" @click.prevent.default="activateView('appDetailsActive')"></div>
-                                <div class="ctf-manage-account-delete-icon" v-html="svgIcons['delete']" @click.prevent.default="openDialogBox('deleteApp')"></div>
+                                <div class="ctf-manage-account-edit-icon" role="button" tabindex="0" :aria-label="genericText.edit + ' ' + accountDetails.app_name" v-html="svgIcons['cog']" @click.prevent.default="activateView('appDetailsActive')" @keydown.enter.prevent="activateView('appDetailsActive')" @keydown.space.prevent="activateView('appDetailsActive')"></div>
+                                <div class="ctf-manage-account-delete-icon" role="button" tabindex="0" :aria-label="genericText.delete + ' ' + accountDetails.app_name" v-html="svgIcons['delete']" @click.prevent.default="openDialogBox('deleteApp')" @keydown.enter.prevent="openDialogBox('deleteApp')" @keydown.space.prevent="openDialogBox('deleteApp')"></div>
                             </div>
                             <div class="ctf-acc-info-item">
                                 <strong>{{generalTab.manageAccount.cKey}}</strong>
                                 <span>{{accountDetails.consumer_key}}</span>
-                                <div class="ctf-acc-info-icon" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.consumer_key)"></div>
+                                <div class="ctf-acc-info-icon" role="button" tabindex="0" :aria-label="genericText.copy + ' ' + generalTab.manageAccount.cKey" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.consumer_key)" @keydown.enter.prevent="copyToClipBoard(accountDetails.consumer_key)" @keydown.space.prevent="copyToClipBoard(accountDetails.consumer_key)"></div>
                             </div>
                             <div class="ctf-acc-info-item">
                                 <strong>{{generalTab.manageAccount.cSecret}}</strong>
                                 <span>{{accountDetails.consumer_secret}}</span>
-                                <div class="ctf-acc-info-icon" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.consumer_secret)"></div>
+                                <div class="ctf-acc-info-icon" role="button" tabindex="0" :aria-label="genericText.copy + ' ' + generalTab.manageAccount.cSecret" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.consumer_secret)" @keydown.enter.prevent="copyToClipBoard(accountDetails.consumer_secret)" @keydown.space.prevent="copyToClipBoard(accountDetails.consumer_secret)"></div>
                             </div>
                             <div class="ctf-acc-info-item">
                                 <strong>{{generalTab.manageAccount.aToken}}</strong>
                                 <span>{{accountDetails.access_token}}</span>
-                                <div class="ctf-acc-info-icon" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token)"></div>
+                                <div class="ctf-acc-info-icon" role="button" tabindex="0" :aria-label="genericText.copy + ' ' + generalTab.manageAccount.aToken" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token)" @keydown.enter.prevent="copyToClipBoard(accountDetails.access_token)" @keydown.space.prevent="copyToClipBoard(accountDetails.access_token)"></div>
                             </div>
                             <div class="ctf-acc-info-item">
                                 <strong>{{generalTab.manageAccount.aTokenSecret}}</strong>
                                 <span>{{accountDetails.access_token_secret}}</span>
-                                <div class="ctf-acc-info-icon" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token_secret)"></div>
+                                <div class="ctf-acc-info-icon" role="button" tabindex="0" :aria-label="genericText.copy + ' ' + generalTab.manageAccount.aTokenSecret" v-html="svgIcons['copy2']" @click.prevent.default="copyToClipBoard(accountDetails.access_token_secret)" @keydown.enter.prevent="copyToClipBoard(accountDetails.access_token_secret)" @keydown.space.prevent="copyToClipBoard(accountDetails.access_token_secret)"></div>
                             </div>
                         </div>
                         <button type="button" class="ctf-btn sb-btn-lg export-btn" @click.prevent.default="activateView('connectAccountPopup');switchScreen('connectAccountStep','step_2');">
@@ -271,7 +271,7 @@
         <div class="ctf-tab-form-field">
             <div class="sb-form-field ctf-tab-connect-ac">
                 <div class="d-flex">
-                    <input type="text" class="ctf-form-field" />
+                    <input type="text" class="ctf-form-field" :aria-label="generalTab.connectAccount.emailTitle" />
                 </div>
             </div>
         </div>
@@ -284,7 +284,7 @@
             <div class="sb-form-field ctf-tab-connect-ac">
                 <p v-if="checkNotEmpty(model.general.siteKey)" v-html="generalTab.connectAccount.siteKeyPreview"></p>
                 <div class="d-flex mb-15">
-                    <input type="password" class="ctf-form-field" name="site-key" id="site-key-setting" v-model="model.general.siteKey"/>
+                    <input type="password" class="ctf-form-field" name="site-key" id="site-key-setting" :aria-label="generalTab.connectAccount.siteKeyTitle" v-model="model.general.siteKey"/>
                     <button type="button" class="ctf-btn sb-btn-lg refresh-btn"
                             @click.prevent.default="connectAccountLink()"
                             v-html="checkNotEmpty(model.general.siteKey) ? generalTab.connectAccount.siteKeyButton : generalTab.connectAccount.siteKeyConnectButton">
@@ -305,7 +305,7 @@
         <div class="ctf-tab-form-field">
             <div class="sb-form-field">
                 <label for="preserve-settings" class="ctf-checkbox">
-                    <input type="checkbox" name="preserve-settings" id="preserve-settings" v-model="model.general.preserveSettings">
+                    <input type="checkbox" name="preserve-settings" id="preserve-settings" v-model="model.general.preserveSettings" :aria-label="generalTab.preserveBox.title">
                     <span class="toggle-track">
                         <div class="toggle-indicator"></div>
                     </span>
@@ -329,7 +329,7 @@
                         {{generalTab.importBox.button}}
                     </button>
                     <div class="input-hidden">
-                        <input id="import_file" type="file" value="import_file" ref="file" v-on:change="uploadFile">
+                        <input id="import_file" type="file" value="import_file" ref="file" tabindex="-1" aria-hidden="true" v-on:change="uploadFile">
                     </div>
                 </div>
                 <span class="help-text">
@@ -346,7 +346,7 @@
         <div class="ctf-tab-form-field">
             <div class="sb-form-field">
                 <div class="d-flex mb-15">
-                    <select name="" id="ctf-feeds-list" class="ctf-select" v-model="exportFeed" ref="export_feed">
+                    <select name="" id="ctf-feeds-list" class="ctf-select" v-model="exportFeed" ref="export_feed" aria-label="<?php esc_attr_e( 'Select a feed', 'custom-twitter-feeds' ); ?>">
                         <option value="none" selected disabled>Select Feed</option>
                         <option v-for="feed in feeds" :value="feed.id">{{ feed.name }}</option>
                     </select>

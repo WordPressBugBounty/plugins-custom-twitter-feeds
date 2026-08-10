@@ -1,7 +1,7 @@
 <div class="ctf-fd-lst-bigctn ctf-fb-fs" v-if="feedsList != null && feedsList.length > 0">
 
 	<div class="ctf-fd-lst-bulk-ctn ctf-fb-fs">
-		<select class="ctf-fd-lst-bulk-select ctf-fb-select sb-caption" v-model="selectedBulkAction">
+		<select class="ctf-fd-lst-bulk-select ctf-fb-select sb-caption" :aria-label="allFeedsScreen.bulkActions" v-model="selectedBulkAction">
 			<option value="false">{{allFeedsScreen.bulkActions}}</option>
 			<option value="delete">{{genericText.delete}}</option>
 		</select>
@@ -22,7 +22,7 @@
 		<thead class="ctf-fd-lst-thtf ctf-fd-lst-thead">
 			<tr>
 				<th>
-					<div class="ctf-fd-lst-chkbx" @click.prevent.default="selectAllFeedCheckBox()" :data-active="checkAllFeedsActive()"></div>
+					<div class="ctf-fd-lst-chkbx" role="checkbox" tabindex="0" :aria-checked="checkAllFeedsActive() ? 'true' : 'false'" :aria-label="allFeedsScreen.selectAll" @click.prevent.default="selectAllFeedCheckBox()" @keydown.enter.prevent="selectAllFeedCheckBox()" @keydown.space.prevent="selectAllFeedCheckBox()" :data-active="checkAllFeedsActive()"></div>
 				</th>
 				<th>
 					<span class="sb-caption sb-lighter">{{allFeedsScreen.columns.nameText}}</span>
@@ -41,7 +41,7 @@
 		<tbody  class="ctf-fd-lst-tbody">
 			<tr v-for="(feed, feedIndex) in feedsList" class="ctf-fd-lst-item" :data-enabled="feed.feed_enabled.toString()">
 				<td>
-					<div class="ctf-fd-lst-chkbx" @click.prevent.default="selectFeedCheckBox(feed.id)" :data-active="feedsSelected.includes(feed.id)"></div>
+					<div class="ctf-fd-lst-chkbx" role="checkbox" tabindex="0" :aria-checked="feedsSelected.includes(feed.id) ? 'true' : 'false'" :aria-label="genericText.select + ' ' + feed.feed_name" @click.prevent.default="selectFeedCheckBox(feed.id)" @keydown.enter.prevent="selectFeedCheckBox(feed.id)" @keydown.space.prevent="selectFeedCheckBox(feed.id)" :data-active="feedsSelected.includes(feed.id)"></div>
 				</td>
 				<td>
 					<span class="ctf-fd-lst-name-ctn">
@@ -58,7 +58,7 @@
 				<td>
                     <div class="sb-flex-center">
                         <span class="ctf-fd-lst-shortcode sb-caption sb-lighter">[custom-twitter-feeds feed={{feed.id}}]</span>
-                        <div class="ctf-fd-lst-shortcode-cp ctf-fd-lst-btn ctf-fb-tltp-parent" @click.prevent.default="copyToClipBoard('[custom-twitter-feeds feed='+feed.id+']')">
+                        <div class="ctf-fd-lst-shortcode-cp ctf-fd-lst-btn ctf-fb-tltp-parent" role="button" tabindex="0" :aria-label="genericText.copy + ' ' + genericText.shortcode + ' ' + feed.feed_name" @click.prevent.default="copyToClipBoard('[custom-twitter-feeds feed='+feed.id+']')" @keydown.enter.prevent="copyToClipBoard('[custom-twitter-feeds feed='+feed.id+']')" @keydown.space.prevent="copyToClipBoard('[custom-twitter-feeds feed='+feed.id+']')">
                             <div class="ctf-fb-tltp-elem"><span>{{(genericText.copy +' '+ genericText.shortcode).replace(/ /g,"&nbsp;")}}</span></div>
                             <div v-html="svgIcons['copy']"></div>
                         </div>
@@ -66,12 +66,12 @@
 				</td>
 				<td class="sb-caption sb-lighter">
                     <div class="sb-instances-cell">
-                        <span>{{genericText.usedIn}} <span class="ctf-fb-view-instances ctf-fb-tltp-parent" :data-active="feed.instance_count < 1 ? 'false' : 'true'" @click.prevent.default="feed.instance_count > 0 ? viewFeedInstances(feed) : checkAllFeedsActive()">{{feed.instance_count + ' ' + (feed.instance_count !== 1 ? genericText.places : genericText.place)}} <div class="ctf-fb-tltp-elem" v-if="feed.instance_count > 0"><span>{{genericText.clickViewInstances.replace(/ /g,"&nbsp;")}}</span></div></span></span>
+                        <span>{{genericText.usedIn}} <span class="ctf-fb-view-instances ctf-fb-tltp-parent" role="button" :tabindex="feed.instance_count > 0 ? 0 : -1" :aria-label="genericText.clickViewInstances + ' ' + feed.feed_name" :data-active="feed.instance_count < 1 ? 'false' : 'true'" @click.prevent.default="feed.instance_count > 0 ? viewFeedInstances(feed) : checkAllFeedsActive()" @keydown.enter.prevent="feed.instance_count > 0 ? viewFeedInstances(feed) : checkAllFeedsActive()" @keydown.space.prevent="feed.instance_count > 0 ? viewFeedInstances(feed) : checkAllFeedsActive()">{{feed.instance_count + ' ' + (feed.instance_count !== 1 ? genericText.places : genericText.place)}} <div class="ctf-fb-tltp-elem" v-if="feed.instance_count > 0"><span>{{genericText.clickViewInstances.replace(/ /g,"&nbsp;")}}</span></div></span></span>
                     </div>
                 </td>
 				<td class="ctf-fd-lst-actions">
                     <div class="sb-flex-center">
-                        <a class="ctf-fd-lst-btn ctf-fb-tltp-parent":href="builderUrl+'&feed_id='+feed.id">
+                        <a class="ctf-fd-lst-btn ctf-fb-tltp-parent" :aria-label="genericText.edit + ' ' + feed.feed_name" :href="builderUrl+'&feed_id='+feed.id">
                             <div class="ctf-fb-tltp-elem"><span>{{genericText.edit.replace(/ /g,"&nbsp;")}}</span></div>
                             <div v-html="svgIcons['edit']"></div>
                         </a>
@@ -81,7 +81,7 @@
                             <div v-html="svgIcons['duplicate']"></div>
                         </button>
                         -->
-                        <button class="ctf-fd-lst-btn ctf-fd-lst-btn-delete ctf-fb-tltp-parent" @click.prevent.default="openDialogBox('deleteSingleFeed', feed)">
+                        <button class="ctf-fd-lst-btn ctf-fd-lst-btn-delete ctf-fb-tltp-parent" :aria-label="genericText.delete + ' ' + feed.feed_name" @click.prevent.default="openDialogBox('deleteSingleFeed', feed)">
                             <div class="ctf-fb-tltp-elem"><span>{{genericText.delete.replace(/ /g,"&nbsp;")}}</span></div>
                             <div v-html="svgIcons['delete']"></div>
                         </button>
@@ -93,7 +93,7 @@
 		<tfoot class="ctf-fd-lst-thtf ctf-fd-lst-tfoot">
 			<tr>
 				<td>
-					<div class="ctf-fd-lst-chkbx" @click.prevent.default="selectAllFeedCheckBox()" :data-active="checkAllFeedsActive()"></div>
+					<div class="ctf-fd-lst-chkbx" role="checkbox" tabindex="0" :aria-checked="checkAllFeedsActive() ? 'true' : 'false'" :aria-label="allFeedsScreen.selectAll" @click.prevent.default="selectAllFeedCheckBox()" @keydown.enter.prevent="selectAllFeedCheckBox()" @keydown.space.prevent="selectAllFeedCheckBox()" :data-active="checkAllFeedsActive()"></div>
 				</td>
 				<td>
 					<span>{{allFeedsScreen.columns.nameText}}</span>

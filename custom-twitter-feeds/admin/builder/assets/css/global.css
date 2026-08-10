@@ -22,6 +22,93 @@ body{
     --dark-blue: #2A65DB;
     --success-green: #59AB46;
 }
+
+/* SMASH-1378 — Global :focus-visible ring for TW Free admin surfaces.
+   Cascade-port of the TW Pro pattern (custom-twitter-feeds-pro/admin/
+   builder/assets/css/global.css), itself the IG Pro / FB Pro canonical.
+   Scopes the ring to body classes WordPress generates from TW Free menu
+   slugs (top-level custom-twitter-feeds plus the submenu slugs
+   ctf-feed-builder / ctf-settings / ctf-support / ctf-about-us) plus the
+   per-container selectors used by builder / popup / settings markup, so
+   the indicator is consistent across every TW Free admin surface.
+
+   `:focus-visible` ensures the ring only appears when focus is
+   keyboard-driven; mouse clicks remain unaffected.
+
+   Visual treatment uses `box-shadow` rather than `outline` so the ring
+   respects each element's `border-radius`. `outline: 2px solid transparent`
+   is retained so Windows High Contrast Mode (which suppresses box-shadow
+   but honors outline) still shows a visible ring.
+
+   --sb-focus-ring (#007ca8) is provided by
+   assets/tokens/ctf-tokens-local.css, enqueued as a dependency of the
+   feed-global-style handle. */
+body[class*="page_custom-twitter-feeds"] *:focus-visible,
+body[class*="_page_ctf-feed-builder"] *:focus-visible,
+body[class*="_page_ctf-settings"] *:focus-visible,
+body[class*="_page_ctf-support"] *:focus-visible,
+body[class*="_page_ctf-about-us"] *:focus-visible,
+.ctf-fb-fs *:focus-visible,
+.ctf-fb-popup-inside *:focus-visible,
+.sb-form-field *:focus-visible,
+[id^="ctf-builder"] *:focus-visible,
+[id^="ctf-settings"] *:focus-visible {
+	/* !important needed because pre-existing `outline: none !important` /
+	   `outline: unset !important` rules in builder.css would otherwise
+	   suppress the focus ring for keyboard users. */
+	outline: 2px solid transparent !important;
+	outline-offset: 0 !important;
+	box-shadow: 0 0 0 2px var(--sb-focus-ring) !important;
+}
+
+/* a11y: step/screen headings receive programmatic focus after keyboard
+   navigation (switchScreen / onboarding stepper). They are not
+   interactive, so suppress the ring on those targets only. */
+[role="dialog"] h3[tabindex="-1"]:focus,
+[role="dialog"] h3[tabindex="-1"]:focus-visible,
+.sb-onboarding-wizard-step-heading[tabindex="-1"]:focus,
+.sb-onboarding-wizard-step-heading[tabindex="-1"]:focus-visible {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+/* SMASH-1378 — Global reduced-motion guard for TW Free admin surfaces.
+   WCAG 2.3.3 (Animation from Interactions). Neutralizes the raw
+   transition/animation rules across admin/builder/assets/css/ that ship
+   without a `prefers-reduced-motion: reduce` wrap.
+
+   Scope is body-class matched so we only override motion on TW Free admin
+   pages — never on WP core admin chrome or frontend. Same body-class set
+   as the focus-ring rule above for consistency.
+
+   Approach: blanket scaffold. Per-rule token refactoring is deferred to
+   later waves where each touched rule gets visual-regression coverage.
+
+   `animation-duration: 0.01ms !important` (not 0ms) preserves
+   animation-end events that JS may depend on. */
+@media (prefers-reduced-motion: reduce) {
+	body[class*="page_custom-twitter-feeds"] *,
+	body[class*="_page_ctf-feed-builder"] *,
+	body[class*="_page_ctf-settings"] *,
+	body[class*="_page_ctf-support"] *,
+	body[class*="_page_ctf-about-us"] *,
+	body[class*="page_custom-twitter-feeds"] *::before,
+	body[class*="_page_ctf-feed-builder"] *::before,
+	body[class*="_page_ctf-settings"] *::before,
+	body[class*="_page_ctf-support"] *::before,
+	body[class*="_page_ctf-about-us"] *::before,
+	body[class*="page_custom-twitter-feeds"] *::after,
+	body[class*="_page_ctf-feed-builder"] *::after,
+	body[class*="_page_ctf-settings"] *::after,
+	body[class*="_page_ctf-support"] *::after,
+	body[class*="_page_ctf-about-us"] *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 #ctf-settings{
     visibility: hidden;
     opacity: 0;
@@ -1509,7 +1596,8 @@ body{
 	width: 12px;
 	height: 12px;
 }
-#ctf-builder-app .sb-onboarding-tooltip h3 {
+#ctf-builder-app .sb-onboarding-tooltip h3,
+#ctf-builder-app .sb-onboarding-tooltip .sb-onboarding-wizard-step-heading {
 	font-size: 16px;
 	color: #141B38;
 	line-height: 160%;

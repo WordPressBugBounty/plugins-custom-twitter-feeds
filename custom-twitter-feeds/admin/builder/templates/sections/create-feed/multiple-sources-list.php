@@ -1,4 +1,4 @@
-<div class="ctf-feedtype-section ctf-fb-fs" v-for="(feedType, feedTypeID) in selectSourceScreen.multipleTypes" v-if="checkMultipleFeedTypeActive(feedTypeID)" :data-type="feedTypeID">
+<div class="ctf-feedtype-section ctf-fb-fs" v-for="(feedType, feedTypeID) in selectSourceScreen.multipleTypes" v-if="checkMultipleFeedTypeActive(feedTypeID)" :data-type="feedTypeID" role="group" :aria-labelledby="'ctf-srctype-' + feedTypeID">
     <button v-if="false" class="ctf-fd-lst-btn ctf-fd-lst-btn-delete ctf-fb-tltp-parent" :data-greyed="selectedFeed.length == 1 ? 'true' : false" @click.prevent.default="removeFeedTypeSource(feedTypeID)">
          <div class="ctf-fb-tltp-elem"><span v-html="selectedFeed.length == 1 ? genericText.atLeastOneSource.replace(/ /g,'&nbsp;') : genericText.removeSource.replace(/ /g,'&nbsp;')">{{}}</span></div>
          <div v-html="svgIcons['delete']"></div>
@@ -7,7 +7,7 @@
         <div class="ctf-feedtype-icon-wrap" v-html="svgIcons[feedType.icon]"></div>
         <div class="ctf-feedtype-sec-wrap">
             <div class="ctf-feedtype-sec-icon-heading ctf-fb-fs">
-                <span v-html="feedType.heading"></span>
+                <span role="heading" aria-level="3" :id="'ctf-srctype-' + feedTypeID" v-html="feedType.heading"></span>
             </div>
             <div class="ctf-feedtype-sec-desc ctf-fb-fs sb-caption sb-lighter" v-html="feedType.description"></div>
 
@@ -19,7 +19,7 @@
             <div class="ctf-fb-fs" v-if="feedType.actionType == 'connectAccount'">
                 <div class="ctf-selected-source-item">
                     <div class="ctf-selected-source-item-avatar">
-                        <img :src="accountDetails.account_avatar">
+                        <img :src="accountDetails.account_avatar" alt="" aria-hidden="true">
                     </div>
                     <span>@{{accountDetails.account_handle}}</span>
                 </div>

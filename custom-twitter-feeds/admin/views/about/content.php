@@ -61,7 +61,7 @@
 
             <div class="sb-plugins-box ctf-social-wall-plugin-box">
                 <span class="sb-box-bg-image">
-                    <img :src="social_wall.graphic">
+                    <img :src="social_wall.graphic" alt="">
                 </span>
                 <div class="plugin-box-content">
                     <h4 class="sb-box-title">{{social_wall.title}}</h4>

@@ -1697,10 +1697,11 @@ protected function removeStringFromText( $string, $text) {
         $ctf_data_needed = $this->num_tweets_needed;
         $ctf_feed_type = ! empty ( $feed_options['type'] ) ? esc_attr( $feed_options['type'] ) : 'multiple';
         $ctf_feed_classes = 'ctf ctf-type-' . $ctf_feed_type;
-        $ctf_feed_classes .= ' ' . $feed_options['class'] . ' ctf-styles';
+        $ctf_feed_classes .= ' ' . \ctf_sanitize_css_class_list( $feed_options['class'] ) . ' ctf-styles';
         $ctf_feed_classes .= $feed_options['width_mobile_no_fixed'] ? ' ctf-width-resp' : '';
         if ( $this->check_for_duplicates ) { $ctf_feed_classes .= ' ctf-no-duplicates'; }
         $ctf_feed_classes = apply_filters( 'ctf_feed_classes', $ctf_feed_classes ); //add_filter( 'ctf_feed_classes', function( $ctf_feed_classes ) { return $ctf_feed_classes . ' new-class'; }, 10, 1 );
+        $ctf_feed_classes = esc_attr( $ctf_feed_classes );
         $ctf_feed_html = '';
 
         $flags_att = '';
@@ -1809,7 +1810,7 @@ return $ctf_feed_html;
         if ( CTF_GDPR_Integrations::doing_gdpr( $feed_options ) ) {
           $ctf_header_html .= '<span data-avatar="' . esc_url( $tweet_set[0]['user']['profile_image_url_https'] ) . '" data-alt="' . $tweet_set[0]['user']['name'] . '" style="display: none;">Avatar</span>';
       } else {
-          $ctf_header_html .= '<img src="' . $tweet_set[0]['user']['profile_image_url_https'] . '" alt="' . $tweet_set[0]['user']['name'] . '" width="48" height="48">';
+          $ctf_header_html .= '<img src="' . esc_url( $tweet_set[0]['user']['profile_image_url_https'] ) . '" alt="' . esc_attr( $tweet_set[0]['user']['name'] ) . '" width="48" height="48">';
       }
       $ctf_header_html .= '</div>';
       $ctf_header_html .= '</a>';
