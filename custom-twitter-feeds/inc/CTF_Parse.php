@@ -543,25 +543,198 @@ class CTF_Parse{
             'border-right'
         ];
 
-        foreach ($css_array as $element) {
-            $items_css = '';
-            if( isset( $element['properties'] ) ){
-                foreach ($element['properties'] as $property => $item) {
-                    if( in_array( $property, $color_elements) && !empty( $item['value'] ) && $item['value'] !== '#' ){
-                        $items_css .= $property . ':' . stripcslashes($item['value']) . ( isset( $item['important'] ) ? '!important;' : ';' );
-                    }
-                    if( in_array( $property, $size_elements) && !empty( $item['value'] ) && $item['value'] !== '0' && $item['value'] !== 'inherit' ){
-                        $items_css .= $property . ':' . stripcslashes($item['value']) . ( isset( $item['unit'] ) ?  $item['unit'] : 'px' ) . ( isset( $item['important'] ) ? '!important;' : ';' );
-                    }
-                    if( in_array( $property, $border_elements) && !empty( $item['size'] ) && $item['size'] !== '0' && !empty( $item['color'] ) && $item['color'] !== '#' ){
-                        $items_css .= $property . ':' . stripcslashes($item['size']) .  'px ' . ( isset( $item['style'] ) ? $item['style'] : 'solid' ) . ' ' . stripcslashes($item['color']) . ( isset( $item['important'] ) ? '!important;' : ';' );
-                    }
-                }
-                $style .= !empty($items_css) ? $element['selector'] . '{'.$items_css .'}' : '';
-            }
-        }
+		// These values are feed settings. The builder only runs them through
+		// sanitize_text_field(), and on sites with legacy shortcode support they are
+		// Contributor-settable through the shortcode. Escaping cannot make arbitrary
+		// CSS safe, so each value is validated against its property's grammar and
+		// dropped when it does not match (SMASH-1770, CVE-2026-84909).
+		foreach ( $css_array as $element ) {
+			$items_css = '';
+			if ( isset( $element['properties'] ) ) {
+				foreach ( $element['properties'] as $property => $item ) {
+					if ( in_array( $property, $color_elements, true ) && ! empty( $item['value'] ) && '#' !== $item['value'] ) {
+						$color = self::css_color( $item['value'] );
+						if ( false !== $color ) {
+							$items_css .= $property . ':' . $color;
+							$items_css .= isset( $item['important'] ) ? '!important;' : ';';
+						}
+					}
+					if ( in_array( $property, $size_elements, true ) && ! empty( $item['value'] )
+						&& '0' !== $item['value'] && 'inherit' !== $item['value'] ) {
+						$number = self::css_number( $item['value'] );
+						$unit   = self::css_unit( isset( $item['unit'] ) ? $item['unit'] : 'px' );
+						if ( false !== $number && false !== $unit ) {
+							$items_css .= $property . ':' . $number . $unit;
+							$items_css .= isset( $item['important'] ) ? '!important;' : ';';
+						}
+					}
+					if ( in_array( $property, $border_elements, true ) && ! empty( $item['size'] ) && '0' !== $item['size']
+						&& ! empty( $item['color'] ) && '#' !== $item['color'] ) {
+						$size        = self::css_number( $item['size'] );
+						$color       = self::css_color( $item['color'] );
+						$borderstyle = self::css_border_style( isset( $item['style'] ) ? $item['style'] : 'solid' );
+						if ( false !== $size && false !== $color && false !== $borderstyle ) {
+							$items_css .= $property . ':' . $size . 'px ' . $borderstyle . ' ' . $color;
+							$items_css .= isset( $item['important'] ) ? '!important;' : ';';
+						}
+					}
+				}
+				// Second layer; the feed id is cast at its source. A brace or comment opener
+				// here would end the rule early and turn the rest into new rules.
+				$selector = isset( $element['selector'] ) ? (string) $element['selector'] : '';
+				if ( '' !== $selector && ! preg_match( '/[{}<>;]|\/\*|\\\\/', $selector ) ) {
+					$style .= ! empty( $items_css ) ? $selector . '{' . $items_css . '}' : '';
+				}
+			}
+		}
 
-        return $style;
-    }
+		return $style;
+	}
+
+	/**
+	 * Validate a settings value used as a CSS colour. SMASH-1770.
+	 *
+	 * Accepts hex, rgb()/rgba(), hsl()/hsla() and the named colours; refuses the rest.
+	 *
+	 * @param string $value Raw setting value.
+	 * @return string|false The value if it is a colour, false otherwise.
+	 */
+	public static function css_color( $value ) {
+		$value = trim( (string) $value );
+
+		if ( '' === $value || '#' === $value ) {
+			return false;
+		}
+
+		if ( preg_match( '/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $value ) ) {
+			return $value;
+		}
+
+		$number     = '[+-]?(?:\d+|\d*\.\d+)';
+		$number_pct = $number . '%?';
+		$sep        = '\s*[,\s]\s*';
+		$alpha      = '(?:[,\/]\s*' . $number_pct . '\s*)?';
+
+		$rgb = '/^rgba?\(\s*' . $number_pct . $sep . $number_pct . $sep . $number_pct . '\s*' . $alpha . '\)$/i';
+		$hsl = '/^hsla?\(\s*' . $number . '(?:deg|grad|rad|turn)?' . $sep . $number . '%'
+			. $sep . $number . '%\s*' . $alpha . '\)$/i';
+
+		if ( preg_match( $rgb, $value ) || preg_match( $hsl, $value ) ) {
+			return $value;
+		}
+
+		if ( in_array( strtolower( $value ), self::css_named_colors(), true ) ) {
+			return $value;
+		}
+
+		return false;
+	}
+
+	/**
+	 * The CSS named colours and colour keywords.
+	 *
+	 * Listed in full so a legacy value such as bgcolor="white" is not discarded.
+	 *
+	 * @return array
+	 */
+	public static function css_named_colors() {
+		static $colors = null;
+
+		if ( null !== $colors ) {
+			return $colors;
+		}
+
+		$colors = explode(
+			' ',
+			'transparent currentcolor inherit initial unset aliceblue antiquewhite aqua aquamarine '
+			. 'azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue '
+			. 'chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan '
+			. 'darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen '
+			. 'darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray '
+			. 'darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue '
+			. 'firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green '
+			. 'greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush '
+			. 'lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray '
+			. 'lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray '
+			. 'lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon '
+			. 'mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue '
+			. 'mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose '
+			. 'moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod '
+			. 'palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue '
+			. 'purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen '
+			. 'seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue '
+			. 'tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen'
+		);
+
+		return $colors;
+	}
+
+	/**
+	 * Validate a settings value used as the numeric part of a CSS length.
+	 *
+	 * These settings hold a bare number, the unit is a separate setting, so the grammar
+	 * is deliberately just a number. The 'inherit' and '0' sentinels are filtered by the
+	 * caller before this runs. SMASH-1770.
+	 *
+	 * @param string $value Raw setting value.
+	 * @return string|false The number if valid, false otherwise.
+	 */
+	public static function css_number( $value ) {
+		$value = trim( (string) $value );
+
+		if ( '' === $value || ! preg_match( '/^-?(?:\d+|\d*\.\d+)$/', $value ) ) {
+			return false;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Validate a settings value used as a CSS length unit.
+	 *
+	 * Only height and width carry a caller-supplied unit (height_unit / width_unit,
+	 * both '%' by default); everything else defaults to px. SMASH-1770.
+	 *
+	 * @param string $unit Raw unit value.
+	 * @return string|false The unit if valid, false otherwise.
+	 */
+	public static function css_unit( $unit ) {
+		$unit  = strtolower( trim( (string) $unit ) );
+		$units = array( 'px', '%', 'em', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'pt', 'pc', 'ex', 'ch', 'cm', 'mm', 'in' );
+
+		if ( ! in_array( $unit, $units, true ) ) {
+			return false;
+		}
+
+		return $unit;
+	}
+
+	/**
+	 * Validate a settings value used as a CSS border style keyword. SMASH-1770.
+	 *
+	 * @param string $style Raw border style value.
+	 * @return string|false The keyword if valid, false otherwise.
+	 */
+	public static function css_border_style( $style ) {
+		$style  = strtolower( trim( (string) $style ) );
+		$styles = array(
+			'none',
+			'hidden',
+			'solid',
+			'dashed',
+			'dotted',
+			'double',
+			'groove',
+			'ridge',
+			'inset',
+			'outset',
+		);
+
+		if ( ! in_array( $style, $styles, true ) ) {
+			return false;
+		}
+
+		return $style;
+	}
 
 }

@@ -147,7 +147,12 @@ class CtfFeed
         $this->db_options = get_option( 'ctf_options', array() );
         $this->is_legacy = false;
         if ( ! empty( $atts['feed'] ) && $atts['feed'] !== 'legacy' ) {
-            $this->feed_id = $this->atts['feed'];
+            // The feed id builds the CSS selectors in get_feed_style(), the container
+            // class and a data attribute. The lookup coerces it with %d, so a value like
+            // '1 {} body{display:none}' still resolves to feed 1 while the raw string went
+            // on to close the rule and add a selector. Cast so every consumer sees the
+            // same integer the query used (SMASH-1770).
+            $this->feed_id = absint( $this->atts['feed'] );
             $this->feed_options = CTF_Settings::get_settings_by_feed_id( $atts['feed'], $preview_settings );
             if($this->feed_options == false){
                 $this->feed_options['feederror'] = true;
@@ -1746,7 +1751,7 @@ return $ctf_feed_html;
         $ctf_feed_html .= '</div>'; // closing div for ctf-tweets
 
         if ( $feed_options['showbutton'] ) {
-            $ctf_feed_html .= '<a href="javascript:void(0);" id="ctf-more" class="ctf-more" style="' . $feed_options['buttoncolor'] . $feed_options['buttontextcolor'] . '"><span>' . $feed_options['buttontext'] . '</span></a>';
+            $ctf_feed_html .= '<a href="javascript:void(0);" id="ctf-more" class="ctf-more" style="' . esc_attr( $feed_options['buttoncolor'] . $feed_options['buttontextcolor'] ) . '"><span>' . esc_html( $feed_options['buttontext'] ) . '</span></a>';
         }
 
         if ( $feed_options['creditctf'] ) {
@@ -2332,7 +2337,7 @@ return $ctf_feed_html;
 
         }
 
-        $feed_style .= '<style type="text/css" data-ctf-style="' . $feed_html_id . '">';
+        $feed_style .= '<style type="text/css" data-ctf-style="' . esc_attr( $feed_html_id ) . '">';
         $feed_style .= CTF_Parse::parse_css_style( $css_array );
         $feed_style .= '</style>';
         echo $feed_style;

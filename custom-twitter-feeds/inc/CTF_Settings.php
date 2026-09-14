@@ -204,10 +204,12 @@ class CTF_Settings {
 		if ( empty( $atts ) ) {
 			$atts = array();
 		}
-		if ( ! empty( $atts['from_update'] ) ) {
-			unset( $atts['from_update'] );
-			return $atts;
-		}
+		// from_update is an internal marker used only by the one-time legacy
+		// capture (legacy_shortcode_atts()); no legitimate caller passes it
+		// here. It must never short-circuit this filter: as a shortcode
+		// attribute or via the nopriv get-more-posts AJAX it would bypass
+		// the allow-list purge entirely (SMASH-2065). Strip it and continue.
+		unset( $atts['from_update'] );
 		$ctf_statuses = get_option( 'ctf_statuses', array() );
 		$allowed_legacy_shortcode = array(
 			'feed',
@@ -229,10 +231,17 @@ class CTF_Settings {
 				if ( empty( $atts_diff ) ) {
 					$atts['feed'] = 1;
 				}
-			}
 
-			if ( empty( $atts['feed'] ) ) {
-				return $atts;
+				// A legacy shortcode whose recorded atts diverge from the
+				// incoming ones keeps only the attributes the recorded
+				// shortcode itself used (plus the allow-list) — enough for
+				// the legacy feed to resolve and render, without letting a
+				// novel attribute through (SMASH-2065 AC 6/7).
+				if ( empty( $atts['feed'] ) ) {
+					$recorded_keys = array_keys( $ctf_statuses['support_legacy_shortcode'] );
+					$keep          = array_merge( $allowed_legacy_shortcode, $recorded_keys );
+					return array_intersect_key( $atts, array_flip( $keep ) );
+				}
 			}
 		}
 
