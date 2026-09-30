@@ -67,6 +67,12 @@ class SmashUsageTracking {
 			return;
 		}
 
+		// WP.org data-sharing consent master switch (SMASH-1243): never contact
+		// the usage API when data-sharing consent is off, even if the toggle is on.
+		if ( ! Config::consent_allows_sharing() ) {
+			return;
+		}
+
 		$host = wp_parse_url( home_url(), PHP_URL_HOST );
 		if ( 'smashballoon.com' === $host || '.smashballoon.com' === substr( (string) $host, -17 ) ) {
 			return;

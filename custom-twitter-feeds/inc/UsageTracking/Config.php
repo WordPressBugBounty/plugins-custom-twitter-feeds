@@ -115,4 +115,21 @@ class Config {
 		}
 		return ! empty( $opt['enabled'] );
 	}
+
+	/**
+	 * WP.org data-sharing consent master switch (SMASH-1243).
+	 *
+	 * Telemetry is suppressed when the shared Consent package is present and
+	 * data-sharing consent is off, regardless of the per-plugin usage-tracking
+	 * toggle. When the package is absent, sharing is governed by is_enabled()
+	 * alone, so behaviour is unchanged on builds without the Consent package.
+	 *
+	 * @return bool True when data sharing is permitted by consent.
+	 */
+	public static function consent_allows_sharing() {
+		return ! (
+			class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' )
+			&& ! \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::is_dsc_enabled()
+		);
+	}
 }

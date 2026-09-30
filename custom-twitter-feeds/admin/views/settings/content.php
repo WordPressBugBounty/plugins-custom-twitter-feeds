@@ -15,7 +15,7 @@
         <form action="">
             <div class="sb-tabs">
                 <div class="left-buttons" role="tablist" aria-label="<?php esc_attr_e( 'Settings', 'custom-twitter-feeds' ); ?>">
-                    <tab v-bind:section="section" v-bind:index="index" v-for="(section, index) in sections" v-bind:class="{ active : section === currentTab }" v-bind:data-index="index+1" key="index"></tab>
+                    <tab v-bind:section="section" v-bind:index="index" v-for="(section, index) in sections" v-if="section !== 'Data Sharing' || !debugTab.lockedByPro" v-bind:class="{ active : section === currentTab }" v-bind:data-index="index+1" key="index"></tab>
                 </div>
                 <div class="right-buttons">
                     <button class="ctf-btn sb-btn-orange" @click.prevent="saveSettings" :disabled="btnStatus !== null">
@@ -31,6 +31,7 @@
                         TwitterFeed\Admin\CTF_View::render( 'settings.tab.general' );
                         TwitterFeed\Admin\CTF_View::render( 'settings.tab.feeds' );
                         TwitterFeed\Admin\CTF_View::render( 'settings.tab.translation' );
+                        TwitterFeed\Admin\CTF_View::render( 'settings.tab.debug' );
                         TwitterFeed\Admin\CTF_View::render( 'settings.tab.advanced' );
                     ?>
                 </div>

@@ -87,12 +87,9 @@ class CTF_Support {
             return;
         }
 
-        wp_enqueue_style(
-            'ctf-fira-code-font',
-            'https://fonts.googleapis.com/css2?family=Fira+Code&display=swap',
-            false,
-            CTF_VERSION
-        );
+        // Fira Code was loaded from Google Fonts (external CDN, disallowed by
+        // WP.org). Dropped — the code sample falls back to the system monospace
+        // font, with no external request.
 
         wp_enqueue_style(
             'support-style',
@@ -103,7 +100,7 @@ class CTF_Support {
 
         wp_enqueue_script(
             'vue-main',
-            'https://cdn.jsdelivr.net/npm/vue@2.6.12',
+            CTF_PLUGIN_URL . 'admin/builder/assets/js/vue.min.js',
             null,
             '2.6.12',
             true

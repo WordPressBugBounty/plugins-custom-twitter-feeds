@@ -2319,22 +2319,6 @@
 	margin: 0
 }
 
-#ctf-admin-about .ctf-admin-about-section-table table p.features-full {
-	padding-left: 30px;
-	background-image: url(../img/about/icon-full.svg)
-}
-
-#ctf-admin-about .ctf-admin-about-section-table table p.features-none {
-	padding-left: 30px;
-	background-image: url(../img/about/icon-none.svg)
-}
-
-#ctf-admin-about .ctf-admin-about-section-table table p.features-partial {
-	padding-left: 30px;
-	background-position: -3px 0;
-	background-size: 23px auto;
-	background-image: url(../img/about/icon-partial.svg)
-}
 
 #ctf-admin-about .ctf-admin-about-section-table .ctf-admin-about-section-hero-main {
 	padding: 0

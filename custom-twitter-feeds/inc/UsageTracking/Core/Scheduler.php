@@ -23,6 +23,14 @@ class Scheduler {
 	public function schedule() {
 		$this->cleanup_legacy();
 
+		// WP.org data-sharing consent master switch (SMASH-1243): never leave a
+		// telemetry cron scheduled without data-sharing consent. Unschedule (not
+		// merely skip) so no external-URL cron hook lingers when consent is off.
+		if ( ! Config::consent_allows_sharing() ) {
+			$this->unschedule();
+			return;
+		}
+
 		if ( ! Config::is_enabled() ) {
 			return;
 		}

@@ -14,8 +14,8 @@ function ctf_deactivate_addon() {
 	check_ajax_referer( 'ctf-admin', 'nonce' );
 
 	// Check for permissions.
-	if ( ! current_user_can( 'manage_options' ) ) {
-		wp_send_json_error();
+	if ( ! current_user_can( 'deactivate_plugins' ) ) {
+		wp_send_json_error( esc_html__( 'You do not have permission to deactivate plugins.', 'custom-twitter-feeds' ) );
 	}
 
 	$type = 'addon';
@@ -50,8 +50,8 @@ function ctf_activate_addon() {
 	// Run a security check.
 	check_ajax_referer( 'ctf-admin', 'nonce' );
 	// Check for permissions.
-	if ( ! current_user_can( 'manage_options' ) ) {
-		wp_send_json_error();
+	if ( ! current_user_can( 'activate_plugins' ) ) {
+		wp_send_json_error( esc_html__( 'You do not have permission to activate plugins.', 'custom-twitter-feeds' ) );
 	}
 
 	if ( isset( $_POST['plugin'] ) ) {
@@ -88,8 +88,8 @@ function ctf_install_addon() {
 	check_ajax_referer( 'ctf-admin', 'nonce' );
 
 	// Check for permissions.
-	if ( ! current_user_can( 'manage_options' ) ) {
-		wp_send_json_error();
+	if ( ! current_user_can( 'install_plugins' ) ) {
+		wp_send_json_error( esc_html__( 'You do not have permission to install plugins.', 'custom-twitter-feeds' ) );
 	}
 
 	$error = esc_html__( 'Could not install addon. Please download from wpforms.com and install manually.', 'custom-twitter-feeds' );

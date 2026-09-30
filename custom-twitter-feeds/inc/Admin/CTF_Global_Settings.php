@@ -121,6 +121,23 @@ class CTF_Global_Settings {
 		$translation = (array) $model['translation'];
 		$advanced = (array) $model['advanced'];
 
+		/**
+		 * Debug Tab — consent toggles.
+		 *
+		 * Routed through the shared Consent package so cron reconciliation and the
+		 * 3-state notification source switch stay consistent. $dismiss_modal is left
+		 * null so a Settings save does not affect the re-prompt-modal state. The
+		 * flags live in top-level wp_options (sbc_data_sharing_consent /
+		 * sbc_in_plugin_notifications), NOT inside ctf_options.
+		 */
+		if ( isset( $model['debug'] ) && class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' ) ) {
+			$debug = (array) $model['debug'];
+			\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::update(
+				! empty( $debug['sbc_data_sharing_consent'] ),
+				! empty( $debug['sbc_in_plugin_notifications'] )
+			);
+		}
+
 		// Get the values and sanitize
 		$ctf_settings = get_option( 'ctf_options', array() );
 		/**
@@ -836,6 +853,18 @@ class CTF_Global_Settings {
 
 		// Extract only license keys and build array for extensions license keys
 
+		// Settings/Debug consent links route through the shared Consent package
+		// (sb-common owns the canonical URLs + per-surface UTM tags). Empty when
+		// the package is absent rather than duplicating the URLs here.
+		$ctf_consent_permissions_url = '';
+		$ctf_consent_terms_url       = '';
+		$ctf_consent_privacy_url     = '';
+		if ( class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' ) ) {
+			$ctf_consent_permissions_url = \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::link_url( 'settings', 'permissions', 'twitter' );
+			$ctf_consent_terms_url       = \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::link_url( 'settings', 'terms', 'twitter' );
+			$ctf_consent_privacy_url     = \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::link_url( 'settings', 'privacy', 'twitter' );
+		}
+
 		$ctf_settings = array(
 			'admin_url' 		=> admin_url(),
 			'ajax_handler'		=> admin_url( 'admin-ajax.php' ),
@@ -1113,6 +1142,21 @@ class CTF_Global_Settings {
 					'clear' => __( 'Delete all Platform Data', 'custom-twitter-feeds' ),
 				),
 			),
+			'debugTab'             => array(
+				'dataSharingTitle'    => __( 'Data sharing', 'custom-twitter-feeds' ),
+				'dataSharingDesc'     => __( 'We share limited, non-sensitive usage data to keep your plugins updated and improve our products. We never collect your feed content or your visitors’ personal information.', 'custom-twitter-feeds' ),
+				'permissionsLinkText' => __( 'What permissions are being granted?', 'custom-twitter-feeds' ),
+				'termsLinkText'       => __( 'Terms & Conditions', 'custom-twitter-feeds' ),
+				'privacyLinkText'     => __( 'Privacy', 'custom-twitter-feeds' ),
+				'permissionsUrl'      => $ctf_consent_permissions_url,
+				'termsUrl'            => $ctf_consent_terms_url,
+				'privacyUrl'          => $ctf_consent_privacy_url,
+				'notificationsTitle'  => __( 'In-Plugin Notifications', 'custom-twitter-feeds' ),
+				'notificationsDesc'   => __( 'We send you in-plugin notifications about updates, fixes, and new features.', 'custom-twitter-feeds' ),
+				// When any Smash Balloon Pro plugin is active, consent is forced on
+				// and governed centrally — the toggles are hidden on this tab.
+				'lockedByPro'         => class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' ) && \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::is_locked_by_pro(),
+			),
 			'dialogBoxPopupScreen'  => array(
 				'deleteSource' => array(
 					'heading' =>  __( 'Delete "#"?', 'custom-twitter-feeds' ),
@@ -1281,6 +1325,19 @@ class CTF_Global_Settings {
 			$ctf_site_access_token = isset( $ctf_settings[ CTF_SITE_ACCESS_TOKEN_KEY ] ) ? $ctf_settings[ CTF_SITE_ACCESS_TOKEN_KEY ] : '';
 		}
 
+		// Seed Debug-tab toggles from the central consent flags. These flags live
+		// in top-level options (sbc_data_sharing_consent / sbc_in_plugin_notifications),
+		// not inside ctf_options — see ConsentManager::update().
+		$ctf_consent_flags = wp_parse_args(
+			class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' )
+				? \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::flags()
+				: array(),
+			array(
+				'dsc'   => false,
+				'notif' => false,
+			)
+		);
+
 		$custom_css = '';
 		$custom_js = '';
 
@@ -1331,7 +1388,11 @@ class CTF_Global_Settings {
 				'cron_cache_clear' => $ctf_settings['cron_cache_clear'],
 				'sslonly' => $ctf_settings['sslonly'],
 				'curlcards' => $ctf_settings['curlcards']
-			)
+			),
+			'debug'       => array(
+				'sbc_data_sharing_consent'    => $ctf_consent_flags['dsc'],
+				'sbc_in_plugin_notifications' => $ctf_consent_flags['notif'],
+			),
 		);
 	}
 

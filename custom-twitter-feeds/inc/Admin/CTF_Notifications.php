@@ -331,15 +331,46 @@ class CTF_Notifications {
 			return array();
 		}
 
+		// Honour the consent source switch so local <-> remote is an exclusive
+		// swap rather than additive (mirrors instagram-feed). 'none' hides
+		// everything; 'local' serves the Consent package's bundled fallback;
+		// 'remote' uses the fetched feed as before.
+		$source = class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' )
+			? \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::notification_source()
+			: 'remote';
+
+		if ( 'none' === $source ) {
+			return array();
+		}
+
 		$option = $this->get_option();
 
-		// Update notifications using async task.
-		if ( empty( $option['update'] ) || ctf_get_current_time() > $option['update'] + DAY_IN_SECONDS ) {
-			$this->update();
+		if ( 'local' === $source ) {
+			$local_feed = class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentNotifications' )
+				? \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentNotifications::load_local_fallback( self::PLUGIN, ctf_is_pro_version() )
+				: array();
+			// Run the bundled fallback through the same activation gate as the
+			// remote feed so start/end windows, version constraints (minver/maxver),
+			// statuscheck and recent-install suppression behave identically on both
+			// paths. The Consent package's verify() only covers end/plugin/wp+php
+			// version/license/dismissed, so this layer adds the rest.
+			$feed = $this->verify_active( $local_feed );
+		} else {
+			// Update notifications using async task.
+			if ( empty( $option['update'] ) || ctf_get_current_time() > $option['update'] + DAY_IN_SECONDS ) {
+				$this->update();
+			}
+			$feed = ! empty( $option['feed'] ) ? $this->verify_active( $option['feed'] ) : array();
+
+			// Free and Pro share ctf_notifications, so after a downgrade/upgrade the
+			// cached feed still holds the other edition's cards until the daily
+			// refetch. Re-scope it to this edition on read.
+			if ( class_exists( '\\Smashballoon\\Framework\\Packages\\Consent\\ConsentNotifications' ) ) {
+				$feed = \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentNotifications::verify( $feed, self::PLUGIN, ctf_is_pro_version() );
+			}
 		}
 
 		$events = ! empty( $option['events'] ) ? $this->verify_active( $option['events'] ) : array();
-		$feed   = ! empty( $option['feed'] ) ? $this->verify_active( $option['feed'] ) : array();
 
 		// If there is a new user notification, add it to the beginning of the notification list
 		$ctf_newuser = new CTF_New_User();
@@ -406,6 +437,17 @@ class CTF_Notifications {
 	 * @since 2.0
 	 */
 	public function update() {
+		// The Consent package owns the source-switch + local-fallback path. Only
+		// fire the remote fetch when consent resolves to 'remote'; 'local' and
+		// 'none' are no-ops here (mirrors instagram-feed).
+		$source = class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' )
+			? \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::notification_source()
+			: 'remote';
+
+		if ( 'remote' !== $source ) {
+			return;
+		}
+
 		$feed   = $this->fetch_feed();
 		$option = $this->get_option();
 
@@ -500,6 +542,13 @@ class CTF_Notifications {
 		}
 
 		$notifications = $this->get();
+
+		// Keep the persisted marketing store in sync with the active consent
+		// source — an empty/none result clears it — so notices from a previous
+		// source can't linger (mirrors instagram-feed).
+		if ( class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentNotifications' ) ) {
+			\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentNotifications::reconcile_from_notifications( 'custom-twitter-feeds', $notifications );
+		}
 
 		if ( empty( $notifications ) ) {
 			return;

@@ -853,7 +853,7 @@ class CTF_Feed_Builder {
 	   	);
 	   	wp_enqueue_script(
 			'feed-builder-vue',
-			'https://cdn.jsdelivr.net/npm/vue@2.6.12',
+			CTF_PLUGIN_URL . 'admin/builder/assets/js/vue.min.js',
 			null,
 			"2.6.12",
 			true

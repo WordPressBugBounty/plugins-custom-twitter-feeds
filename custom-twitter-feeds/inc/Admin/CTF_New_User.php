@@ -156,6 +156,15 @@ class CTF_New_User extends CTF_Notifications {
 			return array();
 		}
 
+		// SMASH-1243: honour the consent source like CTF_Notifications::get(), so a
+		// previously fetched remote feed is not shown once consent is withdrawn.
+		$source = class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' )
+			? \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::notification_source()
+			: 'remote';
+		if ( 'none' === $source ) {
+			return array();
+		}
+
 		$option = $this->get_option();
 
 		$ctf_options = get_option( 'ctf_options', array() );
@@ -194,7 +203,7 @@ class CTF_New_User extends CTF_Notifications {
 		}
 
 		$events = ! empty( $option['events'] ) ? $this->verify_active( $option['events'] ) : array();
-		$feed   = ! empty( $option['feed'] ) ? $this->verify_active( $option['feed'] ) : array();
+		$feed   = ( 'remote' === $source && ! empty( $option['feed'] ) ) ? $this->verify_active( $option['feed'] ) : array();
 
 		return array_merge( $events, $feed );
 	}
@@ -242,6 +251,16 @@ class CTF_New_User extends CTF_Notifications {
 	 * @since 2.0
 	 */
 	public function update() {
+		// SMASH-1245: gate remote new-user feed fetch on consent. notification_source()
+		// reflects the per-edition default (Pro on by default, Free off until opt-in),
+		// so the remote request only fires once the user has consented.
+		$source = class_exists( '\Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager' )
+			? \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Consent\ConsentManager::notification_source()
+			: 'remote';
+		if ( 'remote' !== $source ) {
+			return;
+		}
+
 		$feed   = $this->fetch_feed();
 		$option = $this->get_option();
 

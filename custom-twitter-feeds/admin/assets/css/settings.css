@@ -1936,3 +1936,32 @@ Sources Instance Popup
 .sb-tab-content .sb-tab-box .ctf-caching-pro-cta{
     padding: 8px 290px;
 }
+
+/* Disabled .ctf-checkbox toggles plugin-wide (added for the Data Sharing consent toggles) */
+.ctf-checkbox input[type=checkbox]:disabled + .toggle-track {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+/* A locked (checked + disabled) consent toggle must stay faded-blue like
+   Facebook — override the earlier generic `:disabled` gray (#D0D1D7) that
+   would otherwise win on the checked-and-disabled in-plugin notifications
+   toggle when data-sharing is on. */
+.ctf-checkbox input[type=checkbox]:checked:disabled + .toggle-track {
+    background: #0096CC;
+}
+.ctf-debug-consent-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+}
+.ctf-debug-consent-links a,
+.ctf-debug-consent-links a:visited {
+    font-size: 12px;
+    color: #0068A0;
+    text-decoration: none;
+}
+.ctf-debug-consent-links a:hover,
+.ctf-debug-consent-links a:focus {
+    text-decoration: underline;
+}
