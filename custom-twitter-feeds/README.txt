@@ -5,7 +5,7 @@ Support Website: https://smashballoon.com/custom-twitter-feeds/
 Tags: Twitter, Twitter feed, X feed, Twitter widget, Custom Twitter Feed
 Requires at least: 5.3
 Tested up to: 7.1
-Stable tag: 2.10.0
+Stable tag: 2.11.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -239,6 +239,10 @@ If you're still having trouble displaying your Tweets after trying the common is
 Sharing anonymous usage data with Smash Balloon and receiving in-plugin notifications are both off until you opt in, either in the one-time data sharing prompt or under Twitter Feeds > Settings > Data Sharing. You can turn them off again at any time on that tab. When off, no usage data is sent, and in-plugin notifications and About Us page content are not loaded from Smash Balloon. See what is shared: https://smashballoon.com/data-sharing-permissions/
 
 == Changelog ==
+= 2.11.0 =
+* New: Ask AI assistants to check your feed settings and, once you turn on MCP Write Access under Settings > General, change them for you, through the WordPress Abilities API (WordPress 6.9 or later). [See what X (Twitter) Feed Pro adds](https://smashballoon.com/custom-twitter-feeds/twitter-lite-upgrade/?utm_source=changelog&utm_medium=aiagents&utm_campaign=twitter-free-readme)
+* New: Added an AI Agents card to the Settings page.
+
 = 2.10.0 =
 * New: Added a Data Sharing settings tab where you can control anonymous data sharing and in-plugin notifications. Usage data is only sent once you opt in.
 * Tweak: Admin icons are now bundled with the plugin instead of loaded from a third-party CDN.

@@ -5,7 +5,7 @@ use TwitterFeed\Builder\CTF_Feed_Builder;
 Plugin Name: Smash Balloon X (Twitter) Feed
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.10.0
+Version: 2.11.0
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -31,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.10.0' );
+	define( 'CTF_VERSION', '2.11.0' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -236,6 +236,11 @@ function ctf_plugin_init() {
 	// Initialize recommended blocks in Gutenberg sidebar.
 	$recommended_blocks = new \Smashballoon\TwitterFeed\Vendor\Smashballoon\Framework\Packages\Blocks\RecommendedBlocks();
 	$recommended_blocks->setup();
+
+	// WordPress core Abilities API (WP 6.9+) integration — exposes settings to
+	// AI agents (MCP clients, WPVibe). No-ops on older WordPress via the
+	// function_exists() guard inside CTF_Abilities.
+	new \TwitterFeed\Abilities\CTF_Abilities();
 }
 add_action( 'plugins_loaded', 'ctf_plugin_init' );
 

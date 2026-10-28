@@ -85,6 +85,8 @@ var settings_data = {
     twittercardCacheStatus: null,
 
     dpaResetStatus: null,
+    wpvibeInstallStatus: null, // null | 'loading' | 'failed'
+    addonNonce: ctf_settings.addonNonce,
     pressedBtnName: null,
     loading: false,
     hasError: ctf_settings.hasError,
@@ -302,6 +304,15 @@ var ctfSettings = new Vue({
         }
     },
     methods:  {
+        /**
+         * @return string 'not_installed' | 'inactive' | 'active' | 'installFailed'
+         */
+        aiAgentsState: function () {
+            if (this.wpvibeInstallStatus === 'failed') {
+                return 'installFailed';
+            }
+            return this.generalTab.aiAgents.status;
+        },
         activateLicense: function() {
         if (this.licenseType === 'free') {
           this.runOneClickUpgrade();
@@ -695,6 +706,13 @@ var ctfSettings = new Vue({
                 }
 
                 this.cronNextCheck = data.data.cronNextCheck;
+                // Sync MCP Write Access to what the server stored: a stale ON can be
+                // refused, and the loaded marker must follow the stored value so a
+                // later flip in this same tab is judged against it.
+                if ( typeof data.data.aiWriteEnabled === 'boolean' && this.model.advanced ) {
+                    this.model.advanced.ai_write_enabled = data.data.aiWriteEnabled;
+                    this.model.advanced.ai_write_enabled_loaded = data.data.aiWriteEnabled;
+                }
                 this.btnStatus = 'success';
                 this.loadedConsent = sentConsent;
                 setTimeout(function() {
@@ -1282,6 +1300,69 @@ var ctfSettings = new Vue({
                     self.loadingAjax = false;
                 });
             }
+        },
+
+        /**
+         * Open WPVibe's own admin page.
+         *
+         * @since 2.10.1
+         */
+        openWPVibe: function () {
+            window.location.href = this.generalTab.aiAgents.adminUrl;
+        },
+
+        /**
+         * Install or activate WPVibe for the AI Agents card.
+         *
+         * Reuses the ctf_install_addon / ctf_activate_addon AJAX actions used
+         * elsewhere in this settings app -- but with addonNonce, NOT this.nonce:
+         * those handlers check the 'ctf-admin' action
+         * (inc/Admin/addon-functions.php), which does not match this settings
+         * app's own 'ctf_admin_nonce' action.
+         *
+         * @since 2.10.1
+         */
+        installOrActivateWPVibe: function () {
+            let self = this,
+                aiAgents = self.generalTab.aiAgents,
+                isInstalled = aiAgents.status !== 'not_installed',
+                action = isInstalled ? 'ctf_activate_addon' : 'ctf_install_addon',
+                pluginParam = isInstalled ? aiAgents.basename : aiAgents.installDownloadUrl;
+
+            self.wpvibeInstallStatus = 'loading';
+
+            let data = new FormData();
+            data.append('action', action);
+            data.append('nonce', self.addonNonce);
+            data.append('type', 'plugin');
+            data.append('plugin', pluginParam);
+            fetch(self.ajaxHandler, {
+                method: "POST",
+                credentials: 'same-origin',
+                body: data
+            })
+                .then(response => response.json())
+                .then(function (response) {
+                    if (response.success !== true) {
+                        self.wpvibeInstallStatus = 'failed';
+                        return;
+                    }
+
+                    self.wpvibeInstallStatus = null;
+
+                    if (action === 'ctf_install_addon') {
+                        if (response.data && response.data.basename) {
+                            aiAgents.basename = response.data.basename;
+                        }
+                        aiAgents.status = (response.data && response.data.is_activated) ? 'active' : 'inactive';
+                        return;
+                    }
+
+                    aiAgents.status = 'active';
+                })
+                .catch(function () {
+                    self.wpvibeInstallStatus = 'failed';
+                });
         },
 
     }
