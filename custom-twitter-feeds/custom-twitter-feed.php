@@ -5,7 +5,7 @@ use TwitterFeed\Builder\CTF_Feed_Builder;
 Plugin Name: Smash Balloon X (Twitter) Feed
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.11.0
+Version: 2.11.1
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -31,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.11.0' );
+	define( 'CTF_VERSION', '2.11.1' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -436,6 +436,16 @@ function ctf_check_for_db_updates() {
 
 	}
 
+	// A status flag, not a db version: Pro shares ctf_db_version and is already past
+	// the next Free version, so a version bump would not run on a Pro-to-Free site.
+	$ctf_statuses_option = get_option( 'ctf_statuses', array() );
+	if ( empty( $ctf_statuses_option['invalid_feed_caches_removed'] ) ) {
+		ctf_remove_invalid_feed_caches();
+
+		$ctf_statuses_option['invalid_feed_caches_removed'] = true;
+		update_option( 'ctf_statuses', $ctf_statuses_option, false );
+	}
+
 }
 add_action( 'wp_loaded', 'ctf_check_for_db_updates' );
 
@@ -548,7 +558,8 @@ function ctf_do_locator() {
 
 	$atts_raw = isset( $_POST['atts'] ) ? json_decode( stripslashes( $_POST['atts'] ), true ) : array();
 	if ( is_array( $atts_raw ) ) {
-		array_map( 'sanitize_text_field', $atts_raw );
+		// Assigned: the result used to be discarded, so the raw atts reached the locator (SMASH-2491).
+		$atts_raw = array_map( 'sanitize_text_field', $atts_raw );
 	} else {
 		$atts_raw = array();
 	}

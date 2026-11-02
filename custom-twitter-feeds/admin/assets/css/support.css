@@ -549,6 +549,7 @@
     height: 123px;
     font-family: 'Fira Code', monospace;
     word-break: break-all;
+    white-space: pre-wrap;
 }
 .ctf-system-info-section .ctf-system-info .system_info.expanded {
     height: 600px;

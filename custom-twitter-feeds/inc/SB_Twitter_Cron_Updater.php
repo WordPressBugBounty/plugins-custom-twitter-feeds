@@ -42,6 +42,12 @@ class SB_Twitter_Cron_Updater {
 		foreach ( $cron_records as $feed_cache ) {
 			$feed_id = $feed_cache['feed_id'];
 
+			// A row a request planted before SMASH-2491 is not a feed, so it gets no
+			// update and no report entry.
+			if ( ! ctf_is_valid_feed_cache_id( $feed_id ) ) {
+				continue;
+			}
+
 			$result = self::do_single_feed_cron_update( $feed_id );
 
 			$report[ $feed_id ] = $result;

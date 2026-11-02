@@ -138,6 +138,13 @@ class CtfFeed
 	    //$this->atts = $atts;
         $this->atts = CTF_Settings::filter_atts_for_legacy($atts);
         $this->raw_shortcode_atts = CTF_Settings::filter_atts_for_legacy($atts);
+        // raw_shortcode_atts['feed'] is the feed caches key, and the cron copies that key
+        // into the report the Support page shows. Cast it like feed_id below so a
+        // shortcode or request can only ever name a saved feed (SMASH-2491).
+        if ( ! empty( $this->atts['feed'] ) && 'legacy' !== $this->atts['feed'] ) {
+            $this->atts['feed']               = self::normalize_feed_att( $this->atts['feed'] );
+            $this->raw_shortcode_atts['feed'] = $this->atts['feed'];
+        }
         if( isset($this->atts['feed']) ){
             $atts['feed'] = $this->atts['feed'];
         }
@@ -193,6 +200,24 @@ class CtfFeed
         $this->feed_options['selfreplies'] = false;
         $this->feed_options['includereplies'] = false;
         $this->feed_options['is_legacy'] = $this->is_legacy;
+    }
+
+    /**
+     * Casts a non-legacy feed att to the integer the settings lookup uses (%d), so the
+     * cache key can only ever be a number.
+     *
+     * Anything that is not a positive ID becomes -1, which names no feed: "-5" or "abc"
+     * still shows "No feed found" as before, instead of loading feed 5 (absint) or
+     * falling through to the legacy feed (0).
+     *
+     * @param mixed $feed
+     *
+     * @return int
+     */
+    public static function normalize_feed_att( $feed ) {
+        $feed_id = is_scalar( $feed ) ? (int) $feed : 0;
+
+        return $feed_id > 0 ? $feed_id : -1;
     }
 
     /**

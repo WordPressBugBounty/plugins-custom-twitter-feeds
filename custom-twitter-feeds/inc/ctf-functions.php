@@ -204,6 +204,44 @@ function ctf_clear_cache_sql() {
 
 
 
+/**
+ * Whether a value is a feed ID the feed caches table can legitimately hold: a saved
+ * feed's numeric ID or "legacy", optionally with the customizer suffix CtfCache adds
+ * (Pro also writes "_CUSTOMIZER_MODMODE…", so a Pro-to-Free cleanup keeps those).
+ *
+ * @param mixed $feed_id
+ *
+ * @return bool
+ */
+function ctf_is_valid_feed_cache_id( $feed_id ) {
+	if ( is_int( $feed_id ) ) {
+		return $feed_id > 0;
+	}
+
+	return is_string( $feed_id ) && 1 === preg_match( '/^(?:[1-9][0-9]*|legacy)(?:_CUSTOMIZER(?:_MODMODE\w*)?)?\z/', $feed_id );
+}
+
+/**
+ * Removes feed cache rows whose feed ID no request should have been able to create,
+ * and the cron report that copied them, so sites injected before SMASH-2491 are clean.
+ */
+function ctf_remove_invalid_feed_caches() {
+	global $wpdb;
+	$cache_table_name = $wpdb->prefix . 'ctf_feed_caches';
+
+	if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $cache_table_name ) ) === $cache_table_name ) {
+		$feed_ids = $wpdb->get_col( "SELECT DISTINCT feed_id FROM $cache_table_name" );
+		foreach ( $feed_ids as $feed_id ) {
+			if ( ! ctf_is_valid_feed_cache_id( $feed_id ) ) {
+				$wpdb->delete( $cache_table_name, array( 'feed_id' => $feed_id ), array( '%s' ) );
+			}
+		}
+	}
+
+	// Rebuilt on the next cron run, so nothing of value is lost.
+	delete_option( 'ctf_cron_report' );
+}
+
 function ctf_background_processing() {
 
 	if ( ! isset( $_POST['feed_id'] ) ) {
@@ -213,11 +251,18 @@ function ctf_background_processing() {
 
 	$atts_raw = isset( $_POST['atts'] ) ? json_decode( stripslashes( $_POST['atts'] ), true ) : array();
 	if ( is_array( $atts_raw ) ) {
-		array_map( 'sanitize_text_field', $atts_raw );
+		$atts_raw = array_map( 'sanitize_text_field', $atts_raw );
 	} else {
 		$atts_raw = array();
 	}
 	$atts = $atts_raw; // now sanitized
+
+	// This action is public and atts.feed becomes a feed cache ID, which the cron copies
+	// into ctf_cron_report and the Support page renders. Only a real feed ID may get
+	// that far (SMASH-2491).
+	if ( isset( $atts['feed'] ) && '' !== $atts['feed'] && ! ctf_is_valid_feed_cache_id( $atts['feed'] ) ) {
+		wp_die();
+	}
 
 	$location     = isset( $_POST['location'] ) && in_array( $_POST['location'], array( 'header', 'footer', 'sidebar', 'content' ), true ) ? sanitize_text_field( $_POST['location'] ) : 'unknown';
 	$post_id      = isset( $_POST['post_id'] ) && $_POST['post_id'] !== 'unknown' ? (int) $_POST['post_id'] : 'unknown';
