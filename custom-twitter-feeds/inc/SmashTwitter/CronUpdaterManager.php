@@ -158,6 +158,17 @@ class CronUpdaterManager
 
 		$batch_feeds = $this->get_next_batch_of_updatable_feeds( $is_additional_batch );
 
+		// A row whose feed ID names no feed still costs the request. The batch is the
+		// lowest feed_id, and junk like "-1 OR ..." sorts before every real feed, so it
+		// would take every run. Delete those rows and fetch the batch again (SMASH-1707).
+		$valid_batch_feeds = self::filter_valid_batch_feeds( $batch_feeds );
+		if ( count( $valid_batch_feeds ) !== count( $batch_feeds ) ) {
+			ctf_remove_invalid_feed_caches();
+			$batch_feeds       = $this->get_next_batch_of_updatable_feeds( $is_additional_batch );
+			$valid_batch_feeds = self::filter_valid_batch_feeds( $batch_feeds );
+		}
+		$batch_feeds = $valid_batch_feeds;
+
 		$num_found = count($batch_feeds);
 
 		if (! $num_found) {
@@ -183,7 +194,7 @@ class CronUpdaterManager
 
 			$this->update_cache_last_updated( $updatable_feed_id );
 
-			$return = SB_Twitter_Cron_Updater::do_single_feed_cron_update( $updatable_feed_id );
+			$return = $this->do_single_feed_cron_update( $updatable_feed_id );
 		}
 
 		if ( ! empty( $return['data'] ) ) {
@@ -195,6 +206,39 @@ class CronUpdaterManager
 				}
 			}
 		}
+	}
+
+	/**
+	 * Keeps the feed cache rows the cron may update: a missing or empty feed ID (read as legacy, as
+	 * do_updates() does) or one ctf_is_valid_feed_cache_id() accepts. SMASH-1707.
+	 *
+	 * @param array $batch_feeds
+	 *
+	 * @return array
+	 */
+	public static function filter_valid_batch_feeds( $batch_feeds ) {
+		return array_values( array_filter( $batch_feeds, function ( $batch_feed ) {
+			// Not empty(): "0" names no feed, so it must not pass as legacy. An empty ID
+			// stays legacy here, as do_updates() reads it, although the cleanup deletes
+			// '' rows. Intended, and the same as Pro.
+			if ( ! isset( $batch_feed['feed_id'] ) || '' === $batch_feed['feed_id'] ) {
+				return true;
+			}
+
+			return ctf_is_valid_feed_cache_id( $batch_feed['feed_id'] );
+		} ) );
+	}
+
+	/**
+	 * Updates one feed's cache. A method so the SMASH-1707 tests can run do_updates()
+	 * without building a feed.
+	 *
+	 * @param string $feed_id
+	 *
+	 * @return array
+	 */
+	public function do_single_feed_cron_update( $feed_id ) {
+		return SB_Twitter_Cron_Updater::do_single_feed_cron_update( $feed_id );
 	}
 
 	public function calc_sources_to_update( $settings ) {

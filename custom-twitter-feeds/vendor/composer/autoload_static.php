@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb7d650eaa15324e2491f1118874d6494
+class ComposerStaticInit06f61219ea6a56c22e6de0fa50011178
 {
     public static $files = array (
         'sb_ctf_b1eb330aa001ae4915f07005b4e993c2' => __DIR__ . '/..' . '/smashballoon/framework/Utilities/functions.php',
@@ -18,7 +18,9 @@ class ComposerStaticInitb7d650eaa15324e2491f1118874d6494
         ),
         'S' =>
         array (
+            'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Stubs\\' => 51,
             'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Framework\\' => 55,
+            'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Customizer\\V2\\' => 59,
             'Smashballoon\\TwitterFeed\\Vendor\\Psr\\Container\\' => 46,
             'Smashballoon\\TwitterFeed\\Vendor\\PhpDocReader\\' => 45,
             'Smashballoon\\TwitterFeed\\Vendor\\Laravel\\SerializableClosure\\' => 60,
@@ -32,9 +34,17 @@ class ComposerStaticInitb7d650eaa15324e2491f1118874d6494
         array (
             0 => __DIR__ . '/../..' . '/inc',
         ),
+        'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Stubs\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/smashballoon/stubs/src',
+        ),
         'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Framework\\' =>
         array (
             0 => __DIR__ . '/..' . '/smashballoon/framework',
+        ),
+        'Smashballoon\\TwitterFeed\\Vendor\\Smashballoon\\Customizer\\V2\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/smashballoon/customizer/app/V2',
         ),
         'Smashballoon\\TwitterFeed\\Vendor\\Psr\\Container\\' =>
         array (
@@ -65,9 +75,9 @@ class ComposerStaticInitb7d650eaa15324e2491f1118874d6494
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb7d650eaa15324e2491f1118874d6494::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb7d650eaa15324e2491f1118874d6494::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb7d650eaa15324e2491f1118874d6494::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit06f61219ea6a56c22e6de0fa50011178::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit06f61219ea6a56c22e6de0fa50011178::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit06f61219ea6a56c22e6de0fa50011178::$classMap;
 
         }, null, ClassLoader::class);
     }

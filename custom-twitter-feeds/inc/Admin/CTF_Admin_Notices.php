@@ -105,9 +105,12 @@ class CTF_Admin_Notices
      *
      * @since 2.0
      *
-     * @return CTF_Response
+     * @return void Sends a CTF_Response JSON reply.
      */
     public function ctf_check_license() {
+        if ( ! defined( 'CTF_STORE_URL' ) ) {
+            return;
+        }
         $ctf_license = trim( get_option( 'ctf_license_key' ) );
 
         // Check the API
@@ -159,6 +162,9 @@ class CTF_Admin_Notices
      * @since 2.0
      */
     public function ctf_license_notices() {
+        if ( ! defined( 'CTF_STORE_URL' ) ) {
+            return;
+        }
         global $current_user;
         $current_screen = get_current_screen();
 

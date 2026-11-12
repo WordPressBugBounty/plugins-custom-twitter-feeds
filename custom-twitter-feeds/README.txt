@@ -5,7 +5,7 @@ Support Website: https://smashballoon.com/custom-twitter-feeds/
 Tags: Twitter, Twitter feed, X feed, Twitter widget, Custom Twitter Feed
 Requires at least: 5.3
 Tested up to: 7.1
-Stable tag: 2.11.1
+Stable tag: 2.12.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -239,6 +239,15 @@ If you're still having trouble displaying your Tweets after trying the common is
 Sharing anonymous usage data with Smash Balloon and receiving in-plugin notifications are both off until you opt in, either in the one-time data sharing prompt or under Twitter Feeds > Settings > Data Sharing. You can turn them off again at any time on that tab. When off, no usage data is sent, and in-plugin notifications and About Us page content are not loaded from Smash Balloon. See what is shared: https://smashballoon.com/data-sharing-permissions/
 
 == Changelog ==
+= 2.12.0 =
+* New: The Embed Feed popup now uses the shared Embed Feed modal, which can also search your posts, and Add to Page opens the page editor with your X Feed block already inserted. On WordPress versions before 5.8, the Embed button shows your feed shortcode to copy instead.
+* Tweak: If you had opted in to usage tracking before, Data Sharing now stays on after the update.
+* Fix: The "Add a Block" tooltip after Add to Page now appears on WordPress 6.9 and later.
+* Fix: Saving a feed twice in quick succession no longer shows "Error saving Feed".
+* Fix: X Feed no longer breaks Instagram Feed's Add to Page flow when both plugins are active.
+* Fix: Fixed a PHP fatal error in admin license notices on some sites.
+* Fix: Plugin security hardening.
+
 = 2.11.1 =
 * Fix: The data-sharing popup no longer locks you out of your WordPress admin when your choice can't be saved. You can always close it and keep working.
 * Fix: Plugin security hardening.

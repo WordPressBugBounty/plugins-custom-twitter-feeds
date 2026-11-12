@@ -75,12 +75,13 @@ class CTF_Tooltip_Wizard {
 			'ctf-admin-tooltip-wizard',
 			CTF_PLUGIN_URL . 'admin/builder/assets/js/tooltip-wizard.js',
 			[ 'jquery' ],
-			CTF_VERSION
+			CTF_VERSION . '.' . filemtime( CTF_PLUGIN_DIR . 'admin/builder/assets/js/tooltip-wizard.js' )
 		);
 
 		$wp_localize_data = [];
 		if( $this->check_gutenberg_wizard() ){
 			$wp_localize_data['ctf_wizard_gutenberg'] = true;
+			$wp_localize_data['ctf_wizard_feed_id'] = absint($_GET['ctf_wizard']);
 		}
 
 		wp_localize_script(

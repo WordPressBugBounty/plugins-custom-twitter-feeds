@@ -5,7 +5,7 @@ use TwitterFeed\Builder\CTF_Feed_Builder;
 Plugin Name: Smash Balloon X (Twitter) Feed
 Plugin URI: https://smashballoon.com/custom-twitter-feeds
 Description: Customizable X Feeds, formerly known as Twitter feeds, for your website
-Version: 2.11.1
+Version: 2.12.0
 Author: Smash Balloon
 Author URI: https://smashballoon.com/
 Text Domain: custom-twitter-feeds
@@ -31,7 +31,7 @@ if ( ! defined( 'CTF_URL' ) ) {
 	define( 'CTF_DOING_SMASH_TWITTER', empty($ctf_options['consumer_key']) && empty($ctf_options['consumer_secret']));
 
 	define( 'CTF_URL', plugin_dir_path( __FILE__ )  );
-	define( 'CTF_VERSION', '2.11.1' );
+	define( 'CTF_VERSION', '2.12.0' );
 	define( 'CTF_TITLE', 'Custom Twitter Feeds' );
 	define( 'CTF_JS_URL', plugins_url( '/js/ctf-scripts.min.js?ver=' . CTF_VERSION , __FILE__ ) );
 	define( 'CTF_PRODUCT_NAME', 'Custom Twitter Feeds' );
@@ -179,6 +179,9 @@ function ctf_plugin_init() {
 				'plugin_name'  => 'Twitter Feeds',
 				'utm_slug'     => 'twitter',
 				'legacy_class' => 'CTF_Consent',
+				// SMASH-2630: sites that had opted in to usage tracking keep
+				// sharing after the consent update (run once by the package).
+				'legacy_optin' => array( '\TwitterFeed\UsageTracking\Config', 'is_enabled' ),
 			)
 		);
 	}
@@ -1034,7 +1037,7 @@ function ctf_admin_scripts_and_styles() {
 		'feed-global-style',
 		CTF_PLUGIN_URL . 'admin/builder/assets/css/global.css',
 		array( 'ctf-tokens-local' ),
-		CTF_VERSION
+		CTF_VERSION . '.' . filemtime( CTF_PLUGIN_DIR . 'admin/builder/assets/css/global.css' )
 	);
     wp_enqueue_style( 'ctf_admin_styles', plugins_url( '/css/ctf-admin-styles.css', __FILE__ ), array( 'ctf-tokens-local' ), CTF_VERSION );
 	wp_enqueue_style( 'sb-font-awesome', CTF_PLUGIN_URL . 'css/font-awesome.min.css', array(), '4.7.0' );

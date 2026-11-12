@@ -230,10 +230,13 @@ function ctf_remove_invalid_feed_caches() {
 	$cache_table_name = $wpdb->prefix . 'ctf_feed_caches';
 
 	if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $cache_table_name ) ) === $cache_table_name ) {
-		$feed_ids = $wpdb->get_col( "SELECT DISTINCT feed_id FROM $cache_table_name" );
-		foreach ( $feed_ids as $feed_id ) {
-			if ( ! ctf_is_valid_feed_cache_id( $feed_id ) ) {
-				$wpdb->delete( $cache_table_name, array( 'feed_id' => $feed_id ), array( '%s' ) );
+		// By primary key, not feed_id: the default collation ignores case and trailing
+		// spaces, so "LEGACY" or "1 " would match the real feed's rows and survive
+		// DISTINCT. The cron runs this on each batch it finds one in (SMASH-1707).
+		$rows = $wpdb->get_results( "SELECT id, feed_id FROM $cache_table_name", ARRAY_A );
+		foreach ( $rows as $row ) {
+			if ( ! ctf_is_valid_feed_cache_id( $row['feed_id'] ) ) {
+				$wpdb->delete( $cache_table_name, array( 'id' => $row['id'] ), array( '%d' ) );
 			}
 		}
 	}

@@ -8,6 +8,8 @@ namespace TwitterFeed\Builder;
 
 
 use TwitterFeed\CTF_Feed_Locator;
+use Smashballoon\TwitterFeed\Vendor\Smashballoon\Customizer\V2\EmbedModal;
+use Smashballoon\TwitterFeed\Vendor\Smashballoon\Customizer\V2\EmbedTargets;
 use TwitterFeed\CTF_Settings;
 use TwitterFeed\Builder\Tabs\CTF_Styling_Tab;
 use TwitterFeed\Builder\CTF_Feed_Saver;
@@ -51,6 +53,21 @@ class CTF_Feed_Builder {
 			CTF_Feed_Builder::hooks();
 			#echo json_encode(CTF_Feed_Saver::settings_defaults());
 
+		}
+
+		// The Embed modal's page search route. Older sb-customizer builds lack it.
+		if (method_exists(EmbedTargets::class, 'register_route')) {
+			add_action('rest_api_init', array(EmbedTargets::class, 'register_route'));
+			// Translate the search results' status pills and titles like the first list.
+			add_filter('rest_pre_dispatch', function ($result, $server, $request) {
+				if (strpos($request->get_route(), '/sb-customizer/v1/embed-targets') === 0) {
+					$strings = self::embed_modal_strings();
+					add_filter('gettext_reviews-feed', function ($translation, $text) use ($strings) {
+						return isset($strings[$text]) ? $strings[$text] : $translation;
+					}, 10, 2);
+				}
+				return $result;
+			}, 10, 3);
 		}
 	}
 
@@ -169,11 +186,10 @@ class CTF_Feed_Builder {
 					'upgradeUrl'		=> $upgrade_url,
 					'pluginUrl'			=> trailingslashit( CTF_PLUGIN_URL ),
 					'ctfRebrand'		=> ctf_should_rebrand_to_x(),
-					'adminPostURL'		=> 	admin_url( 'post.php' ),
 					'adminSettingsURL'	=> 	admin_url('admin.php?page=ctf-settings'),
-					'widgetsPageURL'	=> 	admin_url( 'widgets.php' ),
 					'supportPageUrl'    => admin_url( 'admin.php?page=ctf-support' ),
 					'genericText'       => self::get_generic_text(),
+					'embedModalSupported' => version_compare(get_bloginfo('version'), '5.8', '>='),
 					'translatedText' 	=> $this->get_translated_text(),
 					'welcomeScreen' => array(
 						'mainHeading' => __( 'All Feeds', 'custom-twitter-feeds' ),
@@ -288,14 +304,6 @@ class CTF_Feed_Builder {
 						'description' => __( 'Includes all Smash Balloon plugins for one low price: Instagram, Facebook, Twitter, YouTube, and Social Wall', 'custom-twitter-feeds' ),
 						'promo' => sprintf( __( '%sBonus%s Lite users get %s50&#37; Off%s automatically applied at checkout', 'custom-twitter-feeds' ), '<span class="ctf-bld-ft-bns">', '</span>', '<strong>', '</strong>' ),
 					),
-					'embedPopupScreen' => array(
-						'heading' => __( 'Embed Feed', 'custom-twitter-feeds' ),
-						'description' => __( 'Add the unique shortcode to any page, post, or widget:', 'custom-twitter-feeds' ),
-						'description_2' => __( 'Or use the built in WordPress block or widget', 'custom-twitter-feeds' ),
-						'addPage' => __( 'Add to a Page', 'custom-twitter-feeds' ),
-						'addWidget' => __( 'Add to a Widget', 'custom-twitter-feeds' ),
-						'selectPage' => __( 'Select Page', 'custom-twitter-feeds' ),
-					),
 					'connectAccountScreen' => self::connect_account_secreen(),
 
 
@@ -365,7 +373,37 @@ class CTF_Feed_Builder {
         			ctf_scripts_and_styles(true);
 		        	$ctf_builder['customizerFeedData'] 			=  $maybe_feed_customizer_data;
 		        	$ctf_builder['customizerSidebarBuilder'] 	=  \TwitterFeed\Builder\Tabs\CTF_Builder_Customizer_Tab::get_customizer_tabs();
-		        	$ctf_builder['wordpressPageLists']			= $this->get_wp_pages();
+					$cap = current_user_can( 'manage_twitter_feed_options' ) ? 'manage_twitter_feed_options' : 'manage_options';
+					// The modal's strings use the reviews-feed text domain, so translate them here.
+					$embed_strings = self::embed_modal_strings();
+					$embed_gettext = function ($translation, $text) use ($embed_strings) {
+						return isset($embed_strings[$text]) ? $embed_strings[$text] : $translation;
+					};
+					add_filter('gettext_reviews-feed', $embed_gettext, 10, 2);
+					EmbedModal::enqueue(
+						array(
+							'capability'  => apply_filters( 'ctf_settings_pages_capability', $cap ),
+							'block_title' => __( 'Twitter Feed', 'custom-twitter-feeds' ),
+							'wizard_arg'  => 'ctf_wizard',
+							'shortcode'   => '[custom-twitter-feeds feed=%s]',
+						)
+					);
+					remove_filter('gettext_reviews-feed', $embed_gettext, 10);
+					if (! empty($embed_strings)) {
+						wp_add_inline_script(
+							EmbedModal::HANDLE,
+							'wp.i18n.setLocaleData(' . wp_json_encode(array_map(function ($translation) {
+								return array($translation);
+							}, $embed_strings)) . ', "reviews-feed");',
+							'before'
+						);
+					}
+					// The modal close button uses the sb-customizer text domain.
+					wp_add_inline_script(
+						EmbedModal::HANDLE,
+						'wp.i18n.setLocaleData(' . wp_json_encode(array('Close' => array(__('Close', 'custom-twitter-feeds')))) . ', "sb-customizer");',
+						'before'
+					);
 		   			$ctf_builder['twitter_feed_dismiss_lite'] = get_transient( 'twitter_feed_dismiss_lite' );
 					if ( ! isset( $_GET['feed_id'] ) || $_GET['feed_id'] === 'legacy' ) {
 						$feed_id                       = 'legacy';
@@ -434,7 +472,7 @@ class CTF_Feed_Builder {
 		        	'ctf-builder-style',
 		        	CTF_PLUGIN_URL . 'admin/builder/assets/css/builder.css',
 		        	false,
-		        	CTF_VERSION
+		        	CTF_VERSION . '.' . filemtime( CTF_PLUGIN_DIR . 'admin/builder/assets/css/builder.css' )
 		        );
 
 		        self::global_enqueue_ressources_scripts();
@@ -443,7 +481,7 @@ class CTF_Feed_Builder {
 		        	'ctf-builder-app',
 		        	CTF_PLUGIN_URL.'admin/builder/assets/js/builder.js',
 		        	null,
-		        	CTF_VERSION,
+		        	CTF_VERSION . '.' . filemtime( CTF_PLUGIN_DIR . 'admin/builder/assets/js/builder.js' ),
 		        	true
 		        );
 		        // Customize screens
@@ -833,24 +871,6 @@ class CTF_Feed_Builder {
 	    }
 	}
 
-	/**
-	 * Get WP Pages List
-	 *
-	 * @return array
-	 *
-	 * @since 2.0
-	 */
-	public function get_wp_pages(){
-		$pagesList = get_pages();
-		$pagesResult = [];
-		if(is_array($pagesList)){
-			foreach ($pagesList as $page) {
-				array_push($pagesResult, ['id' => $page->ID, 'title' => $page->post_title]);
-			}
-		}
-		return $pagesResult;
-	}
-
 
 	/**
 	 * Global JS + CSS Files
@@ -878,7 +898,7 @@ class CTF_Feed_Builder {
 	   		'feed-global-style',
 	   		CTF_PLUGIN_URL . 'admin/builder/assets/css/global.css',
 	   		array( 'ctf-tokens-local' ),
-	   		CTF_VERSION
+	   		CTF_VERSION . '.' . filemtime( CTF_PLUGIN_DIR . 'admin/builder/assets/css/global.css' )
 	   	);
 	   	wp_enqueue_script(
 			'feed-builder-vue',
@@ -971,7 +991,6 @@ class CTF_Feed_Builder {
 			'dialogConfirmAction' => __( 'Confirm action', 'custom-twitter-feeds' ),
 			'dialogExtension' => __( 'Extension', 'custom-twitter-feeds' ),
 			'dialogSources' => __( 'Sources', 'custom-twitter-feeds' ),
-			'dialogEmbedFeed' => __( 'Embed feed', 'custom-twitter-feeds' ),
 			'dialogAddSource' => __( 'Add source', 'custom-twitter-feeds' ),
 			'dialogFeedTypes' => __( 'Feed types', 'custom-twitter-feeds' ),
 			'dialogFeedTemplates' => __( 'Feed templates', 'custom-twitter-feeds' ),
@@ -1022,6 +1041,11 @@ class CTF_Feed_Builder {
 			'isAlreadyAdded' => __( ' is already added', 'custom-twitter-feeds' ),
 			'page' => __( 'Page', 'custom-twitter-feeds' ),
 			'copiedClipboard' => __( 'Copied to Clipboard', 'custom-twitter-feeds' ),
+			'copyFailed' => __( 'Could not copy. Select the text and copy it manually.', 'custom-twitter-feeds' ),
+			/* translators: %s: the feed shortcode */
+			'embedUnavailable' => __('The Embed Feed modal needs WordPress 5.8 or newer. Use this shortcode instead: %s', 'custom-twitter-feeds'),
+			/* translators: %s: the feed shortcode */
+			'embedOpenFailed' => __('Could not open the Embed Feed modal. Use this shortcode instead: %s', 'custom-twitter-feeds'),
 			'feedImported' => __( 'Feed imported successfully', 'custom-twitter-feeds' ),
 			'failedToImportFeed' => __( 'Failed to import feed', 'custom-twitter-feeds' ),
 			'timeline' => __( 'Timeline', 'custom-twitter-feeds' ),
@@ -2614,5 +2638,64 @@ class CTF_Feed_Builder {
 			),
 		);
 	}
-}
 
+	/**
+	 * The Embed modal's strings, translated in this plugin's text domain.
+	 *
+	 * The shared sb-customizer modal tags its strings `reviews-feed`, which this
+	 * plugin does not ship. They are listed here so they translate as
+	 * `custom-twitter-feeds`, then mapped onto `reviews-feed` for the modal. Keep in
+	 * sync with the modal's strings when sb-customizer changes them.
+	 *
+	 * @return array<string, string> Source string => translation, translated ones only.
+	 */
+	public static function embed_modal_strings()
+	{
+		$strings = array(
+			'Back' => __('Back', 'custom-twitter-feeds'),
+			'Choose a different page' => __('Choose a different page', 'custom-twitter-feeds'),
+			'Page title' => __('Page title', 'custom-twitter-feeds'),
+			'New page title' => __('New page title', 'custom-twitter-feeds'),
+			'Cancel and search instead' => __('Cancel and search instead', 'custom-twitter-feeds'),
+			'Search for a page or a post' => __('Search for a page or a post', 'custom-twitter-feeds'),
+			'Nothing matched that search.' => __('Nothing matched that search.', 'custom-twitter-feeds'),
+			'No pages or posts yet.' => __('No pages or posts yet.', 'custom-twitter-feeds'),
+			'Create page' => __('Create page', 'custom-twitter-feeds'),
+			'Create a new page' => __('Create a new page', 'custom-twitter-feeds'),
+			'Embed Feed' => __('Embed Feed', 'custom-twitter-feeds'),
+			'Embed feed' => __('Embed feed', 'custom-twitter-feeds'),
+			'Save first. The shortcode and links become available once this exists on the site.' => __('Save first. The shortcode and links become available once this exists on the site.', 'custom-twitter-feeds'),
+			'Post or a Page' => __('Post or a Page', 'custom-twitter-feeds'),
+			'We will redirect you to Gutenberg editor' => __('We will redirect you to Gutenberg editor', 'custom-twitter-feeds'),
+			'Create Page and Go' => __('Create Page and Go', 'custom-twitter-feeds'),
+			'Add and Go to Page' => __('Add and Go to Page', 'custom-twitter-feeds'),
+			/* translators: %s: the word draft. */
+			'Saved as a %s. Nothing is public until you publish it.' => __('Saved as a %s. Nothing is public until you publish it.', 'custom-twitter-feeds'),
+			'draft' => __('draft', 'custom-twitter-feeds'),
+			'Show this on every page' => __('Show this on every page', 'custom-twitter-feeds'),
+			/* translators: %s: the block title. */
+			'Search “%s” and drop it in.' => __('Search “%s” and drop it in.', 'custom-twitter-feeds'),
+			'Add it once in the Site Editor.' => __('Add it once in the Site Editor.', 'custom-twitter-feeds'),
+			'Open Site Editor' => __('Open Site Editor', 'custom-twitter-feeds'),
+			'Add to a Widget' => __('Add to a Widget', 'custom-twitter-feeds'),
+			'Drop it into a sidebar or footer area.' => __('Drop it into a sidebar or footer area.', 'custom-twitter-feeds'),
+			'Open Widgets' => __('Open Widgets', 'custom-twitter-feeds'),
+			'Use a shortcode' => __('Use a shortcode', 'custom-twitter-feeds'),
+			'Shortcode copied' => __('Shortcode copied', 'custom-twitter-feeds'),
+			'Copy' => __('Copy', 'custom-twitter-feeds'),
+			'Available once you save' => __('Available once you save', 'custom-twitter-feeds'),
+			'Something went wrong. Please try again.' => __('Something went wrong. Please try again.', 'custom-twitter-feeds'),
+			'Draft' => __('Draft', 'custom-twitter-feeds'),
+			'Pending' => __('Pending', 'custom-twitter-feeds'),
+			'Scheduled' => __('Scheduled', 'custom-twitter-feeds'),
+			'Private' => __('Private', 'custom-twitter-feeds'),
+			/* translators: %d: the post ID. */
+			'(no title) #%d' => __('(no title) #%d', 'custom-twitter-feeds'),
+			'The page could not be created. Please try again.' => __('The page could not be created. Please try again.', 'custom-twitter-feeds'),
+		);
+
+		return array_filter($strings, function ($translation, $text) {
+			return $translation !== $text;
+		}, ARRAY_FILTER_USE_BOTH);
+	}
+}

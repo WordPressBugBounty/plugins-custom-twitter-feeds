@@ -62,9 +62,7 @@ ctfBuilder = new Vue({
 		pluginType	: ctf_builder.pluginType,
 		genericText	: ctf_builder.genericText,
 		ajaxHandler : ctf_builder.ajax_handler,
-		adminPostURL : ctf_builder.adminPostURL,
 		adminSettingsURL : ctf_builder.adminSettingsURL,
-		widgetsPageURL : ctf_builder.widgetsPageURL,
 		translatedText : ctf_builder.translatedText,
 		socialShareLink : ctf_builder.socialShareLink,
 		licenseType: ctf_builder.pluginType,
@@ -75,7 +73,6 @@ ctfBuilder = new Vue({
 		allFeedsScreen 	 : ctf_builder.allFeedsScreen,
 		extensionsPopup  : ctf_builder.extensionsPopup,
 		mainFooterScreen : ctf_builder.mainFooterScreen,
-		embedPopupScreen : ctf_builder.embedPopupScreen,
 		connectAccountScreen : ctf_builder.connectAccountScreen,
 		freeCtaShowFeatures: false,
 
@@ -180,9 +177,6 @@ ctfBuilder = new Vue({
 			clipboardCopiedNotif : false,
 			legacyFeedsShown : false,
 			editName : false,
-			embedPopup : false,
-			embedPopupScreen : 'step_1',
-			embedPopupSelectedPage : null,
 
 			moderationMode : false,
 
@@ -217,7 +211,6 @@ ctfBuilder = new Vue({
 
 		customizerFeedDataInitial : null,
 		customizerFeedData 	: ctf_builder.customizerFeedData,
-		wordpressPageLists  : ctf_builder.wordpressPageLists,
 		iscustomizerScreen  	: (ctf_builder.customizerFeedData != undefined && ctf_builder.customizerFeedData != false),
 
 		customizerSidebarBuilder : ctf_builder.customizerSidebarBuilder,
@@ -520,6 +513,45 @@ ctfBuilder = new Vue({
 		},
 
 		/**
+		 * Save the feed, then open the sb-customizer Embed Feed modal.
+		 */
+		openEmbedModal : function(){
+			var self = this,
+				notify = function(type, text, ms){
+					var note = self.notificationElement = {type : type, text : text, shown : 'shown'};
+					setTimeout(function(){
+						note.shown = 'hidden';
+					}, ms || 3000);
+				};
+			// Add to a Page relies on the feed block, which registers through block.json (WordPress 5.8+).
+			if(!window.SBEmbedModal || !ctf_builder.embedModalSupported){
+				// Show the shortcode after the save toast, which shares the one notification slot.
+				self.saveFeedSettings(function(){
+					notify('error', self.genericText.embedUnavailable.replace('%s', '[custom-twitter-feeds feed=' + self.customizerFeedData.feed_info.id + ']'), 15000);
+				});
+				return;
+			}
+			try {
+				window.SBEmbedModal.open({
+					feedId : self.customizerFeedData.feed_info.id,
+					onCopy : function(text){
+						notify('success', text);
+					},
+					onCopyFailed : function(){
+						notify('error', self.genericText.copyFailed);
+					}
+				});
+			} catch (e) {
+				// The modal could not mount: give the shortcode after the save toast, which shares the one notification slot.
+				self.saveFeedSettings(function(){
+					notify('error', self.genericText.embedOpenFailed.replace('%s', '[custom-twitter-feeds feed=' + self.customizerFeedData.feed_info.id + ']'), 15000);
+				});
+				return;
+			}
+			self.saveFeedSettings();
+		},
+
+		/**
 		 * Show & Hide View
 		 *
 		 * @since 2.0
@@ -544,9 +576,6 @@ ctfBuilder = new Vue({
 				}
 				if(viewName == 'editName'){
 					document.getElementById("ctf-csz-hd-input").focus();
-				}
-				if(viewName == 'embedPopup' && ajaxAction == true){
-					self.saveFeedSettings();
 				}
 
 				if((viewName == 'sourcePopup' || viewName == 'sourcePopupType') && sourcePopupType == 'creationRedirect'){
@@ -651,7 +680,7 @@ ctfBuilder = new Vue({
 			// a11y: popup screen swaps replace the content under the keyboard
 			// user; move focus to the new screen's visible heading so SR
 			// announces the step instead of focus dropping to body.
-			if (screenType === 'sourcePopupScreen' || screenType === 'embedPopupScreen') {
+			if (screenType === 'sourcePopupScreen') {
 				this.$nextTick(function(){
 					var dialogs = document.querySelectorAll('[role="dialog"]');
 					for (var i = dialogs.length - 1; i >= 0; i--) {
@@ -2626,7 +2655,7 @@ ctfBuilder = new Vue({
 		 *
 		 * @since 2.0
 		 */
-		saveFeedSettings : function(){
+		saveFeedSettings : function(onDone){
 			var self = this,
 				sources = [],
 				updateFeedData = {
@@ -2648,6 +2677,9 @@ ctfBuilder = new Vue({
 					self.customizerFeedDataInitial = self.customizerFeedData;
 				}else{
 					self.processNotification('feedSavedError');
+				}
+				if(typeof onDone === 'function'){
+					onDone();
 				}
 			});
 			ctfBuilder.$forceUpdate();
@@ -2876,13 +2908,14 @@ ctfBuilder = new Vue({
 			var self = this,
 				notification = self.genericText.notification[ notificationType ];
 			self.loadingBar = false;
-			self.notificationElement =  {
+			var el = {
 				type : notification.type,
 				text : notification.text,
 				shown : "shown"
 			};
+			self.notificationElement = el;
 			setTimeout(function(){
-				self.notificationElement.shown =  "hidden";
+				el.shown =  "hidden";
 			}, 5000);
 		},
 
